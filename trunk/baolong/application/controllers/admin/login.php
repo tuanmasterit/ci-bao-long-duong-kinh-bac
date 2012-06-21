@@ -30,7 +30,7 @@ class Login extends CI_Controller {
                );
 		$this->session->set_userdata($userdata);
 		$this->session->sess_destroy();
-		redirect('admin/dashboard/login');
+		redirect('admin/login');
 	}	
 }
 
