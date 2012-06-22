@@ -17,9 +17,24 @@ class Users extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function listuser()
+	public function __construct()
 	{
-		$this->load->view('back_end/view_users');
+		parent::__construct();
+		if($this->session->userdata('logged_in') != 1){
+			redirect('admin/dashboard/login');
+		}
+		$this->load->model('User_model');
+    }
+    
+	public function index()
+	{
+		$data['lstthanhvien'] = $this->User_model->list_user();
+		$this->load->view('back_end/view_users',$data);
+	}
+	
+	public function save()
+	{
+		
 	}
 }
 
