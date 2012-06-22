@@ -7,7 +7,7 @@
                     <ul>
                         <li><a href="<?php echo base_url();?>admin/posts/lists/post"><span>Tất cả bài viết</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/posts/add/post"><span>Thêm mới bài viết</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/terms"><span>Danh mục bài viết</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/categories"><span>Danh mục bài viết</span></a></li>
                     </ul>
                 </li>
                 <li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="elements menudrop"><span>Chủ đề</span></a>
