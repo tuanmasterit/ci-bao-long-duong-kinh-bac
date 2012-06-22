@@ -12,7 +12,7 @@ class Term_model extends CI_Model{
 	//List Categories
 	function get($id,$limit, $offset, $taxonomy){		
 		if($id == 0){
-			$this->db->select('ci_terms.term_id,name,slug,description');
+			$this->db->select('ci_terms.term_id,name,slug,description,parent');
 			$this->db->limit($limit,$offset);
 			$this->db->from('ci_terms');
 			$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');		
@@ -20,13 +20,15 @@ class Term_model extends CI_Model{
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
-			$this->db->select('ci_terms.term_id,name,slug,description');
+			$this->db->select('ci_terms.term_id,name,slug,description,parent');
 			$this->db->from('ci_terms');
 			$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');		
-			$this->db->where('term_id',$id);
+			$this->db->where('ci_terms.term_id',$id);
 			$this->db->where('taxonomy',$taxonomy);
 			$query = $this->db->get();
-			return $query->result();	
+			$data = array();
+			$data = $query->row_array();
+			return $data;	
 		}
 	}					
 	//Add Term
@@ -57,7 +59,7 @@ class Term_model extends CI_Model{
 	{
 		if($term_id != 1){
 			//update post to category 1
-			$taxonomy_id = get_taxonomy_by_term($term_id);
+			$taxonomy_id = $this->get_taxonomy_by_term($term_id);
 			$this->db->where('term_taxonomy_id',$taxonomy_id);
 			$this->db->update('ci_term_relationships',array('term_taxonomy_id'=>$taxonomy_id));			
 			//Delete Category
