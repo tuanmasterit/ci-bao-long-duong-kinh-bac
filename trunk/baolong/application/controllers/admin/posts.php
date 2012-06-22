@@ -11,15 +11,8 @@ class Posts extends CI_Controller {
 		$this->load->model('Author_model');
     }
 	public function delete()
-	{
-		$method	= $this->input->post('method');
-		$param = $this->input->post('param');		
-		if($method == 'delete_post'){
-			//delete post meta
-			$this->Post_model->delete_post($param);					
-		}elseif($method == 'delete_term'){
-			$this->Post_model->delete_term($param);
-		}		
+	{		
+			$this->Post_model->delete_post($param);								
 	}
 	//------------------------------------------------------------------------
 	//-- Function default: List posts by post_type

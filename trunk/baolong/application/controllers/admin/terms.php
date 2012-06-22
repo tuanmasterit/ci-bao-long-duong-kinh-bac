@@ -11,8 +11,8 @@ class Terms extends CI_Controller {
     }
 	
 	public function index(){
-		$data['lstCategories'] = $this->Term_model->list_categories(10,0);
-		$data['Categories'] = $this->Term_model->list_categories(100,0);
+		$data['lstCategories'] = $this->Term_model->get(0,10,0,'category');
+		$data['Categories'] = $this->Term_model->get(0,100,0,'category');
 		$this->load->view('back_end/categories_view',$data);	
 	}
 	
@@ -25,7 +25,7 @@ class Terms extends CI_Controller {
 			$taxonomy = 'category';
 			$description = $this->input->post('txtexcerpt');
 			$parent = $this->input->post('butdanh');
-			$this->Term_model->addCategory($name,$slug,$taxonomy,$description,$parent);			
+			$this->Term_model->addTerm($name,$slug,$taxonomy,$description,$parent);			
 			$this-> session-> set_flashdata('message','Category created');			
 			redirect('admin/terms','refresh');				
 		}
@@ -34,25 +34,16 @@ class Terms extends CI_Controller {
 			redirect('admin/terms','refresh');
 		}
 	}
-	
+	//delete ajax
 	public function delete()
-	{
-		$method	= $this->input->post('method');
+	{		
 		$param = $this->input->post('param');		
-		$this->Term_model->delete_term($param);
-			
-	}
+		$this->Term_model->delete($param);			
+	}		
 	
-	public function categories_delete($id)
-	{
-		$this-> Term_model-> deleteCategory($id);
-		$this-> session-> set_flashdata('message','Category deleted');
-		redirect('admin/terms','refresh');
-	}
-	
-	function editCat($id=0)
-	{
-		
+	function edit($id=0)
+	{	
+		//echo $id;			
 		$name = $this->input->post('txttitle');
 		$slug = $this->input->post('txtslug');		
 		$description = $this->input->post('txtexcerpt');
@@ -63,12 +54,12 @@ class Terms extends CI_Controller {
 			$this-> session-> set_flashdata('message','Category updated');
 			redirect('admin/terms','refresh');
 		}else{
-			$data['category'] = $this-> Term_model-> getCategory($id);
-			$data['TermTaxonomy'] = $this->Term_model->getTermTaxonomy($id);
-			$data['lstCategories'] = $this->Term_model->list_categories(10,0);
-			$data['Categories'] = $this->Term_model->list_categories(100,0);
-			$this->load->vars($data);
-			$this->load->view('back_end/categories_edit');	
+			$data['category'] = $this->Term_model->get($id,0,0,'category');
+			//$data['TermTaxonomy'] = $this->Term_model->getTermTaxonomy($id);
+			$data['lstCategories'] = $this->Term_model->get(0,10,0,'category');
+			$data['Categories'] = $this->Term_model->get(0,100,0,'category');
+			//$this->load->vars($data);
+			$this->load->view('back_end/categories_edit',$data);	
 		}
 	}
 }
