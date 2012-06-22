@@ -40,8 +40,7 @@ jQuery(document).ready(function(){
 	
 	//delete selected row in table
 	jQuery('.deletebutton').click(function(){		
-		var url = jQuery(this).attr('value');		
-		var p_method = jQuery(this).attr('name');
+		var url = jQuery(this).attr('value');
 		var id = '';
 		var tb = jQuery(this).attr('title');							// get target id of table								   
 		var sel = false;											//initialize to false as no selected row
@@ -51,7 +50,7 @@ jQuery(document).ready(function(){
 			if(jQuery(this).is(':checked')) {
 				sel = true;
 				id = jQuery(this).attr('value');
-				jQuery.post(url,{method:p_method,param:id},function(data) {
+				jQuery.post(url,{param:id},function(data) {
 					//alert(data);				
 				});
 				jQuery(this).parents('tr').fadeOut(function(){
@@ -69,9 +68,8 @@ jQuery(document).ready(function(){
 		var c = confirm('Continue delete ?');
 		if(c){
 			var url = jQuery(this).attr('href');
-			var id = jQuery(this).attr('id');
-			var p_methor = jQuery(this).attr('name');
-			jQuery.post(url,{method:p_methor,param:id},function(data) {
+			var id = jQuery(this).attr('id');			
+			jQuery.post(url,{param:id},function(data) {
 				//alert(data);				
 			});			
 			jQuery(this).parents('tr').fadeOut(function(){ 
