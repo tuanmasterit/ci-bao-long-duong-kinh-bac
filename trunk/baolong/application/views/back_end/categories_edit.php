@@ -9,11 +9,11 @@
                 <ul class="maintabmenu multipletabmenu">
                 	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
                     <li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/terms">Danh mục bài viết</a></li>
                 </ul>
                 <div class="content">                	
                 	<div class="edit-left">
-                		<?php echo form_open('admin/posts/editCat',array('id'=>'formID','class'=>'stdform'));?>   
+                		<?php echo form_open('admin/terms/editCat',array('id'=>'formID','class'=>'stdform'));?>   
                     		<input type="hidden" value="<?php echo $category['term_id']?>" name="term_id">
                             <p><label>Tên danh mục:</label></p>
                             <?php $data = array('name'=> 'txttitle','id'=> 'txttitle','value'=>$category['name'],'class'=>'longinput validate[required]');?>
@@ -97,7 +97,7 @@
                                         <td class="center"><input value="<?php echo $Category->term_id;?>" type="checkbox"></td>
                                         <td><?php echo $Category->name;?></td>
                                         <td><?php echo $Category->description;?></td>
-                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/posts/editCat/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $Category->term_id;?>" title="Xóa danh mục" href="<?php echo base_url();?>admin/posts/delete/<?php echo $Category->term_id;?>" >Xóa</a></td>
+                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/terms/editCat/<?php echo $Category->term_id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $Category->term_id;?>" title="Xóa danh mục" href="<?php echo base_url();?>admin/terms/delete/<?php echo $Category->term_id;?>" >Xóa</a></td>
                                     </tr>
                                 <?php }?>
                             </tbody>

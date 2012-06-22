@@ -7,7 +7,7 @@
                     <ul>
                         <li><a href="<?php echo base_url();?>admin/posts/lists/post"><span>Tất cả bài viết</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/posts/add/post"><span>Thêm mới bài viết</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/posts/categories"><span>Danh mục bài viết</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/terms"><span>Danh mục bài viết</span></a></li>
                     </ul>
                 </li>
                 <li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="elements menudrop"><span>Chủ đề</span></a>
@@ -22,10 +22,10 @@
                         <li><a href="<?php echo base_url();?>admin/magazine"><span>Danh sách báo</span></a></li>                        
                     </ul>
                 </li>                                        
-                <li><a href="<?php echo base_url();?>admin/user" class="elements menudrop"><span>Thành viên</span></a>
+                <li><a href="<?php echo base_url();?>admin/users" class="elements menudrop"><span>Thành viên</span></a>
                     <ul>
-                    	<li><a href="<?php echo base_url();?>admin/user"><span>Tất cả thành viên</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/user/add"><span>Thêm mới thành viên</span></a></li>
+                    	<li><a href="<?php echo base_url();?>admin/users"><span>Tất cả thành viên</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/users/add"><span>Thêm mới thành viên</span></a></li>
                     </ul>
                 </li>                        
             </ul>                
