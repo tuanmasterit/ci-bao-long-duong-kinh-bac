@@ -7,11 +7,37 @@ class Categories extends CI_Controller {
 		if($this->session->userdata('logged_in') != 1){
 			redirect('admin/login');
 		}
-		$this->load->model('Term_model');		
+		$this->load->model('Term_model');
+		$this->load->library('pagination');		
     }
 	
-	public function index(){
-		$data['lstCategories'] = $this->Term_model->get(0,10,0,'category');
+	public function index($row=0){
+		$config['base_url']= base_url()."/admin/categories/index/";
+		$config['total_rows']=$this->Term_model->getCount('category');
+		$config['per_page']='10';
+		$config['cur_page']= $row;
+		$config['num_links'] = 5;
+		$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
+		$config['full_tag_close'] = "</div>";
+		$config['first_link'] = 'First';
+		$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
+		$config['first_tag_close'] = "</span>";
+		$config['last_link'] = 'Last';
+		$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
+		$config['last_tag_close'] = "</span>";
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
+		$config['next_tag_close'] = "</span>";
+		$config['prev_link'] = 'Previous';
+		$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
+		$config['prev_tag_close'] = "</span>";
+		$config['num_tag_open'] = "<span class='paginate_button'>";
+		$config['num_tag_close'] = "</span>";
+		$config['cur_tag_open'] = "<span class='paginate_active'>";
+		$config['cur_tag_close'] = "</span>";
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();
+		$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'category');
 		$data['Categories'] = $this->Term_model->get(0,100,0,'category');
 		$this->load->view('back_end/categories_view',$data);	
 	}
@@ -41,7 +67,7 @@ class Categories extends CI_Controller {
 		$this->Term_model->delete($param);			
 	}		
 	
-	function edit($id=0)
+	function edit($id=0,$row=0)
 	{	
 		//echo $id;			
 		$name = $this->input->post('txttitle');
@@ -54,9 +80,34 @@ class Categories extends CI_Controller {
 			$this-> session-> set_flashdata('message','Category updated');
 			redirect('admin/categories','refresh');
 		}else{
-			$data['category'] = $this->Term_model->get($id,0,0,'category');
-			//$data['TermTaxonomy'] = $this->Term_model->getTermTaxonomy($id);
-			$data['lstCategories'] = $this->Term_model->get(0,10,0,'category');
+			$config['base_url']= base_url()."/admin/categories/edit/".$id."/";
+			$config['total_rows']=$this->Term_model->getCount('category');
+			$config['per_page']='10';
+			$config['cur_page']= $row;
+			$config['num_links'] = 5;
+			$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
+			$config['full_tag_close'] = "</div>";
+			$config['first_link'] = 'First';
+			$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
+			$config['first_tag_close'] = "</span>";
+			$config['last_link'] = 'Last';
+			$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
+			$config['last_tag_close'] = "</span>";
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
+			$config['next_tag_close'] = "</span>";
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
+			$config['prev_tag_close'] = "</span>";
+			$config['num_tag_open'] = "<span class='paginate_button'>";
+			$config['num_tag_close'] = "</span>";
+			$config['cur_tag_open'] = "<span class='paginate_active'>";
+			$config['cur_tag_close'] = "</span>";
+			$this->pagination->initialize($config);
+			$data['list_link'] = $this->pagination->create_links();
+			$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'category');
+			$data['category'] = $this->Term_model->get($id,0,0,'category');		
+			
 			$data['Categories'] = $this->Term_model->get(0,100,0,'category');
 			//$this->load->vars($data);
 			$this->load->view('back_end/categories_view',$data);	
