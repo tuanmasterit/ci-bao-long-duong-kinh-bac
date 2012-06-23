@@ -10,32 +10,61 @@
                     <li class="current"><a href="<?php echo base_url();?>admin/users">Quản trị Thành viên</a></li>
                 </ul>
                 <div class="content">                	
-                	<div class="edit-left">   
-                    		<form method="post" id="formID" action="<?php echo base_url();?>admin/users/save" class="stdform">
-                            <p><label>Username:</label></p>
+                	<div class="edit-left">                		
+                		<?php 
+                			if(!isset($user))
+                			{
+                		?>   
+                			<?php echo form_open('admin/users/add',array('id'=>'formID','class'=>'stdform'));?>
+                    		
+                            <p><label>Tên đăng nhập:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtname" /></span></p>
                             <br />
                             <p><label>Tên thành viên:</label></p>                            
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtnicename" /></span></p>
                             <br />
                             <p><label>Email:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtemail" /></span></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required,custom[email]]" name="txtemail" /></span></p>
                             <br />
                             <p><label>Tên hiển thị:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtdisplay" /></span></p>
+                            <p><span class="field"><input type="text" class="longinput" name="txtdisplay" /></span></p>
                             <br />
                             <p class="stdformbutton">
                             	<button class="submit radius2">Thêm mới</button>
                                 <input type="reset" value="Hủy" class="reset radius2">
                             </p>                            
-                            </form>
+                            <?php echo form_close();?>
+                        <?php 
+                			}
+                			else {
+                		?>
+                			<?php echo form_open('admin/users/edit',array('id'=>'formID','class'=>'stdform'));?>
+                			<input type="hidden" name="id" value="<?php echo $user['id'];?>">
+                            <p><label>Tên đăng nhập:</label></p>
+                            <p><span class="field"><input type="text" value="<?php echo $user['user_login']?>" readonly="readonly" class="longinput validate[required]" name="txtname" /></span></p>
+                            <br />
+                            <p><label>Tên thành viên:</label></p>                            
+                            <p><span class="field"><input type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" /></span></p>
+                            <br />
+                            <p><label>Email:</label></p>                            
+                            <p><span class="field"><input type="text" value="<?php echo $user['user_email']?>" class="longinput validate[required,custom[email]]" name="txtemail" /></span></p>
+                            <br />
+                            <p><label>Tên hiển thị:</label></p>                            
+                            <p><span class="field"><input type="text" value="<?php echo $user['display_name']?>" class="longinput" name="txtdisplay" /></span></p>
+                            <br />
+                            <p class="stdformbutton">
+                            	<button class="submit radius2">Cập nhật</button>
+                                <input type="reset" value="Hủy" class="reset radius2">
+                            </p>                            
+                            <?php echo form_close();?>
+                		<?php }?>
                     </div>
                     <div class="list-right">
                     	<div class="contenttitle radiusbottom0">
                             <h2 class="table"><span>Danh sách thành viên</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
-                            <button class="deletebutton radius3" name="delete_user" value="<?php echo base_url();?>admin/users/delete" title="table2">Delete Selected</button> &nbsp;
+                            <button class="deletebutton radius3" name="delete" value="<?php echo base_url();?>admin/users/delete" title="table2">Delete Selected</button> &nbsp;
                             <select class="radius3">
                                 <option value="">Show All</option>
                                 <option value="">Rendering Engine</option>
@@ -74,7 +103,7 @@
                                         <td><?php echo $thanhvien->user_login;?></td> 
                                         <td><?php echo $thanhvien->user_nicename;?></td> 
                                         <td><?php echo $thanhvien->user_email;?></td>                                                                             
-                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/users/edit/<?php echo $thanhvien->id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $thanhvien->id;?>" title="Xóa danh mục" href="<?php echo base_url();?>admin/users/delete" name="delete_user" >Xóa</a></td>
+                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/users/edit/<?php echo $thanhvien->id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $thanhvien->id;?>" title="Xóa thành viên" href="<?php echo base_url();?>admin/users/delete" name="delete_user" >Xóa</a></td>
                                     </tr>
                                 <?php }?>
                             </tbody>
