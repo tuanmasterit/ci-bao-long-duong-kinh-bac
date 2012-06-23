@@ -96,7 +96,7 @@ class Hoiviens extends CI_Controller {
 		{
 			$config['base_url']= base_url()."/admin/hoiviens/edit/".$id."/";
 			$config['total_rows']=$this->User_model->getCount('hoivien');
-			$config['per_page']='1';
+			$config['per_page']='10';
 			$config['cur_page']= $row;
 			$config['num_links'] = 5;
 			$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
