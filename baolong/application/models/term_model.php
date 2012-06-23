@@ -93,5 +93,13 @@ class Term_model extends CI_Model{
 		$this-> db-> where('term_id', $term_id);
 		$this-> db-> update('ci_term_taxonomy', $termTaxonomy);
 	}
+	
+	function getCount($taxonomy)
+	{		
+		$this->db->from('ci_terms');
+		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');		
+		$this->db->where('taxonomy',$taxonomy);				
+		return $this->db->count_all_results();
+	}
 }
 ?>
