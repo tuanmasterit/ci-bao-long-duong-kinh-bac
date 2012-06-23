@@ -20,7 +20,7 @@
                             <p><label>Tên đăng nhập:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtname" /></span></p>
                             <br />
-                            <p><label>Tên thành viên:</label></p>                            
+                            <p><label>Tên hội viên:</label></p>                            
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtnicename" /></span></p>
                             <br />
                             <p><label>Email:</label></p>                            
@@ -43,7 +43,7 @@
                             <p><label>Tên đăng nhập:</label></p>
                             <p><span class="field"><input type="text" value="<?php echo $user['user_login']?>" readonly="readonly" class="longinput validate[required]" name="txtname" /></span></p>
                             <br />
-                            <p><label>Tên thành viên:</label></p>                            
+                            <p><label>Tên hội viên:</label></p>                            
                             <p><span class="field"><input type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" /></span></p>
                             <br />
                             <p><label>Email:</label></p>                            
@@ -108,7 +108,7 @@
                                 <?php }?>
                             </tbody>
                         </table>
-                    </div>                                  
+                        <?php echo $list_link;?>						                              
                 </div><!--content-->                
             </div><!--maincontentinner-->            
             <div class="footer">
