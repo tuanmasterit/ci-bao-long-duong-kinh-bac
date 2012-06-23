@@ -81,7 +81,7 @@
                             <thead>
                                 <tr>
                                     <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
-                                    <th class="head1">Username</th>
+                                    <th class="head1">Tên đăng nhập</th>
                                     <th class="head0">Tên thành viên</th>
                                     <th class="head0">Email</th>                                    
                                     <th class="head0" width="60">&nbsp;</th>
@@ -90,7 +90,7 @@
                             <tfoot>
                                 <tr>
                                     <th class="head0"><input type="checkbox" class="checkall" /></th>
-                                    <th class="head1">Username</th>
+                                    <th class="head1">Tên đăng nhập</th>
                                     <th class="head0">Tên thành viên</th>
                                     <th class="head0">Email</th>                                    
                                     <th class="head0" width="60">&nbsp;</th>
@@ -103,7 +103,7 @@
                                         <td><?php echo $thanhvien->user_login;?></td> 
                                         <td><?php echo $thanhvien->user_nicename;?></td> 
                                         <td><?php echo $thanhvien->user_email;?></td>                                                                             
-                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/users/edit/<?php echo $thanhvien->id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $thanhvien->id;?>" title="Xóa thành viên" href="<?php echo base_url();?>admin/users/delete" name="delete_user" >Xóa</a></td>
+                                        <td class="center"><a class="edit" title="Sửa" href="<?php echo base_url();?>admin/users/edit/<?php echo $thanhvien->id;?>">Sửa</a> &nbsp; <a class="delete" id="<?php echo $thanhvien->id;?>" title="Xóa thành viên" href="<?php echo base_url();?>admin/users/delete" name="delete" >Xóa</a></td>
                                     </tr>
                                 <?php }?>
                             </tbody>
