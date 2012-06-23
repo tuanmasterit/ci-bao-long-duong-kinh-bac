@@ -10,7 +10,7 @@ class Term_model extends CI_Model{
     }
 	
 	//List Categories
-	function get($id,$limit, $offset, $taxonomy){		
+	function get($id,$limit,$offset,$taxonomy){		
 		if($id == 0){
 			$this->db->select('ci_terms.term_id,name,slug,description,parent');
 			$this->db->limit($limit,$offset);
@@ -32,7 +32,7 @@ class Term_model extends CI_Model{
 		}
 	}					
 	//Add Term
-	function addTerm($name,$slug,$taxonomy,$description,$parent)
+	function add($name,$slug,$taxonomy,$description,$parent)
 	{
 		//Add Category
 		$cat = array(
@@ -74,7 +74,7 @@ class Term_model extends CI_Model{
 		return $row->term_taxonomy_id;
 	}
 	
-	function updateCategory($term_id,$name,$slug,$description,$parent)
+	function update($term_id,$name,$slug,$description,$parent)
 	{
 		//Update Category
 		$cat = array(

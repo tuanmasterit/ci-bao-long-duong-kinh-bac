@@ -9,6 +9,7 @@ class Posts extends CI_Controller {
 		}
 		$this->load->model('Post_model');
 		$this->load->model('Author_model');
+		$this->load->model('Term_model');
     }
 	public function delete()
 	{		
@@ -33,7 +34,7 @@ class Posts extends CI_Controller {
 	public function add($post_type)
 	{						
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Post_model->list_categories(100,0);
+		$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
 		$data['post_type'] = $post_type;		
 		$this->load->view('back_end/view_add_post',$data);
 	}
@@ -78,7 +79,7 @@ class Posts extends CI_Controller {
 	}
 	public function edit($id){
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Post_model->list_categories(100,0);
+		$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
 		$data['Post'] = $this->Post_model->get_post($id);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);

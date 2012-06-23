@@ -32,6 +32,7 @@ class Hoiviens extends CI_Controller {
 		$config['base_url']= base_url()."/admin/hoiviens/index/";
 		$config['total_rows']=$this->User_model->getCount('hoivien');
 		$config['per_page']='3';
+		$config['cur_page']= $row;
 		$config['num_links'] = 1;
 		$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
 		$config['full_tag_close'] = "</div>";
