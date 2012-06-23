@@ -10,10 +10,10 @@
                 <ul class="maintabmenu multipletabmenu">
                 	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
                     <li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
+                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>
                 <div class="content">                	
-                	<form method="post" action="<?php echo base_url();?>admin/posts/save_add" class="stdform">                             
+                	<form method="post" action="<?php echo base_url();?>admin/posts/save_add" class="stdform">
                 	<div class="edit-main">                    	                    	                            
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput" name="txttitle"></span></p>
