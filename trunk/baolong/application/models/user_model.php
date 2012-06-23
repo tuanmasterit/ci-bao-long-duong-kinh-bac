@@ -103,5 +103,14 @@ class User_model extends CI_Model{
 		//Delete User Meta		
 		$this->db->delete('ci_usermeta',array('user_id'=>$id));
 	}
+	
+	function getCount($meta_value)
+	{
+		$this->db->from('ci_users');
+		$this->db->join('ci_usermeta', 'id = user_id');
+		$this->db->where('meta_key','group');
+		$this->db->where('meta_value',$meta_value);		
+		return $this->db->count_all_results();
+	}
 }
 ?>
