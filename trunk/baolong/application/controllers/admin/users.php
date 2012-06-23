@@ -24,11 +24,37 @@ class Users extends CI_Controller {
 			redirect('admin/login');
 		}
 		$this->load->model('User_model');
+		$this->load->library('pagination');
     }
     
-	public function index()
+	public function index($row=0)
 	{
-		$data['lstthanhvien'] = $this->User_model->get(0,10,0,'thanhvien');
+		$config['base_url']= base_url()."/admin/users/index/";
+		$config['total_rows']=$this->User_model->getCount('thanhvien');
+		$config['per_page']='10';
+		$config['cur_page']= $row;
+		$config['num_links'] = 5;
+		$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
+		$config['full_tag_close'] = "</div>";
+		$config['first_link'] = 'First';
+		$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
+		$config['first_tag_close'] = "</span>";
+		$config['last_link'] = 'Last';
+		$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
+		$config['last_tag_close'] = "</span>";
+		$config['next_link'] = 'Next';
+		$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
+		$config['next_tag_close'] = "</span>";
+		$config['prev_link'] = 'Previous';
+		$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
+		$config['prev_tag_close'] = "</span>";
+		$config['num_tag_open'] = "<span class='paginate_button'>";
+		$config['num_tag_close'] = "</span>";
+		$config['cur_tag_open'] = "<span class='paginate_active'>";
+		$config['cur_tag_close'] = "</span>";
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links(); 		
+		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
 		$this->load->view('back_end/view_users',$data);
 	}
 	
@@ -54,7 +80,7 @@ class Users extends CI_Controller {
 		}
 	}
 	
-	public function edit($id=0)
+	public function edit($id=0,$row=0)
 	{
 		if($this->input->post('txtnicename'))
 		{
@@ -68,8 +94,34 @@ class Users extends CI_Controller {
 		}
 		else 
 		{
+			$config['base_url']= base_url()."/admin/users/edit/".$id."/";
+			$config['total_rows']=$this->User_model->getCount('thanhvien');
+			$config['per_page']='10';
+			$config['cur_page']= $row;
+			$config['num_links'] = 5;
+			$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
+			$config['full_tag_close'] = "</div>";
+			$config['first_link'] = 'First';
+			$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
+			$config['first_tag_close'] = "</span>";
+			$config['last_link'] = 'Last';
+			$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
+			$config['last_tag_close'] = "</span>";
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
+			$config['next_tag_close'] = "</span>";
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
+			$config['prev_tag_close'] = "</span>";
+			$config['num_tag_open'] = "<span class='paginate_button'>";
+			$config['num_tag_close'] = "</span>";
+			$config['cur_tag_open'] = "<span class='paginate_active'>";
+			$config['cur_tag_close'] = "</span>";
+			$this->pagination->initialize($config);
+			$data['list_link'] = $this->pagination->create_links(); 		
+			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
 			$data['user'] = $this->User_model->get($id,0,0,'thanhvien');
-			$data['lstthanhvien'] = $this->User_model->get(0,10,0,'thanhvien');
+			
 			$this->load->view('back_end/view_users',$data);
 		}
 	}
