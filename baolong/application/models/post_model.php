@@ -9,15 +9,7 @@ class Post_model extends CI_Model{
 		$this->load->database();		
     }
 	//Add posts
-	function add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category){
-		/*$post = new Posts();		
-		$post->$post_author = $post_author;
-		$post->$post_date = $post_date;
-		$post->$post_content = $post_content;
-		$post->$post_title = $post_title;
-		$post->$post_excerpt = $post_excerpt;
-		$post->$guid = $guid;
-		$post->$post_type = $post_type;*/
+	function add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category){		
 		$arr=array(
 			'post_author'=>$post_author,
 			'post_date'=>$post_date,
@@ -100,23 +92,32 @@ class Post_model extends CI_Model{
 		return $flag;
 	}	
 	//List Posts
-	function list_posts($post_type, $limit, $offset){		
-		$this->db->select('ci_posts.id,user_nicename,post_date,post_title,post_excerpt');
-		$this->db->limit($limit,$offset);
+	function get($id, $post_type='post', $limit=10, $offset=0){
+		if($id == 0){		
+			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');
+			if($limit > 0){
+				$this->db->limit($limit,$offset);
+			}
+			$this->db->from('ci_posts');
+			$this->db->join('ci_users','post_author=ci_users.id');		
+			$this->db->where('post_type',$post_type);
+			$query = $this->db->get();
+			return $query->result();
+		}elseif($id > 0){
+			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');
+			$this->db->from('ci_posts');
+			$this->db->join('ci_users','post_author=ci_users.id');		
+			$this->db->where('post_type',$post_type);
+			$this->db->where('ci_posts.id',$id);
+			$query = $this->db->get();
+			return $query->result();	
+		}
+	}	
+	function getCount($post_type='post'){		
 		$this->db->from('ci_posts');
-		$this->db->join('ci_users','post_author=ci_users.id');		
 		$this->db->where('post_type',$post_type);
-		$query = $this->db->get();
-        return $query->result();
-	}
-	function get_post($id){		
-		$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');
-		$this->db->from('ci_posts');
-		$this->db->join('ci_users','post_author=ci_users.id');		
-		$this->db->where('ci_posts.id',$id);
-		$query = $this->db->get();
-        return $query->result();
-	}
+		return $this->db->count_all_results();
+	}	
 	function get_featured_image($id){
 		$this->db->select('meta_value');
 		$this->db->from('ci_postmeta');
