@@ -24,34 +24,15 @@ class Hoiviens extends CI_Controller {
 			redirect('admin/login');
 		}
 		$this->load->model('User_model');
-		$this->load->library('pagination');
+		$this->load->library('pagination');		
     }
     
 	public function index($row=0)
-	{			
+	{	
+		include('paging.php');		
 		$config['base_url']= base_url()."/admin/hoiviens/index/";
-		$config['total_rows']=$this->User_model->getCount('hoivien');
-		$config['per_page']='10';
-		$config['cur_page']= $row;
-		$config['num_links'] = 5;
-		$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
-		$config['full_tag_close'] = "</div>";
-		$config['first_link'] = 'First';
-		$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
-		$config['first_tag_close'] = "</span>";
-		$config['last_link'] = 'Last';
-		$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
-		$config['last_tag_close'] = "</span>";
-		$config['next_link'] = 'Next';
-		$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
-		$config['next_tag_close'] = "</span>";
-		$config['prev_link'] = 'Previous';
-		$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
-		$config['prev_tag_close'] = "</span>";
-		$config['num_tag_open'] = "<span class='paginate_button'>";
-		$config['num_tag_close'] = "</span>";
-		$config['cur_tag_open'] = "<span class='paginate_active'>";
-		$config['cur_tag_close'] = "</span>";
+		$config['total_rows']=$this->User_model->getCount('hoivien');		
+		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links(); 		
 		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'hoivien');
@@ -94,29 +75,11 @@ class Hoiviens extends CI_Controller {
 		}
 		else 
 		{
+			include('paging.php');
 			$config['base_url']= base_url()."/admin/hoiviens/edit/".$id."/";
 			$config['total_rows']=$this->User_model->getCount('hoivien');
-			$config['per_page']='10';
 			$config['cur_page']= $row;
-			$config['num_links'] = 5;
-			$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
-			$config['full_tag_close'] = "</div>";
-			$config['first_link'] = 'First';
-			$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
-			$config['first_tag_close'] = "</span>";
-			$config['last_link'] = 'Last';
-			$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
-			$config['last_tag_close'] = "</span>";
-			$config['next_link'] = 'Next';
-			$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
-			$config['next_tag_close'] = "</span>";
-			$config['prev_link'] = 'Previous';
-			$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
-			$config['prev_tag_close'] = "</span>";
-			$config['num_tag_open'] = "<span class='paginate_button'>";
-			$config['num_tag_close'] = "</span>";
-			$config['cur_tag_open'] = "<span class='paginate_active'>";
-			$config['cur_tag_close'] = "</span>";
+			
 			$this->pagination->initialize($config);
 			$data['list_link'] = $this->pagination->create_links(); 		
 			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'hoivien');
