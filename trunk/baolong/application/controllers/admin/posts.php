@@ -24,7 +24,7 @@ class Posts extends CI_Controller {
 	}
 	public function lists($post_type)
 	{
-		$data['lstPosts'] = $this->Post_model->list_posts($post_type,10,0);
+		$data['lstPosts'] = $this->Post_model->get(0,$post_type,10,0);
 		$this->load->view('back_end/listposts_view',$data);				
 	}
 	//------------------------------------------------------------------------
@@ -80,7 +80,7 @@ class Posts extends CI_Controller {
 	public function edit($id){
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 		$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
-		$data['Post'] = $this->Post_model->get_post($id);
+		$data['Post'] = $this->Post_model->get($id);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
 		$this->load->view('back_end/view_edit_post',$data);	
