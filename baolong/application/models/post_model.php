@@ -151,7 +151,19 @@ class Post_model extends CI_Model{
 		$last_row = $query->last_row();
 		return $last_row->ID;
 	}
-	
-	
+	//Get n last rows
+	function getLast($post_type='post', $limit=5){
+		$this->db->select('ci_posts.id,post_date,post_title,post_excerpt,post_content,meta_value');
+		if($limit > 0){
+			$this->db->limit($limit);
+		}
+		$this->db->from('ci_posts');
+		$this->db->join('ci_postmeta','ci_posts.id=ci_postmeta.post_id');		
+		$this->db->where('post_type',$post_type);
+		$this->db->where('meta_key','featured_image');
+		$this->db->order_by("ci_posts.id", "desc");
+		$query = $this->db->get();
+		return $query->result();		
+	}	
 }
 ?>
