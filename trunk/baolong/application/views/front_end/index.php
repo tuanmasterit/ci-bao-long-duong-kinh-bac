@@ -13,6 +13,47 @@
     <link href="<?php base_url();?>application/content/css/video.css" rel="stylesheet" type="text/css">
     <link href="<?php base_url();?>application/content/css/contact.css" rel="stylesheet" type="text/css">
     <link href="<?php base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css">
+    
+    <script type="text/javascript" src="<?php base_url();?>application/content/js/jquery-1.4.2.min.js"></script>
+    
+    <link rel="stylesheet" href="<?php base_url();?>application/content/css/nivo/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php base_url();?>application/content/css/nivo/nivo-slider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php base_url();?>application/content/css/nivo/style.css" type="text/css" media="screen" />
+
+	
+    <script type="text/javascript" src="<?php base_url();?>application/content/css/nivo/jquery.nivo.slider.pack.js"></script>
+    <script type="text/javascript" src="<?php base_url();?>application/content/js/jquery.jcarousel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php base_url();?>application/content/css/tango/skin.css" />
+
+<script>    
+    jQuery(document).ready(function() {
+		jQuery('#coin-slider').nivoSlider();
+    jQuery('#list_carousel').jcarousel({    	
+        auto: 5,
+        wrap: 'circular',
+        initCallback: mycarousel_initCallback    		
+    });
+});
+function mycarousel_initCallback(carousel)
+{
+    // Disable autoscrolling if the user clicks the prev or next button.
+    carousel.buttonNext.bind('click', function() {
+        carousel.startAuto(0);
+    });
+
+    carousel.buttonPrev.bind('click', function() {
+        carousel.startAuto(0);
+    });
+
+    // Pause autoscrolling if the user moves with the cursor over the clip.
+    carousel.clip.hover(function() {
+        carousel.stopAuto();
+    }, function() {
+        carousel.startAuto();
+    });
+};
+</script>
+    
 </head>
 <body>
     <form>
@@ -82,11 +123,23 @@
             <div class="clear">
             </div>
             <div id="main_left">
-                <div id="adv-top">
-                    <div id='coin-slider'>
-                        <img src="<?php base_url();?>application/content/images/thutuonglao.jpg" />
+            	<div id="adv-top" class="slider-wrapper theme-default">
+                    <div class="ribbon"></div>
+                    <div id="coin-slider" class="nivoSlider">
+                        <img src="<?php base_url();?>application/content/images/thutuonglao.jpg" alt="" title="#caption1" />
+                        <img src="<?php base_url();?>application/content/images/thutuonglao.jpg" alt="" title="#caption2" />
+                        <img src="<?php base_url();?>application/content/images/thutuonglao.jpg" alt="" data-transition="slideInLeft" title="#caption3" />
                     </div>
-                </div>
+                    <div id="caption1" class="nivo-html-caption">
+                        Caption 1
+                    </div>
+                    <div id="caption2" class="nivo-html-caption">
+                        Caption 2
+                    </div>
+                    <div id="caption3" class="nivo-html-caption">
+                        Caption 3
+                    </div>
+                </div>                
             </div>
             <div id="main_right">
                 <div id="box_topnews">
@@ -142,33 +195,28 @@
             <div class="clear">
             </div>
             <div id="product-feature">
-                <div id="list_carousel">
-                    <a href="#" id="foo_prev" class="prev" style="display: block;"></a>
-                    <ul id="list-product-ad" style="float: none; margin: 0px; position: absolute;
-                        height: 181px; left: 0px;padding-left:50px;">
-                        <li><a title="Rượu ngọc dương sâm" href="javascript:void(0);">
-                            <img alt="Rượu ngọc dương sâm" src="<?php base_url();?>application/content/images/ngoc-duong-sam.png"></a><p>
-                                Rượu ngọc dương sâm</p>
-                        </li>
-                        <li><a title="Rượu sâm quế tửu" href="javascript:void(0);">
-                            <img alt="Rượu sâm quế tửu" src="<?php base_url();?>application/content/images/sam-que-tuu.png"></a><p>
-                                Rượu sâm quế tửu</p>
-                        </li>
-                        <li><a title="Trà giải cảm" href="javascript:void(0);">
-                            <img alt="Trà giải cảm" src="<?php base_url();?>application/content/images/tra-giai-cam.png"></a><p>
-                                Trà giải cảm</p>
-                        </li>
-                        <li><a title="Trà thanh long" href="javascript:void(0);">
-                            <img alt="Trà thanh long" src="<?php base_url();?>application/content/images/Tra-thanh-long-3d.png"></a><p>
-                                Trà thanh long</p>
-                        </li>
-                        <li><a title="Bạch long thủy" href="javascript:void(0);">
-                            <img alt="Bạch long thủy" src="<?php base_url();?>application/content/images/bach-long-thuy.png"></a><p>
-                                Bạch long thủy</p>
-                        </li>                        
-                    </ul>
-                    <a href="#" id="foo_next" class="next" style="display: block;"></a>
-                </div>
+            	<ul id="list_carousel" class="jcarousel-skin-tango">
+                    <li><a title="Rượu ngọc dương sâm" href="javascript:void(0);">
+                        <img alt="Rượu ngọc dương sâm" src="<?php base_url();?>application/content/images/ngoc-duong-sam.png"></a><p>
+                            Rượu ngọc dương sâm</p>
+                    </li>
+                    <li><a title="Rượu sâm quế tửu" href="javascript:void(0);">
+                        <img alt="Rượu sâm quế tửu" src="<?php base_url();?>application/content/images/sam-que-tuu.png"></a><p>
+                            Rượu sâm quế tửu</p>
+                    </li>
+                    <li><a title="Trà giải cảm" href="javascript:void(0);">
+                        <img alt="Trà giải cảm" src="<?php base_url();?>application/content/images/tra-giai-cam.png"></a><p>
+                            Trà giải cảm</p>
+                    </li>
+                    <li><a title="Trà thanh long" href="javascript:void(0);">
+                        <img alt="Trà thanh long" src="<?php base_url();?>application/content/images/Tra-thanh-long-3d.png"></a><p>
+                            Trà thanh long</p>
+                    </li>
+                    <li><a title="Bạch long thủy" href="javascript:void(0);">
+                        <img alt="Bạch long thủy" src="<?php base_url();?>application/content/images/bach-long-thuy.png"></a><p>
+                            Bạch long thủy</p>
+                    </li>                        
+                </ul>            		        
             </div>
             <div class="clear">
             </div>
