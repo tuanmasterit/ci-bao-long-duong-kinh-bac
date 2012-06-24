@@ -1,5 +1,5 @@
 ﻿#list_carousel a.prev,#list_carousel a.next {
-	background: url('images/miscellaneous_sprite.png') no-repeat transparent;
+	background: url('../images/miscellaneous_sprite.png') no-repeat transparent;
 	 width: 10px;
 	 height: 90px;
 	 display: block;
@@ -8,7 +8,7 @@
 }
 #list_carousel a.prev  
 {
-    background: url('images/prev.jpg') no-repeat transparent;
+    background: url('../images/prev.jpg') no-repeat transparent;
     left: 17px;
     width:28px;
     display: block;
@@ -20,7 +20,7 @@
     }*/
 #list_carousel a.next 
 {
-    background: url('images/next.jpg') no-repeat transparent;
+    background: url('../images/next.jpg') no-repeat transparent;
     right: 17px;
 	width:28px;
     display: block;
@@ -58,7 +58,7 @@
 
 #productingroup a.prev  
 {
-    background: url('images/prev1.jpg') no-repeat transparent;     
+    background: url('../images/prev1.jpg') no-repeat transparent;     
     left: 0px;
     width:30px;
 	/*background-position: 0 0;*/
@@ -66,7 +66,7 @@
 
 #productingroup a.next 
 {
-    background: url('images/next1.jpg') no-repeat transparent;     
+    background: url('../images/next1.jpg') no-repeat transparent;     
     right: 0px;
     width:30px;
 	/*background-position: 0 0;*/
@@ -82,7 +82,7 @@
 
 #menutingroup a.prev  
 {
-    background: url('images/prev1.jpg') no-repeat transparent;     
+    background: url('../images/prev1.jpg') no-repeat transparent;     
     left: 0px;
     width:30px;
 	/*background-position: 0 0;*/
@@ -90,7 +90,7 @@
 
 #menutingroup a.next 
 {
-    background: url('images/next1.jpg') no-repeat transparent;     
+    background: url('../images/next1.jpg') no-repeat transparent;     
     right: 0px;
     width:30px;
 	/*background-position: 0 0;*/
@@ -113,7 +113,7 @@
 	    text-align: center;
 	}
 .pagination a {
-	/* background: url('images/miscellaneous_sprite.png') 0 -100px no-repeat transparent;*/
+	/* background: url('../images/miscellaneous_sprite.png') 0 -100px no-repeat transparent;*/
 	 width: 15px;
 	 height: 15px;
 	 margin: 0 5px 0 0;
