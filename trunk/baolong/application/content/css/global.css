@@ -1,0 +1,158 @@
+﻿*
+{
+    padding:0;
+    margin:0;
+    }
+.clear
+{
+    clear:both;
+    }
+h4
+{
+    font-size:12px;
+}
+body
+{
+    font-family: Arial;
+    font-style:inherit;
+    font-size: 12px;
+    behavior: url(/App_Themes/Portal/htc/csshover3.htc);
+    background: none repeat scroll top left #00642e;
+   }
+   
+#wrraper
+{
+    width:984px;
+    margin-left:auto;
+    margin-right:auto;
+    background: none no-repeat scroll left center #FFFFFF;
+}
+#header
+{
+    width:984px;
+    height:227px;
+    position: relative;
+}
+#logo
+{
+    height: 193px;  
+    float: left;
+    width: 984px;
+    position: absolute;
+    z-index: 1;
+}
+
+#menu
+{
+    width:100%;
+    padding-top:26px;
+}
+
+#menutop
+{
+    background: url("../images/bg_menumiddle.png") no-repeat scroll left center transparent !important;
+    height: 36px;
+    width: 984px;
+    position: absolute;
+    top: 192px;
+}
+
+#main
+{    
+    width: 984px;
+    margin-top: 2px;
+    position: relative;
+}
+
+#main1
+{    
+    background: url("../images/bg_main1.png") no-repeat scroll top left #023749;
+    width: 838px;
+    padding:0 83px;
+}
+
+#maintop
+{
+    width:100%;
+    margin:20px 0px;    
+}
+#mainmidd
+{
+    width:100%;
+   
+}
+#main_left {
+    float: left;
+    width: 724px;
+    margin-top: 20px;
+	margin-left:5px;
+}
+#main_right
+{
+    float:right;
+    width:250px;
+    margin-top: 20px;
+	margin-right:5px;
+}
+#main_left_middle {
+    float: left;
+    width: 734px;
+    margin-top: 0px;
+}
+#main_right_middle
+{
+    float:right;
+    width:245px;
+    margin-top: 0px;
+	margin-right:5px;
+}
+
+#banner
+{
+    width:1004px;
+    height:245px;
+    margin-top:10px;
+}
+#footer
+{
+    width: 1004px;
+    position: absolute;
+    z-index: 3;
+    margin: 0 auto;
+    height: 103px;
+    background: url("../images/fotter.jpg") no-repeat scroll top left transparent;
+}
+
+#search_box .txtSearch {
+    background: url("../images/timkiem.png") no-repeat scroll left top transparent;
+    border: 0 none;
+    color: #000000;
+    display: inline;
+    font-size: 13px;
+    height: 27px;
+    line-height: 27px;
+    width: 145px;
+}
+#search_box {
+    height: 27px;
+    line-height: 45px;
+    margin-right: 2px;
+    margin-top: 3px;
+    position: absolute;
+    right: 0;
+    top: 192px;
+    width: 167px;
+    z-index: 2;
+}
+#search_box .btnSearch {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    height: 27px;
+    margin-right: 3px;
+    position: absolute;
+    right: 0;
+    width: 30px;
+}
