@@ -1,0 +1,136 @@
+﻿#list_carousel a.prev,#list_carousel a.next {
+	background: url('images/miscellaneous_sprite.png') no-repeat transparent;
+	 width: 10px;
+	 height: 90px;
+	 display: block;
+	 position: absolute;
+	 top: 70px;
+}
+#list_carousel a.prev  
+{
+    background: url('images/prev.jpg') no-repeat transparent;
+    left: 17px;
+    width:28px;
+    display: block;
+	/*background-position: 0 0;*/
+}
+/*a.prev:hover  
+{
+   background-position: 0 -50px;
+    }*/
+#list_carousel a.next 
+{
+    background: url('images/next.jpg') no-repeat transparent;
+    right: 17px;
+	width:28px;
+    display: block;
+	/*background-position: -50px 0;*/
+}
+/* a.next:hover 
+{
+    background-position: -50px -50px;
+     }
+*/
+
+#productingroup
+{
+    position:relative;
+    width:765px;
+    float:left;
+    margin-top:10px;
+}
+
+#menutingroup
+{
+    position:relative;
+    width:375px !important;
+    float:left;
+    margin-top:10px;
+}
+
+#productingroup a.prev,#productingroup a.next 
+{
+    display: block;
+	position: absolute;
+    top: 2px;
+    height:30px;
+}
+
+#productingroup a.prev  
+{
+    background: url('images/prev1.jpg') no-repeat transparent;     
+    left: 0px;
+    width:30px;
+	/*background-position: 0 0;*/
+}
+
+#productingroup a.next 
+{
+    background: url('images/next1.jpg') no-repeat transparent;     
+    right: 0px;
+    width:30px;
+	/*background-position: 0 0;*/
+}
+
+#menutingroup a.prev,#menutingroup a.next 
+{
+    display: block;
+	position: absolute;
+    top: 6px;
+    height:30px;
+}
+
+#menutingroup a.prev  
+{
+    background: url('images/prev1.jpg') no-repeat transparent;     
+    left: 0px;
+    width:30px;
+	/*background-position: 0 0;*/
+}
+
+#menutingroup a.next 
+{
+    background: url('images/next1.jpg') no-repeat transparent;     
+    right: 0px;
+    width:30px;
+	/*background-position: 0 0;*/
+}
+
+#productingroup .caroufredsel_wrapper
+{
+    width:520px;
+}
+
+#menutingroup .caroufredsel_wrapper
+{
+    width:170px;
+}
+
+ a.prev span, a.next span {
+	    display: none;
+}
+.pagination {
+	    text-align: center;
+	}
+.pagination a {
+	/* background: url('images/miscellaneous_sprite.png') 0 -100px no-repeat transparent;*/
+	 width: 15px;
+	 height: 15px;
+	 margin: 0 5px 0 0;
+	 display: inline-block;
+}
+.pagination a.selected {
+	background-position: -25px -100px;
+	cursor: default;
+}
+.pagination a.selected
+{
+    color:Red !important;
+}
+.pagination a span {
+	    display: block;
+}
+.clearfix {
+	float: none;
+	clear: both;
+}
