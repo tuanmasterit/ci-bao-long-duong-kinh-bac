@@ -26,6 +26,7 @@ class Welcome extends CI_Controller {
 	{
 		$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc';
 		$data['list_news'] = $this->Post_model->getLast('post',5);
+		$data['list_tieubieu'] = $this->Post_model->getLast('tintuctieubieu',3);
 		$this->load->view('front_end/template',$data);
 	}
 }
