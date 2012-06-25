@@ -13,11 +13,11 @@ h4
 }
 body
 {
-    font-family: Arial;
-    font-style:inherit;
-    font-size: 12px;
-    behavior: url(/App_Themes/Portal/htc/csshover3.htc);
-    background: none repeat scroll top left #00642e;
+    font-family: Arial !important;
+    font-style:inherit !important;
+    font-size: 12px !important;
+    behavior: url(/App_Themes/Portal/htc/csshover3.htc) !important;
+    background: none repeat scroll top left #00642e !important;
    }
    
 #wrraper
