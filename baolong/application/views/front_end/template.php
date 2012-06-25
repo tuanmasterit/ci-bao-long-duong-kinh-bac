@@ -74,33 +74,7 @@
             <div class="clear">
             </div>
             <div id="product-feature">
-                <div id="list_carousel">
-                    <a href="#" id="foo_prev" class="prev" style="display: block;"></a>
-                    <ul id="list-product-ad" style="float: none; margin: 0px; position: absolute;
-                        height: 181px; left: 0px;padding-left:50px;">
-                        <li><a title="Rượu ngọc dương sâm" href="javascript:void(0);">
-                            <img alt="Rượu ngọc dương sâm" src="<?php base_url();?>application/content/images/ngoc-duong-sam.png"/></a><p>
-                                Rượu ngọc dương sâm</p>
-                        </li>
-                        <li><a title="Rượu sâm quế tửu" href="javascript:void(0);">
-                            <img alt="Rượu sâm quế tửu" src="<?php base_url();?>application/content/images/sam-que-tuu.png"/></a><p>
-                                Rượu sâm quế tửu</p>
-                        </li>
-                        <li><a title="Trà giải cảm" href="javascript:void(0);">
-                            <img alt="Trà giải cảm" src="<?php base_url();?>application/content/images/tra-giai-cam.png"/></a><p>
-                                Trà giải cảm</p>
-                        </li>
-                        <li><a title="Trà thanh long" href="javascript:void(0);">
-                            <img alt="Trà thanh long" src="<?php base_url();?>application/content/images/Tra-thanh-long-3d.png"/></a><p>
-                                Trà thanh long</p>
-                        </li>
-                        <li><a title="Bạch long thủy" href="javascript:void(0);">
-                            <img alt="Bạch long thủy" src="<?php base_url();?>application/content/images/bach-long-thuy.png"/></a><p>
-                                Bạch long thủy</p>
-                        </li>                        
-                    </ul>
-                    <a href="#" id="foo_next" class="next" style="display: block;"></a>
-                </div>
+                <?php $this->load->view('front_end/product_feature');?>
             </div>
             <div class="clear">
             </div>
@@ -233,38 +207,38 @@
                 <div id="menu_list">
                     <div class="menu">
                         <a href="#">
-                            <img src="<?php base_url();?>application/content/images/tu-van-giai-dap-1.jpg"></a></div>
+                            <img src="<?php base_url();?>application/content/images/tu-van-giai-dap-1.jpg"/></a></div>
                     <div class="clear">
                     </div>
                     <div class="menu">
                         <a href="#">
-                            <img src="<?php base_url();?>application/content/images/benhviendakhoabaolong.jpg"></a></div>
+                            <img src="<?php base_url();?>application/content/images/benhviendakhoabaolong.jpg"/></a></div>
                     <div class="clear">
                     </div>
                     <div class="menu">
                         <a href="#">
-                            <img src="<?php base_url();?>application/content/images/phac-do-dieu-tri.jpg"></a></div>
+                            <img src="<?php base_url();?>application/content/images/phac-do-dieu-tri.jpg"/></a></div>
                     <div class="clear">
                     </div>
                     <div class="menu">
                         <a href="#">
-                            <img src="<?php base_url();?>application/content/images/bien-chung-luan-tri.jpg"></a></div>
+                            <img src="<?php base_url();?>application/content/images/bien-chung-luan-tri.jpg"/></a></div>
                     <div class="clear">
                     </div>
                     <div class="menu">
                         <a href="#">
-                            <img src="<?php base_url();?>application/content/images/tu-chua-benh.jpg"></a></div>
+                            <img src="<?php base_url();?>application/content/images/tu-chua-benh.jpg"/></a></div>
                     <div class="clear">
                     </div>
                 </div>
                 <div class="clear">
                 </div>
                 <div>
-                	<embed width="245" height="200" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1023166%26adm_aditem%3D137522%26adm_zoneid%3D256%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fwww.vinamazda.vn%2FTin-tuc-Su-kien%2FTin-tuc%2FVinaMazda%2FUu-dai-len-den-50-trieu-cho-khach-hang-mua-Mazda-trong-thang-6%26adm_random%3D0.6802513646725901&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/<?php base_url();?>application/content/images/dan-tri-300x250_3.swf">
+                	<embed width="245" height="200" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1023166%26adm_aditem%3D137522%26adm_zoneid%3D256%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fwww.vinamazda.vn%2FTin-tuc-Su-kien%2FTin-tuc%2FVinaMazda%2FUu-dai-len-den-50-trieu-cho-khach-hang-mua-Mazda-trong-thang-6%26adm_random%3D0.6802513646725901&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/<?php base_url();?>application/content/images/dan-tri-300x250_3.swf"/>
                 </div>
                 <p>&nbsp;</p>
                 <div>
-                	<embed width="245" height="200" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1020634%26adm_aditem%3D136693%26adm_zoneid%3D224%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fbs.serving-sys.com%2FBurstingPipe%2FadServer.bs%253Fcn%253Dtf%257Cc%253D20%257Cmc%253Dclick%257Cpli%253D4526557%257CPluID%253D0%257Cord%253D%255Btimestamp%255D%26adm_random%3D0.9439774947383233&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/<?php base_url();?>application/content/images/300x250_shell_amazing_01-1.swf">
+                	<embed width="245" height="200" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1020634%26adm_aditem%3D136693%26adm_zoneid%3D224%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fbs.serving-sys.com%2FBurstingPipe%2FadServer.bs%253Fcn%253Dtf%257Cc%253D20%257Cmc%253Dclick%257Cpli%253D4526557%257CPluID%253D0%257Cord%253D%255Btimestamp%255D%26adm_random%3D0.9439774947383233&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/<?php base_url();?>application/content/images/300x250_shell_amazing_01-1.swf"/>
                 </div>
                 <p>&nbsp;</p>
                 <div>
