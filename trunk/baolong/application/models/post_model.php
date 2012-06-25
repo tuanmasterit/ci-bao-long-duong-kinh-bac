@@ -91,16 +91,22 @@ class Post_model extends CI_Model{
 		}
 		return $flag;
 	}	
-	//List Posts
-	function get($id, $post_type='post', $limit=10, $offset=0){
+	//List Posts	
+	function get($id, $post_type='post', $limit=10, $offset=0, $term_id='', $order='DESC', $order_by='post_date'){
 		if($id == 0){		
-			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');
+			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');			
+			$this->db->from('ci_posts');
+			$this->db->join('ci_users','post_author=ci_users.id');
+			$this->db->join('ci_term_relationships','ci_posts.id=object_id');								 			
+			if($term_id!=''){
+				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
+				$this->db->where('ci_term_taxonomy.term_id',$term_id);	
+			}
+			$this->db->where('post_type',$post_type);
+			$this->db->order_by($order_by, $order);
 			if($limit > 0){
 				$this->db->limit($limit,$offset);
 			}
-			$this->db->from('ci_posts');
-			$this->db->join('ci_users','post_author=ci_users.id');		
-			$this->db->where('post_type',$post_type);
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
@@ -130,6 +136,17 @@ class Post_model extends CI_Model{
 		}
         return '';
 	}
+	function get_meta_value($post_id,$meta_key){
+		$this->db->select('meta_value');
+		$this->db->from('ci_postmeta');
+		$this->db->where('post_id',$post_id);
+		$this->db->where('meta_key',$meta_key);
+		$query = $this->db->get();
+		foreach($query->result() as $row){
+			return $row->meta_value;	
+		}
+        return '';
+	}
 	//delete post
 	function delete_post($id){
 		$this->db->delete('ci_postmeta',array('post_id'=>$id));
@@ -150,20 +167,9 @@ class Post_model extends CI_Model{
 		$query = $this->db->get('ci_posts');			
 		$last_row = $query->last_row();
 		return $last_row->ID;
-	}
-	//Get n last rows
-	function getLast($post_type='post', $limit=5){
-		$this->db->select('ci_posts.id,post_date,post_title,post_excerpt,post_content,meta_value');
-		if($limit > 0){
-			$this->db->limit($limit);
-		}
-		$this->db->from('ci_posts');
-		$this->db->join('ci_postmeta','ci_posts.id=ci_postmeta.post_id');		
-		$this->db->where('post_type',$post_type);
-		$this->db->where('meta_key','featured_image');
-		$this->db->order_by("ci_posts.id", "desc");
-		$query = $this->db->get();
-		return $query->result();		
 	}	
+	function get_term_taxonomy_id_by_term($term_id){
+			
+	}
 }
 ?>
