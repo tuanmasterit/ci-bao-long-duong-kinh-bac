@@ -92,7 +92,7 @@ class Post_model extends CI_Model{
 		return $flag;
 	}	
 	//List Posts	
-	function get($id, $post_type='post', $limit=10, $offset=0, $term_id='', $order='DESC', $order_by='post_date'){
+	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=''){
 		if($id == 0){		
 			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');			
 			$this->db->from('ci_posts');
