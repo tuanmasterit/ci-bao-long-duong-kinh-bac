@@ -13,6 +13,46 @@
     <link href="<?php base_url();?>application/content/css/video.css" rel="stylesheet" type="text/css"/>
     <link href="<?php base_url();?>application/content/css/contact.css" rel="stylesheet" type="text/css"/>
     <link href="<?php base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css"/>
+    
+    <script type="text/javascript" src="<?php base_url();?>application/content/js/jquery-1.4.2.min.js"></script>
+    
+    <link rel="stylesheet" href="<?php base_url();?>application/content/css/nivo/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php base_url();?>application/content/css/nivo/nivo-slider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php base_url();?>application/content/css/nivo/style.css" type="text/css" media="screen" />
+
+	
+    <script type="text/javascript" src="<?php base_url();?>application/content/css/nivo/jquery.nivo.slider.pack.js"></script>
+    <script type="text/javascript" src="<?php base_url();?>application/content/js/jquery.jcarousel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php base_url();?>application/content/css/tango/skin.css" />
+
+<script>    
+    jQuery(document).ready(function() {
+		jQuery('#coin-slider').nivoSlider();
+    jQuery('#list_carousel').jcarousel({    	
+        auto: 5,
+        wrap: 'circular',
+        initCallback: mycarousel_initCallback    		
+    	});
+	});
+	function mycarousel_initCallback(carousel)
+	{
+	    // Disable autoscrolling if the user clicks the prev or next button.
+	    carousel.buttonNext.bind('click', function() {
+	        carousel.startAuto(0);
+	    });
+	
+	    carousel.buttonPrev.bind('click', function() {
+	        carousel.startAuto(0);
+	    });
+	
+	    // Pause autoscrolling if the user moves with the cursor over the clip.
+	    carousel.clip.hover(function() {
+	        carousel.stopAuto();
+	    }, function() {
+	        carousel.startAuto();
+	    });
+	};
+</script>
 </head>
 <body>
     <form>
@@ -235,25 +275,8 @@
         <div class="clear">
         </div>
         <div id="footer">        
-            <div id="footer_text">
-                <p class="otherinfo">Bản quyền thuộc công ty Bảo Long Đường Kinh Bắc</p><p class="adr">Địa chỉ:  Km số 10 Cổ Đông Tx Sơn Tây - Hà Nội</p><p class="tel">Điện thoại: (04)33.686.648 -  | Fax(04)33.686.649</p><p class="tel"></p>
-            </div>
-            
-            
-                    <div id="menu_bottom">
-                    <ul><li><a title="Trang chủ" href="/vi/trang-chu.aspx">Trang chủ</a></li><li><a title="" href="/vi/tuyen-dung.aspx">Tuyển dụng</a></li><li><a onclick="window.scroll(); return false" href="#">Go to top</a></li></ul><div class="clear"></div>
-                    </div>
-                    
-            
-             <div id="counter">
-                <div class="content">
-                    <span><strong>Lượt truy cập: </strong>15389</span>
-                    <span><strong>Online: </strong> 2</span>
-                    
-                    <a target="_blank" href="http://tasvis.com.vn" title="">Powered by Bảo Long Đường Kinh Bắc</a>
-                </div>
-            </div>
-                </div>
+        	<?php $this->load->view('front_end/footer');?>    
+        </div>
     </div>
     </form>
 </body>

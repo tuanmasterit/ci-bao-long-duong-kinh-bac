@@ -1,5 +1,37 @@
-<div id="adv-top">
-	<div id='coin-slider'>
-        <img src="<?php base_url();?>application/content/images/thutuonglao.jpg" />
-    </div>
+<div id="adv-top" class="slider-wrapper theme-default">
+	<div class="ribbon"></div>
+	<div id="coin-slider" class="nivoSlider">
+	<?php
+	$i=0; 
+	foreach ($list_tieubieu as $tieubieu)
+	{
+		if($i==2)
+		{
+	?>	
+		<img src="<?php echo base_url().'/'.$tieubieu->meta_value;?>" alt="" data-transition="slideInLeft" title="<?php echo $tieubieu->post_title;?>" />
+	<?php 
+		}
+		else 
+		{
+	?>
+    	<img src="<?php echo base_url().'/'.$tieubieu->meta_value;?>" alt="" title="<?php echo $tieubieu->post_title;?>" />
+        
+    <?php 
+		}
+		$i++;
+	}
+	?>
+	</div>
+	<?php 
+	$i=1;
+	foreach ($list_tieubieu as $tieubieu)
+	{
+	?>
+	<div id="caption<?php echo $i;?>" class="nivo-html-caption">
+    	<?php echo $tieubieu->post_title;?>
+	</div>
+	<?php 
+	$i++;
+	}
+	?>	
 </div>
