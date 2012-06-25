@@ -1013,8 +1013,7 @@
     /*background: url("../images/border_bottomright.jpg") no-repeat scroll bottom right #FFFFFF;*/
     height: 173px;
     overflow: hidden;
-    padding: 0 53px 0 51px;
-	margin-left:50px !important
+    padding: 0 53px 0 51px;	
 }
 
 #list_carousel ul
