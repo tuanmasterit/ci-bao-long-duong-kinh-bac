@@ -4,15 +4,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
     <title><?php if(isset($title)){echo $title;} else {echo "Công ty cổ phần Bảo Long Đường Kinh Bắc";}?></title>
-    <link href="<?php base_url();?>application/content/css/global.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/menu.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/menutree.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/news.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/product.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/carouFredsel.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/video.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/contact.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php base_url();?>application/content/css/global.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/menu.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/menutree.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/news.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/product.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/carouFredsel.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/video.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/contact.css" rel="stylesheet" type="text/css">
+    <link href="<?php base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css">
     
     <script type="text/javascript" src="<?php base_url();?>application/content/js/jquery-1.4.2.min.js"></script>
     
