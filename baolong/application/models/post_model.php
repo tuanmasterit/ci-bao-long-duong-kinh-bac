@@ -168,6 +168,7 @@ class Post_model extends CI_Model{
 		$last_row = $query->last_row();
 		return $last_row->ID;
 	}	
+	
 	function get_term_taxonomy_id_by_term($term_id){
 			
 	}
