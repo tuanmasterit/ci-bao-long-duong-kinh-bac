@@ -8,13 +8,13 @@
 		if($i==2)
 		{
 	?>	
-		<img src="<?php echo base_url().'/'.$tieubieu->meta_value;?>" alt="" data-transition="slideInLeft" title="<?php echo $tieubieu->post_title;?>" />
+		<img src="<?php echo base_url().'/'.$array_img[0];?>" alt="" data-transition="slideInLeft" title="<?php echo $tieubieu->post_title;?>" />
 	<?php 
 		}
 		else 
 		{
 	?>
-    	<img src="<?php echo base_url().'/'.$tieubieu->meta_value;?>" alt="" title="<?php echo $tieubieu->post_title;?>" />
+    	<img src="<?php echo base_url().'/'.$array_img[0];?>" alt="" title="<?php echo $tieubieu->post_title;?>" />
         
     <?php 
 		}
