@@ -101,5 +101,12 @@ class Term_model extends CI_Model{
 		$this->db->where('taxonomy',$taxonomy);				
 		return $this->db->count_all_results();
 	}
+	
+	function getCategoryByName($name)
+	{
+		$query = $this->db->get_where('ci_terms',array('name'=>$name));
+		$row = $query->first_row();
+		return $row->term_id;
+	}
 }
 ?>
