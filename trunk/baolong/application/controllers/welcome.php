@@ -48,7 +48,17 @@ class Welcome extends CI_Controller {
 		}
 		$data['array_img'] = $array_img;
 		
-		//Sản phẩm
+		//Sản phẩm tiêu biểu
+		$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
+		$array_sp_img = array();
+		foreach ($list_sp_noibat as $sp_noibat)
+		{
+			$array_sp_img[] = $this->Post_model->get_featured_image($sp_noibat->id);			
+		}
+		$data['array_sp_img'] = $array_sp_img;
+		
 		$this->load->view('front_end/template',$data);
 	}
 }
