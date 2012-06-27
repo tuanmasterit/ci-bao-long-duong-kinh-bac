@@ -108,5 +108,27 @@ class Term_model extends CI_Model{
 		$row = $query->first_row();
 		return $row->term_id;
 	}
+	
+	function getCatProNav()
+	{			
+		$this->db->select('ci_terms.id,name,slug,description');
+		$this->db->from('ci_terms');
+		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
+		$this->db->where('taxonomy','catpro');
+		$this->db->where('parent',0);
+		$query = $this->db->get();	
+		return $query->result();
+	}
+	
+	function getSubCatProNav($id)
+	{
+		$this->db->select('ci_terms.id,name,slug,description');
+		$this->db->from('ci_terms');
+		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
+		$this->db->where('taxonomy','catpro');
+		$this->db->where('parent',$id);
+		$query = $this->db->get();
+		return $query->result();	
+	}
 }
 ?>

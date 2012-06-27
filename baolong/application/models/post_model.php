@@ -172,5 +172,7 @@ class Post_model extends CI_Model{
 	function get_term_taxonomy_id_by_term($term_id){
 			
 	}
+	
+	
 }
 ?>
