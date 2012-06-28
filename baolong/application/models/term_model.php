@@ -111,7 +111,7 @@ class Term_model extends CI_Model{
 	
 	function getCatProNav()
 	{			
-		$this->db->select('ci_terms.id,name,slug,description');
+		$this->db->select('ci_terms.term_id,name,slug,description');
 		$this->db->from('ci_terms');
 		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
 		$this->db->where('taxonomy','catpro');
@@ -119,16 +119,69 @@ class Term_model extends CI_Model{
 		$query = $this->db->get();	
 		return $query->result();
 	}
-	
-	function getSubCatProNav($id)
+		
+	function getListProduct($term_id)
 	{
-		$this->db->select('ci_terms.id,name,slug,description');
+		$childrens = $this->getSubCatProNav($term_id);
+		if(!count($childrens))
+		{
+			$this->db->select('ci_posts.id,post_title,post_excerpt,post_content');
+			$this->db->from('ci_posts');
+			$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = ci_posts.id');
+			$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
+			$this->db->where('ci_term_taxonomy.term_id',$term_id);
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+		else {
+			$list = array();
+			foreach ($childrens as $children)
+			{
+				$this->db->select('ci_posts.id,post_title,post_excerpt,post_content');
+				$this->db->from('ci_posts');
+				$this->db->join('ci_term_relationships', 'ci_term_relationships.object_id = ci_posts.id');
+				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
+				$this->db->where('ci_term_taxonomy.term_id',$children->term_id);
+				$query = $this->db->get();
+				$kq = $query->result_array();
+				$list = array_merge($list,$kq);
+			}
+			return $list;
+		}
+	}
+
+	function getSubCatProNav($term_id)
+	{
+		$this->db->select('ci_terms.term_id,name,slug,description');
 		$this->db->from('ci_terms');
 		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
 		$this->db->where('taxonomy','catpro');
-		$this->db->where('parent',$id);
+		$this->db->where('parent',$term_id);
 		$query = $this->db->get();
 		return $query->result();	
+	}
+	
+	function getCatProTopFirst()
+	{			
+		$this->db->select('ci_terms.term_id,name,slug,description');		
+		$this->db->from('ci_terms');
+		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
+		$this->db->where('taxonomy','catpro');
+		$this->db->where('parent',0);
+		$query = $this->db->get();	
+		$row = $query->first_row();
+		return $row->term_id;
+	}
+	
+	function getCategoryByTaxonomyID($term_taxonomy_id)
+	{
+		$this->db->select('ci_terms.term_id,name,slug,description,parent');
+		$this->db->from('ci_terms');
+		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
+		$this->db->where('taxonomy','catpro');
+		$this->db->where('term_taxonomy_id',$term_taxonomy_id);
+		$query = $this->db->get();
+		return $query->first_row();
 	}
 }
 ?>

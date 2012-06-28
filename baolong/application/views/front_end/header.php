@@ -1,12 +1,12 @@
 <div id="logo">
-	<img src="<?php base_url();?>application/content/images/banner.png" />
+	<img src="<?php echo base_url();?>application/content/images/banner.png" />
 </div>
 <div class="clear"></div>
 <div id="menu-top">
 	<div id="menu-top-center">
 		<ul id="nav">
 			<li></li>
-            <li class="home"><a href="#" title="Trang chủ"><img src="<?php base_url();?>application/content/images/home2.png" /></a></li>
+            <li class="home"><a href="#" title="Trang chủ"><img src="<?php echo base_url();?>application/content/images/home2.png" /></a></li>
             <li><a href="#" class="parent"><span>Giới thiệu</span></a>
             	<ul class="gioi_thieu_hover">
 		            <li><a href="#">Tập đoàn</a></li>
