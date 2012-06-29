@@ -55,7 +55,38 @@
 		</div>
 		<div class="clear"></div>
 		<div id="products_ingroup">
-			<div class="clear"></div>
+			<div class="content">
+				<div class="top">
+					<h4>Sản phẩm liên quan</h4>
+				</div>
+				<div class="products-grid">
+				<?php 
+					foreach ($listProduct as $product)
+        			{
+        		?>
+            	<div class="product_item">
+            		<div class="img">
+            			<a rel="lightbox"  href="<?php echo base_url().'welcome/product/'.$product->id;?>">
+            				<img class="imgHotProduct" alt="<?php echo $product->post_title;?>" src="<?php echo base_url().'/'.$this->Post_model->get_featured_image($product->id);?>"/>
+            			</a>
+            		</div>
+            		<div class="clear"></div>
+            		<div class="title">
+            			<a href="<?php echo base_url().'welcome/product/'.$product->id;?>">
+            				<h2><?php echo $product->post_title;?></h2>
+            			</a>
+            		</div>
+            		<div class="clear"></div>
+            		<div class="price">
+            			<span><?php echo $this->Post_model->get_meta_value($product->id,'price');?></span>            			
+            		</div>
+            	</div>
+            	<?php 
+        			}
+        		?>
+				</div>
+				<div class="clear"></div>
+			</div>
 		</div>
 	</div>
 </div>

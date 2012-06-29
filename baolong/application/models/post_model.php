@@ -169,10 +169,33 @@ class Post_model extends CI_Model{
 		return $last_row->ID;
 	}	
 	
-	function get_term_taxonomy_id_by_term($term_id){
-			
+	function get_term_id_by_id_post($id){
+		$this->db->select('ci_term_taxonomy.term_id');
+		$this->db->from('ci_term_taxonomy');
+		$this->db->join('ci_term_relationships','ci_term_relationships.term_taxonomy_id=ci_term_taxonomy.term_taxonomy_id');		
+		$this->db->where('object_id',$id);
+		$query = $this->db->get();
+        return $query->first_row()->term_id;	
 	}
 	
+	function getRelationProducts($skip,$limit,$post_type,$order='DESC', $order_by='post_date')
+	{
+		$term_id = $this->get_term_id_by_id_post($skip);
+		$this->db->select('ci_posts.id,post_date,post_title,post_excerpt,post_content');			
+		$this->db->from('ci_posts');		
+		$this->db->join('ci_term_relationships','ci_posts.id=object_id');								 			
+		$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
+		$this->db->where('ci_term_taxonomy.term_id',$term_id);
+		$this->db->where('ci_posts.id !=',$skip);	
+		
+		$this->db->where('post_type',$post_type);
+		$this->db->order_by($order_by, $order);
+		if($limit > 0){
+			$this->db->limit($limit);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
 }
 ?>

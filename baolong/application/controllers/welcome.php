@@ -107,7 +107,7 @@ class Welcome extends CI_Controller {
 				$data['parentCat'] = $this->Term_model->get($cat->parent,0,0,'catpro');
 			}
 			
-			$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc |'.$cat->name;
+			$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc |'.$product[0]->post_title;
 			//Tin tức nổi bật
 			$news = $this->Term_model->getCategoryByName('Tin tức nổi bật');
 			$list_news = $this->Post_model->get(0,'post',5,0,'DESC','post_date',$news);		
@@ -126,10 +126,13 @@ class Welcome extends CI_Controller {
 			//Navigation
 			$data['listCatNav'] = $this->Term_model->getCatProNav();
 			
+			//
+			$data['listProduct'] = $this->Post_model->getRelationProducts($pro_id,12,'product','DESC','post_date');
 			//Sản phẩm	
 			$data['cat'] = $cat;
 			$data['product'] = $product[0];
 			$data['main'] = 'front_end/product';
+			
 			$this->load->view('front_end/template',$data);	
 		}	
 	}

@@ -55,27 +55,8 @@
         	}
             ?>            
                 <div class="clear"></div>
-            </div>
-            <div class="clear"></div>
-            <div class="pager">
-            	<div class="pages">
-                    <ol>
-                       
-                       		<div style="float:left">Trang</div>                        
-                            <li>
-                            	<span style="font-weight:bold; text-decoration:none; color:Black">1</span>
-                            </li>                            
-                            <li>
-                            	<a href="/vi/san-pham/dong-duoc/page/2.aspx">2</a>
-                            </li>                        
-                        
-                        
-                    </ol>
-                </div>
-                <div class="clear"></div>
-                </div>
-                <div class="clear"></div>
-            </div>
+            </div>            
             <div class="clear"></div>
         </div>
-        </div>
+	</div>
+</div>
