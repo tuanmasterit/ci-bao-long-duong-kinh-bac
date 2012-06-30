@@ -42,6 +42,14 @@ class Post_model extends CI_Model{
 		}
 		return $last_id;
 	}
+	function add_term_relationship($object_id,$term_taxonomy_id,$term_order=0){
+		$arrcat = array(
+			'object_id'=>$object_id,
+			'term_taxonomy_id'=>$term_taxonomy_id,
+			'term_order'=>$term_order
+		);
+		$this->db->insert('ci_term_relationships',$arrcat);	
+	}
 	//Update posts
 	function update($id,$post_author,$post_modified,$post_content,$post_title,$post_excerpt,$featured_image,$arr_category){		
 		$flag = true;
@@ -65,6 +73,7 @@ class Post_model extends CI_Model{
 			);
 			$this->db->where('post_id',$id);
 			$this->db->where('meta_key','featured_image');
+			if(!$this->db->update('ci_postmeta',$arrmeta)){$flag=false;}
 		}else{
 			//Insert featured image
 			$arrmeta = array(
@@ -73,8 +82,7 @@ class Post_model extends CI_Model{
 				'meta_value'=>$featured_image
 			);
 			$this->db->insert('ci_postmeta',$arrmeta);		
-		}
-		if(!$this->db->update('ci_postmeta',$arrmeta)){$flag=false;}
+		}		
 		//Update category
 		if(!$this->db->query("DELETE FROM ci_term_relationships WHERE object_id=".$id." AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='category')")){$flag=false;}		
 		foreach($arr_category as $category){

@@ -39,6 +39,7 @@ class Categories extends CI_Controller {
 		$data['list_link'] = $this->pagination->create_links();
 		$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'category');
 		$data['Categories'] = $this->Term_model->get(0,100,0,'category');
+		$data['abc'] = 'fsfjs;ấ';
 		$this->load->view('back_end/categories_view',$data);	
 	}
 	
