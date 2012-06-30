@@ -13,7 +13,9 @@ class Posts extends CI_Controller {
     }
 	public function delete()
 	{		
-		$this->Post_model->delete_post($param);								
+		$param = $this->input->post('param');
+		$this->Post_model->delete_post($param);
+		redirect('admin/posts/lists/post');										
 	}
 	//------------------------------------------------------------------------
 	//-- Function default: List posts by post_type

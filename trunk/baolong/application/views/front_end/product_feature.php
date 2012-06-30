@@ -9,7 +9,7 @@
     ?>
     	<li>
     		<a title="<?php echo $sp_noibat->post_title;?>" href="javascript:void(0);">
-           		<img alt="<?php echo $sp_noibat->post_title;?>" src="<?php echo base_url().'/'.$this->Post_model->get_featured_image($sp_noibat->id);?>"/>
+           		<img alt="<?php echo $sp_noibat->post_title;?>" src="<?php echo $this->Post_model->get_featured_image($sp_noibat->id);?>"/>
            	</a>
             <p><?php echo $sp_noibat->post_title;?></p>
         </li>

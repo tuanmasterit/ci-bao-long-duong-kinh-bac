@@ -9,7 +9,7 @@
             	{             		         		
             ?>
                 <li>
-                    <div class="img"><img src="<?php echo base_url().'/'.$this->Post_model->get_featured_image($news->id);?>"/></div>
+                    <div class="img"><img src="<?php echo $this->Post_model->get_featured_image($news->id);?>"/></div>
                     <p>
                         <a title="<?php echo $news->post_title;?>" class="tooltip" href="">
                             <?php echo $news->post_title;?>
