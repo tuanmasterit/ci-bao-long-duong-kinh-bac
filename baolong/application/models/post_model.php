@@ -207,7 +207,24 @@ class Post_model extends CI_Model{
 	
 	function updatePrice($id,$price)
 	{
-		$this->db->update('ci_postmeta',array('meta_value'=>$price),array('post_id'=>$id,'meta_key'=>'price'));
+		$query = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'price'));
+		$result = $query->result();
+		if(count($result) > 0){
+			$arrmeta = array(
+				'meta_value'=>$price
+			);
+			$this->db->where('post_id',$id);
+			$this->db->where('meta_key','price');
+			$this->db->update('ci_postmeta',$arrmeta);
+		}else{
+			//Insert price
+			$arrmeta = array(
+				'post_id'=>$id,
+				'meta_key'=>'price',
+				'meta_value'=>$price
+			);
+			$this->db->insert('ci_postmeta',$arrmeta);		
+		}		
 	}	
 }
 ?>
