@@ -20,7 +20,7 @@
 	<div class="contentboxProduct">
 		<div class="box_img_product_detail" style="position: relative;">
 			<a id="imageZoom" class="imageZoom" href="<?php echo base_url().'welcome/product/'.$product->id;?>" style="outline-style: none; text-decoration: none; cursor: crosshair; display: block; position: relative; height: 271px; width: 269px;">
-				<img id="lagerImage" alt="Hỏa Long" src="<?php echo base_url().'/'.$this->Post_model->get_featured_image($product->id); ?>" />
+				<img id="lagerImage" alt="Hỏa Long" src="<?php echo $this->Post_model->get_featured_image($product->id); ?>" />
 			</a>
 		</div>
 		<div class="box_product_detail">

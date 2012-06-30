@@ -4,7 +4,7 @@ jQuery(document).ready(function(){
 	//Brow server image upload
 	
 	jQuery('#imageUpload').popupWindow({ 
-			windowURL:'/butdanh/application/elfinder/standalone-elfinder.php?mode=image', 
+			windowURL:'/baolong/application/elfinder/standalone-elfinder.php?mode=image', 
 			windowName:'Filebrowser',
 			height:490, 
 			width:950,

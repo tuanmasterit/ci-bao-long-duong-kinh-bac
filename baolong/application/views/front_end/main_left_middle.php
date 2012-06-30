@@ -14,7 +14,7 @@
             	<div class="product_item">
             		<div class="img">
             			<a rel="lightbox"  href="<?php echo base_url().'welcome/product/'.$product['id'];?>">
-            				<img class="imgHotProduct" alt="<?php echo $product['post_title'];?>" src="<?php echo base_url().'/'.$this->Post_model->get_featured_image($product['id']);?>"/>
+            				<img class="imgHotProduct" alt="<?php echo $product['post_title'];?>" src="<?php echo $this->Post_model->get_featured_image($product['id']);?>"/>
             			</a>
             		</div>
             		<div class="clear"></div>

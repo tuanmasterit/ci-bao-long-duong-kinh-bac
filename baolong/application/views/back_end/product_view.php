@@ -6,9 +6,9 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li class="current"><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
+                	<li class="current"><a href="<?php echo base_url();?>admin/products/">Tất cả sản phẩm</a></li>
+                    <li><a href="<?php echo base_url();?>admin/products/">Thêm mới sản phẩm</a></li>
+                    <li><a href="<?php echo base_url();?>admin/cats">Danh mục sản phẩm</a></li>
                 </ul>                
                 <div class="content">
                 	<h1 id="ajaxtitle"></h1>                       	                            
@@ -37,38 +37,39 @@
                         <thead>
                             <tr>
                                 <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
-                                <th class="head1">Tiêu đề</th>
-                                <th class="head0">Tác giả</th>
-                                <th class="head1">Tóm tắt</th>
+                                <th class="head1">Tên sản phẩm</th>                                
+                                <th class="head0">Mô tả</th>
+                                <th class="head1">Giá bán</th>
                                 <th class="head0">Ngày cập nhật</th>
-                                <th class="head0" width="60">&nbsp;</th>
+                                <th class="head1" width="60">&nbsp;</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th class="head0"><input type="checkbox" class="checkall" /></th>
-                                <th class="head1">Tiêu đề</th>
-                                <th class="head0">Tác giả</th>
-                                <th class="head1">Tóm tắt</th>
+                                <th class="head1">Tiêu đề</th>                                
+                                <th class="head0">Mô tả</th>
+                                <th class="head1">Giá bán</th>
                                 <th class="head0">Ngày cập nhật</th>
-                                <th class="head0">&nbsp;</th>
+                                <th class="head1">&nbsp;</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             <?php foreach($lstPosts as $Post){?>                            	
                             	<tr>
                                 	<td class="center"><input value="<?php echo $Post->id;?>" type="checkbox"></td>
-                                    <td><?php echo $Post->post_title;?></td>
-                                    <td><?php echo $Post->user_nicename;?></td>
+                                    <td><?php echo $Post->post_title;?></td>                                    
                                     <td><?php echo $Post->post_excerpt;?></td>
+                                    <td><?php echo $this->Post_model->get_meta_value($Post->id,'price');?></td>
                                     <td><?php echo $Post->post_date;?></td>
                                     <td class="center">
-                                    	<a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
-                                        <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/posts/delete">Xóa</a></td>
+                                    	<a class="edit" href="<?php echo base_url();?>admin/products/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
+                                        <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/products/delete">Xóa</a></td>
                                 </tr>
                             <?php }?>
                         </tbody>
-                    </table>                                 
+                    </table>
+                    <?php echo $list_link;?>                                 
                 </div><!--content-->
                 
             </div><!--maincontentinner-->
