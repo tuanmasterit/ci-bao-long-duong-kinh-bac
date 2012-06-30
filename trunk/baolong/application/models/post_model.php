@@ -51,7 +51,7 @@ class Post_model extends CI_Model{
 		$this->db->insert('ci_term_relationships',$arrcat);	
 	}
 	//Update posts
-	function update($id,$post_author,$post_modified,$post_content,$post_title,$post_excerpt,$featured_image,$arr_category){		
+	function update($id,$post_author,$post_modified,$post_content,$post_title,$post_excerpt,$featured_image,$arr_category,$taxonomy='category'){		
 		$flag = true;
 		$arr=array(
 			'post_author'=>$post_author,
@@ -84,7 +84,7 @@ class Post_model extends CI_Model{
 			$this->db->insert('ci_postmeta',$arrmeta);		
 		}		
 		//Update category
-		if(!$this->db->query("DELETE FROM ci_term_relationships WHERE object_id=".$id." AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='category')")){$flag=false;}		
+		if(!$this->db->query("DELETE FROM ci_term_relationships WHERE object_id=".$id." AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='".$taxonomy."')")){$flag=false;}		
 		foreach($arr_category as $category){
 			$query = $this->db->get_where('ci_term_taxonomy',array('term_id'=>$category));
 			foreach ($query->result() as $row)
@@ -205,5 +205,9 @@ class Post_model extends CI_Model{
 		return $query->result();
 	}
 	
+	function updatePrice($id,$price)
+	{
+		$this->db->update('ci_postmeta',array('meta_value'=>$price),array('post_id'=>$id,'meta_key'=>'price'));
+	}	
 }
 ?>

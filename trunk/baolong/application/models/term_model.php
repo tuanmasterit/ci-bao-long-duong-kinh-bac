@@ -13,7 +13,10 @@ class Term_model extends CI_Model{
 	function get($id,$limit,$offset,$taxonomy){		
 		if($id == 0){
 			$this->db->select('ci_terms.term_id,name,slug,description,parent');
-			$this->db->limit($limit,$offset);
+			if($limit>0)
+			{
+				$this->db->limit($limit,$offset);
+			}
 			$this->db->from('ci_terms');
 			$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');		
 			$this->db->where('taxonomy',$taxonomy);
