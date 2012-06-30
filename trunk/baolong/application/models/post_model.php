@@ -65,7 +65,7 @@ class Post_model extends CI_Model{
 		if( !$this->db->update('ci_posts',$arr)){$flag=false;}
 		//Update featured image
 		//check exits featured image
-		$query = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_value'=>'featured_image'));
+		$query = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'featured_image'));
 		$result = $query->result();
 		if(count($result) > 0){
 			$arrmeta = array(
