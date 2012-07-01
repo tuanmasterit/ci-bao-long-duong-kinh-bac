@@ -65,7 +65,9 @@
 </div>
 <div class="clear"></div>
 <div id="search_box">
-	<input type="text" onfocus="javascript:this.value='';" onblur="javascript:this.value='Từ khóa tìm kiếm';"
-                    class="txtSearch" value="Từ khóa tìm kiếm" />
-    <input type="submit" class="btnSearch" value="Tìm kiếm" />
+	<form action="<?php echo base_url()?>welcome/search" method="post">
+		<input type="text" name="txtKey" onfocus="javascript:this.value='';" onblur="javascript:this.value='Từ khóa tìm kiếm';"
+	                    class="txtSearch" value="Từ khóa tìm kiếm" />
+	    <input type="submit" class="btnSearch" value="Tìm kiếm" />
+    </form>
 </div>

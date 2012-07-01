@@ -239,5 +239,19 @@ class Post_model extends CI_Model{
 			);
 		$this->db->insert('ci_postmeta',$arrmeta);
 	}
+	
+	function getProductByName($name)
+	{
+		$this->db->select('ID');
+		$this->db->from('ci_posts');
+		$this->db->like('post_title',$name);
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+		{
+			$row = $query->first_row();
+			return $row->ID;
+		}
+		return 0;		
+	}
 }
 ?>
