@@ -86,7 +86,7 @@ class Welcome extends CI_Controller {
 	public function product($id)
 	{
 		$pro_id = $this->uri->segment(3);				
-		$product = $this->Post_model->get($pro_id,0,0,'category');
+		$product = $this->Post_model->get($pro_id,'product',0,0);
 		$term_taxonomy_id = $this->Post_model->get_categories_of_post($pro_id);	
 		
 		$cat = $this->Term_model->getCategoryByTaxonomyID($term_taxonomy_id[0]->term_taxonomy_id);

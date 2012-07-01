@@ -90,3 +90,32 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function ReplaceImage(srcImage){
+	jQuery(document).ready(function($) {
+	document.getElementById('imageZoom').href = srcImage;
+	document.getElementById('lagerImage').src=srcImage;
+	});
+	}
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$(function() {
+	var options =
+	{
+	zoomType:'standard',
+	zoomWidth: 380,
+	zoomHeight: 250,
+	position : 'right',
+	yOffset :0,
+	xOffset :5,
+	showEffect:'show',
+	hideEffect:'fadeout',
+	fadeoutSpeed: 'slow',
+	lens:true,
+	title :false
+	}
+	$(".imageZoom").jqzoom(options);
+	});
+	});
+</script>

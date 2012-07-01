@@ -31,7 +31,7 @@
                 <li><a href="<?php echo base_url();?>admin/products" class="elements menudrop"><span>Sản phẩm</span></a>
                     <ul>
                     	<li><a href="<?php echo base_url();?>admin/products"><span>Danh sách sản phẩm</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/products"><span>Thêm mới sản phẩm</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/products/add"><span>Thêm mới sản phẩm</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/cats"><span>Danh mục sản phẩm</span></a></li>
                     </ul>
                 </li>                         

@@ -4,76 +4,59 @@
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
-		<?php $this->load->view('back_end/sidebar-left');?>       
+		<?php $this->load->view('back_end/sidebar-left');?> 
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>admin/products/">Tất cả sản phẩm</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/products/">Cập nhật sản phẩm</a></li>
+                	<li><a href="<?php echo base_url();?>admin/products">Danh sách sản phẩm</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/products/add">Thêm mới sản phẩm</a></li>
                     <li><a href="<?php echo base_url();?>admin/cats">Danh mục sản phẩm</a></li>
                 </ul>
-                <div class="content">     
-                	<?php //print_r($Post);?>           	                	
-                	<?php foreach($Post as $l_post){?>
-                	<form method="post" id="formID" action="<?php echo base_url();?>admin/products/update" class="stdform">                             
+                <div class="content">                	
+                	<form method="post" id="formID" action="<?php echo base_url();?>admin/products/save_add" class="stdform">
                 	<div class="edit-main">                    	                    	                            
-                    		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />
-                    		<input type="hidden" value="<?php echo $l_post->post_author;?>" name="post_author"/>
                             <p><label>Tên sản phẩm:</label></p>
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle" value="<?php echo $l_post->post_title;?>"></span></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
                             <br/>
                             <p><label>Giá bán:</label></p>
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtprice" value="<?php echo $this->Post_model->get_meta_value($l_post->id,'price');?>"></span></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtprice"></span></p>
                             <br/>
                             <p><label>Mô tả:</label></p>                            
-                            <p><span class="field"><textarea name="txtexcerpt"><?php echo $l_post->post_excerpt;?></textarea></span></p>
+                            <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
                             <br/>
                             <p><label>Nội dung:</label></p>                            
-                            <p><textarea name="txtcontent" id="editor_content"><?php echo $l_post->post_content;?></textarea></p>
-                            <br/>                            
+                            <p><textarea name="txtcontent" id="editor_content"></textarea></p>
+                            <input type="hidden" value="<?php echo $post_type;?>" name="hdfposttype"  />
+                            <br/>
                     </div>
                     <div class="edit-right">
                     	<div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Thao tác</span></h2></div>
-                            <div class="widgetcontent" style="display: block;">                     	
-                                
+                            <div class="widgetcontent" style="display: block;">                            	
                                 <p class="stdformbutton">
-                                    <button class="submit radius2">Cập nhật</button>
+                                    <button class="submit radius2">Thêm sản phẩm</button>
                                     <input type="reset" value="Hủy" class="reset radius2">
                                 </p>
                             </div><!--widgetcontent-->
-                        </div>                    	
+                        </div>
                         <div class="widgetbox">
-                            <div class="title"><h2 class="general"><span>Danh mục bài viết</span></h2></div>
+                            <div class="title"><h2 class="general"><span>Danh mục sản phẩm</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
-                                <?php $flag=false;?>
-                                <?php foreach($lstCategories as $Category){?>
-                                	<?php $flag=false;?>
-                                    <?php $term_id = $Category->term_id;?>
-									<?php foreach($categories_of_post as $category_of_post){
-										if($term_id == $category_of_post->term_taxonomy_id){$flag=true;}		
-									}?>                                	
-                                	<?php if($flag){?>
-                                    	<input type="checkbox" checked="checked" value="<?php echo $Category->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;<?php echo $Category->name;?>
-                                        <br>                                    
-                                    <?php }else{?>
-                                    	<input type="checkbox" value="<?php echo $Category->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;<?php echo $Category->name;?>
-                                        <br>
-                                    <?php }?>
+                                <?php foreach($lstCategories as $Category){?>                            	
+                                    <input type="checkbox" value="<?php echo $Category->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;<?php echo $Category->name;?><br>                                    
                                 <?php }?>                                 
                             </div>
                         </div>
                         <div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Ảnh đại diện</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
-                                <input type="hidden" id="featured_image" name="hdffeatured_image" value="<?php echo $featured_image;?>" >
-                                <img src="<?php echo $featured_image;?>" id="featured_image_src" width="100%" height="auto" style="margin-bottom:10px;" />
+                                <input type="hidden" id="featured_image" name="hdffeatured_image" >
+                                <img src="" id="featured_image_src" width="100%" height="auto" style="margin-bottom:10px;" />
                                 <button id="imageUpload" class="submit radius2" >Chọn ảnh đại diện</button>
                             </div>
                         </div>
                     </div>
-                    </form>    
-                    <?php }?>          
+                    </form>              
                 </div><!--content-->                
             </div><!--maincontentinner-->            
             <div class="footer">

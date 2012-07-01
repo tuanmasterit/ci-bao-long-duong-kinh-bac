@@ -112,5 +112,14 @@ class User_model extends CI_Model{
 		$this->db->where('meta_value',$meta_value);		
 		return $this->db->count_all_results();
 	}
+	
+	function getByUsername($username)
+	{
+		$this->db->from('ci_users');
+		$this->db->where('user_login',$username);
+		$query = $this->db->get();
+		$row =  $query->first_row();
+		return $row->ID;		
+	}
 }
 ?>
