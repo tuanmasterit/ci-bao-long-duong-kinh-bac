@@ -55,7 +55,7 @@
 </script>
 </head>
 <body>
-    <form>
+   
     <div id="wrraper">
         <div id="header">
             <?php $this->load->view('front_end/header');?>
@@ -91,6 +91,6 @@
         	<?php $this->load->view('front_end/footer');?>    
         </div>
     </div>
-    </form>
+   
 </body>
 </html>
