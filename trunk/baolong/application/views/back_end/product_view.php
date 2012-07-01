@@ -7,7 +7,7 @@
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
                 	<li class="current"><a href="<?php echo base_url();?>admin/products/">Tất cả sản phẩm</a></li>
-                    <li><a href="<?php echo base_url();?>admin/products/">Thêm mới sản phẩm</a></li>
+                    <li><a href="<?php echo base_url();?>admin/products/add">Thêm mới sản phẩm</a></li>
                     <li><a href="<?php echo base_url();?>admin/cats">Danh mục sản phẩm</a></li>
                 </ul>                
                 <div class="content">

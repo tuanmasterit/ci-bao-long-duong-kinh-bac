@@ -14,6 +14,7 @@
 		public function index($row=0){
 			include('paging.php');
 			$config['base_url']= base_url()."/admin/cats/index/";
+			$config['per_page']=10;
 			$config['total_rows']=$this->Term_model->getCount('catpro');
 			$config['cur_page']= $row;
 			$this->pagination->initialize($config);
@@ -29,10 +30,10 @@
 			{
 				$name = $this->input->post('txttitle');
 				$slug = $this->input->post('txtslug');
-				$taxonomy = 'category';
+				$taxonomy = 'catpro';
 				$description = $this->input->post('txtexcerpt');
 				$parent = $this->input->post('select');
-				$this->Term_model->addTerm($name,$slug,$taxonomy,$description,$parent);			
+				$this->Term_model->add($name,$slug,$taxonomy,$description,$parent);			
 				$this-> session-> set_flashdata('message','Category created');			
 				redirect('admin/cats','refresh');				
 			}

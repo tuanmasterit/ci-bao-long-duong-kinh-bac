@@ -172,8 +172,11 @@ class Post_model extends CI_Model{
 	}
 	//Get id last record
 	function get_id_last_row(){
-		$query = $this->db->get('ci_posts');			
-		$last_row = $query->last_row();
+		$this->db->select('ID');
+		$this->db->from('ci_posts');
+		$this->db->order_by('ID','DESC');
+		$query = $this->db->get();			
+		$last_row = $query->first_row();
 		return $last_row->ID;
 	}	
 	
@@ -225,6 +228,16 @@ class Post_model extends CI_Model{
 			);
 			$this->db->insert('ci_postmeta',$arrmeta);		
 		}		
-	}	
+	}
+
+	function addProductPrice($id,$price)
+	{
+		$arrmeta = array(
+				'post_id'=>$id,
+				'meta_key'=>'price',
+				'meta_value'=>$price
+			);
+		$this->db->insert('ci_postmeta',$arrmeta);
+	}
 }
 ?>
