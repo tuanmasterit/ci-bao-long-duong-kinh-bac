@@ -28,7 +28,7 @@ class Welcome extends CI_Controller {
 				
 		//Navigation
 		$data['listCatNav'] = $this->Term_model->getCatProNav();
-		
+		$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 		//Sản phẩm mặc định
 		$firstTopCat = $this->Term_model->getCatProTopFirst();
 		$data['listProduct'] = $this->Term_model->getListProduct($firstTopCat);
@@ -74,7 +74,7 @@ class Welcome extends CI_Controller {
 					
 			//Navigation
 			$data['listCatNav'] = $this->Term_model->getCatProNav();
-			
+			$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 			//Sản phẩm	
 			$data['cat'] = $cat;
 			$data['listProduct'] = $this->Term_model->getListProduct($cat_id);
@@ -125,7 +125,7 @@ class Welcome extends CI_Controller {
 					
 			//Navigation
 			$data['listCatNav'] = $this->Term_model->getCatProNav();
-			
+			$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 			//
 			$data['listProduct'] = $this->Post_model->getRelationProducts($pro_id,12,'product','DESC','post_date');
 			//Sản phẩm	
@@ -167,7 +167,7 @@ class Welcome extends CI_Controller {
 						
 				//Navigation
 				$data['listCatNav'] = $this->Term_model->getCatProNav();				
-				
+				$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 				$data['main'] = 'front_end/search_result';
 				
 				$this->load->view('front_end/template',$data);
@@ -207,7 +207,7 @@ class Welcome extends CI_Controller {
 						
 				//Navigation
 				$data['listCatNav'] = $this->Term_model->getCatProNav();
-				
+				$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 				//
 				$data['listProduct'] = $this->Post_model->getRelationProducts($pro_id,12,'product','DESC','post_date');
 				//Sản phẩm	
