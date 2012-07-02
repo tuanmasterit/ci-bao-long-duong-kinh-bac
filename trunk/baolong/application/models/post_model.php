@@ -100,13 +100,13 @@ class Post_model extends CI_Model{
 		return $flag;
 	}	
 	//List Posts	
-	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=''){
+	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=0){
 		if($id == 0){		
 			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type');			
 			$this->db->from('ci_posts');
 			$this->db->join('ci_users','post_author=ci_users.id');
 			$this->db->join('ci_term_relationships','ci_posts.id=object_id');								 			
-			if($term_id!=''){
+			if($term_id !='' and $term_id >0 ){
 				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
 				$this->db->where('ci_term_taxonomy.term_id',$term_id);	
 			}
@@ -127,14 +127,14 @@ class Post_model extends CI_Model{
 			return $query->result();	
 		}
 	}	
-	function getCount($post_type='post', $term_id='', $author=''){		
+	function getCount($post_type='post', $term_id=0, $author=''){		
 		$this->db->from('ci_posts');
 		$this->db->where('post_type',$post_type);
 		if($author != ''){
 			$this->db->join('ci_users','post_author=ci_users.id');
 			$this->db->where('ci_users.id',$author);
 		}
-		if($term_id !='' ){
+		if($term_id != '' and $term_id > 0){
 			$this->db->join('ci_term_relationships','ci_posts.id=object_id');
 			$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
 			$this->db->where('ci_term_taxonomy.term_id',$term_id);	
