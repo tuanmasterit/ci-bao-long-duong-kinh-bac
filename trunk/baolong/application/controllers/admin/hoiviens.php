@@ -49,7 +49,7 @@ class Hoiviens extends CI_Controller {
 			$user_regitered = date('Y-m-d h-i-s');
 			$display_name = $this->input->post('txtdisplay');
 			$meta_value = 'hoivien';
-			
+			$meta_references=$this->input->post('txtreference');
 			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value);
 			$this-> session-> set_flashdata('message','Thêm hội viên thành công!');			
 			redirect('admin/hoiviens','refresh');	
