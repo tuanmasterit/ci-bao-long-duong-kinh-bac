@@ -10,6 +10,7 @@ class Posts extends CI_Controller {
 		$this->load->model('Post_model');
 		$this->load->model('Author_model');
 		$this->load->model('Term_model');
+		$this->load->library('pagination');
     }
 	public function delete()
 	{		
@@ -24,10 +25,30 @@ class Posts extends CI_Controller {
 	{
 		redirect('admin/posts/lists/post');			
 	}
-	public function lists($post_type)
+	public function lists($post_type='post',$term=0,$row=0)
 	{
-		$data['lstPosts'] = $this->Post_model->get(0,$post_type,10,0);
-		$this->load->view('back_end/listposts_view',$data);				
+		// Get post type
+		$data['post_type'] = $post_type;
+		if($this->input->post('hdfposttype') != ''){
+			$data['post_type'] = $this->input->post('hdfposttype');	
+		}
+		// Get category
+		$data['category'] = $term;
+		if($this->input->post('slcategory') != ''){
+			$data['category'] = $this->input->post('slcategory');
+		}
+		//paging
+		include('paging.php');		
+		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/";
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category']);		
+		$config['cur_page']= $row;		
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();	
+		//data tranfer
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$config['per_page'],$row,'DESC','post_date',$data['category'],'');
+		$data['lstCategories'] = $this->Term_model->get();
+		$data['post_type'] = $post_type;
+		$this->load->view('back_end/listposts_view',$data);
 	}
 	//------------------------------------------------------------------------
 	//-- Add post

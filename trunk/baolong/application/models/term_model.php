@@ -10,10 +10,10 @@ class Term_model extends CI_Model{
     }
 	
 	//List Categories
-	function get($id,$limit,$offset,$taxonomy){		
+	function get($id=0,$limit=-1,$offset=10,$taxonomy='category'){		
 		if($id == 0){
 			$this->db->select('ci_terms.term_id,name,slug,description,parent');
-			if($limit>0)
+			if($limit > 0)
 			{
 				$this->db->limit($limit,$offset);
 			}
