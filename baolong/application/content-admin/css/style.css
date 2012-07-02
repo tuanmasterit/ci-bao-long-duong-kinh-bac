@@ -391,11 +391,12 @@ button,input,select,textarea { font-size: 12px; font-family: Arial, Helvetica, s
 .stdtable tbody tr.hiderow { display: none; }
 
 .tableoptions { background: #eee url(../images/titlebg.png) repeat-x top left; border: 1px solid #ccc; border-top: 0; padding: 8px; }
-.tableoptions button { 
+.tableoptions { background: #eee url(../images/titlebg.png) repeat-x top left; border: 1px solid #ccc; border-top: 0; padding: 8px; }
+.tableoptions button,.tableoptions .btn { 
 	background: #fcfcfc url(../images/titlebg.png) repeat-x top left; font-size: 11px; color: #666; padding: 7px 10px; 
-	border: 1px solid #bbb; -moz-box-shadow: 1px 1px 2px #ddd; -webkit-box-shadow: 1px 1px 2px #ddd; box-shadow: 1px 1px 2px #ddd; margin: 0; outline: none;
+	border: 1px solid #bbb; -moz-box-shadow: 1px 1px 2px #ddd; -webkit-box-shadow: 1px 1px 2px #ddd; box-shadow: 1px 1px 2px #ddd; margin: 0; outline: none;border-radius: 3px;
 }
-.tableoptions button:hover { background: #eee; cursor: pointer; }
+.tableoptions button:hover,.tableoptions .btn:hover { background: #eee; cursor: pointer; }
 .tableoptions select { 
 	background: #fcfcfc url(../images/titlebg.png) repeat-x top left; padding: 6px 5px 7px 5px; border: 1px solid #bbb; margin: 0; outline: none;
 	-moz-box-shadow: 1px 1px 2px #ddd; -webkit-box-shadow: 1px 1px 2px #ddd; box-shadow: 1px 1px 2px #ddd; font-size: 11px; color: #666; 

@@ -102,7 +102,7 @@ class Post_model extends CI_Model{
 	//List Posts	
 	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=''){
 		if($id == 0){		
-			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');			
+			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type');			
 			$this->db->from('ci_posts');
 			$this->db->join('ci_users','post_author=ci_users.id');
 			$this->db->join('ci_term_relationships','ci_posts.id=object_id');								 			
@@ -118,7 +118,7 @@ class Post_model extends CI_Model{
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
-			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content');
+			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type');
 			$this->db->from('ci_posts');
 			$this->db->join('ci_users','post_author=ci_users.id');		
 			$this->db->where('post_type',$post_type);
@@ -127,9 +127,18 @@ class Post_model extends CI_Model{
 			return $query->result();	
 		}
 	}	
-	function getCount($post_type='post'){		
+	function getCount($post_type='post', $term_id='', $author=''){		
 		$this->db->from('ci_posts');
 		$this->db->where('post_type',$post_type);
+		if($author != ''){
+			$this->db->join('ci_users','post_author=ci_users.id');
+			$this->db->where('ci_users.id',$author);
+		}
+		if($term_id !='' ){
+			$this->db->join('ci_term_relationships','ci_posts.id=object_id');
+			$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
+			$this->db->where('ci_term_taxonomy.term_id',$term_id);	
+		}
 		return $this->db->count_all_results();
 	}	
 	function get_featured_image($id){
