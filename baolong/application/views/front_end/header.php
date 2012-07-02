@@ -6,7 +6,7 @@
 	<div id="menu-top-center">
 		<ul id="nav">
 			<li></li>
-            <li class="home"><a href="#" title="Trang chủ"><img src="<?php echo base_url();?>application/content/images/home2.png" /></a></li>
+            <li class="home"><a href="<?php echo base_url();?>" title="Trang chủ"><img src="<?php echo base_url();?>application/content/images/home2.png" /></a></li>
             <li><a href="#" class="parent"><span>Giới thiệu</span></a>
             	<ul class="gioi_thieu_hover">
 		            <li><a href="#">Tập đoàn</a></li>
@@ -15,7 +15,7 @@
 		            <li><a href="#">Tổng giám đốc</a></li>
 	            </ul>
             </li>
-            <li><a href="#" class="parent"><span>Tin tức</span></a>
+            <li><a href="<?php echo base_url()?>news" class="parent"><span>Tin tức</span></a>
                 <ul class="tin_tuc_hover">
                     <li><a href="#">Tin nổi bật</a></li>
                     <li><a href="#">Tin công ty</a></li>
@@ -25,11 +25,14 @@
             </li>
             <li><a href="#" class="parent"><span>Sản phẩm</span></a>
             	<ul class="cam_nang_hover">
-                    <li><a href="#">Đông Dược</a></li>
-                    <li><a href="#">Mỹ phẩm</a></li>
-                    <li><a href="#">Thực phẩm chức năng</a></li>
-                    <li><a href="#">Rượu</a></li>
-                    <li><a href="#">Trà thảo dược</a></li>
+                    <?php
+                    foreach ($listCatNav as $catNav)
+                    { 
+                    ?>
+                    <li><a href="<?php echo base_url().'welcome/cat/'.$catNav->term_id;?>"><?php echo $catNav->name;?></a></li>
+                    <?php 
+                    }
+                    ?>
                 </ul>
             </li>
             <li><a href="#" class="parent"><span>Y tế sức khỏe</span></a>

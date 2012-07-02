@@ -176,12 +176,12 @@ class Term_model extends CI_Model{
 		return $row->term_id;
 	}
 	
-	function getCategoryByTaxonomyID($term_taxonomy_id)
+	function getCategoryByTaxonomyID($term_taxonomy_id,$taxonomy='catpro')
 	{
 		$this->db->select('ci_terms.term_id,name,slug,description,parent');
 		$this->db->from('ci_terms');
 		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
-		$this->db->where('taxonomy','catpro');
+		$this->db->where('taxonomy',$taxonomy);
 		$this->db->where('term_taxonomy_id',$term_taxonomy_id);
 		$query = $this->db->get();
 		return $query->first_row();
