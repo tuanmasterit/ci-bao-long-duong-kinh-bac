@@ -54,7 +54,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value)
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references)
 	{
 		$user = array(
 			'user_login'=>$user_login,
@@ -75,6 +75,12 @@ class User_model extends CI_Model{
 			'meta_value'=>$meta_value
 		);
 		$this->db->insert('ci_usermeta',$user_meta);
+		$user_meta1 = array(
+			'user_id'=>$id,
+			'meta_key'=>'parent',
+			'meta_value'=>$meta_references
+		);
+		$this->db->insert('ci_usermeta',$user_meta1);
 	}
 	
 	//get id last record
