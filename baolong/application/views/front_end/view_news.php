@@ -8,7 +8,7 @@
 	</div>
 	<div id="listnews_content">
 		<ul>
-			<?php 
+			<?php 			
 			foreach ($lstNews as $news)
 			{
 			?>

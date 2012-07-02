@@ -17,10 +17,12 @@
             </li>
             <li><a href="<?php echo base_url()?>news" class="parent"><span>Tin tức</span></a>
                 <ul class="tin_tuc_hover">
-                    <li><a href="#">Tin nổi bật</a></li>
-                    <li><a href="#">Tin công ty</a></li>
-                    <li><a href="#">Báo chí nói về chúng tôi</a></li>
-                    <li><a href="#">Thương vụ Bảo Long Bảo Sơn</a></li>
+                    <?php 
+                    foreach ($listNewsNav as $NewsNav)
+                    {
+                    ?>
+                    <li><a href="<?php echo base_url().'news/cat/'.$NewsNav->term_id;?>"><?php echo $NewsNav->name;?></a></li>
+                    <?php }?>
                 </ul>
             </li>
             <li><a href="#" class="parent"><span>Sản phẩm</span></a>
