@@ -16,7 +16,9 @@
                 			{
                 		?>   
                 			<?php echo form_open('admin/hoiviens/add',array('id'=>'formID','class'=>'stdform'));?>
-                    		
+                    		 <p><label>Cò:</label></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtreference" /></span></p>
+                            <br />
                             <p><label>Tên đăng nhập:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtname" /></span></p>
                             <br />
