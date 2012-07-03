@@ -1199,13 +1199,15 @@ ul.sb_dropdown{
 ul.sb_dropdown{
 	float:left;
 	list-style:none;
-	width:360px;
 	padding:6px 5px;
 	-moz-border-radius:0px 0px 10px 10px;
 	-webkit-border-bottom-right-radius:10px;
 	-webkit-border-bottom-left-radius:10px;
 	border-bottom-right-radius:10px;
 	border-bottom-left-radius:10px;
+    position: absolute;
+    width: 300px;
+    z-index: 200;
 }
 ul.sb_dropdown li{
 	font-size:16px;
@@ -1219,12 +1221,12 @@ ul.sb_dropdown li input[type="checkbox"]{
 	margin:10px 4px 0 5px;
 }
 ul.sb_dropdown li.sb_filter{
-	width:348px;
+	width:288px;
 	border:1px solid #f9f9f9;
 	clear:both;
 	background: #ddd;
 	font-size:12px;
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 	letter-spacing:1px;
 	color:#444;
 	height:16px;
