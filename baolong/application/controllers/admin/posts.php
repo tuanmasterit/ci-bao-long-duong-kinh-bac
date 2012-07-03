@@ -100,13 +100,13 @@ class Posts extends CI_Controller {
 		}		
 		redirect('admin/posts/add/'.$l_post_type);
 	}
-	public function edit($id){
+	public function edit($post_type='post', $id){
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
+		$data['lstCategories'] = $this->Term_model->get(0,-1,0,'category');
 		$data['Post'] = $this->Post_model->get($id);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
-		$this->load->view('back_end/view_edit_post',$data);	
+		$this->load->view('back_end/view_edit_post',$data);
 	}
 	public function categories(){
 		$data['lstCategories'] = $this->Post_model->list_categories(10,0);
