@@ -86,7 +86,8 @@ class Products extends CI_Controller {
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
-		$l_butdanh = $this->input->post('post_author');
+		$username =  $this->session->userdata('username');		
+		$l_butdanh = $this->User_model->getByUsername($username);
 		$l_thitruong = $this->input->post('txtthitruong');
 		$l_hoivien = $this->input->post('txthoivien');		
 		//$l_post_type = $this->input->post('hdfposttype');

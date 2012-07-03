@@ -30,15 +30,7 @@
                     	<div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Xuất bản</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
-                            	<p>
-                                    Tác giả:                                    
-                                    <select name="cbxbutdanh" style="width:80%;">
-                                    	<?php foreach($lstbutdanh as $butdanh){?>
-                                        	<option value="<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></option>
-                                        <?php }?>
-                                    </select>
-                                </p>
-                                </br>
+                            	
                                 <p class="stdformbutton">
                                     <button class="submit radius2">Xuất bản</button>
                                     <input type="reset" value="Hủy" class="reset radius2">
