@@ -18,34 +18,22 @@
                 	<form method="post" action="<?php echo base_url();?>admin/posts/update" class="stdform">                             
                 	<div class="edit-main">                    	                    	                            
                     		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />
+                    		<input type="hidden" value="<?php echo $l_post->post_author;?>" name="cbxbutdanh" />
                             <p><label>Tiêu đề:</label></p>
                             <p><span class="field"><input type="text" class="longinput" name="txttitle" value="<?php echo $l_post->post_title;?>"></span></p>
-                            </br>
+                            <br/>
                             <p><label>Tóm tắt:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"><?php echo $l_post->post_excerpt;?></textarea></span></p>
-                            </br>
+                            <br/>
                             <p><label>Nội dung:</label></p>                            
                             <p><textarea name="txtcontent" id="editor_content"><?php echo $l_post->post_content;?></textarea></p>
-                            </br>
+                            <br/>
                     </div>
                     <div class="edit-right">
                     	<div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Xuất bản</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
-                            	<p>
-                                    Tác giả:                                                                 
-                                    <select name="cbxbutdanh" style="width:80%;">
-                                    	<?php foreach($lstbutdanh as $butdanh){?>                                        	
-                                        	<?php if($butdanh->id == $l_post->post_author){?>
-                                        		<option selected="selected" value="<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></option>
-                                            <?php }else{?>
-       											<option value="<?php echo $butdanh->id;?>"><?php echo $butdanh->user_nicename;?></option>                                     
-                                            <?php }?>
-                                        <?php }?>
-                                    </select>
-                                </p>
-                                </br>
-                                <p class="stdformbutton">
+                            	<p class="stdformbutton">
                                     <button class="submit radius2">Cập nhật</button>
                                     <input type="reset" value="Hủy" class="reset radius2">
                                 </p>

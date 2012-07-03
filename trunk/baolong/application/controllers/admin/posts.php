@@ -11,6 +11,7 @@ class Posts extends CI_Controller {
 		$this->load->model('Author_model');
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
+		$this->load->model('User_model');
     }
 	public function delete()
 	{		
@@ -69,7 +70,8 @@ class Posts extends CI_Controller {
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
-		$l_butdanh = $this->input->post('cbxbutdanh');		
+		$username =  $this->session->userdata('username');		
+		$l_butdanh = $this->User_model->getByUsername($username);		
 		$l_post_type = $this->input->post('hdfposttype');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
