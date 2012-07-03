@@ -116,6 +116,7 @@ class Post_model extends CI_Model{
 			if($limit > 0){
 				$this->db->limit($limit,$offset);
 			}
+			$this->db->distinct();
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
