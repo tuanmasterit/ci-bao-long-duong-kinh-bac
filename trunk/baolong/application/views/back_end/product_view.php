@@ -46,9 +46,10 @@
                                 <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
                                 <th class="head1">Tên sản phẩm</th>                                
                                 <th class="head0">Mô tả</th>
-                                <th class="head1">Giá bán</th>
-                                <th class="head0">Ngày cập nhật</th>
-                                <th class="head1" width="60">&nbsp;</th>
+                                <th class="head1">Giá thị trường</th>
+                                <th class="head0">Giá hội viên</th>
+                                <th class="head1">Ngày cập nhật</th>
+                                <th class="head0" width="60">&nbsp;</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -56,9 +57,10 @@
                                 <th class="head0"><input type="checkbox" class="checkall" /></th>
                                 <th class="head1">Tiêu đề</th>                                
                                 <th class="head0">Mô tả</th>
-                                <th class="head1">Giá bán</th>
-                                <th class="head0">Ngày cập nhật</th>
-                                <th class="head1">&nbsp;</th>
+                                <th class="head1">Giá thị trường</th>
+                                <th class="head0">Giá hội viên</th>
+                                <th class="head1">Ngày cập nhật</th>
+                                <th class="head0" width="60">&nbsp;</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -67,7 +69,8 @@
                                 	<td class="center"><input value="<?php echo $Post->id;?>" type="checkbox"></td>
                                     <td><?php echo $Post->post_title;?></td>                                    
                                     <td><?php echo $Post->post_excerpt;?></td>
-                                    <td><?php echo $this->Post_model->get_meta_value($Post->id,'price');?></td>
+                                    <td><?php echo $this->Post_model->get_meta_value($Post->id,'giathitruong');?></td>
+                                    <td><?php echo $this->Post_model->get_meta_value($Post->id,'giahoivien');?></td>
                                     <td><?php echo $Post->post_date;?></td>
                                     <td class="center">
                                     	<a class="edit" href="<?php echo base_url();?>admin/products/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; 

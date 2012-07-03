@@ -41,8 +41,9 @@
             		</div>
             		<div class="clear"></div>
             		<div class="price">
-            			<span><?php echo $this->Post_model->get_meta_value($product['id'],'price');?></span>
-            			<a class="imgBtnCss" onclick="AddToCart(this.href,453); return false;" target="_blank" href="/vi/shoppingcart.aspx">Đặt mua</a>
+            			<span>Thị trường: <?php echo $this->Post_model->get_meta_value($product['id'],'giathitruong');?></span>
+            			<br/>
+            			<span>Hội viên: <?php echo $this->Post_model->get_meta_value($product['id'],'giahoivien');?></span>
             		</div>
             	</div>
             <?php 

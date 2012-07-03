@@ -22,8 +22,11 @@
                             <p><label>Tên sản phẩm:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle" value="<?php echo $l_post->post_title;?>"></span></p>
                             <br/>
-                            <p><label>Giá bán:</label></p>
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtprice" value="<?php echo $this->Post_model->get_meta_value($l_post->id,'price');?>"></span></p>
+                            <p><label>Giá thị trường:</label></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtthitruong" value="<?php echo $this->Post_model->get_meta_value($l_post->id,'giathitruong');?>"></span></p>
+                            <br/>
+                            <p><label>Giá hội viên:</label></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txthoivien" value="<?php echo $this->Post_model->get_meta_value($l_post->id,'giahoivien');?>"></span></p>
                             <br/>
                             <p><label>Mô tả:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"><?php echo $l_post->post_excerpt;?></textarea></span></p>
