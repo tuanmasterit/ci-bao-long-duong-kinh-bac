@@ -904,6 +904,7 @@
     padding: 6px;
     text-align: justify;
     width: 706px;
+	float:left;
 }
 #products_v2 ul
 {

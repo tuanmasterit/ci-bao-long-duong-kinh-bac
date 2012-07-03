@@ -744,6 +744,7 @@ select.css_dropdownlist {
     color: #4F4F4F;
     display: block;
     font-size: 11px;
+	font-weight:bold;
 }
 .liveSupport li {
     background: url("images/dot.jpg") no-repeat scroll left 8px transparent;
