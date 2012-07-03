@@ -23,17 +23,24 @@ class Products extends CI_Controller {
 	//------------------------------------------------------------------------
 	//-- Function default: List posts by post_type
 	//------------------------------------------------------------------------ 
-	public function index($row=0)
+	public function index($term=0,$row=0)
 	{
+		// Get category
+		$data['category'] = $term;
+		if($this->input->post('slcategory') != ''){
+			$data['category'] = $this->input->post('slcategory');
+		}
+		//paging
 		include('paging.php');
 		$config['per_page'] = 10;
-		$config['base_url']= base_url()."/admin/products/index/";
-		$listPro = $this->Post_model->get(0,'product',0,0);
+		$config['base_url']= base_url()."/admin/products/index/".$data['category']."/";
+		$listPro = $this->Post_model->get(0,'product',0,0,'DESC','post_date',$data['category']);
 		$config['total_rows']= count($listPro);
 		$config['cur_page']= $row;
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();
-		$data['lstPosts'] = $this->Post_model->get(0,'product',$config['per_page'],$row);
+		$data['lstPosts'] = $this->Post_model->get(0,'product',$config['per_page'],$row,'DESC','post_date',$data['category']);
+		$data['lstCategories'] = $this->Term_model->get(0,0,0,'catpro');
 		$this->load->view('back_end/product_view',$data);		
 	}
 	

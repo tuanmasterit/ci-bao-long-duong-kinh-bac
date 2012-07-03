@@ -38,7 +38,7 @@ class Posts extends CI_Controller {
 			$data['category'] = $this->input->post('slcategory');
 		}
 		//paging
-		include('paging.php');		
+		include('paging.php');			
 		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/";
 		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category']);		
 		$config['cur_page']= $row;		
@@ -80,7 +80,7 @@ class Posts extends CI_Controller {
 				redirect('admin/posts/lists/post');							
 			}
 		}
-		redirect('admin/posst/add/'.$l_post_type);									
+		redirect('admin/posts/add/'.$l_post_type);									
 	}
 	//------------------------------------------------------------------------
 	//-- Update post
@@ -98,7 +98,7 @@ class Posts extends CI_Controller {
 		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories)){
 			redirect('admin/posts/lists/post');							
 		}		
-		redirect('admin/posst/add/'.$l_post_type);
+		redirect('admin/posts/add/'.$l_post_type);
 	}
 	public function edit($id){
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
