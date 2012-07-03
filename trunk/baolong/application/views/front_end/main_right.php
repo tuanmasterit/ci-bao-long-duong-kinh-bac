@@ -11,7 +11,7 @@
                 <li>
                     <div class="img"><img src="<?php echo $this->Post_model->get_featured_image($news->id);?>"/></div>
                     <p>
-                        <a title="<?php echo $news->post_title;?>" class="tooltip" href="">
+                        <a title="<?php echo $news->post_title;?>" class="tooltip" href="<?php echo base_url().'news/detail/'.$news->id;?>">
                             <?php echo $news->post_title;?>
                         </a>
                     </p>
