@@ -108,7 +108,8 @@ class Post_model extends CI_Model{
 			$this->db->join('ci_term_relationships','ci_posts.id=object_id');								 			
 			if($term_id !='' and $term_id >0 ){
 				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
-				$this->db->where('ci_term_taxonomy.term_id',$term_id);	
+				$this->db->where('ci_term_taxonomy.term_id',$term_id);
+				$this->db->or_where('ci_term_taxonomy.parent',$term_id);	
 			}
 			$this->db->where('post_type',$post_type);
 			$this->db->order_by($order_by, $order);

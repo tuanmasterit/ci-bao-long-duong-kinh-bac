@@ -16,13 +16,20 @@
                         <h2 class="table"><span>Danh sách sản phẩm</span></h2>
                     </div><!--contenttitle-->
                     <div class="tableoptions">
-                        <button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
-                        <select class="radius3">
-                            <option value="">Show All</option>
-                            <option value="">Rendering Engine</option>
-                            <option value="">Platform</option>
-                        </select> &nbsp;
-                        <button class="radius3">Apply Filter</button>
+                    	<form name="frmfilter" method="post" action="<?php echo base_url();?>admin/products/" >
+	                        <button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
+	                        <select class="category" name="slcategory">
+                                <option value="">--- Tất cả ---</option>
+                                <?php foreach($lstCategories as $l_category){?>                                 
+                                	<?php if($l_category->term_id == $category){?>
+                                    	<option selected="selected" value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
+                                    <?php }else{?>
+                                    	<option value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
+                                    <?php }?>
+                                <?php }?>
+                            </select> &nbsp;
+                            <input type="submit" class="btn" value="Tìm kiếm"/>
+                        </form>
                     </div><!--tableoptions-->	
                     <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                         <colgroup>
