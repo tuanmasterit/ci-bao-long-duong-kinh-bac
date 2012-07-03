@@ -218,36 +218,63 @@ class Post_model extends CI_Model{
 		return $query->result();
 	}
 	
-	function updatePrice($id,$price)
+	function updatePrice($id,$giathitruong,$giahoivien)
 	{
-		$query = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'price'));
+		//Update Giá Thị Trường
+		$query = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'giathitruong'));
 		$result = $query->result();
 		if(count($result) > 0){
 			$arrmeta = array(
-				'meta_value'=>$price
+				'meta_value'=>$giathitruong
 			);
 			$this->db->where('post_id',$id);
-			$this->db->where('meta_key','price');
+			$this->db->where('meta_key','giathitruong');
 			$this->db->update('ci_postmeta',$arrmeta);
 		}else{
 			//Insert price
 			$arrmeta = array(
 				'post_id'=>$id,
-				'meta_key'=>'price',
-				'meta_value'=>$price
+				'meta_key'=>'giathitruong',
+				'meta_value'=>$giathitruong
 			);
 			$this->db->insert('ci_postmeta',$arrmeta);		
-		}		
+		}
+
+		//Update Giá Hội Viên
+		$query2 = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'giahoivien'));
+		$result2 = $query2->result();
+		if(count($result) > 0){
+			$arrmeta2 = array(
+				'meta_value'=>$giahoivien
+			);
+			$this->db->where('post_id',$id);
+			$this->db->where('meta_key','giahoivien');
+			$this->db->update('ci_postmeta',$arrmeta2);
+		}else{
+			//Insert price
+			$arrmeta2 = array(
+				'post_id'=>$id,
+				'meta_key'=>'giahoivien',
+				'meta_value'=>$giahoivien
+			);
+			$this->db->insert('ci_postmeta',$arrmeta2);		
+		}
 	}
 
-	function addProductPrice($id,$price)
+	function addProductPrice($id,$giathitruong,$giahoivien)
 	{
-		$arrmeta = array(
+		$arr_thitruong = array(
 				'post_id'=>$id,
-				'meta_key'=>'price',
-				'meta_value'=>$price
+				'meta_key'=>'giathitruong',
+				'meta_value'=>$giathitruong
 			);
-		$this->db->insert('ci_postmeta',$arrmeta);
+		$arr_hoivien = array(
+				'post_id'=>$id,
+				'meta_key'=>'giahoivien',
+				'meta_value'=>$giahoivien
+			);
+		$this->db->insert('ci_postmeta',$arr_thitruong);
+		$this->db->insert('ci_postmeta',$arr_hoivien);
 	}
 	
 	function getProductByName($name)

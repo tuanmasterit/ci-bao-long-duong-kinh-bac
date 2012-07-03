@@ -65,7 +65,8 @@ class Products extends CI_Controller {
 		$username =  $this->session->userdata('username');		
 		$l_butdanh = $this->User_model->getByUsername($username);		
 		$l_post_type = 'product';
-		$l_price = $this->input->post('txtprice');
+		$l_thitruong = $this->input->post('txtthitruong');
+		$l_hoivien = $this->input->post('txthoivien');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');					
 			//Insert posts		
@@ -73,7 +74,7 @@ class Products extends CI_Controller {
 		if($lastID >0)
 		{
 			//Insert Price			 
-			$this->Post_model->addProductPrice($lastID,$l_price);
+			$this->Post_model->addProductPrice($lastID,$l_thitruong,$l_hoivien);
 		}
 		redirect('admin/products/');									
 	}
