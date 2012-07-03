@@ -1,5 +1,5 @@
 			<div class="footer">
-            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
+            	<p>Bảo Long Đường Kinh Bắc &copy; 2012. All Rights Reserved. Designed by: <a target="_blank" href="http://tasvis.com.vn">TasVis</a></p>
             </div><!--footer-->            
         </div><!--maincontent-->                                
      	</div><!--mainwrapperinner-->
