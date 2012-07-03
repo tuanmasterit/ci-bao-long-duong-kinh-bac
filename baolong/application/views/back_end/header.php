@@ -3,7 +3,7 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard | Starlight Premium Admin Template</title>
+<title>Bảo Long Đường Kinh Bắc</title>
 <link rel="stylesheet" href="<?php echo base_url();?>application/content-admin/css/style.css" type="text/css" />
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/ie9.css"/>
@@ -61,7 +61,7 @@
 	<!-- START OF HEADER -->
 	<div class="header radius3">
     	<div class="headerinner">        	
-            <a href="" class="logo">Bút Danh</a>                          
+            <a href="<?php echo base_url();?>admin/index" class="logo">Bảo Long Đường Kinh Bắc</a>                          
             <div class="headright">
             	<div class="headercolumn">&nbsp;</div>
             	<div id="searchPanel" class="headercolumn">

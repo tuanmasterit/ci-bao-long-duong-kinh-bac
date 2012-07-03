@@ -10,7 +10,7 @@
                 <ul class="maintabmenu multipletabmenu">
                 	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
                     <li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Cập nhật bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/categories">Danh mục bài viết</a></li>
+                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
                 </ul>
                 <div class="content">     
                 	<?php //print_r($Post);?>           	                	
@@ -71,16 +71,7 @@
                     </form>    
                     <?php }?>          
                 </div><!--content-->                
-            </div><!--maincontentinner-->            
-            <div class="footer">
-            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
-            </div><!--footer-->
-            
-        </div><!--maincontent--> 
-
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->        
+            </div><!--maincontentinner-->                                
 <script type="text/javascript">
 	var editor = CKEDITOR.replace( 'editor_content',
 	{			
@@ -94,7 +85,5 @@
 		filebrowserWindowWidth : '950',
 		filebrowserWindowHeight : '490'
 	});
-
 </script>
-</body>
-</html>
+<?php $this->load->view('back_end/footer');?>

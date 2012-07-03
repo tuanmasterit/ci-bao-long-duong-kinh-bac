@@ -10,7 +10,7 @@ class Index extends CI_Controller {
     }		
 	public function index()
 	{		
-		$this->load->view('back_end/view_dashboard');		
+		redirect('admin/posts/lists/post');
 	}	
 }
 

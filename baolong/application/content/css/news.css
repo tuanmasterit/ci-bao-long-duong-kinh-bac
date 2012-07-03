@@ -41,7 +41,7 @@
     /* background: url("../images/border_topleft.png") no-repeat scroll center bottom transparent;*/
     color: #FFFFFF;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     margin-top: -20px;
     text-align: center;
     text-transform: uppercase;
@@ -68,7 +68,7 @@
     border: 1px solid #E9E9E9;
     border-top: none;
     margin-top: 19px;
-    padding: 0 5px 17px;
+    padding: 0 5px 0px;
     width: 237px;
 }
 #hot_news a:link, #hot_news a:visited
