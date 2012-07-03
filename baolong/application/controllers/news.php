@@ -98,8 +98,8 @@
 		
 		public function cat($id,$row=0)
 		{
-			$cat_id = $this->uri->segment(3);		
-			$cat = $this->Term_model->get($cat_id,0,0,'category');
+			$id = $this->uri->segment(3);		
+			$cat = $this->Term_model->get($id,0,0,'category');
 			if(!count($cat))
 			{
 				redirect('news/index','refresh');
@@ -137,18 +137,19 @@
 				$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 				
 				include('paging.php');
+				$config['per_page'] = 15;
 				$config['base_url']= base_url()."/news/cat/".$id.'/';
-				$config['per_page']=15;
-				$listPost = $this->Term_model->getListProduct($cat_id,0,0);
-				$config['total_rows']= count($listPost);
+				$listPro = $this->Post_model->get(0,'post',0,0,'DESC','post_date',$id);
+				$config['total_rows']= count($listPro);
 				$config['cur_page']= $row;
 				$this->pagination->initialize($config);
 				$data['list_link'] = $this->pagination->create_links();
-				//$data['lstNews'] = $this->Post_model->get(0,'post',$config['per_page'],$row,'DESC','post_date','');
+				
+				$data['lstNews'] = $this->Post_model->get(0,'post',$config['per_page'],$row,'DESC','post_date',$id);				
 				
 				//Sản phẩm	
 				$data['cat'] = $cat;
-				$data['lstNews'] = $this->Term_model->getListProduct($cat_id,$config['per_page'],$row);
+				
 				$data['main'] = 'front_end/view_news_cat';
 				$this->load->view('front_end/template',$data);	
 			}		
