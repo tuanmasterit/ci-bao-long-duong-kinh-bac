@@ -1,4 +1,4 @@
-<div id="news_detail_v2">
+<div id="news_detail_v2" style="margin-top:20px">
 	<div id="title">
 		<h4>
 			<?php
