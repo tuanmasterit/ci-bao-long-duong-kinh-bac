@@ -34,12 +34,12 @@
 			?>
 			<li>
 			<div class="img">
-				<a title="<?php echo $news['post_title'];?>" href="<?php echo base_url().'news/'.$news['id'];?>">
-					<img alt="" src="<?php echo $this->Post_model->get_featured_image($news['id']);?>">
+				<a title="<?php echo $news->post_title;?>" href="<?php echo base_url().'news/'.$news->id;?>">
+					<img alt="" src="<?php echo $this->Post_model->get_featured_image($news->id);?>">
 				</a>
 			</div>
 			<h2>
-				<a title="" href="<?php echo base_url().'news/detail/'.$news['id'];?>"><?php echo $news['post_title'];?></a>
+				<a title="" href="<?php echo base_url().'news/detail/'.$news->id;?>"><?php echo $news->post_title;?></a>
 			</h2>
 			<p></p>
 			<div class="clear"></div>
