@@ -7,8 +7,9 @@ class Welcome extends CI_Controller {
 		parent::__construct();		
 		$this->load->model('Post_model');
 		$this->load->model('Term_model');
+		$this->load->library('pagination');
     }
-	public function index()
+	public function index($row=0)
 	{
 		$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc';
 		//Tin tức nổi bật
@@ -31,15 +32,25 @@ class Welcome extends CI_Controller {
 		$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 		//Sản phẩm mặc định
 		$firstTopCat = $this->Term_model->getCatProTopFirst();
-		$data['listProduct'] = $this->Term_model->getListProduct($firstTopCat);
+		//paging
+		include('paging.php');
+		$config['per_page'] = 32;
+		$config['base_url']= base_url()."/welcome/index/";
+		$listPro = $this->Post_model->get(0,'product',0,0,'DESC','post_date',$firstTopCat);
+		$config['total_rows']= count($listPro);
+		$config['cur_page']= $row;
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links();
+		
+		$data['listProduct'] = $this->Post_model->get(0,'product',$config['per_page'],$row,'DESC','post_date',$firstTopCat);
 		$data['main'] = 'front_end/main_left_middle';
 		$this->load->view('front_end/template',$data);
 	}
 	
-	public function cat($id)
+	public function cat($id,$row=0)
 	{
-		$cat_id = $this->uri->segment(3);		
-		$cat = $this->Term_model->get($cat_id,0,0,'catpro');
+		$id = $this->uri->segment(3);		
+		$cat = $this->Term_model->get($id,0,0,'catpro');
 		if(!count($cat))
 		{
 			redirect('welcome/index','refresh');
@@ -76,8 +87,18 @@ class Welcome extends CI_Controller {
 			$data['listCatNav'] = $this->Term_model->getCatProNav();
 			$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 			//Sản phẩm	
+			include('paging.php');
+			$config['per_page'] = 32;
+			$config['base_url']= base_url()."/welcome/cat/".$id.'/';
+			$listPro = $this->Post_model->get(0,'product',0,0,'DESC','post_date',$id);
+			$config['total_rows']= count($listPro);
+			$config['cur_page']= $row;
+			$this->pagination->initialize($config);
+			$data['list_link'] = $this->pagination->create_links();
+			
+			$data['listProduct'] = $this->Post_model->get(0,'product',$config['per_page'],$row,'DESC','post_date',$id);
 			$data['cat'] = $cat;
-			$data['listProduct'] = $this->Term_model->getListProduct($cat_id);
+			
 			$data['main'] = 'front_end/category';
 			$this->load->view('front_end/template',$data);	
 		}		
