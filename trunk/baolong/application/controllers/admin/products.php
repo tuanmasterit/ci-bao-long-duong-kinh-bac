@@ -87,13 +87,14 @@ class Products extends CI_Controller {
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
 		$l_butdanh = $this->input->post('post_author');
-		$l_price = $this->input->post('txtprice');		
+		$l_thitruong = $this->input->post('txtthitruong');
+		$l_hoivien = $this->input->post('txthoivien');		
 		//$l_post_type = $this->input->post('hdfposttype');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
 		$this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories,'catpro');
-		$this->Post_model->updatePrice($l_id,$l_price);
+		$this->Post_model->updatePrice($l_id,$l_thitruong,$l_hoivien);
 		redirect('admin/products/');			
 		
 	}
