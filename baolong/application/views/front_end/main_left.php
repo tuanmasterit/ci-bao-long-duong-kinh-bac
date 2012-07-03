@@ -8,13 +8,13 @@
 		if($i==2)
 		{
 	?>	
-		<img src="<?php echo $this->Post_model->get_featured_image($tieubieu->id);?>" alt="" data-transition="slideInLeft" title="<?php echo $tieubieu->post_title;?>" />
+		<a href="<?php echo base_url().'news/detail/'.$tieubieu->id;?>"><img src="<?php echo $this->Post_model->get_featured_image($tieubieu->id);?>" alt="" data-transition="slideInLeft" title="<?php echo $tieubieu->post_title;?>" /></a>
 	<?php 
 		}
 		else 
 		{
 	?>
-    	<img src="<?php echo $this->Post_model->get_featured_image($tieubieu->id);?>" alt="" title="<?php echo $tieubieu->post_title;?>" />
+    	<a href="<?php echo base_url().'news/detail/'.$tieubieu->id;?>"><img src="<?php echo $this->Post_model->get_featured_image($tieubieu->id);?>" alt="" title="<?php echo $tieubieu->post_title;?>" /></a>
         
     <?php 
 		}
@@ -28,7 +28,7 @@
 	{
 	?>
 	<div id="caption<?php echo $i;?>" class="nivo-html-caption">
-    	<?php echo $tieubieu->post_title;?>
+    	<a href="<?php echo base_url().'news/detail/'.$tieubieu->id;?>"><?php echo $tieubieu->post_title;?></a>
 	</div>
 	<?php 
 	$i++;
