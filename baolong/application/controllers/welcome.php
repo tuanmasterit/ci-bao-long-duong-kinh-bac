@@ -68,21 +68,7 @@ class Welcome extends CI_Controller {
 			}
 			
 			$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc |'.$cat['name'];
-			//Tin tức nổi bật
-			$news = $this->Term_model->getCategoryByName('Tin tức nổi bật');
-			$list_news = $this->Post_model->get(0,'post',5,0,'DESC','post_date',$news);		
-			$data['list_news'] = $list_news;		
-	
-			//Tin tức tiêu biểu
-			$tieubieu_id = $this->Term_model->getCategoryByName('Tin tức tiêu biểu');
-			$list_tieubieu  = $this->Post_model->get(0,'post',3,0,'DESC','post_date',$tieubieu_id);
-			$data['list_tieubieu'] = $list_tieubieu;
-					
-			//Sản phẩm tiêu biểu
-			$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
-			$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
-			$data['list_sp_noibat'] = $list_sp_noibat;
-					
+			
 			//Navigation
 			$data['listCatNav'] = $this->Term_model->getCatProNav();
 			$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
@@ -100,7 +86,7 @@ class Welcome extends CI_Controller {
 			$data['cat'] = $cat;
 			
 			$data['main'] = 'front_end/category';
-			$this->load->view('front_end/template',$data);	
+			$this->load->view('front_end/template_2',$data);	
 		}		
 	}
 	
@@ -129,20 +115,7 @@ class Welcome extends CI_Controller {
 			}
 			
 			$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc |'.$product[0]->post_title;
-			//Tin tức nổi bật
-			$news = $this->Term_model->getCategoryByName('Tin tức nổi bật');
-			$list_news = $this->Post_model->get(0,'post',5,0,'DESC','post_date',$news);		
-			$data['list_news'] = $list_news;		
-	
-			//Tin tức tiêu biểu
-			$tieubieu_id = $this->Term_model->getCategoryByName('Tin tức tiêu biểu');
-			$list_tieubieu  = $this->Post_model->get(0,'post',3,0,'DESC','post_date',$tieubieu_id);
-			$data['list_tieubieu'] = $list_tieubieu;
-					
-			//Sản phẩm tiêu biểu
-			$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
-			$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
-			$data['list_sp_noibat'] = $list_sp_noibat;
+			
 					
 			//Navigation
 			$data['listCatNav'] = $this->Term_model->getCatProNav();
@@ -154,7 +127,7 @@ class Welcome extends CI_Controller {
 			$data['product'] = $product[0];
 			$data['main'] = 'front_end/product';
 			
-			$this->load->view('front_end/template',$data);	
+			$this->load->view('front_end/template_2',$data);	
 		}	
 	}
 	
@@ -171,27 +144,14 @@ class Welcome extends CI_Controller {
 			{
 				$data['check_exit']=false;
 				$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc |';
-				//Tin tức nổi bật
-				$news = $this->Term_model->getCategoryByName('Tin tức nổi bật');
-				$list_news = $this->Post_model->get(0,'post',5,0,'DESC','post_date',$news);		
-				$data['list_news'] = $list_news;		
-		
-				//Tin tức tiêu biểu
-				$tieubieu_id = $this->Term_model->getCategoryByName('Tin tức tiêu biểu');
-				$list_tieubieu  = $this->Post_model->get(0,'post',3,0,'DESC','post_date',$tieubieu_id);
-				$data['list_tieubieu'] = $list_tieubieu;
-						
-				//Sản phẩm tiêu biểu
-				$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
-				$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
-				$data['list_sp_noibat'] = $list_sp_noibat;
+				
 						
 				//Navigation
 				$data['listCatNav'] = $this->Term_model->getCatProNav();				
 				$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 				$data['main'] = 'front_end/search_result';
 				
-				$this->load->view('front_end/template',$data);
+				$this->load->view('front_end/template_2',$data);
 			}
 			elseif($pro_id>0) 
 			{
@@ -236,7 +196,7 @@ class Welcome extends CI_Controller {
 				$data['product'] = $product[0];
 				$data['main'] = 'front_end/search_result';
 				
-				$this->load->view('front_end/template',$data);
+				$this->load->view('front_end/template_2',$data);
 			}
 		}
 		else
