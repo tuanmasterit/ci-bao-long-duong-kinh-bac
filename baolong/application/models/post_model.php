@@ -243,7 +243,7 @@ class Post_model extends CI_Model{
 		//Update Giá Hội Viên
 		$query2 = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'giahoivien'));
 		$result2 = $query2->result();
-		if(count($result) > 0){
+		if(count($result2) > 0){
 			$arrmeta2 = array(
 				'meta_value'=>$giahoivien
 			);
