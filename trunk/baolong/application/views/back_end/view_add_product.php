@@ -65,12 +65,7 @@
             <div class="footer">
             	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
             </div><!--footer-->
-            
-        </div><!--maincontent--> 
-
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->        
+                           
 <script type="text/javascript">
 	var editor = CKEDITOR.replace( 'editor_content',
 	{			
@@ -86,5 +81,4 @@
 	});
 
 </script>
-</body>
-</html>
+<?php $this->load->view('back_end/footer');?>
