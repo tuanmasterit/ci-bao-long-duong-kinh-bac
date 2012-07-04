@@ -1210,16 +1210,18 @@ ul.sb_dropdown{
     z-index: 200;
 }
 ul.sb_dropdown li{
-	font-size:16px;
-	line-height:32px;
-	height:32px;
-	float:left;
-	width:50%;
+	font-size:15px;
+	list-style:none;
+	list-style-image:none;
+	line-height:15px
 }
-ul.sb_dropdown li input[type="checkbox"]{
-	float:left;
-	margin:10px 4px 0 5px;
+#dataSearch ul li{
+	padding:2px;
 }
+#dataSearch ul li:hover{
+	background-color:#CCCCCC;
+}
+
 ul.sb_dropdown li.sb_filter{
 	width:288px;
 	border:1px solid #f9f9f9;
