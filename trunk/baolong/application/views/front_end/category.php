@@ -1,4 +1,4 @@
-<div id="main_left">
+<div id="main_left" style="margin-top:0px;">
 	<div id="products_v2">
     	<div id="title">
         	<h4>
