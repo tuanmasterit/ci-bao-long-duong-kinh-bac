@@ -10,24 +10,18 @@
                         <li><a href="<?php echo base_url();?>admin/categories"><span>Danh mục bài viết</span></a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="elements menudrop"><span>Trang</span></a>
+                <li><a href="<?php echo base_url();?>admin/posts/lists/page" class="elements menudrop"><span>Trang</span></a>
                     <ul>
-                    	<li><a href="<?php echo base_url();?>admin/posts/lists/topic"><span>Tất cả các trang</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/posts/add/topic"><span>Thêm mới trang</span></a></li>
+                    	<li><a href="<?php echo base_url();?>admin/posts/lists/page"><span>Tất cả các trang</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/posts/add/page"><span>Thêm mới trang</span></a></li>
                     </ul>
                 </li>
                 <li><a href="<?php echo base_url();?>admin/users" class="elements menudrop"><span>Thành viên</span></a>
                     <ul>
-                    	<li><a href="<?php echo base_url();?>admin/users"><span>Tất cả thành viên</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/users/add"><span>Thêm mới thành viên</span></a></li>
+                    	<li><a href="<?php echo base_url();?>admin/users"><span>Quản trị thành viên</span></a></li>
+                    	 <li><a href="<?php echo base_url();?>admin/hoiviens"><span>Quản trị hội viên</span></a></li>                        
                     </ul>
-                </li>
-                <li><a href="<?php echo base_url();?>admin/hoiviens" class="elements menudrop"><span>Hội viên</span></a>
-                    <ul>
-                    	<li><a href="<?php echo base_url();?>admin/hoiviens"><span>Tất cả hội viên</span></a></li>
-                        <li><a href="<?php echo base_url();?>admin/hoiviens/add"><span>Thêm mới hội viên</span></a></li>
-                    </ul>
-                </li>
+                </li>               
                 <li><a href="<?php echo base_url();?>admin/products" class="elements menudrop"><span>Sản phẩm</span></a>
                     <ul>
                     	<li><a href="<?php echo base_url();?>admin/products"><span>Danh sách sản phẩm</span></a></li>
