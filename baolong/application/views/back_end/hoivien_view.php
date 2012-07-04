@@ -86,12 +86,7 @@
                         </div><!--contenttitle-->
                         <div class="tableoptions">
                             <button class="deletebutton radius3" name="delete" value="<?php echo base_url();?>admin/hoiviens/delete" title="table2">Delete Selected</button> &nbsp;
-                            <select class="radius3">
-                                <option value="">Show All</option>
-                                <option value="">Rendering Engine</option>
-                                <option value="">Platform</option>
-                            </select> &nbsp;
-                            <button class="radius3">Apply Filter</button>
+                            
                         </div><!--tableoptions-->	
                         <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                             <colgroup>
