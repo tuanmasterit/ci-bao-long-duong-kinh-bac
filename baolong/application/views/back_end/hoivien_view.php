@@ -16,28 +16,24 @@
                 			{
                 		?>   
                 			<?php echo form_open('admin/hoiviens/add',array('id'=>'formID','class'=>'stdform'));?>
-                    		 <p><label>Cò:</label></p>
-                            <p><span class="field"><input type="text" class="sb_input longinput validate[required]" name="txtreference" />
-							<ul class="sb_dropdown" style="display:none;">
-						<li class="sb_filter">Kết quả tìm kiếm</li>
-						<li><input type="checkbox"/><label for="all"><strong>All Categories</strong></label></li>
-						<li><input type="checkbox"/><label for="Automotive">Automotive</label></li>
-						<li><input type="checkbox"/><label for="Baby">Baby</label></li>
-						<li><input type="checkbox"/><label for="Beauty">Beautys</label></li>
-						<li><input type="checkbox"/><label for="Books">Books</label></li>
-						<li><input type="checkbox"/><label for="Cell">Cell Phones &amp; Service</label></li>
-						<li><input type="checkbox"/><label for="Cloth">Clothing &amp; Accessories</label></li>
-						<li><input type="checkbox"/><label for="Electronics">Electronics</label></li>
-						<li><input type="checkbox"/><label for="Gourmet">Gourmet Food</label></li>
-						<li><input type="checkbox"/><label for="Health">Health &amp; Personal Care</label></li>
-						<li><input type="checkbox"/><label for="Home">Home &amp; Garden</label></li>
-						<li><input type="checkbox"/><label for="Industrial">Industrial &amp; Scientific</label></li>
-						<li><input type="checkbox"/><label for="Jewelry">Jewelry</label></li>
-						<li><input type="checkbox"/><label for="Magazines">Magazines</label></li>
-					</ul>
+							<input type="hidden" id="hdfUrlAjax" value="<?php echo base_url();?>admin/hoiviens/SearchUsername" />
+                    		 <p><label>Người giới thiệu:</label></p>
+                            <p><span class="field">
+								<input type="text" AUTOCOMPLETE=OFF class="sb_input longinput"  onkeyup="javascript:SearchUser();"/>
+								<ul class="sb_dropdown" style="display:none">
+									<li>
+										<a href="javascript:void(0);" onclick="javascript:jQuery('.sb_dropdown').css('display','none');" style="float:right" title="Đóng">x</a>
+									</li>
+									<li>
+										<span id="dataSearch"></span>
+									</li>
+								</ul>
+								<input type="hidden" value="" name="txtreference" id="txtreference" />
+								<span id="spUserReferences">
+								</span>
 							</span>
 							</p>
-                            <br />
+							<br />
                             <p><label>Tên đăng nhập:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtname" /></span></p>
                             <br />
@@ -49,6 +45,9 @@
                             <br />
                             <p><label>Tên hiển thị:</label></p>                            
                             <p><span class="field"><input type="text" class="longinput" name="txtdisplay" /></span></p>
+                            <br />
+							 <p><label>Tên gian hàng:</label></p>                            
+                            <p><span class="field"><input type="text" class="longinput" name="txtboothtitle" /></span></p>
                             <br />
                             <p class="stdformbutton">
                             	<button class="submit radius2">Thêm mới</button>
@@ -87,7 +86,12 @@
                         </div><!--contenttitle-->
                         <div class="tableoptions">
                             <button class="deletebutton radius3" name="delete" value="<?php echo base_url();?>admin/hoiviens/delete" title="table2">Delete Selected</button> &nbsp;
-                            
+                            <select class="radius3">
+                                <option value="">Show All</option>
+                                <option value="">Rendering Engine</option>
+                                <option value="">Platform</option>
+                            </select> &nbsp;
+                            <button class="radius3">Apply Filter</button>
                         </div><!--tableoptions-->	
                         <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                             <colgroup>
@@ -128,4 +132,16 @@
                         <?php echo $list_link;?>						                              
                 </div><!--content-->                
             </div><!--maincontentinner-->            
-            <?php $this->load->view('back_end/footer');?>
+            <div class="footer">
+            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
+            </div><!--footer-->
+            
+        </div><!--maincontent--> 
+
+     	</div><!--mainwrapperinner-->
+    </div><!--mainwrapper-->
+	<!-- END OF MAIN CONTENT -->        
+
+</body>
+</html>
+
