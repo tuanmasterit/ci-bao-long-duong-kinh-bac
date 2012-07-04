@@ -3,6 +3,7 @@ jQuery.noConflict();
 jQuery(document).ready(function(){
 	//Brow server image upload
 	
+	
 	jQuery('#imageUpload').popupWindow({ 
 			windowURL:'/baolong/application/elfinder/standalone-elfinder.php?mode=image', 
 			windowName:'Filebrowser',
@@ -341,8 +342,35 @@ jQuery(document).ready(function(){
 		jQuery('#userPanel').removeClass('userinfomenu');
 		jQuery('.headerinner2').remove();
 	}
-	
-	
 	/*jQuery('body').append('<div class="theme"><h4>Color</h4><a href="darkblue/dashboard.html" class="darkblue"></a><a href="gray/dashboard.html" class="gray"></a></div>');*/
 	
 });
+
+	function SearchUser()
+	{
+		jQuery('.sb_dropdown').css('display','');
+		var txtVal=jQuery('.sb_input').val();
+		if(txtVal!='')
+		{
+			jQuery.post(jQuery('#hdfUrlAjax').val(), { txtusername:txtVal},
+			function(data) {   	
+			jQuery('#dataSearch').html(data);
+			});
+	   }
+	   else
+	   {jQuery('#dataSearch').html('<ul><li>...</li></ul>');}
+	}
+	function ChooseUserRef(val)
+	{
+		jQuery('#spUserReferences').html(val+'<a style="color:red" href="javascript:void(0)" onclick="javascript:ClearUserRef();"> x</a>');
+		jQuery('#txtreference').val(val);
+		jQuery('.sb_dropdown').css('display','none');
+		jQuery('.sb_input').css('display','none');
+	}
+	function ClearUserRef()
+	{
+		jQuery('.sb_input').css('display','');
+		jQuery('#spUserReferences').html('');
+		jQuery('#txtreference').val('');
+		jQuery('.sb_input').val('');
+		}
