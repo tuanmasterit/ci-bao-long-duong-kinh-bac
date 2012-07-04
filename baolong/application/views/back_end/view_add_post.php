@@ -8,9 +8,14 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
-                    <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
+                	<?php if($post_type == 'post'){?>
+                		<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới bài viết</a></li>
+                    	<li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
+                    <?php }elseif($post_type == 'page'){?>
+                    	<li><a href="<?php echo base_url();?>admin/posts/lists/page">Tất cả các trang</a></li>
+                    	<li class="current"><a href="<?php echo base_url();?>admin/posts/add/page">Thêm mới trang</a></li>
+                    <?php }?>
                 </ul>
                 <div class="content">                	
                 	<form method="post" action="<?php echo base_url();?>admin/posts/save_add" class="stdform">
@@ -37,6 +42,7 @@
                                 </p>
                             </div><!--widgetcontent-->
                         </div>
+                        <?php if($post_type == 'post'){?>
                         <div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Danh mục bài viết</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
@@ -45,6 +51,7 @@
                                 <?php }?>                                 
                             </div>
                         </div>
+                        <?php }?>
                         <div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Ảnh đại diện</span></h2></div>
                             <div class="widgetcontent" style="display: block;">

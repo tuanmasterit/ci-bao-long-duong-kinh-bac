@@ -98,14 +98,16 @@ class Posts extends CI_Controller {
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
 		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories)){
-			redirect('admin/posts/lists/post');							
+			redirect('admin/posts/lists/'.$l_post_type);							
 		}		
 		redirect('admin/posts/add/'.$l_post_type);
 	}
 	public function edit($post_type='post', $id){
+		$post_type = $this->uri->segment(4);
+		$data['post_type'] = $post_type;
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
 		$data['lstCategories'] = $this->Term_model->get(0,-1,0,'category');
-		$data['Post'] = $this->Post_model->get($id);
+		$data['Post'] = $this->Post_model->get($id,$post_type);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
 		$this->load->view('back_end/view_edit_post',$data);
