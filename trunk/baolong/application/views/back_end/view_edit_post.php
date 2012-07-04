@@ -8,14 +8,20 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
+                	<?php if($post_type == 'post'){?>
                 	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả bài viết</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/posts/add/post">Cập nhật bài viết</a></li>
+                    <li class="current"><a href="">Cập nhật bài viết</a></li>
                     <li><a href="<?php echo base_url();?>admin/categories">Danh mục bài viết</a></li>
+                    <?php }elseif($post_type == 'page'){?>
+                    <li><a href="<?php echo base_url();?>admin/posts/lists/page">Tất cả các trang</a></li>
+                    <li class="current"><a href="">Cập nhật trang</a></li>
+                    <?php }?>
                 </ul>
                 <div class="content">     
                 	<?php //print_r($Post);?>           	                	
                 	<?php foreach($Post as $l_post){?>
-                	<form method="post" action="<?php echo base_url();?>admin/posts/update" class="stdform">                             
+                	<form method="post" action="<?php echo base_url();?>admin/posts/update" class="stdform">
+                	<input type="hidden" name="hdfposttype" value="<?php echo $post_type;?>">                             
                 	<div class="edit-main">                    	                    	                            
                     		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />
                     		<input type="hidden" value="<?php echo $l_post->post_author;?>" name="cbxbutdanh" />
@@ -39,6 +45,7 @@
                                 </p>
                             </div><!--widgetcontent-->
                         </div>
+                        <?php if($post_type == 'post'){?>
                         <div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Danh mục bài viết</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
@@ -59,6 +66,7 @@
                                 <?php }?>                                 
                             </div>
                         </div>
+                        <?php }?>
                         <div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Ảnh đại diện</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
