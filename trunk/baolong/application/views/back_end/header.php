@@ -63,28 +63,7 @@
     	<div class="headerinner">        	
             <a href="<?php echo base_url();?>admin/index" class="logo">Bảo Long Đường Kinh Bắc</a>                          
             <div class="headright">
-            	<div class="headercolumn">&nbsp;</div>
-            	<div id="searchPanel" class="headercolumn">
-                	<div class="searchbox">
-                        <form action="" method="post">
-                            <input type="text" id="keyword" name="keyword" class="radius2" value="Search here" /> 
-                        </form>
-                    </div><!--searchbox-->
-                </div><!--headercolumn-->
-            	<div id="notiPanel" class="headercolumn">
-                    <div class="notiwrapper">
-                        <a href="<?php echo base_url();?>application/content-admin/ajax/messages.php.html" class="notialert radius2">5</a>
-                        <div class="notibox">
-                            <ul class="tabmenu">
-                                <li class="current"><a href="./ajax/messages.php.html" class="msg">Thống báo (2)</a></li>
-                                <li><a href="<?php echo base_url();?>application/content-admin/ajax/activities.php.html" class="act">Hoạt động (3)</a></li>
-                            </ul>
-                            <br clear="all" />
-                            <div class="loader"><img src="<?php echo base_url();?>application/content-admin/images/loaders/loader3.gif" alt="Loading Icon" /> Loading...</div>
-                            <div class="noticontent"></div><!--noticontent-->
-                        </div><!--notibox-->
-                    </div><!--notiwrapper-->
-                </div><!--headercolumn-->
+            	<div class="headercolumn">&nbsp;</div>            	
                 <div id="userPanel" class="headercolumn">
                     <a href="" class="userinfo radius2">
                         <img src="<?php echo base_url();?>application/content-admin/images/avatar.png" alt="" class="radius2" />
@@ -93,8 +72,7 @@
                     </a>
                     <div class="userdrop">
                         <ul>
-                            <li><a href="">Profile</a></li>
-                            <li><a href="">Account Settings</a></li>
+                            <li><a href="<?php echo base_url();?>admin/users/profile">Profile</a></li>                            
                             <li><a href="<?php echo base_url();?>admin/login/logout">Logout</a></li>
                         </ul>
                     </div><!--userdrop-->

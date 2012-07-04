@@ -131,6 +131,71 @@ class Users extends CI_Controller {
 		$param = $this->input->post('param');		
 		$this->User_model->delete($param);		
 	}
+	
+	public function profile()
+	{
+		$username =  $this->session->userdata('username');		
+		$user_id = $this->User_model->getByUsername($username);
+		if(!$this->input->post('txtId'))
+		{			
+			$user = $this->User_model->getById($user_id);
+			if(!count($user))
+			{
+				redirect('admin/index');
+			}
+			else {				
+				$data['user'] = $user;
+				$this->load->view('back_end/view_profile',$data);
+			}
+		}
+		else
+		{
+			$user_nicename = $this->input->post('txtnicename');
+			$user_email = $this->input->post('txtemail');
+			$display_name = $this->input->post('txtdisplay');
+			
+			$this->User_model->edit($user_id,$user_nicename,$user_email,$display_name);
+			$this->session->set_flashdata('profile_change',true);
+			redirect('admin/users/profile');
+		}
+	}
+	
+	public function change_pass()
+	{
+		$username =  $this->session->userdata('username');		
+		$user_id = $this->User_model->getByUsername($username);
+		$user = $this->User_model->getById($user_id);
+		if(!count($user))
+		{
+			redirect('admin/index');
+		}
+		else {
+			if(!$this->input->post('txtPass'))
+			{	
+				$this->session->set_flashdata('meassage','no pass');								
+				$data['user'] = $user;				
+				$this->load->view('back_end/view_change_pass',$data);
+				
+			}
+			else
+			{
+				$user_pass = $this->input->post('txtPass');
+				if($user['user_pass']!=$user_pass)
+				{
+					$this->session->set_flashdata('meassage','pass false');
+					
+				}
+				else 
+				{
+					$this->User_model->changePass($user_id,$user_pass);
+					$this->session->set_flashdata('meassage','pass succeed');
+				}
+				
+				redirect('admin/users/change_pass');
+			}
+		}		
+	}
+	
 }
 
 /* End of file welcome.php */
