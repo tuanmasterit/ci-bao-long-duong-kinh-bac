@@ -32,14 +32,15 @@ if($check_exit==true)
 			<div class="clear"></div>
 			<div class="tech-detail">
 				<div class="name">
-					<span class="td1">Giá bán: </span>
-					<span class="td2" style="color:red;"><?php echo $this->Post_model->get_meta_value($product->id,'price');?></span>
+					<span class="td1">Giá thị trường: </span>
+					<span class="td2" style="color:red;"><?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?></span>
 				</div>
 				<div class="clear"></div>
-				<div class="product-code">
-					<span class="td1">Mã sản phẩm: </span>
-					<span class="td2"></span>
+				<div class="name">
+					<span class="td1">Giá hội viên: </span>
+					<span class="td2" style="color:red;"><?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?></span>
 				</div>
+				
 				<div class="clear"></div>
 				<div class="status">
 					<span class="td1">Khuyến mại: </span>
@@ -82,7 +83,9 @@ if($check_exit==true)
             		</div>
             		<div class="clear"></div>
             		<div class="price">
-            			<span><?php echo $this->Post_model->get_meta_value($product->id,'price');?></span>            			
+            			<span>Thị trường: <?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?></span>
+            			<br/>
+            			<span>Hội viên: <?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?></span>            			
             		</div>
             	</div>
             	<?php 

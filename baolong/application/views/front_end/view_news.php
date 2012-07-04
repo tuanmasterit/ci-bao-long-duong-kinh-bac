@@ -1,4 +1,4 @@
-<div id="listnews" style="margin-top:20px">
+<div id="listnews">
 	<div id="title">
 		<h4>
 			<span>

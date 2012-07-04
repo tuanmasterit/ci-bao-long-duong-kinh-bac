@@ -64,11 +64,11 @@
         <div id="main">
             <div class="clear">
             </div>            
-            <div id="main_left_middle">
+            <div id="main_left_middle" style="margin-top:20px;">
             	<?php $this->load->view($main)?>                
             </div>                
             
-            <div id="main_right_middle">
+            <div id="main_right_middle" style="margin-top:20px;">
             	<?php $this->load->view('front_end/main_right_middle');?>                
             </div>
         </div>        
