@@ -187,6 +187,7 @@ class Users extends CI_Controller {
 				}
 				else 
 				{
+					$pass_new = $user_pass = $this->input->post('txtPassNew');
 					$this->User_model->changePass($user_id,$user_pass);
 					$this->session->set_flashdata('meassage','pass succeed');
 				}

@@ -12,8 +12,7 @@
                     
                 </ul>
                 <div class="content">                	
-                	<div class="edit-left">
-                	<?php echo $user['user_pass'];?>
+                	<div class="edit-left">                	
                 		<?php
                 			if($this->session->flashdata('meassage')=='pass succeed')
                 			{
