@@ -147,7 +147,7 @@ class User_model extends CI_Model{
 		$user = array(
 			'user_pass'=>$pass,						
 		);		
-		$this->db->where('ids',$id);
+		$this->db->where('id',$id);
 		$this->db->update('ci_users',$user);
 	}
 	
