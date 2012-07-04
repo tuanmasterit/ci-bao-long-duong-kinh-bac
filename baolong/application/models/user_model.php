@@ -127,5 +127,29 @@ class User_model extends CI_Model{
 		$row =  $query->first_row();
 		return $row->ID;		
 	}
+	
+	function getById($id)
+	{
+		$this->db->select('id,user_login,user_pass,user_nicename,user_email,display_name');
+		$this->db->from('ci_users');		
+		$this->db->where('id',$id);
+		$query = $this->db->get();
+        $data = array();
+        if($query->num_rows>0)
+        {
+        	$data = $query->row_array();        	
+        }
+        return $data;
+	}	
+	
+	function changePass($id,$pass)
+	{
+		$user = array(
+			'user_pass'=>$pass,						
+		);		
+		$this->db->where('ids',$id);
+		$this->db->update('ci_users',$user);
+	}
+	
 }
 ?>

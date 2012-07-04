@@ -5,7 +5,7 @@ class Posts extends CI_Controller {
 	{
 		parent::__construct();
 		if($this->session->userdata('logged_in') != 1){
-			redirect('admin/dashboard/login');
+			redirect('admin/login');
 		}
 		$this->load->model('Post_model');
 		$this->load->model('Author_model');
