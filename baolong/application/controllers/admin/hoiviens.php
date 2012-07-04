@@ -50,7 +50,8 @@ class Hoiviens extends CI_Controller {
 			$display_name = $this->input->post('txtdisplay');
 			$meta_value = 'hoivien';
 			$meta_references=$this->input->post('txtreference');
-			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value);
+			$meta_boothtitle=$this->input->post('txtboothtitle');
+			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle);
 			$this-> session-> set_flashdata('message','Thêm hội viên thành công!');			
 			redirect('admin/hoiviens','refresh');	
 		}
@@ -92,6 +93,18 @@ class Hoiviens extends CI_Controller {
 	{
 		$param = $this->input->post('param');		
 		$this->User_model->delete($param);		
+	}
+	public function SearchUsername()
+	{
+		$param = $this->input->post('txtusername');		
+		$html='<ul>';
+		$lstUser =$this->User_model->searchByUsername($param);
+		foreach($lstUser as $item){
+		$username=$item ->user_login;
+		$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserRef(this.id);">'.$username.'</a></li>'; 
+		}
+		$html.='</ul>';
+		echo $html;
 	}
 }
 
