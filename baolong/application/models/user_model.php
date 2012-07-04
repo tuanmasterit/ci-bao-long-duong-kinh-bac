@@ -54,7 +54,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references)
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle)
 	{
 		$user = array(
 			'user_login'=>$user_login,
@@ -81,6 +81,13 @@ class User_model extends CI_Model{
 			'meta_value'=>$meta_references
 		);
 		$this->db->insert('ci_usermeta',$user_meta1);
+		$this->db->insert('ci_usermeta',$user_meta);
+		$user_meta2 = array(
+			'user_id'=>$id,
+			'meta_key'=>'boothtitle',
+			'meta_value'=>$meta_boothtitle
+		);
+		$this->db->insert('ci_usermeta',$user_meta2);
 	}
 	
 	//get id last record
@@ -127,29 +134,14 @@ class User_model extends CI_Model{
 		$row =  $query->first_row();
 		return $row->ID;		
 	}
-	
-	function getById($id)
+	function searchByUsername($username)
 	{
-		$this->db->select('id,user_login,user_pass,user_nicename,user_email,display_name');
-		$this->db->from('ci_users');		
-		$this->db->where('id',$id);
+		$this->db->select('user_login');
+		$this->db->from('ci_users');
+		$this->db->like('user_login', $username);
+		$this->db->limit(5,0);
 		$query = $this->db->get();
-        $data = array();
-        if($query->num_rows>0)
-        {
-        	$data = $query->row_array();        	
-        }
-        return $data;
-	}	
-	
-	function changePass($id,$pass)
-	{
-		$user = array(
-			'user_pass'=>$pass,						
-		);		
-		$this->db->where('id',$id);
-		$this->db->update('ci_users',$user);
+		return $query->result();	
 	}
-	
 }
 ?>
