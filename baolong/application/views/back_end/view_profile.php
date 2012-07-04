@@ -7,7 +7,7 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">                	
-                    <li class="current"><a href="<?php echo base_url();?>admin/users/proflie">Thông tin cá nhân</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>admin/users/profile">Thông tin cá nhân</a></li>
                     <li><a href="<?php echo base_url();?>admin/users/change_pass">Đổi mật khẩu</a></li>
                     
                 </ul>
