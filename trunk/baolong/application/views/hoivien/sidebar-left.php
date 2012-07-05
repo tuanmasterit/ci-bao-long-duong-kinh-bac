@@ -10,7 +10,7 @@
                         <li><a href="<?php echo base_url();?>admin/categories"><span>Danh mục bài viết</span></a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="elements menudrop"><span>Cây khách hàng</span></a>
+                <li><a href="<?php echo base_url();?>hoivien/customerstree" class="elements menudrop"><span>Cây khách hàng</span></a>
                 </li>
 				<li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="elements menudrop"><span>Cây phả hệ</span></a>
 				<li><a href="<?php echo base_url();?>admin/posts/lists/topic" class="elements menudrop"><span>Gửi yêu cầu quy đổi</span></a>
