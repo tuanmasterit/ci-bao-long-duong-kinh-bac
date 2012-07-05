@@ -35,7 +35,7 @@ class customerstree extends CI_Controller {
 		foreach($lstUser as $item){
 			$html.='<li><span>';
 			$html.= $item ->user_login; 
-			$html.='--( tang '.$tang.')</span>';
+			$html.='--( tầng '.$tang.')</span>';
 			$count = $this->User_model->getCountByParent($item ->user_login);
 			if($count>0)
 			{
@@ -51,7 +51,7 @@ class customerstree extends CI_Controller {
 	{
 		$count = $this->User_model->getCountByParent($this->session->userdata('username'));
 		$html='';
-		$html.='<ul id="mixed"><li><span>'.$this->session->userdata('username').'--( tang 0)</span>';
+		$html.='<ul id="mixed"><li><span>'.$this->session->userdata('username').'--( tầng 0)</span>';
 		if($count>0)
 		{
 			$html.=$this ->GenHtmlTree($this->session->userdata('username'),1);
