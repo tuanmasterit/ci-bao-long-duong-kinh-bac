@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users extends CI_Controller {
+class customerstree extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -26,111 +26,43 @@ class Users extends CI_Controller {
 		$this->load->model('User_model');
 		$this->load->library('pagination');
     }
+	
+	
+	function GenHtmlTree($parentid)
+	{
+		$lstUser = $this->User_model->getByParent($parentid);
+		$html='<ul>';
+		foreach($lstUser as $item){
+			$html.='<li><span>';
+			$html.= $item ->user_login; 
+			$html.='</span>';
+			$count = $this->User_model->getCountByParent($item ->user_login);
+			if($count>0)
+			{
+				$html .= $this ->GenHtmlTree($item ->user_login); 
+			}
+			$html.='</li>';
+		}
+		$html.='</ul>';
+		return $html;
+	}
     
 	public function index($row=0)
 	{
-		$config['base_url']= base_url()."/admin/users/index/";
-		$config['total_rows']=$this->User_model->getCount('thanhvien');
-		$config['per_page']='10';
-		$config['cur_page']= $row;
-		$config['num_links'] = 5;
-		$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
-		$config['full_tag_close'] = "</div>";
-		$config['first_link'] = 'First';
-		$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
-		$config['first_tag_close'] = "</span>";
-		$config['last_link'] = 'Last';
-		$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
-		$config['last_tag_close'] = "</span>";
-		$config['next_link'] = 'Next';
-		$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
-		$config['next_tag_close'] = "</span>";
-		$config['prev_link'] = 'Previous';
-		$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
-		$config['prev_tag_close'] = "</span>";
-		$config['num_tag_open'] = "<span class='paginate_button'>";
-		$config['num_tag_close'] = "</span>";
-		$config['cur_tag_open'] = "<span class='paginate_active'>";
-		$config['cur_tag_close'] = "</span>";
-		$this->pagination->initialize($config);
-		$data['list_link'] = $this->pagination->create_links(); 		
-		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
-		$this->load->view('back_end/view_users',$data);
+		$count = $this->User_model->getCountByParent($this->session->userdata('username'));
+		$html='';
+		$html.='<ul id="mixed"><li><span>'.$this->session->userdata('username').'</span>';
+		if($count>0)
+		{
+			$html.=$this ->GenHtmlTree($this->session->userdata('username'));
+		}
+		$html.='</li></ul>';
+		$data['htmlTree'] = $html;
+		$this->load->view('hoivien/customerstree_view',$data);
+		//echo $html;
 	}
 	
-	public function add()
-	{
-		if($this->input->post('txtname'))
-		{
-			$user_login = $this->input->post('txtname');
-			$user_nicename = $this->input->post('txtnicename');
-			$user_email = $this->input->post('txtemail');
-			$user_regitered = date('Y-m-d h-i-s');
-			$display_name = $this->input->post('txtdisplay');
-			$meta_value = 'thanhvien';
-			
-			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value);
-			$this-> session-> set_flashdata('message','Thêm thành viên thành công!');			
-			redirect('admin/users','refresh');	
-		}
-		else 
-		{
-			$this-> session-> set_flashdata('message','Lỗi!');
-			redirect('admin/users','refresh');
-		}
-	}
 	
-	public function edit($id=0,$row=0)
-	{
-		if($this->input->post('txtnicename'))
-		{
-			$user_id = $this->input->post('id');
-			$user_nicename = $this->input->post('txtnicename');
-			$user_email = $this->input->post('txtemail');			
-			$display_name = $this->input->post('txtdisplay');
-			
-			$this->User_model->edit($user_id,$user_nicename,$user_email,$display_name);
-			redirect('admin/users','refresh');
-		}
-		else 
-		{
-			$config['base_url']= base_url()."/admin/users/edit/".$id."/";
-			$config['total_rows']=$this->User_model->getCount('thanhvien');
-			$config['per_page']='10';
-			$config['cur_page']= $row;
-			$config['num_links'] = 5;
-			$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
-			$config['full_tag_close'] = "</div>";
-			$config['first_link'] = 'First';
-			$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
-			$config['first_tag_close'] = "</span>";
-			$config['last_link'] = 'Last';
-			$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
-			$config['last_tag_close'] = "</span>";
-			$config['next_link'] = 'Next';
-			$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
-			$config['next_tag_close'] = "</span>";
-			$config['prev_link'] = 'Previous';
-			$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
-			$config['prev_tag_close'] = "</span>";
-			$config['num_tag_open'] = "<span class='paginate_button'>";
-			$config['num_tag_close'] = "</span>";
-			$config['cur_tag_open'] = "<span class='paginate_active'>";
-			$config['cur_tag_close'] = "</span>";
-			$this->pagination->initialize($config);
-			$data['list_link'] = $this->pagination->create_links(); 		
-			$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
-			$data['user'] = $this->User_model->get($id,0,0,'thanhvien');
-			
-			$this->load->view('back_end/view_users',$data);
-		}
-	}
-	
-	public function delete()
-	{
-		$param = $this->input->post('param');		
-		$this->User_model->delete($param);		
-	}
 }
 
 /* End of file welcome.php */
