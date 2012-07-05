@@ -18,6 +18,7 @@
 <![endif]-->
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery-1.6.min.js"></script>
 <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/validationEngine.jquery.css"/>
+<link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content-admin/css/jquery.treeview.css.css"/>
 
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery.validationEngine-vi.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery.validationEngine.js"></script>
@@ -51,6 +52,8 @@
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/custom/tables.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/custom/dashboard.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/custom/jquery.treeview.js"></script>
+
 <!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
