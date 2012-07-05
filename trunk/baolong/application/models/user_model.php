@@ -49,6 +49,15 @@ class User_model extends CI_Model{
 			return $query->result();
 	}
 	
+	function getCountByParent($parentid)
+	{
+		$this->db->from('ci_users');
+		$this->db->join('ci_usermeta', 'id = user_id');
+		$this->db->where('meta_key','parent');
+		$this->db->where('meta_value',$parentid);	
+		return $this->db->count_all_results();
+	}
+	
 	function authentication($user_name,$password){
 		//$this->load->helper('security');
 		//$user_pass = do_hash($pasword, 'md5'); // MD5
@@ -92,7 +101,6 @@ class User_model extends CI_Model{
 			'meta_value'=>$meta_references
 		);
 		$this->db->insert('ci_usermeta',$user_meta1);
-		$this->db->insert('ci_usermeta',$user_meta);
 		$user_meta2 = array(
 			'user_id'=>$id,
 			'meta_key'=>'boothtitle',
