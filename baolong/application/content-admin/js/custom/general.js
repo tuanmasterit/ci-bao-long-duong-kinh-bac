@@ -343,7 +343,12 @@ jQuery(document).ready(function(){
 		jQuery('.headerinner2').remove();
 	}
 	/*jQuery('body').append('<div class="theme"><h4>Color</h4><a href="darkblue/dashboard.html" class="darkblue"></a><a href="gray/dashboard.html" class="gray"></a></div>');*/
-	
+	initTrees();
+		jQuery("#refresh").click(function() {
+			jQuery("#black").empty();
+			jQuery("#mixed").empty();
+			initTrees();
+		});
 });
 
 	function SearchUser()
@@ -373,4 +378,22 @@ jQuery(document).ready(function(){
 		jQuery('#spUserReferences').html('');
 		jQuery('#txtreference').val('');
 		jQuery('.sb_input').val('');
-		}
+	}
+	function initTrees() {
+		jQuery("#black").treeview({
+			url: "source.php"
+		})
+		
+		jQuery("#mixed").treeview({
+			url: "source.php",
+			// add some additional, dynamic data and request with POST
+			ajax: {
+				data: {
+					"additional": function() {
+						return "yeah: " + new Date;
+					}
+				},
+				type: "post"
+			}
+		});
+	}
