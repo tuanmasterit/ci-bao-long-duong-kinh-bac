@@ -38,6 +38,17 @@ class User_model extends CI_Model{
 		
 	}
 	
+	//List User byParent
+	function getByParent($parentid){
+			$this->db->select('user_login,display_name,meta_value');
+			$this->db->from('ci_users');
+			$this->db->join('ci_usermeta', 'id = user_id');
+			$this->db->where('meta_key','parent');
+			$this->db->where('meta_value',$parentid);
+			$query = $this->db->get();   
+			return $query->result();
+	}
+	
 	function authentication($user_name,$password){
 		//$this->load->helper('security');
 		//$user_pass = do_hash($pasword, 'md5'); // MD5
