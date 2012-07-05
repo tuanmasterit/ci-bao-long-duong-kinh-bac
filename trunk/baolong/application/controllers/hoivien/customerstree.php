@@ -28,18 +28,18 @@ class customerstree extends CI_Controller {
     }
 	
 	
-	function GenHtmlTree($parentid)
+	function GenHtmlTree($parentid,$tang)
 	{
 		$lstUser = $this->User_model->getByParent($parentid);
 		$html='<ul>';
 		foreach($lstUser as $item){
 			$html.='<li><span>';
 			$html.= $item ->user_login; 
-			$html.='</span>';
+			$html.='--( tang '.$tang.')</span>';
 			$count = $this->User_model->getCountByParent($item ->user_login);
 			if($count>0)
 			{
-				$html .= $this ->GenHtmlTree($item ->user_login); 
+				$html .= $this ->GenHtmlTree($item ->user_login,($tang+1)); 
 			}
 			$html.='</li>';
 		}
@@ -51,10 +51,10 @@ class customerstree extends CI_Controller {
 	{
 		$count = $this->User_model->getCountByParent($this->session->userdata('username'));
 		$html='';
-		$html.='<ul id="mixed"><li><span>'.$this->session->userdata('username').'</span>';
+		$html.='<ul id="mixed"><li><span>'.$this->session->userdata('username').'--( tang 0)</span>';
 		if($count>0)
 		{
-			$html.=$this ->GenHtmlTree($this->session->userdata('username'));
+			$html.=$this ->GenHtmlTree($this->session->userdata('username'),1);
 		}
 		$html.='</li></ul>';
 		$data['htmlTree'] = $html;
