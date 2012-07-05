@@ -7,7 +7,7 @@
         <div class="maincontent">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu">
-                	<li class="current"><a href="./dashboard.html">Dashboard</a></li>
+                	<li class="current"><a href="./dashboard.html"><?php echo $htmlTree;?></a></li>
                 </ul><!--maintabmenu-->                
                 <div class="content">
                 	<ul class="widgetlist">
