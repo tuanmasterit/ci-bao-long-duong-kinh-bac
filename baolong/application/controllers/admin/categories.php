@@ -52,7 +52,7 @@ class Categories extends CI_Controller {
 			$taxonomy = 'category';
 			$description = $this->input->post('txtexcerpt');
 			$parent = $this->input->post('select');
-			$this->Term_model->addTerm($name,$slug,$taxonomy,$description,$parent);			
+			$this->Term_model->add($name,$slug,$taxonomy,$description,$parent);			
 			$this-> session-> set_flashdata('message','Category created');			
 			redirect('admin/categories','refresh');				
 		}
@@ -77,7 +77,7 @@ class Categories extends CI_Controller {
 		$parent = $this->input->post('select');
 		if ($this-> input-> post('txttitle')){
 			$id=$this->input->post('term_id');
-			$this-> Term_model-> updateCategory($id,$name,$slug,$description,$parent);
+			$this-> Term_model-> update($id,$name,$slug,$description,$parent);
 			$this-> session-> set_flashdata('message','Category updated');
 			redirect('admin/categories','refresh');
 		}else{
