@@ -5,13 +5,13 @@
         		if($is_parent==true)
         		{
         	?>
-            <span><a href="" class="parent">Tin tức</a> &gt; <a href="<?php echo base_url().'news/cat/'.$cat['term_id'];?>"><?php echo $cat['name'];?></a></span>
+            <span><a href="<?php echo base_url().'news/cat/'.$cat['term_id'];?>"><?php echo $cat['name'];?></a></span>
             <?php 
         		}
         		else
         		{ 
             ?>
-            <span><a href="" class="parent">Tin tức</a>- <a href="<?php echo base_url().'news/cat/'.$parentCat['term_id'];?>"><?php echo $parentCat['name'];?></a> - <a href="<?php echo base_url().'news/cat/'.$cat['term_id'];?>"><?php echo $cat['name'];?></a></span>
+            <span><a href="<?php echo base_url().'news/cat/'.$parentCat['term_id'];?>"><?php echo $parentCat['name'];?></a> - <a href="<?php echo base_url().'news/cat/'.$cat['term_id'];?>"><?php echo $cat['name'];?></a></span>
             <?php 
         		}
         	?>

@@ -45,11 +45,11 @@ class Term_model extends CI_Model{
 		$Q = $this-> db-> insert('ci_terms', $cat);
 		
 		//Add Term Taxonomy
-		$query = $this->db->get('ci_terms');			
-		$last_row = $query->last_row('array');
+			
+		$last_row_id = $this->getLastID();
 		
 		$termTaxonomy = array(
-			'term_id' => $last_row['term_id'],
+			'term_id' => $last_row_id,
 			'taxonomy ' => $taxonomy,
 			'description' => $description,
 			'parent' =>$parent
@@ -60,7 +60,7 @@ class Term_model extends CI_Model{
 	//Delete Category
 	function delete($term_id)
 	{
-		if($term_id != 1){
+		if($term_id != 0){
 			//update post to category 1
 			$taxonomy_id = $this->get_taxonomy_by_term($term_id);
 			$this->db->where('term_taxonomy_id',$taxonomy_id);
@@ -190,6 +190,16 @@ class Term_model extends CI_Model{
 		$this->db->where('term_taxonomy_id',$term_taxonomy_id);
 		$query = $this->db->get();
 		return $query->first_row();
+	}
+	
+	function getLastID()
+	{
+		$this->db->select('term_id');
+		$this->db->from('ci_terms');
+		$this->db->order_by('term_id','DESC');
+		$query = $this->db->get();			
+		$last_row = $query->first_row();
+		return $last_row->term_id;		
 	}
 }
 ?>
