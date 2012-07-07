@@ -17,7 +17,10 @@ class User_model extends CI_Model{
 			$this->db->join('ci_usermeta', 'id = user_id');
 			$this->db->where('meta_key','group');
 			$this->db->where('meta_value',$meta_value);
-			$this->db->limit($limit,$offset);
+			if($limit>0)
+			{
+				$this->db->limit($limit,$offset);
+			}
 			$query = $this->db->get();
         
 			return $query->result();
@@ -152,6 +155,23 @@ class User_model extends CI_Model{
 		$query = $this->db->get();
 		$row =  $query->first_row();
 		return $row->ID;		
+	}
+	
+	function getAjax($username,$limit,$offset,$meta_value)
+	{
+		$this->db->select('id,user_login,user_nicename,user_email,display_name');
+		$this->db->from('ci_users');
+		$this->db->join('ci_usermeta', 'id = user_id');
+		$this->db->where('meta_key','group');
+		$this->db->where('meta_value',$meta_value);
+		$this->db->like('user_login',$username);
+		if($limit>0)
+		{
+			$this->db->limit($limit,$offset);
+		}
+		$query = $this->db->get();
+        
+		return $query->result();		
 	}
 	function searchByUsername($username)
 	{

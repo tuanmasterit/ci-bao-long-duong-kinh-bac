@@ -32,7 +32,13 @@
 					</div>
 					<div class="row">
 						<label style="float: left">Người giới thiệu </label>
-						<input id="txtName" type="text" name="txtHoiVien">
+						<input id="inputString" type="text" name="txtHoiVien" onkeyup="lookup(this.value);" onblur="fill();"/>						
+					</div>
+					<div class="suggestionsBox" id="suggestions" style="display: none;">
+						<img src="<?php echo base_url()?>application/content/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+						<div class="suggestionList" id="autoSuggestionsList">
+							&nbsp;
+						</div>
 					</div>
 					<br>
 					<div class="row1">
