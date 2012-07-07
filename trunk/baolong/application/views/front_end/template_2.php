@@ -14,17 +14,27 @@
     <link href="<?php echo base_url();?>application/content/css/contact.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css"/>
     
-    <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery-1.4.2.min.js"></script>
-    
+    <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery-1.6.min.js"></script>
+    <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content/css/validationEngine.jquery.css"></link>
+	<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.validationEngine-vi.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.validationEngine.js"></script>
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/default.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/nivo-slider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/style.css" type="text/css" media="screen" />
-
+	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/datepicker-style.css" type="text/css" media="screen" />
+	
+	<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.ui.core.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/ui.datetimepicker.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function() {
+            $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+        });
+ 	</script> 
 	
     <script type="text/javascript" src="<?php echo base_url();?>application/content/css/nivo/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.jcarousel.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/content/css/tango/skin.css" />
-
+	
 <script>    
     jQuery(document).ready(function() {
 		jQuery('#coin-slider').nivoSlider();
@@ -52,6 +62,28 @@
 	        carousel.startAuto();
 	    });
 	};
+</script>
+<script>
+		jQuery(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			jQuery("#formID").validationEngine();
+			
+		});
+
+		/**
+		*
+		* @param {jqObject} the field where the validation applies
+		* @param {Array[String]} validation rules for this field
+		* @param {int} rule index
+		* @param {Map} form options
+		* @return an error string if validation failed
+		*/
+		function checkHELLO(field, rules, i, options){
+			if (field.val() != "HELLO") {
+				// this allows to use i18 for the error msgs
+				return options.allrules.validate2fields.alertText;
+			}
+		}
 </script>
 </head>
 <body>
