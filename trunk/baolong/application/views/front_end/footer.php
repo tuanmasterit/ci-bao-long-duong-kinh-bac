@@ -11,8 +11,9 @@
 </div>            
 <div id="counter">
 	<div class="content">
-    	<span><strong>Lượt truy cập: </strong>15389</span>
-        <span><strong>Online: </strong> 2</span>
+    	<span><strong>Lượt truy cập: </strong><?php	echo $this->Count_access->countAccess();?></span>
+        <span><strong>Online: </strong> <?php echo $this->Count_access->countOnline();?></span>
+        
         <a target="_blank" href="http://tasvis.com.vn" title="">Powered by Bảo Long Đường Kinh Bắc</a>
 	</div>
 </div>
