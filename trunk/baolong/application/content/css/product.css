@@ -1069,9 +1069,8 @@
     text-align: center;
     text-transform: uppercase;
 }
-
-#product-feature p {
-    text-align: center;
+#product-feature p{text-align: center;}
+#product-feature p a {    
     color: #FFFFFF;
     font-weight: bold;
     font-size: 12px;
