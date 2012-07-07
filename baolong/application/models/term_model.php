@@ -108,8 +108,12 @@ class Term_model extends CI_Model{
 	function getCategoryByName($name)
 	{
 		$query = $this->db->get_where('ci_terms',array('name'=>$name));
-		$row = $query->first_row();
-		return $row->term_id;
+		if($query->num_rows>0)
+		{
+			$row = $query->first_row();
+			return $row->term_id;
+		}
+		return false;
 	}
 	
 	function getCatProNav($taxonomy='catpro')
