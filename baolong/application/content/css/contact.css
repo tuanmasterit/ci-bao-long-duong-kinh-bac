@@ -117,14 +117,36 @@
     width: 490px;
 }
 #contactBox {
+	margin-left: 95px;
+}
+#contactBox input.Button,  input.btninput, input.btnSubmit 
+{
+	background-attachment: scroll;
+    background-color: #D4D0C8;
+    background-position: 0 0;
+    background-repeat: repeat;
+    border: 1px solid #404040;
+    border-radius: 3px 3px 3px 3px;
+    color: #000000;
+    cursor: pointer;
+    display: block;
+    margin-right: 32px;
+    overflow: visible;
+    white-space: nowrap;
+}
+input.TextBox, #contactBox .row input, #contactBox .row2 input {
+    border: 1px solid #D1C7AC;
+    color: #333333;
+    font-family: tahoma,arial,sans-serif;
+    padding: 3px;
 }
 #contactBox .row {
     height: 30px;
-    width: 460px;
+    width: 500px;
 }
 #contactBox .row2 {
     height: 137px;
-    width: 460px;
+    width: 500px;
 }
 .contactBox input {
     float: right;
