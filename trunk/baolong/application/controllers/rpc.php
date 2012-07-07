@@ -18,7 +18,7 @@
 		         			echo '<li onClick="fill(\''.$User->user_login.'\');">'.$User->user_login.'</li>';
 		         		}
 					} else {
-						echo 'ERROR: There was a problem with the query.';
+						echo 'Không có hội viên nào.';
 					}
 				} else {
 					// Dont do anything.
