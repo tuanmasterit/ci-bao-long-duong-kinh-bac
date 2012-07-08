@@ -7,12 +7,12 @@
 				<form action="<?php echo base_url()?>welcome/login" method="post"  id="index_login">
 					<div class="loginerror"><p>Thông tin đăng nhập không hợp lệ</p></div>
 					<div class="line">
-					Tài khoản:
+					<label> Tài khoản:</label>
 					<input type="text" class="txt" name="txtUsername" id="username" />
 					</div>
 					<div class="line">
-					Mật khẩu:
-					<input type="password" class="txt" name="txtPassword" id="password" />
+					<label>Mật khẩu:</label>
+					  <input type="password" class="txt" name="txtPassword" id="password" />
 					</div>
 					<div class="line" id="btn">
 					<input type="submit" value="Đăng nhập" />
@@ -24,7 +24,18 @@
 				<?php }
 				else{
 				 ?>
-				 	
+				 	<form action="<?php echo base_url()?>welcome/logout" method="post"  id="index_login">
+					<div class="line">
+					<label>Xin chào:</label>
+					<?php echo $this->session->userdata('display_name') ?>
+					</div>
+					<div class="line" id="btn">
+					<input type="submit" value="Đăng xuất" />
+					</div>
+					<div class="line" id="notiProcess">
+					Đang xử lý <img alt="" src="<?php echo base_url()?>application/content/images/ajax-loader.gif"/>
+					</div>
+					</form>
 				 <?php }
 				 ?>
 			</div>         
