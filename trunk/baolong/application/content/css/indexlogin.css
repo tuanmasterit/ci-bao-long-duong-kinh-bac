@@ -50,4 +50,6 @@ color:red;
 #box_login_left #notiProcess
 {
 	display:none;
+	color:#3366CC;
+	text-align:center
 }

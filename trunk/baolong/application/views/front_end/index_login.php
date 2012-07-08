@@ -18,7 +18,7 @@
 					<input type="submit" value="Đăng nhập" />
 					</div>
 					<div class="line" id="notiProcess">
-					
+					Đang xử lý <img alt="" src="<?php echo base_url()?>application/content/images/ajax-loader.gif"/>
 					</div>
 				</form>
 				<?php }
