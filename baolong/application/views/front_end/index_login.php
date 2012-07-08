@@ -4,7 +4,7 @@
             <div class="top">Đăng nhập</div>
 			<div>
 				<form action="<?php echo base_url()?>welcome/login" method="post"  id="index_login">
-					<div class="loginerror"><p>Invalid username or password</p></div>
+					<div class="loginerror"><p>Thông tin đăng nhập không hợp lệ</p></div>
 					<div class="line">
 					Tài khoản:
 					<input type="text" class="txt" name="txtUsername" id="username" />
