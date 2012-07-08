@@ -12,7 +12,7 @@ class Shop extends CI_Controller {
 	{		
 		switch($module){
 			case '':
-				home($shop_id);
+				$this->home($shop_id);
 				break;
 			case 'page':
 				$this->page($shop_id,$object_id);
