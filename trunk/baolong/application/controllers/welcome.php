@@ -16,12 +16,12 @@ class Welcome extends CI_Controller {
 			$password = $_REQUEST['txtPassword'];
 			$this->load->model('User_model');
 			if($this->User_model->authentication($user_name,$password)){
-				redirect('admin/index');	
+				redirect('index');	
 			}else{
-				redirect('admin/login');
+				redirect('login');
 			}
 		}else{
-			redirect('admin/login');	
+			redirect('login');	
 		}	
 	}
 	public function index($row=0)
