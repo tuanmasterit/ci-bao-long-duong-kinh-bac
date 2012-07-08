@@ -26,7 +26,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>application/content/css/nivo/jquery.nivo.slider.pack.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.jcarousel.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/content/css/tango/skin.css" />
-
+	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/ShoppingCart.css" type="text/css" media="screen" />
 <script>    
     jQuery(document).ready(function() {
 		jQuery('#coin-slider').nivoSlider();

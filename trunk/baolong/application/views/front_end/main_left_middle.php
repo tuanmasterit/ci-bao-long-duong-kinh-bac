@@ -1,3 +1,15 @@
+<script type="text/javascript">
+	function AddToCart(url,id){
+		//var url = jQuery(this).attr('href');
+		//var id = jQuery(this).attr('id');			
+		jQuery.post(url,{param:id},function(data) {
+			jQuery("#cart-count").text(data);
+			alert("Bạn đã thêm một sản phẩm!");				
+		});
+		
+		
+	}
+</script>
 <div id="main_left">
 	<div id="products_v2">
     	<div id="title">
@@ -28,6 +40,7 @@
             			<span>Thị trường: <?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?> </span>
             			<br/>
             			<span>Hội viên: <?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?></span>
+            			<a class="imgBtnCss" id="<?php echo $product->id;?>" onclick="AddToCart(this.href,<?php echo $product->id;?>); return false;" href="<?php echo base_url();?>shoppingcart/addToCart">Đặt mua</a>
             		</div>
             	</div>
             <?php 
