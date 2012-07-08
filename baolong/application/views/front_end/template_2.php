@@ -9,6 +9,7 @@
     <link href="<?php echo base_url();?>application/content/css/news.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>application/content/css/product.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>application/content/css/carouFredsel.css" rel="stylesheet" type="text/css"/>
+		<link href="<?php echo base_url();?>application/content/css/indexlogin.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>application/content/css/video.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>application/content/css/contact.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css"/>
