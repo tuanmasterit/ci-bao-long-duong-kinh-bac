@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:88/baolong';
+$config['base_url']	= 'http://localhost/baolong';
 
 /*
 |--------------------------------------------------------------------------
