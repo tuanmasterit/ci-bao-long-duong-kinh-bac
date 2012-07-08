@@ -16,7 +16,8 @@
     <link href="<?php echo base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css"/>
     
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery-1.4.2.min.js"></script>
-    
+  <script type="text/javascript" src="<?php echo base_url();?>application/content/js/validation.js"></script>
+   
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/default.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/nivo-slider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/style.css" type="text/css" media="screen" />
@@ -83,6 +84,7 @@
             </div>                
             
             <div id="main_right_middle">
+				<?php $this->load->view('front_end/index_login');?> 
             	<?php $this->load->view('front_end/main_right_middle');?>                
             </div>
         </div>        

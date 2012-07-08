@@ -9,6 +9,21 @@ class Welcome extends CI_Controller {
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
     }
+	public function login()
+	{
+		if(!is_null($_REQUEST['txtUsername']) && !is_null($_REQUEST['txtPassword'])){
+			$user_name =	$_REQUEST['txtUsername'];
+			$password = $_REQUEST['txtPassword'];
+			$this->load->model('User_model');
+			if($this->User_model->authentication($user_name,$password)){
+				redirect('admin/index');	
+			}else{
+				redirect('admin/login');
+			}
+		}else{
+			redirect('admin/login');	
+		}	
+	}
 	public function index($row=0)
 	{
 		$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc';
