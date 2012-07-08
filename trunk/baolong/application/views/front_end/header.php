@@ -7,7 +7,7 @@
 		<img class="img" src="<?php echo base_url();?>application/content/images/icon_cart.png">
 		<p>
 			Giỏ hàng:
-			<strong id="cart-count">0</strong>
+			<strong id="cart-count"><?php if(isset($_SESSION['countcart'])) {echo $_SESSION['countcart'];} else {echo '0';}?></strong>
 		</p>
 	</a>
 </div>
