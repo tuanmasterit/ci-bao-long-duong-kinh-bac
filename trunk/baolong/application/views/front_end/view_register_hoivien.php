@@ -7,7 +7,7 @@
         </div>
         <div id="content" style="margin-top:20px">
         	<div id="contactBox">
-        	<?php echo form_open('hoivien/register',array('id'=>'formID','class'=>'stdform'));?>
+        	<?php echo form_open('hoiviens/register',array('id'=>'formID','class'=>'stdform'));?>
 	        	
 	        	<fieldset class="box_Contact">
 	        		<div class="row">
