@@ -78,13 +78,19 @@ class User_model extends CI_Model{
 	}
 	
 	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle)
-	{
+	{	
+		
+		$user_pass_random=$this -> generatePassword(7,0);
+		$user_pass_random='1234567';
+		$this->load->helper('security');
+		$user_pass = do_hash($user_pass_random, 'md5');
 		$user = array(
 			'user_login'=>$user_login,
 			'user_nicename'=>$user_nicename,
 			'user_email'=>$user_email,
 			'user_registered'=>$user_regitered,
-			'display_name'=>$display_name
+			'display_name'=>$display_name,
+			'user_pass'=>$user_pass
 		);
 
 		//Thêm thành viên
@@ -196,5 +202,35 @@ class User_model extends CI_Model{
         }
         return $data;
 	}	
+	
+	function generatePassword($length, $strength) {
+		$vowels = 'aeuy';
+		$consonants = 'bdghjmnpqrstvz';
+		if ($strength & 1) {
+			$consonants .= 'BDGHJLMNPQRSTVWXZ';
+		}
+		if ($strength & 2) {
+			$vowels .= "AEUY";
+		}
+		if ($strength & 4) {
+			$consonants .= '23456789';
+		}
+		if ($strength & 8) {
+			$consonants .= '@#$%';
+		}
+	 
+		$password = '';
+		$alt = time() % 2;
+		for ($i = 0; $i < $length; $i++) {
+			if ($alt == 1) {
+				$password .= $consonants[(rand() % strlen($consonants))];
+				$alt = 0;
+			} else {
+				$password .= $vowels[(rand() % strlen($vowels))];
+				$alt = 1;
+			}
+		}
+		return $password;
+	}
 }
 ?>
