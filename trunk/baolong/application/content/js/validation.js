@@ -26,6 +26,7 @@ $(document).ready(function(){
 				else
 				{
 					
+					jQuery('#c_loginindex').html(data);
 				}
 			//jQuery('#dataSearch').html(data);
 			});
