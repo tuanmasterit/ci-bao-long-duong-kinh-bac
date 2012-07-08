@@ -1,36 +1,40 @@
 <div id="logo">
 	<img src="<?php echo base_url();?>application/content/images/banner.png" />
 </div>
+
 <div id="shoppingcart">
-<a id="mini-cart" class="mini-cart" title="" href="<?php echo base_url();?>shoppingcart/index">
-<img class="img" src="<?php echo base_url()?>application/content/images/icon_cart.png" />
-<p>
-Giỏ hàng:
-<strong id="cart-count">0</strong>
-</p>
-</a>
+	<a id="mini-cart" class="mini-cart" title="" href="<?php echo base_url()?>shoppingcart/index">
+		<img class="img" src="<?php echo base_url();?>application/content/images/icon_cart.png">
+		<p>
+			Giỏ hàng:
+			<strong id="cart-count">0</strong>
+		</p>
+	</a>
 </div>
+
 <div class="clear"></div>
 <div id="menu-top">
 	<div id="menu-top-center">
 		<ul id="nav">
 			<li></li>
             <li class="home"><a href="<?php echo base_url();?>" title="Trang chủ"><img src="<?php echo base_url();?>application/content/images/home2.png" /></a></li>
-            <li><a href="#" class="parent"><span>Giới thiệu</span></a>
+            <li><a href="<?php if(isset($gioithieu_id)){ echo base_url().'news/cat/'.$gioithieu_id;}?>" class="parent"><span>Giới thiệu</span></a>
             	<ul class="gioi_thieu_hover">
-		            <li><a href="#">Tập đoàn</a></li>
-		            <li><a href="#">Cơ cấu tổ chức</a></li>
-		            <li><a href="#">Thành tích</a></li>
-		            <li><a href="#">Tổng giám đốc</a></li>
+		            <?php 
+		            	foreach ($lst_gioi_thieu as $gioi_thieu)
+		            	{
+		            ?>
+		            	<li><a href="<?php echo base_url().'news/cat/'.$gioi_thieu->term_id;?>"><?php echo $gioi_thieu->name;?></a></li>
+		            <?php }?>
 	            </ul>
             </li>
-            <li><a href="<?php echo base_url()?>news" class="parent"><span>Tin tức</span></a>
+            <li><a href="<?php echo base_url().'news/cat/'.$tintuc_id;?>" class="parent"><span>Tin tức</span></a>
                 <ul class="tin_tuc_hover">
                     <?php 
-                    foreach ($listNewsNav as $NewsNav)
+                    foreach ($lst_tin_tuc as $tin_tuc)
                     {
                     ?>
-                    <li><a href="<?php echo base_url().'news/cat/'.$NewsNav->term_id;?>"><?php echo $NewsNav->name;?></a></li>
+                    <li><a href="<?php echo base_url().'news/cat/'.$tin_tuc->term_id;?>"><?php echo $tin_tuc->name;?></a></li>
                     <?php }?>
                 </ul>
             </li>
@@ -46,32 +50,38 @@ Giỏ hàng:
                     ?>
                 </ul>
             </li>
-            <li><a href="#" class="parent"><span>Y tế sức khỏe</span></a>
+            <li><a href="<?php echo base_url().'news/cat/'.$y_te_id;?>" class="parent"><span>Y tế sức khỏe</span></a>
             	<ul class="y_te_suc_khoe_hover">
-                    <li><a href="#">Chuyên đề đông y</a></li>
-                    <li><a href="#">Bệnh thường gặp</a></li>
-                    <li><a href="#">Ăn kiêng theo bệnh</a></li>
-                    <li><a href="#">Tự xoa bóp bấm huyệt</a></li>
-                    <li><a href="#">Làm đẹp</a></li>
+                    <?php 
+                   	foreach ($lst_y_te as $y_te)
+                   	{
+                    ?>
+                    <li><a href="<?php echo base_url().'news/cat/'.$y_te->term_id;?>"><?php echo $y_te->name;?></a></li>
+                    <?php }?>
                 </ul>
             </li>
-            <li><a href="#" class="parent"><span>Tư vấn khám bệnh</span></a>
+            <li><a href="<?php echo base_url().'news/cat/'.$tu_van_id;?>" class="parent"><span>Tư vấn khám bệnh</span></a>
             	<ul class="tin_tuc_chuyen_nganh_hover">
-                    <li><a href="#">Phác đồ điều trị</a></li>
-                    <li><a href="#">Tự chữa bệnh tại nhà</a></li>
-                    <li><a href="#">Biện chứng luận trị</a></li>
-                    <li><a href="#">Tư vấn và giải đáp</a></li>
+                    <?php 
+                   	foreach ($lst_tu_van as $tu_van)
+                   	{
+                    ?>
+                    <li><a href="<?php echo base_url().'news/cat/'.$tu_van->term_id;?>"><?php echo $tu_van->name;?></a></li>
+                    <?php }?>
                 </ul>
             </li>                        
-            <li><a href="#" class="parent"><span>Sách</span></a>
+            <li><a href="<?php echo base_url().'news/cat/'.$sach_id?>" class="parent"><span>Sách</span></a>
             	<ul class="">
-                    <li><a href="#">Văn học-thơ ca</a></li>
-                    <li><a href="#">Y học</a></li>
-                    <li><a href="#">Khí công-Y võ dưỡng sinh</a></li>
+                    <?php 
+                   	foreach ($lst_sach as $sach)
+                   	{
+                    ?>
+                    <li><a href="<?php echo base_url().'news/cat/'.$sach->term_id;?>"><?php echo $sach->name;?></a></li>
+                    <?php }?>
                 </ul>
             </li>
-            <li><a href="#" class="parent"><span>Truyện Ngắn</span></a></li>
-            <li><a href="#" class="parent"><span>Báo tường</span></a></li>
+            <li><a href="<?php echo base_url().'news/cat/'.$truyen_ngan_id;?>" class="parent"><span>Truyện Ngắn</span></a></li>
+            <li><a href="<?php echo base_url().'news/cat/'.$bao_tuong_id;?>" class="parent"><span>Báo tường</span></a></li>
             <li><a href="#" class="parent"><span>Tư vấn thiết kế website</span></a></li>
         </ul>
         <div class="clean"></div>
