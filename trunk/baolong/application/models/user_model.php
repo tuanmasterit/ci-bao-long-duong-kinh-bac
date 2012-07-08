@@ -67,9 +67,12 @@ class User_model extends CI_Model{
 		$query = $this->db->get_where('ci_users',array('user_login'=>$user_name,'user_pass'=>$user_pass));
 		if ($query->num_rows() > 0)
 		{
+			$item=$query -> first_row();
 			$userdata = array(
                    'username'  => $user_name,
+				   'display_name'  => $item->display_name,
                    'logged_in' => TRUE
+				   	
                );
 			$this->session->set_userdata($userdata);
 		 	return true;
