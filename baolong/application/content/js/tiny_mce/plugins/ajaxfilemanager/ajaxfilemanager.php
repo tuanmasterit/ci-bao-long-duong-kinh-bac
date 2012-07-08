@@ -276,7 +276,7 @@ $(document).ready(
  					<li ><a href="#" id="actionZip"><span>Zip</span></a><li>
 					<li ><a href="#" id="actionUnzip"><span>Unzip</span></a><li>-->
 				</ul>    
-<form action="" method="POST" name="formAction" id="formAction"><input type="hidden" name="currentFolderPath" id="currentFolderPathVal" value="" /><select name="selectedDoc[]" id="selectedDoc" style="display:none;" multiple="multiple"></select><input type="hidden" name="action_value" value="" id="action_value" /></form>				  
+<form action="" method="post" name="formAction" id="formAction"><input type="hidden" name="currentFolderPath" id="currentFolderPathVal" value="" /><select name="selectedDoc[]" id="selectedDoc" style="display:none;" multiple="multiple"></select><input type="hidden" name="action_value" value="" id="action_value" /></form>				  
     </div>
     
     <div id="body">

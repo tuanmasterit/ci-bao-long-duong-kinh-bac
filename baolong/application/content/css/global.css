@@ -156,3 +156,26 @@ body
     right: 0;
     width: 30px;
 }
+#shoppingcart {
+    float: right;
+    margin-top: 4px;
+    position: absolute;
+    right: 100px;
+    text-align: left;
+    top: 128px;
+    z-index: 2;
+}
+#mini-cart {
+    color: #464646;
+    float: right;
+    font-weight: bold;
+    line-height: 33px;
+    margin-right: 17px;
+    text-decoration: none;
+}
+#shoppingcart .img {
+    border: 0 none;
+}
+#shoppingcart p {
+    margin-top: -29px;
+}

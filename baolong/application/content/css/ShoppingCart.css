@@ -1,0 +1,280 @@
+#shopping-cart
+{ 
+    float: left;
+    width: 724px;
+    margin-right: 10px;
+}
+#shoppingcart {
+    float: right;
+    margin-top: 4px;
+    position: absolute;
+    right: 100px;
+    text-align: left;
+    top: 128px;
+    z-index: 2;
+}
+
+#shoppingcart .img
+{
+    border: 0 none;
+}
+#shoppingcart p {
+    margin-top: -29px;
+}
+#mini-cart
+{
+    color: #464646;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 20px;
+    float: right;
+    margin-right: 17px;
+    line-height: 33px;
+}
+#shopping-cart img
+{
+    width: 200px;
+    height: 150px;
+}
+
+#shopping-cart h4, #checkout-form h4
+{
+     color: #308000;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#shopping-cart .content, #checkout-form .content
+{
+    padding: 20px;
+    width: 678px;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+}
+
+#checkout-form .content h1 {
+    font-size: 12px;
+    color: #00642E;
+}
+
+#checkout-form #info
+{
+    margin: 0 0 0 10px;
+}
+
+#shopping-cart .bottom
+{
+    background: url(../images/bg_footer_product.jpg) 0 0 no-repeat;
+    width: 754px;
+    height: 27px;
+}
+
+#shopping-cart .empty
+{
+    text-align: center;
+}
+
+#shopping-cart .message
+{
+    padding: 0 0 0 10px;
+    margin-top: 20px;
+}
+
+#shopping-cart table
+{
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 10px 0 0;
+    width: 678px;
+}
+#shopping-cart table tr
+{
+    height: 24px;
+    line-height: 24px;
+}
+
+#shopping-cart th
+{
+    background-color:#44bd7f;
+    border: 1px solid #adadad;
+    font-weight:bold;
+}
+
+#shopping-cart tr.even
+{
+    background-color: #F6F6F6;
+}
+
+#shopping-cart tbody td
+{
+    padding-left: 5px; 
+    padding-right: 5px;
+    border: 1px solid #DDDDDD;
+    text-align: left;
+}
+
+#shopping-cart tbody td.product-number
+{
+    text-align: center;
+}
+
+#shopping-cart tbody td.product-name
+{
+    width: 200px;
+}
+
+#shopping-cart tbody td.product-price
+{
+
+}
+
+#shopping-cart tfoot td.total-price
+{
+    text-align: right;
+    color: red;
+    padding-right: 5px;
+}
+
+#shopping-cart tbody td.product-quantity 
+{
+    width: 50px;
+}
+
+#shopping-cart td a, #shopping-cart td a:visited
+{
+    color: Black;
+    text-decoration: none;
+}
+
+#shopping-cart td a:hover 
+{
+    text-decoration: underline;
+}
+
+#shopping-cart .button
+{
+    background-attachment: scroll;
+    background-color: #F6F6F6;
+    background-position: 0 0;
+    background-repeat: repeat;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    cursor: pointer;
+    height: 28px;
+    overflow: visible;
+    padding: 2px 8px 4px;
+    text-shadow: 0 1px 0 #FFFFFF, 0 2px 4px #AAAAAA;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#shopping-cart .button:hover
+{
+    border: 1px solid #808E9B;
+    background: -moz-linear-gradient(center top , #FFFFFF, #EBEBEB) repeat 0 0 #F3F3F3;
+    border-color: #808E9B;
+    box-shadow: 0 0 3px #999999;
+    outline: 0 none;
+}
+
+#shopping-cart .quantity
+{
+    border: 1px solid #DDDDDD;
+    vertical-align: middle;
+    width: 100%;
+}
+/* NEW SHOPPING CART NEW CART*/
+.cart
+{
+	width:582px;
+}
+#topcart
+{ 
+    background: url("images/mini-cart.png") no-repeat scroll left center transparent;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 35px;
+    position: absolute;
+    right: 27px;
+    top: 121px;
+    z-index: 20;
+}
+#topcart a:link,#topcart a:visited
+ {
+     color: #014fa2;
+     text-decoration:none;
+}
+.methodpayment
+{
+	width:500px;
+	color: #3B3B3B;
+    font-family: Arial;
+    font-size: 13px;
+}
+.methodpayment .box1
+{
+	width:50px;
+	float:left;
+}
+.methodpayment .box2
+{
+	width:100px;
+	float:left;
+}
+.methodpayment .box3
+{
+	width:318px;
+	float:left;
+	padding-right:0px !important;
+	
+}
+.methodpayment input
+{
+	width:40px;
+}
+.methodpayment td
+{
+	border-bottom:1px dashed #3B3B3B;
+}
+.methodpayment .box2,.methodpayment .box3
+{
+	padding:5px 10px;
+}
+.contactBox
+{
+    padding:0 15px;
+}
+.methodpayment .top
+{
+    background: url("images/bg_maintop.jpg") no-repeat scroll left top transparent;
+    color: #212020;
+    font-size: 22px;
+    font-weight: bold;
+    height: 43px;
+    line-height: 43px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-left: 25px;
+    width: 470px;
+}
+.box_content_checkOut
+{
+    width:551px;
+    position:relative;
+    margin-bottom:10px;
+    border: 1px double #BEBEBE;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-bottom:10px;
+    border-top:none;
+    padding-left:30px;
+}
+.box_content_checkOut .message_box
+{
+    display:block;
+    color:Red;
+    padding-bottom:10px;
+}
