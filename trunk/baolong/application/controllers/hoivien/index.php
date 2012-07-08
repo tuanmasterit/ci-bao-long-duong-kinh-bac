@@ -5,7 +5,7 @@ class Index extends CI_Controller {
 	{
 		parent::__construct();
 		if($this->session->userdata('logged_in') != TRUE){
-			redirect('admin/login');
+			redirect('/');
 		}
     }		
 	public function index()
