@@ -1,6 +1,15 @@
 <div id="logo">
 	<img src="<?php echo base_url();?>application/content/images/banner.png" />
 </div>
+<div id="shoppingcart">
+<a id="mini-cart" class="mini-cart" title="" href="<?php echo base_url();?>shoppingcart/index">
+<img class="img" src="<?php echo base_url()?>application/content/images/icon_cart.png" />
+<p>
+Giỏ hàng:
+<strong id="cart-count">0</strong>
+</p>
+</a>
+</div>
 <div class="clear"></div>
 <div id="menu-top">
 	<div id="menu-top-center">

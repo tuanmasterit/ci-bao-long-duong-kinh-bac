@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/nivo-slider.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/style.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/datepicker-style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/ShoppingCart.css" type="text/css" media="screen" />
 	
 	
 	
