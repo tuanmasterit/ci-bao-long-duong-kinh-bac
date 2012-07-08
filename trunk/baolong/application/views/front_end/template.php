@@ -84,7 +84,7 @@
             </div>                
             
             <div id="main_right_middle">
-				<?php $this->load->view('front_end/index_login');?> 
+				
             	<?php $this->load->view('front_end/main_right_middle');?>                
             </div>
         </div>        

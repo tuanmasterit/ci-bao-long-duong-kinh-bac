@@ -1,3 +1,4 @@
+<?php $this->load->view('front_end/index_login');?> 
 <div id="menuleftv3">
 	<div id="menuleft_boxcontent">
     	<div class="content">
