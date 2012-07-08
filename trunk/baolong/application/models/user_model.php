@@ -62,9 +62,9 @@ class User_model extends CI_Model{
 	}
 	
 	function authentication($user_name,$password){
-		//$this->load->helper('security');
-		//$user_pass = do_hash($pasword, 'md5'); // MD5
-		$query = $this->db->get_where('ci_users',array('user_login'=>$user_name,'user_pass'=>$password));
+		$this->load->helper('security');
+		$user_pass = do_hash($password, 'md5'); // MD5
+		$query = $this->db->get_where('ci_users',array('user_login'=>$user_name,'user_pass'=>$user_pass));
 		if ($query->num_rows() > 0)
 		{
 			$userdata = array(
