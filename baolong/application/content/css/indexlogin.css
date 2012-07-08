@@ -44,5 +44,10 @@
    padding-bottom:5px
 }
 #box_login_left .loginerror{
-display:none
+display:none;
+color:red;
+}
+#box_login_left #notiProcess
+{
+	display:none;
 }

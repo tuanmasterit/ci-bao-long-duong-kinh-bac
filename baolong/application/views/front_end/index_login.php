@@ -12,13 +12,21 @@
 					</div>
 					<div class="line">
 					Mật khẩu:
-					<input type="password" class="txt" name="txtPassword" />
+					<input type="password" class="txt" name="txtPassword" id="password" />
 					</div>
-					<div class="line">
+					<div class="line" id="btn">
 					<input type="submit" value="Đăng nhập" />
 					</div>
+					<div class="line" id="notiProcess">
+					
+					</div>
 				</form>
-				<?php } ?>
+				<?php }
+				else{
+				 ?>
+				 	
+				 <?php }
+				 ?>
 			</div>         
             <div class="clear"></div>
         </div>
