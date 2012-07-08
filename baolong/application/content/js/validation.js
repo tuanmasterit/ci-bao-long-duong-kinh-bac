@@ -5,7 +5,7 @@ $(document).ready(function(){
 		var np = jQuery(this).find('#notiProcess');
 		var btn = jQuery(this).find('#btn');
 		btn.css('display','none');
-		np.css('display','');
+		np.css('display','block');
 		if(u.val() == '') {
 			jQuery('.loginerror').slideDown();
 			u.focus();
