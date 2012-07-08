@@ -9,6 +9,15 @@ class Welcome extends CI_Controller {
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
     }
+	public	function logout(){
+		$userdata = array(
+                   'username'  => '',
+                   'logged_in' => FALSE
+               );
+		$this->session->set_userdata($userdata);
+		$this->session->sess_destroy();
+		redirect('welcome/index','refresh');
+	}
 	public function login()
 	{
 		$html='';
@@ -17,7 +26,16 @@ class Welcome extends CI_Controller {
 			$password = $_REQUEST['txtPassword'];
 			$this->load->model('User_model');
 			if($this->User_model->authentication($user_name,$password)){
-				$html='1';	
+				$html.='<div class="lineinfo">';
+				$html.=	'Xin chào:';
+				$html.=	$this->session->userdata('display_name');
+				$html.=	'</div>';
+				$html.=	'<div class="lineinfo">';
+				$html.=		'<a href="'.base_url().'hoivien" class="link">Trang quản trị</a>';
+				$html.=	'</div>';
+				$html.=	'<div class="lineinfo">';
+				$html.=	'<a href="'.base_url().'welcome/logout" class="link">Đăng xuất</a>';
+				$html.=	'</div>';
 			}else{
 				$html='';
 			}
