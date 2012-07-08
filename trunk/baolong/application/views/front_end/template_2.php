@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/ShoppingCart.css" type="text/css" media="screen" />
 	
 	
-	
+	 
 	<script type="text/javascript">
         $(document).ready(function() {
             $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
