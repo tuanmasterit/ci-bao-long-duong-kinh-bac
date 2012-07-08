@@ -17,7 +17,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery-1.6.min.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.validationEngine.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.validationEngine-vi.js"></script>
-	
+	  <script type="text/javascript" src="<?php echo base_url();?>application/content/js/validation.js"></script>
     <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.ui.core.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content/js/ui.datetimepicker.js"></script>
     <link rel="stylesheet" media="screen" href="<?php echo base_url();?>application/content/css/validationEngine.jquery.css"></link>
