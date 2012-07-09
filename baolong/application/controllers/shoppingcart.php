@@ -114,6 +114,10 @@ class Shoppingcart extends CI_Controller {
 				$product = $lstProduct[0];
 				echo "Bạn đã xóa <b> ".$product->post_title.'</b> trong giỏ hàng.';;
 			}
+			if(isset($_SESSION['countcart']))
+			{
+				$_SESSION['countcart'] = $_SESSION['countcart']-1;
+			}
 		}	
 	}
 }
