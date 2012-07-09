@@ -78,7 +78,7 @@
 					<tr>
 						<td colspan="50">
 							<input id="btnContinue" class="button" type="submit" onclick="javascript:history.go(-1); return false;" value="Tiếp tục" name="btnContinue">
-							<input id="btnUpdate" class="button" type="submit" value="Cập nhật giỏ hàng" name="btnUpdate">
+							<input id="btnUpdate"  class="button" type="submit" title="tblcart" value="Cập nhật giỏ hàng" name="<?php echo base_url();?>shoppingcart/update">
 							<input id="btnCheckOut" class="button" type="submit" value="Thanh toán" name="btnCheckOut">
 						</td>
 					</tr>
@@ -93,7 +93,7 @@
 					alert('Số lượng sản phẩm ít nhất phải là ' + minQty);
 					txtQuantity.value = minQty;
 					txtQuantity.select();
-				}
+				}				
 			}
 			</script>
 			<script type="text/javascript">
@@ -104,7 +104,9 @@
 						var url = jQuery(this).attr('value');
 						var id = jQuery(this).attr('id');			
 						jQuery.post(url,{param:id},function(data) {
-							jQuery("#lblMessage").html(data);			
+							jQuery("#lblMessage").html(data);
+							var count="<?php echo $_SESSION['countcart']; ?>";
+							jQuery("#cart-count").html(count-1);			
 						});			
 						jQuery(this).parents('tr').fadeOut(function(){ 
 							jQuery(this).remove();
@@ -112,6 +114,30 @@
 					}
 					return false;
 				});	
+			});
+			</script>
+			<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('#btnUpdate').click(function(){		
+					var url = jQuery(this).attr('name');
+					var id = '';
+					var tb = jQuery(this).attr('title');							// get target id of table								   
+					//var sel = false;											//initialize to false as no selected row
+					var txt = jQuery('.'+tb).find('tbody input[type=text]');		//get each checkbox in a table
+					
+					txt.each(function(){
+						//if(jQuery(this).is(':checked')) {
+							//sel = true;
+							id = jQuery(this).attr('value');
+							jQuery.post(url,{param:id},function(data) {
+								alert(id);				
+							});
+							
+						//}
+					});
+					
+					//if(!sel) alert('No data selected');							//alert to no data selected
+				});
 			});
 			</script>
 			<?php }?>

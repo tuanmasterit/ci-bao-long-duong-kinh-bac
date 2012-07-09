@@ -120,5 +120,10 @@ class Shoppingcart extends CI_Controller {
 			}
 		}	
 	}
+	
+	function update()
+	{
+				
+	}
 }
 ?>
