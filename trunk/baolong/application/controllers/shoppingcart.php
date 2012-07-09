@@ -5,6 +5,7 @@ class Shoppingcart extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Term_model');
+		$this->load->model('Post_model');
 		$this->load->library('session');
 	}
 	
@@ -38,17 +39,22 @@ class Shoppingcart extends CI_Controller {
 		 } 
 		 else {
 			  $items = $_SESSION['cart'];
-			  echo count($items);
+			  $_SESSION['countcart'] =	count($items);
+			  echo $_SESSION['countcart'];
 		}
 	}
 	
 	function index()
 	{
-		foreach($_SESSION['cart'] as $key=>$value)
+		if(!isset($_SESSION['countcart']) || $_SESSION['countcart']==0)
 		{
-		 $item[]=$key;
+			$data['check']=false;			
 		}
-		$str=implode(",",$item);
+		else 
+		{
+			$data['check']=true;			
+		}
+		
 		
 		
 		//Giới thiệu
@@ -89,6 +95,26 @@ class Shoppingcart extends CI_Controller {
 		
  		$data['main'] = 'front_end/view_cart';
  		$this->load->view('front_end/template_2',$data);
+	}
+	
+	function delete()
+	{			
+		$cart=$_SESSION['cart'];
+		$id = $this->input->post('param');
+		if($id == 0)
+		{
+			unset($_SESSION['cart']);
+		}
+		else
+		{
+			unset($_SESSION['cart'][$id]);
+			$lstProduct = $this->Post_model->get($id,'product');
+			if(count($lstProduct)>0)
+			{
+				$product = $lstProduct[0];
+				echo "Bạn đã xóa <b> ".$product->post_title.'</b> trong giỏ hàng.';;
+			}
+		}	
 	}
 }
 ?>

@@ -6,64 +6,115 @@
 	</div>
 	<div class="content">
 		<div>
-			<table>
+		<?php 
+		if($check == false)
+		{
+		?>
+			<div class="empty">
+				<p> Bạn không có sản phẩm nào trong giỏ hàng.</p>
+				<p>
+				Xin mời bạn
+				<a class="parent" href="#">tiếp tục mua hàng</a>
+				.
+				</p>
+			</div>
+		<?php }else{?>
+			<div class="empty">
+				<p id="lblMessage"></p>				
+			</div>
+			<table class="tblcart">
 				<thead>
 					<tr>
 						<th rowspan="1"> STT </th>
 						<th rowspan="1"> Sản phẩm </th>
-						<th colspan="1"> Giá </th>
+						<th colspan="1"> Giá (VNĐ)</th>
 						<th rowspan="1"> Số lượng </th>
 						<th colspan="1"> Tổng (VNĐ) </th>
 						<th rowspan="1"> &nbsp; </th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="product-number"> 1 </td>
+				<?php 
+					if(isset($_SESSION['cart']))
+					{
+						$num = 1;
+						$sum = 0;
+						foreach($_SESSION['cart'] as $key=>$value)
+						{
+							$lstProduct = $this->Post_model->get($key,'product');
+							foreach ($lstProduct as $product)
+							{					
+				?>
+					<tr <?php  if(($num%2)==0) echo "class='even'";?>>
+						<td class="product-number"> <?php echo $num;?> </td>
 						<td class="product-name">
-							<a title="Nước uống sâm quy" href="/vi/san-pham/thuc-pham-chuc-nang/p-472/nuoc-uong-sam-quy.aspx"> Nước uống sâm quy</a>
+							<a title="<?php echo $product->post_title;?>" href="<?php echo base_url().'welcome/product/'.$product->id;?>"> <?php echo $product->post_title;?></a>
 						</td>
-						<td class="product-price"> 20,000 </td>
+						<td class="product-price"> <?php echo number_format($this->Post_model->get_meta_value($key,'giathitruong'),0);?> </td>
+						<?php $giathitruong = (int)$this->Post_model->get_meta_value($key,'giathitruong');?>
 						<td class="product-quantity">
-							<input id="txtQuantity" class="quantity" type="text" productid="472" minquantity="0" onchange="CheckQuantity(this.id)" maxlength="8" value="2" name="txtQuantity">
+							<input id="txtQuantity" class="quantity" type="text"  minquantity="0" onchange="CheckQuantity(this.id)" maxlength="8" value="<?php echo $value;?>" name="txtQuantity">
 						</td>
-						<td class="product-price"> 20,000 </td>
+						<td class="product-price"> <?php echo number_format($giathitruong*$value,0);?> </td>
 						<td>
-							<input id="btnRemoveItem" type="image" style="border-width:0px;" onclick="return confirm('Bạn có chắc chắn?');" src="<?php echo base_url()?>application/content/images/btn_trash.gif" title="Xóa sản phẩm" name="btnRemoveItem">
+							<input class="btnRemoveItem" id="<?php echo $key;?>" value="<?php echo base_url()?>shoppingcart/delete" type="image" style="border-width:0px;"  src="<?php echo base_url()?>application/content/images/btn_trash.gif" title="Xóa sản phẩm" name="btnRemoveItem">
 						</td>
-					</tr>
-					<tr class="even">
-						<td class="product-number"> 2 </td>
-						<td class="product-name">
-							<a title="Nước uống sâm quy" href="/vi/san-pham/thuc-pham-chuc-nang/p-472/nuoc-uong-sam-quy.aspx"> Nước uống sâm quy</a>
-						</td>
-						<td class="product-price"> 20,000 </td>
-						<td class="product-quantity">
-							<input id="txtQuantity" class="quantity" type="text" productid="472" minquantity="0" onchange="CheckQuantity(this.id)" maxlength="8" value="2" name="txtQuantity">
-						</td>
-						<td class="product-price"> 20,000 </td>
-						<td>
-							<input id="btnRemoveItem" type="image" style="border-width:0px;" onclick="return confirm('Bạn có chắc chắn?');" src="<?php echo base_url()?>application/content/images/btn_trash.gif" title="Xóa sản phẩm" name="btnRemoveItem">
-						</td>
-					</tr>
+					</tr>					
+					<?php
+							$sum=$sum+$giathitruong*$value;
+							} 
+						$num++;	
+						}
+					}?>
 				</tbody>
 				<tfoot>
 					<tr>
 						<td class="total-price" colspan="50">
 							<strong>Tổng cộng </strong>
 							:
-							<strong> 60,000 VNĐ</strong>
+							<strong> <?php echo number_format($sum,0);?> VNĐ</strong>
 						</td>						
 					</tr>
 					<tr>
 						<td colspan="50">
-							<input id="ctl00_ContentPlaceHolder1_ctl00_ctl00_btnContinue" class="button" type="submit" onclick="javascript:history.go(-1); return false;" value="Tiếp tục" name="ctl00$ContentPlaceHolder1$ctl00$ctl00$btnContinue">
-							<input id="ctl00_ContentPlaceHolder1_ctl00_ctl00_btnUpdate" class="button" type="submit" value="Cập nhật giỏ hàng" name="ctl00$ContentPlaceHolder1$ctl00$ctl00$btnUpdate">
-							<input id="ctl00_ContentPlaceHolder1_ctl00_ctl00_btnCheckOut" class="button" type="submit" value="Thanh toán" name="ctl00$ContentPlaceHolder1$ctl00$ctl00$btnCheckOut">
+							<input id="btnContinue" class="button" type="submit" onclick="javascript:history.go(-1); return false;" value="Tiếp tục" name="btnContinue">
+							<input id="btnUpdate" class="button" type="submit" value="Cập nhật giỏ hàng" name="btnUpdate">
+							<input id="btnCheckOut" class="button" type="submit" value="Thanh toán" name="btnCheckOut">
 						</td>
 					</tr>
 				</tfoot>
 			</table>
+			<script type="text/javascript" language="javascript">
+			function CheckQuantity(id) {
+				var txtQuantity = document.getElementById(id);
+				var minQty = txtQuantity.getAttribute("MinQuantity");
+				var curQty = txtQuantity.value;
+				if (parseInt(curQty) < parseInt(minQty)) {
+					alert('Số lượng sản phẩm ít nhất phải là ' + minQty);
+					txtQuantity.value = minQty;
+					txtQuantity.select();
+				}
+			}
+			</script>
+			<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.tblcart .btnRemoveItem').click(function(){
+					var c = confirm('Bạn có chắc chắn?');
+					if(c){
+						var url = jQuery(this).attr('value');
+						var id = jQuery(this).attr('id');			
+						jQuery.post(url,{param:id},function(data) {
+							jQuery("#lblMessage").html(data);			
+						});			
+						jQuery(this).parents('tr').fadeOut(function(){ 
+							jQuery(this).remove();
+						});
+					}
+					return false;
+				});	
+			});
+			</script>
+			<?php }?>
 		</div>
 	</div>
 	<div class="clean"> </div>
