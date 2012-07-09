@@ -19,8 +19,8 @@
 							<input type="hidden" id="hdfUrlAjax" value="<?php echo base_url();?>admin/hoiviens/SearchUsername" />
                     		 <p><label>Người giới thiệu:</label></p>
                             <p><span class="field">
-								<input type="text" AUTOCOMPLETE=OFF class="sb_input longinput"  onkeyup="javascript:SearchUser();"/>
-								<ul class="sb_dropdown" style="display:none">
+								<input type="text" AUTOCOMPLETE=OFF class="sb_input0 longinput"  onkeyup="javascript:SearchUser();"/>
+								<ul class="sb_dropdown sb_dropdown0" style="display:none">
 									<li>
 										<a href="javascript:void(0);" onclick="javascript:jQuery('.sb_dropdown').css('display','none');" style="float:right" title="Đóng">x</a>
 									</li>
@@ -33,6 +33,24 @@
 								</span>
 							</span>
 							</p>
+							<br />
+							<p><label>Người chỉ định:</label></p>
+                            <p><span class="field">
+								<input type="text" AUTOCOMPLETE=OFF class="sb_input1 longinput"  onkeyup="javascript:SearchUser1();"/>
+								<ul class="sb_dropdown sb_dropdown1" style="display:none">
+									<li>
+										<a href="javascript:void(0);" onclick="javascript:jQuery('.sb_dropdown1').css('display','none');" style="float:right" title="Đóng">x</a>
+									</li>
+									<li>
+										<span id="dataSearch1"></span>
+									</li>
+								</ul>
+								<input type="hidden" value="" name="txtchoose" id="txtchoose" />
+								<span id="spUserChoose">
+								</span>
+							</span>
+							</p>
+							
 							<br />
                             <p><label>Tên đăng nhập:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtname" /></span></p>

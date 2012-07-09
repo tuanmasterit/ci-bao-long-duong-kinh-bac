@@ -353,11 +353,11 @@ jQuery(document).ready(function(){
 
 	function SearchUser()
 	{
-		jQuery('.sb_dropdown').css('display','');
-		var txtVal=jQuery('.sb_input').val();
+		jQuery('.sb_dropdown0').css('display','');
+		var txtVal=jQuery('.sb_input0').val();
 		if(txtVal!='')
 		{
-			jQuery.post(jQuery('#hdfUrlAjax').val(), { txtusername:txtVal},
+			jQuery.post(jQuery('#hdfUrlAjax').val(), { txtusername:txtVal,type:'ref'},
 			function(data) {   	
 			jQuery('#dataSearch').html(data);
 			});
@@ -365,19 +365,47 @@ jQuery(document).ready(function(){
 	   else
 	   {jQuery('#dataSearch').html('<ul><li>...</li></ul>');}
 	}
+	function SearchUser1()
+	{
+		jQuery('.sb_dropdown1').css('display','');
+		var txtVal=jQuery('.sb_input1').val();
+		if(txtVal!='')
+		{
+			jQuery.post(jQuery('#hdfUrlAjax').val(), { txtusername:txtVal,type:'ch'},
+			function(data) {   	
+			jQuery('#dataSearch1').html(data);
+			});
+	   }
+	   else
+	   {jQuery('#dataSearch1').html('<ul><li>...</li></ul>');}
+	}
 	function ChooseUserRef(val)
 	{
 		jQuery('#spUserReferences').html(val+'<a style="color:red" href="javascript:void(0)" onclick="javascript:ClearUserRef();"> x</a>');
 		jQuery('#txtreference').val(val);
-		jQuery('.sb_dropdown').css('display','none');
-		jQuery('.sb_input').css('display','none');
+		jQuery('.sb_dropdown0').css('display','none');
+		jQuery('.sb_input0').css('display','none');
+	}
+	function ChooseUserCh(val)
+	{
+		jQuery('#spUserChoose').html(val+'<a style="color:red" href="javascript:void(0)" onclick="javascript:ClearUserCh();"> x</a>');
+		jQuery('#txtchoose').val(val);
+		jQuery('.sb_dropdown1').css('display','none');
+		jQuery('.sb_input1').css('display','none');
+	}
+	function ClearUserCh()
+	{
+		jQuery('.sb_input1').css('display','');
+		jQuery('#spUserChoose').html('');
+		jQuery('#txtchoose').val('');
+		jQuery('.sb_input1').val('');
 	}
 	function ClearUserRef()
 	{
-		jQuery('.sb_input').css('display','');
+		jQuery('.sb_input0').css('display','');
 		jQuery('#spUserReferences').html('');
 		jQuery('#txtreference').val('');
-		jQuery('.sb_input').val('');
+		jQuery('.sb_input0').val('');
 	}
 	function initTrees() {
 		jQuery("#black").treeview({

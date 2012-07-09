@@ -96,12 +96,20 @@ class Hoiviens extends CI_Controller {
 	}
 	public function SearchUsername()
 	{
-		$param = $this->input->post('txtusername');		
+		$param = $this->input->post('txtusername');
+		$type = $this->input->post('type');		
 		$html='<ul>';
 		$lstUser =$this->User_model->searchByUsername($param);
 		foreach($lstUser as $item){
 		$username=$item ->user_login;
-		$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserRef(this.id);">'.$username.'</a></li>'; 
+			if($type=='ref')
+			{
+			$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserRef(this.id);">'.$username.'</a></li>'; 
+			}
+			else
+			{
+			$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserCh(this.id);">'.$username.'</a></li>'; 
+			}
 		}
 		$html.='</ul>';
 		echo $html;
