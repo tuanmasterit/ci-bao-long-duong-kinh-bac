@@ -1,5 +1,8 @@
 <div id="footer_text">
-	<p class="otherinfo">Bản quyền thuộc công ty Bảo Long Đường Kinh Bắc</p><p class="adr">Địa chỉ:  Km số 10 Cổ Đông Tx Sơn Tây - Hà Nội</p><p class="tel">Điện thoại: (04)33.686.648 -  | Fax(04)33.686.649</p><p class="tel"></p>
+	<p class="otherinfo">Bản quyền thuộc công ty TNHH Bảo Long Đường Kinh Bắc</p>
+    <p class="adr">Địa chỉ:  Số 31 - Phố Mới - P. Đồng Nguyên - Từ Sơn - Bắc Ninh</p>
+    <p class="tel">Điện thoại: 0241.374.3870 | Fax: 0241.374.3870 </p>
+    <p class="tel">Mã số thuế: 2300742687</p>
 </div>            
 <div id="menu_bottom">
 	<ul>
