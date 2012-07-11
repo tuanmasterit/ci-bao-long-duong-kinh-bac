@@ -9,7 +9,7 @@ class Shoppingcart extends CI_Controller {
 		$this->load->model('Cart_model');
 		$this->load->library('session');
 		$this->load->library('cart');
-		$this->product_name_rules = '\d\D';
+		$this->cart->product_name_rules =  "\.\:\-_ a-z0-9\pL";
 	}
 	
 	function addToCart()
@@ -30,7 +30,8 @@ class Shoppingcart extends CI_Controller {
                'name'    => $name				               
             );
      	$this->cart->insert($data);
-     	echo $this->cart->total_items();     	 	       		
+     	echo $this->cart->total_items(); 
+     	 	       		
 	}
 	
 	
