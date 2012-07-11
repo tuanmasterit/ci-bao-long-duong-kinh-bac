@@ -33,7 +33,7 @@
 						<th rowspan="1">&nbsp;  </th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="contentcart">
 				<?php 
 					if(isset($_SESSION['cart']))
 					{
@@ -53,7 +53,7 @@
                                     <td class="product-price"> <?php echo number_format($this->Post_model->get_meta_value($key,'giathitruong'),0);?> </td>
                                     <?php $giathitruong = (int)$this->Post_model->get_meta_value($key,'giathitruong');?>
                                     <td class="product-quantity">
-                                        <input id="txtQuantity" class="quantity" type="text"  minquantity="0" onchange="CheckQuantity(this.id)" maxlength="8" value="<?php echo $value;?>" name="txtQuantity">
+                                        <input id="txtQuantity" class="quantity" type="text" productid="<?php echo $key;?>"  minquantity="0" onchange="CheckQuantity(this.id)" maxlength="8" value="<?php echo $value;?>" name="txtQuantity">
                                     </td>
                                     <td class="product-price"> <?php echo number_format($giathitruong*$value,0);?> </td>
                                     <td>
@@ -72,7 +72,7 @@
 						<td class="total-price" colspan="50">
 							<strong>Tổng cộng </strong>
 							:
-							<strong> <?php echo number_format($sum,0);?> VNĐ</strong>
+							<strong id="tonggiatri"> <?php  echo number_format($this->Cart_model->getSumCart(),0);?> VNĐ</strong>
 						</td>						
 					</tr>
 					<tr>
@@ -107,10 +107,12 @@
 				var url = jQuery(this).attr('value');
 				var id = jQuery(this).attr('id');			
 				jQuery.post(url,{param:id},function(data) {
-					jQuery("#lblMessage").html(data);
+					jQuery("#lblMessage").html(data.message1);
+					jQuery("#tonggiatri").html(data.message2 + " VNĐ");
 					var count="<?php echo $_SESSION['countcart']; ?>";
-					jQuery("#cart-count").html(count-1);			
-				});			
+					jQuery("#cart-count").html(count-1);
+													
+				},'json');			
 				jQuery(this).parents('tr').fadeOut(function(){ 
 					jQuery(this).remove();
 				});
@@ -120,6 +122,7 @@
 		jQuery('#btnUpdate').click(function(){		
 				var url = jQuery(this).attr('name');
 				var id = '';
+				var soluong='';
 				var tb = jQuery(this).attr('title');							// get target id of table								   
 				//var sel = false;											//initialize to false as no selected row
 				var txt = jQuery('.'+tb).find('tbody input[type=text]');		//get each checkbox in a table
@@ -127,15 +130,20 @@
 				txt.each(function(){
 					//if(jQuery(this).is(':checked')) {
 						//sel = true;
-						id = jQuery(this).attr('value');
-						alert(id);
-						//jQuery.post(url,{param:id},function(data) {
-							//alert(id);				
-						//});
-						
+						soluong += jQuery(this).attr('value')+',';
+						id +=jQuery(this).attr('productid')+',';
+											
 					//}
-				});
+				});				
+				soluong = soluong.substring(0, soluong.length-1);
+				id = id.substring(0, id.length-1);
 				
+				jQuery.post(url,{param:id, soluong:soluong},function(data) {
+					jQuery("#contentcart").html(data.message1);
+					jQuery("#tonggiatri").html(data.message2 + " VNĐ");
+					
+					
+				},'json');
 				//if(!sel) alert('No data selected');							//alert to no data selected
 			});
 		});
