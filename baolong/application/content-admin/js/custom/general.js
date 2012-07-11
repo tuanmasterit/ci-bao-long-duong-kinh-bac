@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
 	
 	
 	jQuery('#imageUpload').popupWindow({ 
-			windowURL:'/application/elfinder/standalone-elfinder.php?mode=image', 
+			windowURL:'baolong/application/elfinder/standalone-elfinder.php?mode=image', 
 			windowName:'Filebrowser',
 			height:490, 
 			width:950,
