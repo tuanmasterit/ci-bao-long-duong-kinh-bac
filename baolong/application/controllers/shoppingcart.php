@@ -27,7 +27,7 @@ class Shoppingcart extends CI_Controller {
                'id'      => $id,
                'qty'     => 1,
                'price'   => $giathitruong,			   
-               'name'    => $name,				               
+               'name'    => $name				               
             );
      	$this->cart->insert($data);
      	echo $this->cart->total_items(); 

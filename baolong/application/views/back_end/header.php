@@ -64,7 +64,7 @@
 	<!-- START OF HEADER -->
 	<div class="header radius3">
     	<div class="headerinner">        	
-            <a href="<?php echo base_url();?>admin/index" class="logo">Bảo Long Đường Kinh Bắc</a>                          
+            <a href="<?php echo base_url();?>" class="logo">Bảo Long Đường Kinh Bắc</a>                          
             <div class="headright">
             	<div class="headercolumn">&nbsp;</div>            	
                 <div id="userPanel" class="headercolumn">
