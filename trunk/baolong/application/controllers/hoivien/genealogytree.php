@@ -57,11 +57,15 @@ class genealogytree extends CI_Controller {
 		,"1.2.1.2"=>" "
 		,"1.2.2.1"=>" "
 		,"1.2.2.2"=>" ");
-		$lstUser["1"]=$this->session->userdata('username');	
-		$count = $this->User_model->getCountByParent($this->session->userdata('username'));
+		$usn=$this->session->userdata('username');	
+		if($this->input->get('u') != ''){
+			$usn = $this->input->get('u');
+		}
+		$lstUser["1"]='<a href="'.base_url().'hoivien/genealogytree?u='.$usn.'">'.$usn.'</a>';
+		$count = $this->User_model->getCountByParent($usn);
 		if($count>0)
 		{
-			$this ->GenHtmlTree($this->session->userdata('username'),1,$lstUser,"1");
+			$this ->GenHtmlTree($usn,1,$lstUser,"1");
 		}
 
 		$data['lstUser'] = $lstUser;
