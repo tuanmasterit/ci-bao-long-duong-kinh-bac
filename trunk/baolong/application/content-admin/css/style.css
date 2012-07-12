@@ -1257,3 +1257,22 @@ span.sb_down{
 	
 }
 #spUserReferences{font-weight:bold;color:#3300CC}
+
+	.tblPhahe
+	{
+		width:500px;
+	}
+	.tblPhahe td
+	{
+		text-align:center;
+		border:solid 1px #ccc;
+		
+	}
+	.tblPhahe .divphahe
+	{
+		text-align:center;
+		width:100px;
+		height:100px;
+		background: url(../images/phahe.gif) no-repeat 0 0;		
+	}
+	
