@@ -9,8 +9,8 @@
  $config['smtp_host']='ssl://smtp.googlemail.com';
  $config['smtp_port']='465';
  $config['smtp_timeout']='30';
- $config['smtp_user']='phamvanhung0818@gmail.com';
- $config['smtp_pass']='chuonggio';
+ $config['smtp_user']='tasvis0818@gmail.com';
+ $config['smtp_pass']='tasvis!@123';
  $config['charset']='utf-8';
  $config['newline']="\r\n";
  $config['mailtype'] = 'html';
