@@ -1276,19 +1276,19 @@ span.sb_down{
 		display:inline-block;
 	}
 	
-	.tblPhahe .p1
+	.tblPhahe .p1 a
 	{
 		padding-right:5px;
 		text-align:right;
 		color:blue;
 	}
-	.tblPhahe .p2
+	.tblPhahe .p2 a
 	{
 		padding-left:5px;
 		text-align:left;
 		color:blue;
 	}
-	.tblPhahe .p3
+	.tblPhahe .p3 a
 	{
 		text-align:center;
 		color:red;
