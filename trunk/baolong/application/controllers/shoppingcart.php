@@ -9,7 +9,7 @@ class Shoppingcart extends CI_Controller {
 		$this->load->model('Cart_model');
 		$this->load->library('session');
 		$this->load->library('cart');
-		$this->cart->product_name_rules =  "\.\:\-_ a-z0-9\pL";
+		$this->cart->product_name_rules =  "\.\:\-_ a-z0-9áàảãạăắằẳẵặâấầẩẫậéèẻẽẹêếềểễệóòỏõọơớờởỡợôốồổỗộúùủũụưứừửữựíìỉĩịýỳỷỹỵđÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬÉÈẺẼẸÊẾỀỂỄỆÓÒỎÕỌƠỚỜỞỠỢÔỐỒỔỖỘÚÙỦŨỤƯỨỪỬỮỰÍÌỈĨỊÝỲỶỸỴĐ";
 	}
 	
 	function addToCart()
@@ -23,15 +23,29 @@ class Shoppingcart extends CI_Controller {
 		}
 		$giathitruong = $this->Post_model->get_meta_value($id,'giathitruong');
 		$giahoivien = $this->Post_model->get_meta_value($id,'giahoivien');
-		$data = array(
-               'id'      => $id,
-               'qty'     => 1,
-               'price'   => $giathitruong,			   
-               'name'    => $name				               
-            );
-     	$this->cart->insert($data);
-     	echo $this->cart->total_items(); 
-     	 	       		
+		$flag = false;//Biến kiểm tra có mặt hàng chưa
+		foreach ($this->cart->contents() as $items):
+			if($items['id']==$id)
+			{
+				$data = array(
+					 'rowid' => $items['rowid'],
+               		 'qty'   => $items['qty']+1
+				);
+				$this->cart->update($data);
+				$flag=true;
+			}
+		endforeach;
+		if($flag==false)
+		{
+			$data = array(
+	               'id'      => $id,
+	               'qty'     => 1,
+	               'price'   => $giathitruong,			   
+	               'name'    => $name				               
+	            );
+	     	$this->cart->insert($data);
+		}
+     	echo $this->cart->total_items();      	 	       		
 	}
 	
 	
@@ -92,31 +106,81 @@ class Shoppingcart extends CI_Controller {
 	{			
 		//$cart=$_SESSION['cart'];
 		$id = $this->input->post('param');
-		if($id == 0)
-		{
-			unset($_SESSION['cart']);
-		}
-		else
-		{
-			$giathitruong = (int)$this->Post_model->get_meta_value($id,'giathitruong');					
-						
-			unset($_SESSION['cart'][$id]);
-			$lstProduct = $this->Post_model->get($id,'product');
-			if(count($lstProduct)>0)
+		foreach ($this->cart->contents() as $items):
+			if($items['id']==$id)
 			{
-				$product = $lstProduct[0];				
-				echo json_encode(array('message1'=>"Bạn đã xóa <b> ".$product->post_title.'</b> trong giỏ hàng.','message2'=>$this->Cart_model->getSumCart()));
+				$data = array(
+					 'rowid' => $items['rowid'],
+               		 'qty'   => 0
+				);
+				$this->cart->update($data);
+				$flag=true;
 			}
-			if(isset($_SESSION['countcart']))
-			{
-				$_SESSION['countcart'] = $_SESSION['countcart']-1;
-			}
-		}	
+		endforeach;					
+		
+		$lstProduct = $this->Post_model->get($id,'product');
+		if(count($lstProduct)>0)
+		{
+			$product = $lstProduct[0];				
+			echo json_encode(array('message1'=>"Bạn đã xóa <b> ".$product->post_title.'</b> trong giỏ hàng.','message2'=>$this->cart->total(),'message3'=>$this->cart->total_items()));
+		}			
 	}
 	
 	function update()
 	{
+		$lst_id = $this->input->post('param');
+		$arr_id = preg_split('/,/', $lst_id);
 		
+		$lst_soluong = $this->input->post('soluong');
+		$arr_soluong = preg_split('/,/', $lst_soluong);
+		
+		$count = count($arr_id);
+		for($k=0;$k<$count;$k++)
+		{
+			foreach ($this->cart->contents() as $items):
+				if($items['id']==$arr_id[$k])
+				{
+					$data = array(
+					 'rowid' => $items['rowid'],
+               		 'qty'   => $arr_soluong[$k]
+					);
+					$this->cart->update($data);
+				}
+			endforeach;
+		}
+		
+		$num = 1;
+		$sum = 0;					
+		$i = 1;
+		$html='';
+		foreach ($this->cart->contents() as $items):
+			if(($num%2)==0)
+			{
+				$html.= "<tr class='even'>";
+			}
+			else 
+			{
+				$html.= "<tr>";
+			}
+			
+			$html.= "<td class='product-number'>".$num." </td>";
+			$html.= "<td class='product-name'>";
+			$html.= "<a href='".base_url()."/welcome/product/".$items['id']."' title='".$items['name']."'> ".$items['name']."</a>";
+			$html.= "</td>";
+			$html.= "<td class='product-price'> ".number_format($items['price'],0)." </td>";
+			$html.= "<td class='product-quantity'>";
+			$html.= "<input id='txtQuantity' class='quantity' type='text' name='".$i."[qty]' value='".$items['qty']."' maxlength='8' onchange='CheckQuantity(this.id)' minquantity='0' productid='".$items['id']."'>";
+			$html.= "</td>";
+			$html.= "<td class='product-price'> ".number_format($items['subtotal'],0)."</td>";
+			$html.= "<td>";
+			$html.= "<input id='".$items['id']."' class='btnRemoveItem' type='image' name='btnRemoveItem' title='Xóa sản phẩm' src='".base_url()."application/content/images/btn_trash.gif' style='border-width:0px;' value='".base_url()."shoppingcart/delete'>";
+			$html.= "</td>";
+			$html.= "</tr>";						
+								
+		$num++;	
+		endforeach;	
+		$message2 = number_format($this->cart->total(),0);			
+		echo json_encode(array('message1'=>$html,'message2'=>$message2));	
 	}
 }
 ?>

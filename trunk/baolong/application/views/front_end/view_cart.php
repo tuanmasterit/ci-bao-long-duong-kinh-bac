@@ -46,11 +46,11 @@
                                     <td class="product-name">
                                         <a title="<?php echo $items['name']; ?>" href="<?php echo base_url().'welcome/product/'.$items['id'];?>"> <?php echo $items['name']; ?></a>
                                     </td>
-                                    <td class="product-price"> <?php echo $this->cart->format_number($items['price']); ?> </td>                                    
+                                    <td class="product-price"> <?php echo number_format($items['price'],0); ?> </td>                                    
                                     <td class="product-quantity">
                                         <input id="txtQuantity" class="quantity" type="text" productid="<?php echo $items['id']; ?>"  minquantity="0" onchange="CheckQuantity(this.id)" maxlength="8" value="<?php echo $items['qty']?>" name="<?php echo $i.'[qty]';?>">
                                     </td>
-                                    <td class="product-price"> <?php echo $this->cart->format_number($items['subtotal']); ?> </td>
+                                    <td class="product-price"> <?php echo number_format($items['subtotal'],0); ?> </td>
                                     <td>
                                         <input class="btnRemoveItem" id="<?php echo $items['id']; ?>" value="<?php echo base_url()?>shoppingcart/delete" type="image" style="border-width:0px;"  src="<?php echo base_url()?>application/content/images/btn_trash.gif" title="Xóa sản phẩm" name="btnRemoveItem">
                                     </td>
@@ -65,7 +65,7 @@
 						<td class="total-price" colspan="50">
 							<strong>Tổng cộng </strong>
 							:
-							<strong id="tonggiatri"> <?php echo $this->cart->format_number($this->cart->total()); ?> VNĐ</strong>
+							<strong id="tonggiatri"> <?php echo number_format($this->cart->total(),0); ?> VNĐ</strong>
 						</td>						
 					</tr>
 					<tr>
@@ -101,9 +101,8 @@
 				var id = jQuery(this).attr('id');			
 				jQuery.post(url,{param:id},function(data) {
 					jQuery("#lblMessage").html(data.message1);
-					jQuery("#tonggiatri").html(data.message2 + " VNĐ");
-					var count="<?php echo $_SESSION['countcart']; ?>";
-					jQuery("#cart-count").html(count-1);
+					jQuery("#tonggiatri").html(data.message2 + " VNĐ");					
+					jQuery("#cart-count").html(data.message3);
 													
 				},'json');			
 				jQuery(this).parents('tr').fadeOut(function(){ 
@@ -113,7 +112,8 @@
 			return false;
 		});	
 	});
-		/*jQuery('#btnUpdate').click(function(){		
+
+		jQuery('#btnUpdate').click(function(){		
 				var url = jQuery(this).attr('name');
 				var id = '';
 				var soluong='';
@@ -124,9 +124,9 @@
 				txt.each(function(){
 					//if(jQuery(this).is(':checked')) {
 						//sel = true;
-						soluong += jQuery(this).attr('value')+',';
-						id +=jQuery(this).attr('productid')+',';
-											
+						soluong += jQuery(this).attr('value')+",";
+						id +=jQuery(this).attr('productid')+",";
+									
 					//}
 				});				
 				soluong = soluong.substring(0, soluong.length-1);
@@ -139,5 +139,6 @@
 					
 				},'json');
 				//if(!sel) alert('No data selected');							//alert to no data selected
-			});*/
+			});
+			
 </script>
