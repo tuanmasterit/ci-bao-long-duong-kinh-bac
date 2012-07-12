@@ -1,7 +1,7 @@
 <div id="shopping-cart">
 	<div id="title">
 		<h4>
-			<span>Giỏ hàng</span>
+			<span>Hoàn tất</span>
 		</h4>
 	</div>
 	<div class="content">
@@ -72,15 +72,82 @@
 						<td colspan="50">
 							<input id="btnContinue" class="button" type="submit" onclick="javascript:history.go(-1); return false;" value="Tiếp tục" name="btnContinue">
 							<input id="btnUpdate"  class="button" type="submit" title="tblcart" value="Cập nhật giỏ hàng" name="<?php echo base_url();?>shoppingcart/update">
-							<input id="btnCheckOut" class="button" type="submit" value="Thanh toán" name="btnCheckOut" onclick="RedirectChechOut();">
+							
 						</td>
 					</tr>
 				</tfoot>
 			</table>			
 			<?php }?>
 		</div>
+		
 	</div>
 	<div class="clean"> </div>
+</div>
+<div id="contact-form">
+	<form action="<?php echo base_url()?>shoppingcart/checkout">
+	<div class="customer-info" style="margin: 20px;">
+		<label class="infomation"> Thông tin khách hàng</label>
+		<label>
+			Họ tên
+			<strong style="color: red;">*</strong>
+		</label>
+		<input id="txtFullName" type="text" name="txtFullName">		
+		<label>
+			Email
+			<strong style="color: red;">*</strong>
+		</label>
+		<input id="txtEmail" type="text" name="txtEmail">		
+		<label>
+			Điện thoại			
+		</label>
+		<input id="txtDienThoai" type="text" name="txtDienThoai">		
+		<label>
+			Di động			
+		</label>
+		<input id="txtDiDong" type="text" name="txtDiDong">		
+		<label>
+			Địa chỉ			
+		</label>
+		<input id="txtDiachi" type="text" name="txtDiaChi">		
+		<label>
+		Ý kiến của bạn
+		<strong style="color: red;">*</strong>
+		</label>
+		<textarea id="txtComments" cols="20" rows="2" name="txtComments"></textarea>
+		<br>
+		
+		<?php
+			require_once('recaptchalib.php');	
+			// Get a key from https://www.google.com/recaptcha/admin/create
+			$publickey = "6LeE6tMSAAAAADsMiEDylaZuG9sssrg3RyDdCUTG";
+			$privatekey = "6LeE6tMSAAAAAGDVwQTgxD9auzPKbdCONekd-mMM";
+			
+			# the response from reCAPTCHA
+			$resp = null;
+			# the error code from reCAPTCHA, if any
+			$error = null;
+			
+			# was there a reCAPTCHA response?
+			if (isset($_POST["recaptcha_response_field"])) {
+			        $resp = recaptcha_check_answer ($privatekey,
+			                                        $_SERVER["REMOTE_ADDR"],
+			                                        $_POST["recaptcha_challenge_field"],
+			                                        $_POST["recaptcha_response_field"]);
+			
+			        if ($resp->is_valid) {
+			                echo "You got it!";
+			        } else {
+			                # set the error code so that we can display it
+			                $error = $resp->error;
+			        }
+			}
+			echo recaptcha_get_html($publickey, $error);       
+		?>	
+		<br>
+		<input id="btnSubmit" class="button" type="submit" value="Gửi" name="btnSubmit">
+		<input class="button reset" type="reset" value="Reset">
+	</div>
+	</form>
 </div>
 <script type="text/javascript" language="javascript">
 	function CheckQuantity(id) {
