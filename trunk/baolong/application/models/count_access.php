@@ -66,20 +66,9 @@ class Count_access extends CI_Model{
     
     function countOnline()
     {
-    	$visitors = 0;
-    	$handle = opendir(session_save_path());
-    	while (($file = readdir($handle))!= false)
-    	{
-    		if($file!= "." && $file!="..")
-    		{
-    			if(preg_match("/^sess/", $file))
-    			{
-    				$visitors++;
-    			}
-    		}
-    	}
-    	closedir($handle); 
-    	return $visitors;
+    	$query = "SELECT * FROM ci_sessions WHERE last_activity >= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 5 MINUTE )";
+    	$result = $this->db->query($query);
+    	echo count($result);   	
     }
 }
 ?>
