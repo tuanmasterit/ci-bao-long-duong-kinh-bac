@@ -1265,14 +1265,33 @@ span.sb_down{
 	.tblPhahe td
 	{
 		text-align:center;
-		border:solid 1px #ccc;
-		
+		vertical-align:middle
 	}
 	.tblPhahe .divphahe
 	{
 		text-align:center;
-		width:150px;
+		width:250px;
 		height:150px;
-		background: url(../images/phahe.png) no-repeat 0 0;		
+		background: url(../images/phahe.png) no-repeat center;		
+		display:inline-block;
+	}
+	
+	.tblPhahe .p1
+	{
+		padding-right:5px;
+		text-align:right;
+		color:blue;
+	}
+	.tblPhahe .p2
+	{
+		padding-left:5px;
+		text-align:left;
+		color:blue;
+	}
+	.tblPhahe .p3
+	{
+		text-align:center;
+		color:red;
+		font-weight:bold
 	}
 	
