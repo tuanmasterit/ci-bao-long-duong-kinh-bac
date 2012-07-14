@@ -356,7 +356,8 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
-
+$config['sess_use_database'] = TRUE;
+$config['sess_table_name'] = 'ci_sessions';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
