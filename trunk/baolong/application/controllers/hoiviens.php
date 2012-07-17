@@ -7,6 +7,7 @@
  		$this->load->library('email');
  		$this->load->model('Term_model');
  		$this->load->library('parser');
+ 		$this->load->model('Option_model');
  	}
  	
  	function register()
@@ -20,10 +21,15 @@
 			$email = $this->input->post('txtEmail');
 			$nguoi_gioi_thieu = $this->input->post('txtHoiVien');
 			$this->email->from('dangky@baolongduong.com','Bảo Long Đường Kinh Bắc');
-
-			//Email
 			
-			$this->email->to("phamvanhung0818@gmail.com");  
+			//Email
+			$ad_email = $this->Option_model->getOption('admin_email');
+			$admin_email='';
+			foreach ($ad_email as $e)
+			{
+				$admin_email = $e->option_value;
+			}
+			$this->email->to($admin_email);  
 			$this->email->subject('Đăng ký hội viên');
 			$email_msg="			
 			<html xmlns='http://www.w3.org/1999/xhtml'>
