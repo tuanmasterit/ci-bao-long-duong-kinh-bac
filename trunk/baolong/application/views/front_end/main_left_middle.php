@@ -1,20 +1,18 @@
 <script type="text/javascript">
-	function AddToCart(url,id){
-		//var url = jQuery(this).attr('href');
-		//var id = jQuery(this).attr('id');			
-		jQuery.post(url,{param:id},function(data) {
-			jQuery("#cart-count").text(data);
-			alert("Bạn đã thêm một sản phẩm!");				
-		});
-		
-		
-	}
+function AddToCart(url,id){
+	//var url = jQuery(this).attr('href');
+	//var id = jQuery(this).attr('id');			
+	jQuery.post(url,{param:id},function(data) {
+		jQuery("#cart-count").text(data);
+		alert("Bạn đã thêm một sản phẩm!");				
+	});
+}
 </script>
 <div id="main_left">
 	<div id="products_v2">
     	<div id="title">
         	<h4>
-            	<span><a href="" class="parent">Sản phẩm</a> - <a href="/vi/san-pham/dong-duoc.aspx">Đông Dược</a></span>
+            	<span><a href="" class="parent">Sản phẩm</a> - <a href="<?php echo base_url()."welcome/cat/".$firstTopCat;?>">Đông Dược</a></span>
         	</h4>    
         </div>
         <div class="content">
