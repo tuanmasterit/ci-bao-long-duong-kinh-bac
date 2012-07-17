@@ -349,7 +349,7 @@ input.TextBox, #contactBox .row input, #contactBox .row2 input {
     width: 250px;
 }
 #contact-form .captcha {
-    margin: 0 0 10px 5px;
+    margin: 10px 0 10px 5px;
 }
 #contact-form .captcha input, #contact-form .captcha label {
     margin: 0 !important;
