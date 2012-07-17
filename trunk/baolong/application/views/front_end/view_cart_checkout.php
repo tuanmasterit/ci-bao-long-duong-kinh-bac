@@ -84,19 +84,23 @@
 	<div class="clean"> </div>
 </div>
 <div id="contact-form">
-	<form action="<?php echo base_url()?>shoppingcart/checkout">
+	<?php echo form_open('shoppingcart/sendcart',array('id'=>'formID','class'=>'stdform'));?>	
 	<div class="customer-info" style="margin: 20px;">
 		<label class="infomation"> Thông tin khách hàng</label>
+		<?php 
+		if(!isset($user))
+		{
+		?>
 		<label>
 			Họ tên
 			<strong style="color: red;">*</strong>
 		</label>
-		<input id="txtFullName" type="text" name="txtFullName">		
+		<input id="txtFullName" type="text" name="txtFullName" class="validate[required]">		
 		<label>
 			Email
 			<strong style="color: red;">*</strong>
 		</label>
-		<input id="txtEmail" type="text" name="txtEmail">		
+		<input id="txtEmail" type="text" name="txtEmail" class="validate[required,custom[email]]">		
 		<label>
 			Điện thoại			
 		</label>
@@ -106,48 +110,62 @@
 		</label>
 		<input id="txtDiDong" type="text" name="txtDiDong">		
 		<label>
-			Địa chỉ			
+			Địa chỉ	
+			<strong style="color: red;">*</strong>		
 		</label>
-		<input id="txtDiachi" type="text" name="txtDiaChi">		
+		<input id="txtDiachi" type="text" name="txtDiaChi" class="validate[required]">		
+		<?php 
+		}
+		else 
+		{
+			
+		?>
+		<label>
+			Họ tên
+			<strong style="color: red;">*</strong>
+		</label>
+		<input id="txtFullName" value="<?php echo $user['user_nicename'];?>" type="text" name="txtFullName" class="validate[required]">		
+		<label>
+			Email
+			<strong style="color: red;">*</strong>
+		</label>
+		<input id="txtEmail" value="<?php echo $user['user_email'];?>" type="text" name="txtEmail" class="validate[required,custom[email]]">		
+		<label>
+			Điện thoại			
+		</label>
+		<input id="txtDienThoai" type="text" name="txtDienThoai">		
+		<label>
+			Di động			
+		</label>
+		<input id="txtDiDong" type="text" name="txtDiDong">		
+		<label>
+			Địa chỉ	
+			<strong style="color: red;">*</strong>		
+		</label>
+		<input id="txtDiachi" type="text" name="txtDiaChi" class="validate[required]">		
+		
+		<?php }?>
 		<label>
 		Ý kiến của bạn
 		<strong style="color: red;">*</strong>
 		</label>
-		<textarea id="txtComments" cols="20" rows="2" name="txtComments"></textarea>
+		<textarea id="txtComments" cols="20" rows="2" name="txtComments" class="validate[required]"></textarea>
 		<br>
-		
-		<?php
-			require_once('recaptchalib.php');	
-			// Get a key from https://www.google.com/recaptcha/admin/create
-			$publickey = "6LeE6tMSAAAAADsMiEDylaZuG9sssrg3RyDdCUTG";
-			$privatekey = "6LeE6tMSAAAAAGDVwQTgxD9auzPKbdCONekd-mMM";
-			
-			# the response from reCAPTCHA
-			$resp = null;
-			# the error code from reCAPTCHA, if any
-			$error = null;
-			
-			# was there a reCAPTCHA response?
-			if (isset($_POST["recaptcha_response_field"])) {
-			        $resp = recaptcha_check_answer ($privatekey,
-			                                        $_SERVER["REMOTE_ADDR"],
-			                                        $_POST["recaptcha_challenge_field"],
-			                                        $_POST["recaptcha_response_field"]);
-			
-			        if ($resp->is_valid) {
-			                echo "You got it!";
-			        } else {
-			                # set the error code so that we can display it
-			                $error = $resp->error;
-			        }
-			}
-			echo recaptcha_get_html($publickey, $error);       
-		?>	
+		<div id="RadCaptcha" class="RadCaptcha RadCaptcha_Default captcha">
+			<div id=SpamProtectorPanel" class="captcha">
+				<?php echo $image;?>
+			</div>
+			<p>
+				<input type="hidden" id="word" name="word" value="<?php echo $word;?>">
+				<input id="captchaTextBox" type="text" title="" name="CaptchaTextBox" class="validate[required,equals[word]]">
+				<label id="CaptchaTextBoxLabel" for="CaptchaTextBox">Nhập mã bảo mật</label>
+			</p>
+		</div>		
 		<br>
 		<input id="btnSubmit" class="button" type="submit" value="Gửi" name="btnSubmit">
 		<input class="button reset" type="reset" value="Reset">
 	</div>
-	</form>
+	<?php echo form_close();?>
 </div>
 <script type="text/javascript" language="javascript">
 	function CheckQuantity(id) {
