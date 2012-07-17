@@ -1,3 +1,13 @@
+<script type="text/javascript">
+function AddToCart(url,id){
+	//var url = jQuery(this).attr('href');
+	//var id = jQuery(this).attr('id');			
+	jQuery.post(url,{param:id},function(data) {
+		jQuery("#cart-count").text(data);
+		alert("Bạn đã thêm một sản phẩm!");				
+	});
+}
+</script>
 <div id="boxProducts">
 	<div id="title">
 		<h4>
@@ -45,6 +55,14 @@
 				<div class="dimensions">
 					<span class="td1">Tình trạng: </span>
 					<span class="td2">Còn hàng</span>
+				</div>
+				<div class="shoppingcart">
+					<span class="td1">Đặt hàng: </span>
+					<span class="td2">
+					<a class="imgBtnCss" onclick="AddToCart(this.href,<?php echo $product->id;?>); return false;" target="_blank" href="<?php echo base_url();?>shoppingcart/addToCart">
+					<img src="<?php echo  base_url()?>application/content/images/icon_order.jpg">
+					</a>
+					</span>
 				</div>				
 				<div class="clear"></div>
 			</div>
@@ -80,7 +98,8 @@
             		<div class="price">
             			<span>Thị trường: <?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?></span>
             			<br/>
-            			<span>Hội viên: <?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?></span>            			
+            			<span>Hội viên: <?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?></span>
+            			<a class="imgBtnCss" id="<?php echo $product->id;?>" onclick="AddToCart(this.href,<?php echo $product->id;?>); return false;" href="<?php echo base_url();?>shoppingcart/addToCart">Đặt mua</a>            			
             		</div>
             	</div>
             	<?php 

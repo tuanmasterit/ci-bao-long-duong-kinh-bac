@@ -100,6 +100,7 @@ class Welcome extends CI_Controller {
 		$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 		//Sản phẩm mặc định
 		$firstTopCat = $this->Term_model->getCatProTopFirst();
+		$data['firstTopCat'] = $firstTopCat;
 		//paging
 		include('paging.php');
 		$config['per_page'] = 32;
