@@ -7,9 +7,13 @@ class Shoppingcart extends CI_Controller {
 		$this->load->model('Term_model');
 		$this->load->model('Post_model');
 		$this->load->model('Cart_model');
+		$this->load->model('User_model');
+		$this->load->library('session');
 		$this->load->library('cart');
 		$this->cart->product_name_rules =  "\.\:\-_ a-z0-9áàảãạăắằẳẵặâấầẩẫậéèẻẽẹêếềểễệóòỏõọơớờởỡợôốồổỗộúùủũụưứừửữựíìỉĩịýỳỷỹỵđÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬÉÈẺẼẸÊẾỀỂỄỆÓÒỎÕỌƠỚỜỞỠỢÔỐỒỔỖỘÚÙỦŨỤƯỨỪỬỮỰÍÌỈĨỊÝỲỶỸỴĐ";
 		$this->load->helper('captcha');
+		$this->load->model('Option_model');
+		$this->load->library('email');
 	}
 	
 	function addToCart()
