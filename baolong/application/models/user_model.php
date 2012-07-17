@@ -30,8 +30,12 @@ class User_model extends CI_Model{
 			$this->db->select('id,user_login,user_nicename,user_email,display_name');
 			$this->db->from('ci_users');
 			$this->db->join('ci_usermeta', 'id = user_id');
-			$this->db->where('meta_key','group');
-			$this->db->where('meta_value',$meta_value);
+			
+			if($meta_value!='')
+			{
+				$this->db->where('meta_key','group');
+				$this->db->where('meta_value',$meta_value);
+			}
 			$this->db->where('id',$id);
 			$query = $this->db->get();
         	$data = array();
