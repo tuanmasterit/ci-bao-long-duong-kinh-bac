@@ -123,6 +123,12 @@ class User_model extends CI_Model{
 			'meta_value'=>$meta_boothtitle
 		);
 		$this->db->insert('ci_usermeta',$user_meta2);
+		$user_meta3 = array(
+			'user_id'=>$id,
+			'meta_key'=>'vcoin',
+			'meta_value'=>'0'
+		);
+		$this->db->insert('ci_usermeta',$user_meta3);
 	}
 	
 	//get id last record

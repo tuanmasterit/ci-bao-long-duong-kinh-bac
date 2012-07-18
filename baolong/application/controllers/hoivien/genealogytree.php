@@ -63,6 +63,7 @@ class genealogytree extends CI_Controller {
 		}
 		$lstUser["1"]='<a href="'.base_url().'hoivien/genealogytree?u='.$usn.'">'.$usn.'</a>';
 		$count = $this->User_model->getCountByParent($usn);
+		echo $count.'-'.$usn;
 		if($count>0)
 		{
 			$this ->GenHtmlTree($usn,1,$lstUser,"1");
