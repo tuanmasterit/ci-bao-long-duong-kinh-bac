@@ -50,8 +50,8 @@ class Hoiviens extends CI_Controller {
 			$display_name = $this->input->post('txtdisplay');
 			$meta_value = 'hoivien';
 			$meta_references=$this->input->post('txtreference');
-			$meta_boothtitle=$this->input->post('txtboothtitle');
-			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle);
+			$meta_chooseuser=$this->input->post('txtchoose');
+			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser);
 			$this-> session-> set_flashdata('message','Thêm hội viên thành công!');			
 			redirect('admin/hoiviens','refresh');	
 		}
