@@ -2,6 +2,18 @@
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckeditor/ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckfinder/ckfinder.js"></script>
 <!-- START OF MAIN CONTENT -->
+<SCRIPT language="javascript" type="text/javascript">
+      <!--
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+      //-->
+   </SCRIPT>
 <div class="mainwrapper">
     <div class="mainwrapperinner">
 		<?php $this->load->view('back_end/sidebar-left');?> 
@@ -19,10 +31,10 @@
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
                             <br/>
                             <p><label>Giá thị trường:</label></p>
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtthitruong"></span></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtthitruong" onkeypress="return isNumberKey(event)"></span></p>
                             <br/>
                             <p><label>Giá hội viên:</label></p>
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txthoivien"></span></p>
+                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txthoivien" onkeypress="return isNumberKey(event)"></span></p> 
                             <br/>
                             <p><label>Mô tả:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>
