@@ -16,7 +16,7 @@
     <link href="<?php echo base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css"/>
     
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery-1.4.2.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>application/content/js/validation.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>application/content/js/validation.js"></script>
    
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/default.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/nivo-slider.css" type="text/css" media="screen" />
@@ -27,34 +27,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.jcarousel.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/content/css/tango/skin.css" />
 	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/ShoppingCart.css" type="text/css" media="screen" />
-<script>    
-    jQuery(document).ready(function() {
-		jQuery('#coin-slider').nivoSlider();
-    jQuery('#list_carousel').jcarousel({    	
-        auto: 5,
-        wrap: 'circular',
-        initCallback: mycarousel_initCallback    		
-    	});
-	});
-	function mycarousel_initCallback(carousel)
-	{
-	    // Disable autoscrolling if the user clicks the prev or next button.
-	    carousel.buttonNext.bind('click', function() {
-	        carousel.startAuto(0);
-	    });
-	
-	    carousel.buttonPrev.bind('click', function() {
-	        carousel.startAuto(0);
-	    });
-	
-	    // Pause autoscrolling if the user moves with the cursor over the clip.
-	    carousel.clip.hover(function() {
-	        carousel.stopAuto();
-	    }, function() {
-	        carousel.startAuto();
-	    });
-	};
-</script>
+	<script src="<?php echo base_url();?>application/content/js/script.js" type="text/javascript"></script>
 </head>
 <body>
    

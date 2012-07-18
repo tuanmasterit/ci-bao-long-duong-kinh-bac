@@ -1,3 +1,18 @@
+<div id="list_promo" class="slide_carousel">	
+	<ul class="promo-slider fl">
+    <?php     	
+    	foreach ($list_sp_noibat as $sp_noibat)
+    	{			
+    ?>
+    		<li class="item">
+                <a href="<?php echo base_url();?>product/<?php echo $sp_noibat->id;?>" class="fl"><img src="<?php echo $this->Post_model->get_featured_image($sp_noibat->id);?>" alt=""></a>
+                <p class="title"><a href="<?php echo base_url();?>product/<?php echo $sp_noibat->id;?>"><?php echo $sp_noibat->post_title;?></a></p>    	
+            </li>
+    <?php     	
+    	}
+    ?>                  
+    </ul>
+</div>
 <div id="footer_text">
 	<p class="otherinfo">Bản quyền thuộc công ty TNHH Bảo Long Đường Kinh Bắc</p>
     <p class="adr">Địa chỉ:  Số 31 - Phố Mới - P. Đồng Nguyên - Từ Sơn - Bắc Ninh</p>
