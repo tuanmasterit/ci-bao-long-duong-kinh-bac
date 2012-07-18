@@ -78,10 +78,11 @@
                     ?>
                     <li><a href="<?php echo base_url().'news/cat/'.$sach->term_id;?>"><?php echo $sach->name;?></a></li>
                     <?php }?>
+                    <li><a href="<?php echo base_url().'news/cat/'.$truyen_ngan_id;?>">Truyện Ngắn</a></li>
+            		<li><a href="<?php echo base_url().'news/cat/'.$bao_tuong_id;?>">Báo tường</a></li>
                 </ul>
             </li>
-            <li><a href="<?php echo base_url().'news/cat/'.$truyen_ngan_id;?>" class="parent"><span>Truyện Ngắn</span></a></li>
-            <li><a href="<?php echo base_url().'news/cat/'.$bao_tuong_id;?>" class="parent"><span>Báo tường</span></a></li>
+            
             <li><a href="#" class="parent"><span>Tư vấn thiết kế website</span></a></li>
         </ul>
         <div class="clean"></div>
