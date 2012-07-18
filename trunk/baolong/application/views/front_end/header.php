@@ -82,7 +82,7 @@
             		<li><a href="<?php echo base_url().'news/cat/'.$bao_tuong_id;?>">Báo tường</a></li>
                 </ul>
             </li>
-            
+            <li><a href="<?php echo base_url().'news/cat/58'?>" class="parent"><span>Phật pháp tâm linh</span></a>
             <li><a href="#" class="parent"><span>Tư vấn thiết kế website</span></a></li>
         </ul>
         <div class="clean"></div>
