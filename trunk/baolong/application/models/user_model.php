@@ -50,7 +50,7 @@ class User_model extends CI_Model{
 			$this->db->select('user_login,display_name,meta_value');
 			$this->db->from('ci_users');
 			$this->db->join('ci_usermeta', 'id = user_id');
-			$this->db->where('meta_key','parent');
+			$this->db->where('meta_key','chooseuser');
 			$this->db->where('meta_value',$parentid);
 			$query = $this->db->get();   
 			return $query->result();
@@ -60,7 +60,7 @@ class User_model extends CI_Model{
 	{
 		$this->db->from('ci_users');
 		$this->db->join('ci_usermeta', 'id = user_id');
-		$this->db->where('meta_key','parent');
+		$this->db->where('meta_key','chooseuser');
 		$this->db->where('meta_value',$parentid);	
 		return $this->db->count_all_results();
 	}
@@ -131,7 +131,7 @@ class User_model extends CI_Model{
 		$this->db->insert('ci_usermeta',$user_meta3);
 		$user_meta4 = array(
 			'user_id'=>$id,
-			'meta_key'=>'meta_chooseuser',
+			'meta_key'=>'chooseuser',
 			'meta_value'=>$meta_chooseuser
 		);
 		$this->db->insert('ci_usermeta',$user_meta4);
