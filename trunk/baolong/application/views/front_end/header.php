@@ -44,7 +44,7 @@
                     foreach ($listCatNav as $catNav)
                     { 
                     ?>
-                    <li><a href="<?php echo base_url().'welcome/cat/'.$catNav->term_id;?>"><?php echo $catNav->name;?></a></li>
+                    <li><a href="<?php echo base_url().'cat/'.$catNav->term_id;?>"><?php echo $catNav->name;?></a></li>
                     <?php 
                     }
                     ?>
