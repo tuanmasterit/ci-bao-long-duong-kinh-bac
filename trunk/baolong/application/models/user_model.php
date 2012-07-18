@@ -84,7 +84,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle)
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser)
 	{	
 		
 		$user_pass_random = $this->common->generatePassword(7,0);
@@ -129,6 +129,12 @@ class User_model extends CI_Model{
 			'meta_value'=>'0'
 		);
 		$this->db->insert('ci_usermeta',$user_meta3);
+		$user_meta4 = array(
+			'user_id'=>$id,
+			'meta_key'=>'meta_chooseuser',
+			'meta_value'=>$meta_chooseuser
+		);
+		$this->db->insert('ci_usermeta',$user_meta4);
 	}
 	
 	//get id last record
