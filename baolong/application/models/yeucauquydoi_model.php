@@ -1,6 +1,6 @@
 <?php 
 //include('class.php');
-class logs_model extends CI_Model{
+class yeucauquydoi_model extends CI_Model{
 	//Properties
 	function __construct()
     {
@@ -9,14 +9,14 @@ class logs_model extends CI_Model{
 		$this->load->database();		
     }
 	//Add logs
-	function add($user_id,$log_type,$log_content,$created_date){		
+	function add($vcoin,$user_id,$user_process,$status){		
 		$arr=array(
+			'vcoin'=>$vcoin,
 			'user_id'=>$user_id,
-			'log_type'=>$log_type,
-			'log_content'=>$log_content,
-			'created_date'=>$created_date
+			'user_process'=>$user_process,
+			'status'=>$status
 		);
-		$this->db->insert('ci_logs',$arr);
+		$this->db->insert('ci_yeucauquydoi',$arr);
 		return $last_id;
 	}
 }
