@@ -83,7 +83,7 @@
                 </ul>
             </li>
             <li><a href="<?php echo base_url().'news/cat/58'?>" class="parent"><span>Phật pháp tâm linh</span></a>
-            <li><a href="#" class="parent"><span>Tư vấn thiết kế website</span></a></li>
+            <li><a href="<?php echo base_url();?>pages/index/34" class="parent"><span>Tư vấn thiết kế website</span></a></li>
         </ul>
         <div class="clean"></div>
 	</div>
