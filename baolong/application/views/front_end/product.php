@@ -15,13 +15,13 @@ function AddToCart(url,id){
         		if($is_parent==true)
         		{
         	?>
-            <span><a href="" class="parent">Sản phẩm</a> &gt; <a href="<?php echo base_url().'welcome/cat/'.$cat->term_id;?>"><?php echo $cat->name;?></a></span>
+            <span><a href="" class="parent">Sản phẩm</a> &gt; <a href="<?php echo base_url().'cat/'.$cat->term_id;?>"><?php echo $cat->name;?></a></span>
             <?php 
         		}
         		else
         		{ 
             ?>
-            <span><a href="" class="parent">Sản phẩm</a>- <a href="<?php echo base_url().'welcome/cat/'.$parentCat['term_id'];?>"><?php echo $parentCat['name'];?></a> - <a href="<?php echo base_url().'welcome/cat/'.$cat->term_id;?>"><?php echo $cat->name;?></a></span>
+            <span><a href="" class="parent">Sản phẩm</a>- <a href="<?php echo base_url().'cat/'.$parentCat['term_id'];?>"><?php echo $parentCat['name'];?></a> - <a href="<?php echo base_url().'cat/'.$cat->term_id;?>"><?php echo $cat->name;?></a></span>
             <?php 
         		}
         	?>
@@ -29,7 +29,7 @@ function AddToCart(url,id){
 	</div>
 	<div class="contentboxProduct">
 		<div class="box_img_product_detail" style="position: relative;">
-			<a id="imageZoom" class="imageZoom" href="<?php echo base_url().'welcome/product/'.$product->id;?>" style="outline-style: none; text-decoration: none; cursor: crosshair; display: block; position: relative; height: 271px; width: 269px;">
+			<a id="imageZoom" class="imageZoom" href="<?php echo base_url().'product/'.$product->id;?>" style="outline-style: none; text-decoration: none; cursor: crosshair; display: block; position: relative; height: 271px; width: 269px;">
 				<img id="lagerImage" alt="Hỏa Long" src="<?php echo $this->Post_model->get_featured_image($product->id); ?>" />
 			</a>
 		</div>
@@ -84,13 +84,13 @@ function AddToCart(url,id){
         		?>
             	<div class="product_item">
             		<div class="img">
-            			<a rel="lightbox"  href="<?php echo base_url().'welcome/product/'.$product->id;?>">
+            			<a rel="lightbox"  href="<?php echo base_url().'product/'.$product->id;?>">
             				<img class="imgHotProduct" alt="<?php echo $product->post_title;?>" src="<?php echo $this->Post_model->get_featured_image($product->id);?>"/>
             			</a>
             		</div>
             		<div class="clear"></div>
             		<div class="title">
-            			<a href="<?php echo base_url().'welcome/product/'.$product->id;?>">
+            			<a href="<?php echo base_url().'product/'.$product->id;?>">
             				<h2><?php echo $product->post_title;?></h2>
             			</a>
             		</div>
