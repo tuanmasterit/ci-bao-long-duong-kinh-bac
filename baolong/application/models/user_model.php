@@ -235,8 +235,11 @@ class User_model extends CI_Model{
 		$this->db->from('ci_users');
 		$this->db->where('user_login',$username);
 		$query = $this->db->get();
-		$row =  $query->first_row();
-		return $row->ID;		
+		foreach ($query->result() as $row)
+		{
+			return $row->ID;
+		}
+		return -10;
 	}
 	
 	function getAjax($username,$limit,$offset,$meta_value)
