@@ -17,9 +17,10 @@
                 		?>   
                 			<?php echo form_open('admin/hoiviens/add',array('id'=>'formID','class'=>'stdform'));?>
 							<input type="hidden" id="hdfUrlAjax" value="<?php echo base_url();?>admin/hoiviens/SearchUsername" />
-                    		 <p><label>Người giới thiệu:</label></p>
-                            <p><span class="field">
-								<input type="text" AUTOCOMPLETE=OFF class="sb_input0 longinput"  onkeyup="javascript:SearchUser();"/>
+                    		 <p><label  style="width:90px;display:inline-block;text-align:left">Người giới thiệu:</label>
+							 
+							 <input type="text" AUTOCOMPLETE=OFF class="sb_input0 longinput"  style="width:250px" onkeyup="javascript:SearchUser();"/>
+								<span id="spUserReferences"  style="width:250px"></span>
 								<ul class="sb_dropdown sb_dropdown0" style="display:none">
 									<li>
 										<a href="javascript:void(0);" onclick="javascript:jQuery('.sb_dropdown').css('display','none');" style="float:right" title="Đóng">x</a>
@@ -29,14 +30,11 @@
 									</li>
 								</ul>
 								<input type="hidden" value="" name="txtreference" id="txtreference" />
-								<span id="spUserReferences">
-								</span>
-							</span>
-							</p>
+							 </p>
 							<br />
-							<p><label>Người chỉ định:</label></p>
-                            <p><span class="field">
-								<input type="text" AUTOCOMPLETE=OFF class="sb_input1 longinput"  onkeyup="javascript:SearchUser1();"/>
+							<p><label  style="width:90px;display:inline-block;text-align:left">Người chỉ định:</label>
+							<input type="text" AUTOCOMPLETE=OFF class="sb_input1 longinput" style="width:250px"  onkeyup="javascript:SearchUser1();"/>
+							<span id="spUserChoose" style="width:250px;display:inline-block"></span>
 								<ul class="sb_dropdown sb_dropdown1" style="display:none">
 									<li>
 										<a href="javascript:void(0);" onclick="javascript:jQuery('.sb_dropdown1').css('display','none');" style="float:right" title="Đóng">x</a>
@@ -45,27 +43,41 @@
 										<span id="dataSearch1"></span>
 									</li>
 								</ul>
-								<input type="hidden" value="" name="txtchoose" id="txtchoose" />
-								<span id="spUserChoose">
-								</span>
-							</span>
+								<input type="hidden" value=""  style="width:250px" name="txtchoose" id="txtchoose"  />
 							</p>
+
 							
 							<br />
-                            <p><label>Tên đăng nhập:</label></p>
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtname" /></span></p>
+                            <p><label style="width:90px;display:inline-block;text-align:left">Tên đăng nhập:</label><input type="text" style="width:250px" class="longinput validate[required]" name="txtname" /></p>
                             <br />
-                            <p><label>Tên hội viên:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txtnicename" /></span></p>
+                            <p><label style="width:90px;display:inline-block;text-align:left">Tên hội viên:</label><input style="width:250px" type="text" class="longinput validate[required]" name="txtnicename" /></p>                            
                             <br />
-                            <p><label>Email:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput validate[required,custom[email]]" name="txtemail" /></span></p>
+                            <p><label style="width:90px;display:inline-block;text-align:left">Email:</label><input type="text" style="width:250px" class="longinput validate[required,custom[email]]" name="txtemail" /></p>                            
                             <br />
-                            <p><label>Tên hiển thị:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput" name="txtdisplay" /></span></p>
+                            <p><label style="width:90px;display:inline-block;text-align:left">Tên hiển thị:</label><input type="text" class="longinput" style="width:250px" name="txtdisplay" /></p>                            <br />
+							 <p><label style="width:90px;display:inline-block;text-align:left">Giới tính:</label>
+							 <select name="sex">
+									<option value="-1">-None-</option>
+									<option value="1">Nam</option>
+									<option value="0">Nữ</option>
+								</select>
+							 </p>                            
                             <br />
-							 <p><label>Tên gian hàng:</label></p>                            
-                            <p><span class="field"><input type="text" class="longinput" name="txtboothtitle" /></span></p>
+							 <p><label style="width:90px;display:inline-block;text-align:left">Tên gian hàng:</label><input style="width:250px" type="text" class="longinput" name="txtboothtitle" /></p>                            
+                            <br />
+							 <p><label style="width:90px;display:inline-block;text-align:left">CMT:</label><input style="width:250px" type="text" class="longinput  validate[required]" name="txtCMT" /></p>                            
+                            <br />
+							 <p><label style="width:90px;display:inline-block;text-align:left">D/C thường trú:</label><input style="width:250px" type="text" class="longinput validate[required]" name="txtDCTT" /></p>                            
+                            <br />
+							<p><label style="width:90px;display:inline-block;text-align:left">Nơi ở hiện tại:</label><input style="width:250px" type="text" class="longinput " name="txtNoio" /></p>                            
+                            <br />
+							<p><label style="width:90px;display:inline-block;text-align:left">Điện thoại:</label><input style="width:250px" type="text" class="longinput validate[required]" name="txtPhone" /></p>                            
+                            <br />
+							<p><label style="width:90px;display:inline-block;text-align:left">Số tài khoản:</label><input style="width:250px" type="text" class="longinput" name="txtATM" /></p>                            
+                            <br />
+							<p><label style="width:90px;display:inline-block;text-align:left">Tên ngân hàng:</label><input style="width:250px" type="text" class="longinput" name="txtBank" /></p>                            
+                            <br />
+							<p><label style="width:90px;display:inline-block;text-align:left">Ngày sinh:</label><input style="width:250px" type="text" class="longinput" name="txtBirthDate" /></p>                            
                             <br />
                             <p class="stdformbutton">
                             	<button class="submit radius2">Thêm mới</button>
