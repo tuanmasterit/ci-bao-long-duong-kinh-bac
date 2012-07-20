@@ -66,7 +66,7 @@
 			$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
 			 
 			$data['main'] = 'front_end/view_page';
-			$this->load->view('front_end/template',$data);
+			$this->load->view('front_end/template_2',$data);
 		}
 	}
 ?>
