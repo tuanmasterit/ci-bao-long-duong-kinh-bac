@@ -63,6 +63,24 @@
                                     	<input type="checkbox" value="<?php echo $Category->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;<?php echo $Category->name;?>
                                         <br>
                                     <?php }?>
+                                    <?php
+                                    $subCats = $this->Term_model->getSubCatProNav($Category->term_id);
+			        				foreach ($subCats as $subCat)
+			        				{
+			        				?>
+			        				<?php foreach($categories_of_post as $category_of_post){
+										if($subCat->term_id == $category_of_post->term_taxonomy_id){$flag=true;}		
+									}?>                                	
+                                	<?php if($flag){?>
+                                    	<input type="checkbox" checked="checked" value="<?php echo $subCat->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;----<?php echo $subCat->name;?>
+                                        <br>                                    
+                                    <?php }else{?>
+                                    	<input type="checkbox" value="<?php echo $subCat->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;----<?php echo $subCat->name;?>
+                                        <br>
+                                    <?php }?>	
+			        				<?php 
+			        				}
+			        				?>      
                                 <?php }?>                                 
                             </div>
                         </div>

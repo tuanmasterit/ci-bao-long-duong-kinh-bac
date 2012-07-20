@@ -58,7 +58,16 @@
                             <div class="title"><h2 class="general"><span>Danh mục sản phẩm</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
                                 <?php foreach($lstCategories as $Category){?>                            	
-                                    <input type="checkbox" value="<?php echo $Category->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;<?php echo $Category->name;?><br>                                    
+                                    <input type="checkbox" value="<?php echo $Category->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;<?php echo $Category->name;?><br>
+                                    <?php
+                                    $subCats = $this->Term_model->getSubCatProNav($Category->term_id);
+			        				foreach ($subCats as $subCat)
+			        				{
+			        				?>
+			        				<input type="checkbox" value="<?php echo $subCat->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;---- <?php echo $subCat->name;?><br>	
+			        				<?php 
+			        				}
+			        				?>                                    
                                 <?php }?>                                 
                             </div>
                         </div>

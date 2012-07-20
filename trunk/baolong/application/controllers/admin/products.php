@@ -50,7 +50,7 @@ class Products extends CI_Controller {
 	//------------------------------------------------------------------------
 	public function add()
 	{			
-		$data['lstCategories'] = $this->Term_model->get(0,0,0,'catpro');
+		$data['lstCategories'] = $this->Term_model->getCatProNav('catpro');
 		$data['post_type'] = 'product';		
 		$this->load->view('back_end/view_add_product',$data);
 	}
@@ -100,7 +100,7 @@ class Products extends CI_Controller {
 		
 	}
 	public function edit($id){		
-		$data['lstCategories'] = $this->Term_model->get(0,0,0,'catpro');
+		$data['lstCategories'] = $this->Term_model->getCatProNav('catpro');
 		$data['Post'] = $this->Post_model->get($id,'product');
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);

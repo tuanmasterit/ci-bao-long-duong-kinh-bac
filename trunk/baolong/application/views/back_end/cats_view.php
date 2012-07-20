@@ -93,7 +93,7 @@
                     </div>
                     <div class="list-right">
                     	<div class="contenttitle radiusbottom0">
-                            <h2 class="table"><span>Danh mục bài viết</span></h2>
+                            <h2 class="table"><span>Danh mục sản phẩm</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
                             <button class="deletebutton radius3" name="delete_term" value="<?php echo base_url();?>admin/categories/delete" title="table2">Delete Selected</button> &nbsp;
