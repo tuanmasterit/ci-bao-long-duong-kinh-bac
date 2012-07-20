@@ -36,6 +36,7 @@ class Hoiviens extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links(); 		
 		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'hoivien');
+
 		$this->load->view('back_end/hoivien_view',$data);
 	}
 	
@@ -43,7 +44,10 @@ class Hoiviens extends CI_Controller {
 	{
 		if($this->input->post('txtname'))
 		{
+			
 			$user_login = $this->input->post('txtname');
+			redirect('admin/hoiviens','refresh');
+			$at=$this->User_model->getByUsername($user_login);
 			$user_nicename = $this->input->post('txtnicename');
 			$user_email = $this->input->post('txtemail');
 			$user_regitered = date('Y-m-d h-i-s');
