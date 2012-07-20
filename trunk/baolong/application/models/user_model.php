@@ -84,11 +84,12 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser)
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate)
 	{	
 		
+		
 		$user_pass_random = $this->common->generatePassword(7,0);
-		//$user_pass_random='1234567';
+		$user_pass_random='1234567';
 		$this->load->helper('security');
 		$user_pass = do_hash($user_pass_random, 'md5');
 		$user = array(
@@ -135,6 +136,62 @@ class User_model extends CI_Model{
 			'meta_value'=>$meta_chooseuser
 		);
 		$this->db->insert('ci_usermeta',$user_meta4);
+		
+		
+		$birthdate_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'birthdate',
+			'meta_value'=>$birthdate
+		);
+		$this->db->insert('ci_usermeta',$birthdate_meta);
+		
+		$bank_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'bank',
+			'meta_value'=>$bank
+		);
+		$this->db->insert('ci_usermeta',$bank_meta);
+		
+		$atm_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'atm',
+			'meta_value'=>$atm
+		);
+		$this->db->insert('ci_usermeta',$atm_meta);
+		
+		$phone_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'phone',
+			'meta_value'=>$phone
+		);
+		$this->db->insert('ci_usermeta',$phone_meta);
+		$noio_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'noio',
+			'meta_value'=>$noio
+		);
+		$this->db->insert('ci_usermeta',$noio_meta);
+		
+		$dctt_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'dctt',
+			'meta_value'=>$dctt
+		);
+		$this->db->insert('ci_usermeta',$dctt_meta);
+		
+		$cmt_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'cmt',
+			'meta_value'=>$cmt
+		);
+		$this->db->insert('ci_usermeta',$cmt_meta);
+		$sex_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'sex',
+			'meta_value'=>$sex
+		);
+		$this->db->insert('ci_usermeta',$sex_meta);
+		
 	}
 	
 	//get id last record
