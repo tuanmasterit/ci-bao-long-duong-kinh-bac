@@ -86,8 +86,6 @@ class User_model extends CI_Model{
 	
 	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate)
 	{	
-		
-		
 		$user_pass_random = $this->common->generatePassword(7,0);
 		$user_pass_random='1234567';
 		$this->load->helper('security');
@@ -127,7 +125,7 @@ class User_model extends CI_Model{
 		$user_meta3 = array(
 			'user_id'=>$id,
 			'meta_key'=>'vcoin',
-			'meta_value'=>'0'
+			'meta_value'=>'18'
 		);
 		$this->db->insert('ci_usermeta',$user_meta3);
 		$user_meta4 = array(

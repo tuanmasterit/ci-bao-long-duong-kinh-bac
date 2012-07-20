@@ -46,8 +46,9 @@ class Hoiviens extends CI_Controller {
 		{
 			
 			$user_login = $this->input->post('txtname');
-			redirect('admin/hoiviens','refresh');
 			$at=$this->User_model->getByUsername($user_login);
+			if($at!=-10)
+			redirect('admin/hoiviens','refresh');
 			$user_nicename = $this->input->post('txtnicename');
 			$user_email = $this->input->post('txtemail');
 			$user_regitered = date('Y-m-d h-i-s');
@@ -115,13 +116,23 @@ class Hoiviens extends CI_Controller {
 		$lstUser =$this->User_model->searchByUsername($param);
 		foreach($lstUser as $item){
 		$username=$item ->user_login;
+		$ct=$this->User_model->getCountByParent($username);
+		
 			if($type=='ref')
 			{
-			$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserRef(this.id);">'.$username.'</a></li>'; 
+				
+			$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserRef(this.id);">'.$username.'</a></li>'; 	
 			}
 			else
 			{
-			$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserCh(this.id);">'.$username.'</a></li>'; 
+				if($ct<2)
+				{
+					$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:ChooseUserCh(this.id);">'.$username.'--<span style="color:blue">'.$ct.'</span></a></li>'; 	
+				}
+				else
+				{
+					$html .= '<li><a href="javascript:void(0)" id="'.$username.'" onclick="javascript:void(0);">'.$username.'-- <span style="color:red">'.$ct.'</span></a></li>'; 
+				}
 			}
 		}
 		$html.='</ul>';
