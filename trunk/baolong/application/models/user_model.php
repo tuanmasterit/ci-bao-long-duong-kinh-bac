@@ -7,6 +7,7 @@ class User_model extends CI_Model{
         // Call the Model constructor
         parent::__construct();		
 		$this->load->database();
+		$this->load->model('logs_model');
     }		
 	//List User
 	function get($id,$limit,$offset,$meta_value){
@@ -189,7 +190,8 @@ class User_model extends CI_Model{
 			'meta_value'=>$sex
 		);
 		$this->db->insert('ci_usermeta',$sex_meta);
-		
+
+		$this->logs_model->add($id,'1','Cập nhật điểm khi thêm mới hội viên: 18V',date('Y-m-d h-i-s'));
 	}
 	
 	//get id last record

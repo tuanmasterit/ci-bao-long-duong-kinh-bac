@@ -17,7 +17,6 @@ class logs_model extends CI_Model{
 			'created_date'=>$created_date
 		);
 		$this->db->insert('ci_logs',$arr);
-		return $last_id;
 	}
 }
 ?>
