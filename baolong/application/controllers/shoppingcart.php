@@ -116,7 +116,10 @@ class Shoppingcart extends CI_Controller {
 			$data['check']=true;			
 		}
 		
-		
+		//Sản phẩm tiêu biểu
+		$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
 		
 		//Giới thiệu
 		$gioithieu_id = $this->Term_model->getCategoryByName('Giới thiệu');
@@ -344,6 +347,11 @@ class Shoppingcart extends CI_Controller {
 		//Báo tường
 		$bao_tuong_id = $this->Term_model->getCategoryByName('Báo tường');
 		$data['bao_tuong_id'] = $bao_tuong_id;
+		
+		//Sản phẩm tiêu biểu
+		$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
 		
 		//Navigation
 		$data['listCatNav'] = $this->Term_model->getCatProNav();		
