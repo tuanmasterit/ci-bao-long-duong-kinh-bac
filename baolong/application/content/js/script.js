@@ -9,16 +9,15 @@ jQuery(document).ready(function(){
 	});
 	jQuery('#coin-slider').nivoSlider();
 	
-	jQuery('#list_carousel').jcarousel({    	
+	jQuery('#featured-product').jcarousel({    	
 		auto: 5,
 		wrap: 'circular',
 		initCallback: mycarousel_initCallback    		
-	});
-	
-	jQuery('#list_promo').jcarousel({    	
+	});		
+	jQuery('#promo').jcarousel({
 		auto: 5,
 		wrap: 'circular',
-		initCallback: mycarousel_initCallback    				
+		initCallback: mycarousel_initCallback		
 	});
 });
 function mycarousel_initCallback(carousel)
@@ -39,4 +38,3 @@ function mycarousel_initCallback(carousel)
 		carousel.startAuto();
 	});
 }
-});

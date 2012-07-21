@@ -28,6 +28,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/content/css/tango/skin.css" />
 	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/ShoppingCart.css" type="text/css" media="screen" />
 	<script src="<?php echo base_url();?>application/content/js/script.js" type="text/javascript"></script>
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/content/css/tango/skin.css" />
+    <link href="<?php echo base_url();?>application/content/css/nivo/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
    
