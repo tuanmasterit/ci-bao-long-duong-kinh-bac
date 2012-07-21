@@ -1,7 +1,5 @@
-<div id="list_carousel" class="slide_carousel">
-	<a href="javascript:return false;" id="foo_prev" class="prev" style="display: block;"></a>
-    <ul id="list-product-ad" style="float: none; margin: 0px; position: absolute;
-                        height: 181px; left: 0px;padding-left:50px;">
+<div id="list-product-featured">	
+    <ul id="featured-product" class="jcarousel-skin-tango">
     <?php
      	
     	foreach ($list_sp_noibat as $sp_noibat)
@@ -17,6 +15,5 @@
     	
     	}
     ?>                  
-    </ul>
-    <a href="javascript:return false;" id="foo_next" class="next" style="display: block;"></a>
+    </ul>    
 </div>
