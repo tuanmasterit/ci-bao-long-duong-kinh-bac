@@ -20,6 +20,7 @@
     <p class="adr">Địa chỉ:  Số 31 - Phố Mới - P. Đồng Nguyên - Từ Sơn - Bắc Ninh</p>
     <p class="tel">Điện thoại: 0241.374.3870 | Fax: 0241.374.3870 </p>
     <p class="tel">Mã số thuế: 2300742687</p>
+    <p class="tel">Email: baolongduongkinhbac@gmail.com</p>
 </div>            
 <div id="menu_bottom">
 	<ul>
