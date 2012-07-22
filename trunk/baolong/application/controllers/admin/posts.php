@@ -58,7 +58,7 @@ class Posts extends CI_Controller {
 	public function add($post_type)
 	{						
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Term_model->get(0,100,0,'category');
+		$data['lstCategories'] = $this->Term_model->getCatProNav('category');
 		$data['post_type'] = $post_type;		
 		$this->load->view('back_end/view_add_post',$data);
 	}
@@ -106,7 +106,7 @@ class Posts extends CI_Controller {
 		$post_type = $this->uri->segment(4);
 		$data['post_type'] = $post_type;
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Term_model->get(0,-1,0,'category');
+		$data['lstCategories'] = $this->Term_model->getCatProNav('category');
 		$data['Post'] = $this->Post_model->get($id,$post_type);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
