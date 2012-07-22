@@ -49,7 +49,7 @@
                         <div class="widgetbox">
                             <div class="title"><h2 class="general"><span>Danh mục bài viết</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
-                                <?php $flag=false;?>
+                               <?php $flag=false;?>
                                 <?php foreach($lstCategories as $Category){?>
                                 	<?php $flag=false;?>
                                     <?php $term_id = $Category->term_id;?>
@@ -63,7 +63,25 @@
                                     	<input type="checkbox" value="<?php echo $Category->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;<?php echo $Category->name;?>
                                         <br>
                                     <?php }?>
-                                <?php }?>                                 
+                                    <?php
+                                    $subCats = $this->Term_model->getSubCatProNav($Category->term_id,'category');
+			        				foreach ($subCats as $subCat)
+			        				{
+			        				?>
+			        				<?php foreach($categories_of_post as $category_of_post){
+										if($subCat->term_id == $category_of_post->term_taxonomy_id){$flag=true;}		
+									}?>                                	
+                                	<?php if($flag){?>
+                                    	<input type="checkbox" checked="checked" value="<?php echo $subCat->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;----<?php echo $subCat->name;?>
+                                        <br>                                    
+                                    <?php }else{?>
+                                    	<input type="checkbox" value="<?php echo $subCat->term_id; ?>" name="cbcategory[]">&nbsp;&nbsp;&nbsp;----<?php echo $subCat->name;?>
+                                        <br>
+                                    <?php }?>	
+			        				<?php 
+			        				}
+			        				?>      
+                                <?php }?>                               
                             </div>
                         </div>
                         <?php }?>
