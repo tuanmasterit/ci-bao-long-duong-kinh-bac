@@ -71,7 +71,18 @@
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $this->Post_model->get_meta_value($Post->id,'giathitruong');?></td>
                                     <td><?php echo $this->Post_model->get_meta_value($Post->id,'giahoivien');?></td>
-                                    <td><?php echo $Post->post_date;?></td>
+                                    <td>
+                                    	<?php
+                                    if($Post->post_modified=='0000-00-00 00:00:00')
+                                    {                                     	
+										echo date_format(date_create($Post->post_date),'d-m-Y H:i:s');
+                                    }
+                                    else 
+                                    {
+                                    	echo date_format(date_create($Post->post_modified),'d-m-Y H:i:s');
+                                    }
+                                    ?>
+                                    </td>
                                     <td class="center">
                                     	<a class="edit" href="<?php echo base_url();?>admin/products/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
                                         <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/products/delete">Xóa</a></td>
