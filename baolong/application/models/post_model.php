@@ -102,7 +102,7 @@ class Post_model extends CI_Model{
 	//List Posts	
 	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=0){
 		if($id == 0){		
-			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type');			
+			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type,post_modified');			
 			$this->db->from('ci_posts');
 			$this->db->join('ci_users','post_author=ci_users.id');
 											 			
@@ -121,7 +121,7 @@ class Post_model extends CI_Model{
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
-			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type');
+			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type,post_modified');
 			$this->db->from('ci_posts');
 			$this->db->join('ci_users','post_author=ci_users.id');		
 			$this->db->where('post_type',$post_type);
