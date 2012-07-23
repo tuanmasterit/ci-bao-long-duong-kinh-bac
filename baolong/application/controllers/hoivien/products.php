@@ -104,7 +104,9 @@ class Products extends CI_Controller {
 		
 	}
 	public function edit($id){		
-		$data['lstCategories'] = $this->Term_model->getCatProNav('catpro');
+		$username =  $this->session->userdata('username');		
+		$hoivien_id = $this->User_model->getByUsername($username);	
+		$data['lstCategories'] = $this->Term_model->getCatProNav('catpro',$hoivien_id);
 		$data['Post'] = $this->Post_model->get($id,'product');
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
