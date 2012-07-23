@@ -10,7 +10,7 @@ class Term_model extends CI_Model{
     }
 	
 	//List Categories
-	function get($id=0,$limit=-1,$offset=10,$taxonomy='category'){		
+	function get($id=0,$limit=-1,$offset=10,$taxonomy='category',$term_group=0){		
 		if($id == 0){
 			$this->db->select('ci_terms.term_id,name,slug,description,parent');
 			if($limit > 0)
@@ -20,6 +20,10 @@ class Term_model extends CI_Model{
 			$this->db->from('ci_terms');
 			$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');		
 			$this->db->where('taxonomy',$taxonomy);
+			if($term_group!=0)
+			{
+				$this->db->where('term_group',$term_group);
+			}
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
@@ -35,12 +39,13 @@ class Term_model extends CI_Model{
 		}
 	}					
 	//Add Term
-	function add($name,$slug,$taxonomy,$description,$parent)
+	function add($name,$slug,$taxonomy,$description,$parent,$term_group=0)
 	{
 		//Add Category
 		$cat = array(
 				'name' => $name,
-				'slug' => $slug,				
+				'slug' => $slug,
+				'term_group'=>$term_group				
 				);
 		$Q = $this-> db-> insert('ci_terms', $cat);
 		
@@ -97,11 +102,15 @@ class Term_model extends CI_Model{
 		$this-> db-> update('ci_term_taxonomy', $termTaxonomy);
 	}
 	
-	function getCount($taxonomy)
+	function getCount($taxonomy,$term_group=0)
 	{		
 		$this->db->from('ci_terms');
 		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');		
-		$this->db->where('taxonomy',$taxonomy);				
+		$this->db->where('taxonomy',$taxonomy);	
+		if($term_group!=0)
+		{
+			$this->db->where('term_group',$term_group);
+		}			
 		return $this->db->count_all_results();
 	}
 	
