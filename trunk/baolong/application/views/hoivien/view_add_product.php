@@ -16,7 +16,7 @@
    </SCRIPT>
 <div class="mainwrapper">
     <div class="mainwrapperinner">
-		<?php $this->load->view('back_end/sidebar-left');?> 
+		<?php $this->load->view('hoivien/sidebar-left');?> 
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
