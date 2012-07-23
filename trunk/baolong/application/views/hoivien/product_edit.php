@@ -8,14 +8,14 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>admin/products/">Tất cả sản phẩm</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/products/">Cập nhật sản phẩm</a></li>
-                    <li><a href="<?php echo base_url();?>admin/cats">Danh mục sản phẩm</a></li>
+                	<li><a href="<?php echo base_url();?>hoivien/products/">Tất cả sản phẩm</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>hoivien/products/">Cập nhật sản phẩm</a></li>
+                    <li><a href="<?php echo base_url();?>hoivien/cats">Danh mục sản phẩm</a></li>
                 </ul>
                 <div class="content">     
                 	<?php //print_r($Post);?>           	                	
                 	<?php foreach($Post as $l_post){?>
-                	<form method="post" id="formID" action="<?php echo base_url();?>admin/products/update" class="stdform">                             
+                	<form method="post" id="formID" action="<?php echo base_url();?>hoivien/products/update" class="stdform">                             
                 	<div class="edit-main">                    	                    	                            
                     		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />
                     		<input type="hidden" value="<?php echo $l_post->post_author;?>" name="post_author"/>
