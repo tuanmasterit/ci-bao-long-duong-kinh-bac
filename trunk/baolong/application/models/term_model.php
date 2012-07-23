@@ -125,13 +125,17 @@ class Term_model extends CI_Model{
 		return false;
 	}
 	
-	function getCatProNav($taxonomy='catpro')
+	function getCatProNav($taxonomy='catpro',$term_group=0)
 	{			
 		$this->db->select('ci_terms.term_id,name,slug,description');
 		$this->db->from('ci_terms');
 		$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');
 		$this->db->where('taxonomy',$taxonomy);
 		$this->db->where('parent',0);
+		if($term_group!=0)
+		{
+			$this->db->where('term_group',$term_group);
+		}
 		$query = $this->db->get();	
 		return $query->result();
 	}
