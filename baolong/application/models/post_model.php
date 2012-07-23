@@ -9,7 +9,7 @@ class Post_model extends CI_Model{
 		$this->load->database();		
     }
 	//Add posts
-	function add($post_author,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category){		
+	function add($post_author=0,$post_date,$post_content,$post_title,$post_excerpt,$post_type,$featured_image,$arr_category){		
 		$arr=array(
 			'post_author'=>$post_author,
 			'post_date'=>$post_date,
@@ -100,7 +100,7 @@ class Post_model extends CI_Model{
 		return $flag;
 	}	
 	//List Posts	
-	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=0){
+	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=0,$post_author=0){
 		if($id == 0){		
 			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type,post_modified');			
 			$this->db->from('ci_posts');
@@ -111,6 +111,10 @@ class Post_model extends CI_Model{
 				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
 				$this->db->where('ci_term_taxonomy.term_id',$term_id);
 				$this->db->or_where('ci_term_taxonomy.parent',$term_id);	
+			}
+			if($post_author!=0)
+			{
+				$this->db->where('post_author',$post_author);
 			}
 			$this->db->where('post_type',$post_type);
 			$this->db->order_by($order_by, $order);
