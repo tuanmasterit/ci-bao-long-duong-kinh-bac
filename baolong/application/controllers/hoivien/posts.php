@@ -17,17 +17,19 @@ class Posts extends CI_Controller {
 	{		
 		$param = $this->input->post('param');
 		$this->Post_model->delete_post($param);
-		redirect('admin/posts/lists/post');										
+		redirect('hoivien/posts/lists/post');										
 	}
 	//------------------------------------------------------------------------
 	//-- Function default: List posts by post_type
 	//------------------------------------------------------------------------ 
 	public function index()
 	{
-		redirect('admin/posts/lists/post');			
+		redirect('hoivien/posts/lists/post');			
 	}
 	public function lists($post_type='post',$term=0,$row=0)
 	{
+		$username =  $this->session->userdata('username');		
+		$hoivien_id = $this->User_model->getByUsername($username);	
 		// Get post type
 		$data['post_type'] = $post_type;
 		if($this->input->post('hdfposttype') != ''){
@@ -41,26 +43,28 @@ class Posts extends CI_Controller {
 		//paging
 		include('paging.php');			
 		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/";
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category']);		
+		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category'],$hoivien_id);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$config['per_page'],$row,'DESC','post_date',$data['category'],'');
-		$data['lstCategories'] = $this->Term_model->get();
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$config['per_page'],$row,'DESC','post_date',$data['category'],$hoivien_id);
+		$data['lstCategories'] = $this->Term_model->get(0,0,0,'category',$hoivien_id);
 		$data['post_type'] = $post_type;
-		$this->load->view('back_end/listposts_view',$data);
+		$this->load->view('hoivien/listposts_view',$data);
 	}
 	//------------------------------------------------------------------------
 	//-- Add post
 	//-- Param: $post_type
 	//------------------------------------------------------------------------
 	public function add($post_type)
-	{						
-		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Term_model->getCatProNav('category');
+	{	
+		$username =  $this->session->userdata('username');		
+		$hoivien_id = $this->User_model->getByUsername($username);						
+		//$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
+		$data['lstCategories'] = $this->Term_model->getCatProNav('category',$hoivien_id);
 		$data['post_type'] = $post_type;		
-		$this->load->view('back_end/view_add_post',$data);
+		$this->load->view('hoivien/view_add_post',$data);
 	}
 	//------------------------------------------------------------------------
 	//-- Get Parameter
@@ -79,10 +83,10 @@ class Posts extends CI_Controller {
 			//Insert posts			
 			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
 			if($last_id > 0){
-				redirect('admin/posts/lists/post');							
+				redirect('hoivien/posts/lists/post');							
 			}
 		}
-		redirect('admin/posts/add/'.$l_post_type);									
+		redirect('hoivien/posts/add/'.$l_post_type);									
 	}
 	//------------------------------------------------------------------------
 	//-- Update post
@@ -98,9 +102,9 @@ class Posts extends CI_Controller {
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
 		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories)){
-			redirect('admin/posts/lists/'.$l_post_type);							
+			redirect('hoivien/posts/lists/'.$l_post_type);							
 		}		
-		redirect('admin/posts/add/'.$l_post_type);
+		redirect('hoivien/posts/add/'.$l_post_type);
 	}
 	public function edit($post_type='post', $id){
 		$post_type = $this->uri->segment(4);
@@ -110,12 +114,12 @@ class Posts extends CI_Controller {
 		$data['Post'] = $this->Post_model->get($id,$post_type);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
-		$this->load->view('back_end/view_edit_post',$data);
+		$this->load->view('hoivien/view_edit_post',$data);
 	}
 	public function categories(){
 		$data['lstCategories'] = $this->Post_model->list_categories(10,0);
 		$data['Categories'] = $this->Post_model->list_categories(100,0);
-		$this->load->view('back_end/categories_view',$data);	
+		$this->load->view('hoivien/categories_view',$data);	
 	}
 	
 	
