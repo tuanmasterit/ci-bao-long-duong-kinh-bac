@@ -13,6 +13,7 @@ class Posts extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->model('User_model');
     }
+    //Phạn Văn Hưng
 	public function delete()
 	{		
 		$param = $this->input->post('param');
