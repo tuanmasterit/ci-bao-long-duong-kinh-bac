@@ -20,10 +20,8 @@ class Term_model extends CI_Model{
 			$this->db->from('ci_terms');
 			$this->db->join('ci_term_taxonomy','ci_terms.term_id=ci_term_taxonomy.term_id');		
 			$this->db->where('taxonomy',$taxonomy);
-			if($term_group!=0)
-			{
-				$this->db->where('term_group',$term_group);
-			}
+			$this->db->where('term_group',$term_group);
+			
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
