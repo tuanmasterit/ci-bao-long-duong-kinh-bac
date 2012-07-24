@@ -21,6 +21,7 @@
                 	<?php //print_r($Post);?>           	                	
                 	<?php foreach($Post as $l_post){?>
                 	<form method="post" action="<?php echo base_url();?>admin/posts/update" class="stdform">
+                	<input type="hidden" name="hdfgianhang" value="<?php echo $gianhang;?>">
                 	<input type="hidden" name="hdfposttype" value="<?php echo $post_type;?>">                             
                 	<div class="edit-main">                    	                    	                            
                     		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />

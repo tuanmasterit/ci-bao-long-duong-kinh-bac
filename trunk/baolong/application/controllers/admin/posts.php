@@ -26,12 +26,17 @@ class Posts extends CI_Controller {
 	{
 		redirect('admin/posts/lists/post');			
 	}
-	public function lists($post_type='post',$term=0,$row=0)
+	public function lists($post_type='post',$gianhang=0,$term=0,$row=0)
 	{
 		// Get post type
 		$data['post_type'] = $post_type;
 		if($this->input->post('hdfposttype') != ''){
 			$data['post_type'] = $this->input->post('hdfposttype');	
+		}
+		$data['gianhang'] = $gianhang;
+		if($this->input->post('ddlGianHang'))
+		{
+			$data['gianhang'] = $this->input->post('ddlGianHang');
 		}
 		// Get category
 		$data['category'] = $term;
@@ -40,15 +45,17 @@ class Posts extends CI_Controller {
 		}
 		//paging
 		include('paging.php');			
-		$config['base_url']= base_url()."/admin/posts/lists/".$post_type."/".$data['category']."/";
-		$config['total_rows']=$this->Post_model->getCount($data['post_type'],$data['category']);		
+		$config['base_url']= base_url()."/admin/posts/lists/".$post_type.'/'.$data['gianhang']."/".$data['category']."/";
+		$lstPosts = $this->Post_model->get(0,$data['post_type'],0,0,'DESC','post_date',$data['category'],$data['gianhang']);
+		$config['total_rows']= count($lstPosts);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();	
 		//data tranfer
-		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$config['per_page'],$row,'DESC','post_date',$data['category'],'');
-		$data['lstCategories'] = $this->Term_model->get();
+		$data['lstPosts'] = $this->Post_model->get(0,$data['post_type'],$config['per_page'],$row,'DESC','post_date',$data['category'],$data['gianhang']);
+		$data['lstCategories'] = $this->Term_model->get(0,0,0,'category',$data['gianhang']);
 		$data['post_type'] = $post_type;
+		$data['lstHoiVien'] = $this->User_model->get(0,0,0,'hoivien');
 		$this->load->view('back_end/listposts_view',$data);
 	}
 	//------------------------------------------------------------------------
@@ -92,22 +99,24 @@ class Posts extends CI_Controller {
 		$l_title = $this->input->post('txttitle');		
 		$l_exerpt = $this->input->post('txtexcerpt');		
 		$l_content = $this->input->post('txtcontent');		
-		$l_butdanh = $this->input->post('cbxbutdanh');		
+		//$l_butdanh = $this->input->post('cbxbutdanh');
+		$gianhang = $this->input->post('hdfgianhang');		
 		$l_post_type = $this->input->post('hdfposttype');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
 		//Insert posts			
-		if($this->Post_model->update($l_id,$l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories)){
+		if($this->Post_model->update($l_id,$gianhang,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories)){
 			redirect('admin/posts/lists/'.$l_post_type);							
 		}		
 		redirect('admin/posts/add/'.$l_post_type);
 	}
-	public function edit($post_type='post', $id){
+	public function edit($post_type='post', $id,$gianhang=0){
 		
 		$post_type = $this->uri->segment(4);
 		$data['post_type'] = $post_type;
-		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Term_model->getCatProNav('category');
+		//$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
+		$data['lstCategories'] = $this->Term_model->getCatProNav('category',$gianhang);
+		$data['gianhang'] = $gianhang;
 		$data['Post'] = $this->Post_model->get($id,$post_type);
 		
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);

@@ -24,6 +24,27 @@
                     <div class="tableoptions">
                         <form name="frmfilter" method="post" action="<?php echo base_url();?>admin/posts/lists/<?php echo $post_type;?>" >                        	
                         	<button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
+                        	<select class="category" name="ddlGianHang">
+                                <option value="0">--- Gian hàng chính ---</option>
+                                <?php 
+                                	foreach ($lstHoiVien as $hoivien)
+                                	{
+                                		if($hoivien->id==$gianhang)
+                                		{
+                                ?>
+                                
+                                <option value="<?php echo $hoivien->id;?>" selected="selected">Gian hàng của <?php echo $hoivien->user_login;?></option>
+                                <?php 
+                                		}
+                                		else 
+                                		{
+                                ?>
+                                <option value="<?php echo $hoivien->id;?>">Gian hàng của <?php echo $hoivien->user_login;?></option>
+                                <?php 
+                                		}
+                                	}
+                                ?>
+                            </select> &nbsp;
                         	<?php if($post_type == 'post'){?>
                             <select class="category" name="slcategory">
                                 <option value="">--- Tất cả ---</option>
@@ -35,8 +56,9 @@
                                     <?php }?>
                                 <?php }?>
                             </select> &nbsp;
-                            <input type="submit" class="btn" value="Tìm kiếm"/>
+                            
                             <?php }?>
+                            <input type="submit" class="btn" value="Tìm kiếm"/>
                         </form>
                     </div><!--tableoptions-->	
                     <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
@@ -52,7 +74,7 @@
                         <thead>
                             <tr>
                                 <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
-                                <th class="head1">Tiêu đề</th>                                
+                                <th class="head1" width="250">Tiêu đề</th>                                
                                 <th class="head0">Tóm tắt</th>
                                 <th class="head1">Ngày cập nhật</th>
                                 <th class="head0" width="60">&nbsp;</th>
@@ -85,7 +107,7 @@
                                     }
                                     ?></td>
                                     <td class="center">
-                                    	<a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
+                                    	<a class="edit" href="<?php echo base_url();?>admin/posts/edit/<?php echo $Post->post_type;?>/<?php echo $Post->id;?>/<?php echo $gianhang;?>">Sửa</a> &nbsp; 
                                         <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/posts/delete">Xóa</a></td>
                                 </tr>
                             <?php }?>
