@@ -26,7 +26,7 @@
 			$this->pagination->initialize($config);
 			$data['list_link'] = $this->pagination->create_links();
 			$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'catpro',$data['gianhang']);
-			$data['Categories'] = $this->Term_model->get(0,0,0,'catpro',$data['gianhang']);
+			$data['Categories'] = $this->Term_model->get(0,0,0,'catpro');
 			$data['lstHoiVien'] = $this->User_model->get(0,0,0,'hoivien');
 			$this->load->view('back_end/cats_view',$data);	
 		}

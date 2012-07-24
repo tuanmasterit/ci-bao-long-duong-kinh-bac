@@ -7,13 +7,19 @@ class Categories extends CI_Controller {
 		if($this->session->userdata('logged_in') != 1){
 			redirect('admin/login');
 		}
+		$this->load->model('User_model');
 		$this->load->model('Term_model');
 		$this->load->library('pagination');		
     }
 	
-	public function index($row=0){
-		$config['base_url']= base_url()."/admin/categories/index/";
-		$config['total_rows']=$this->Term_model->getCount('category');
+	public function index($gianhang=0,$row=0){
+		$data['gianhang'] = $gianhang;
+		if($this->input->post('ddlGianHang'))
+		{
+			$data['gianhang'] = $this->input->post('ddlGianHang');
+		}
+		$config['base_url']= base_url()."/admin/categories/index/".$data['gianhang'].'/';
+		$config['total_rows']=$this->Term_model->getCount('category',$data['gianhang']);
 		$config['per_page']='10';
 		$config['cur_page']= $row;
 		$config['num_links'] = 5;
@@ -37,9 +43,9 @@ class Categories extends CI_Controller {
 		$config['cur_tag_close'] = "</span>";
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links();
-		$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'category');
-		$data['Categories'] = $this->Term_model->get(0,100,0,'category');
-		$data['abc'] = 'fsfjs;ấ';
+		$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'category',$data['gianhang']);
+		$data['Categories'] = $this->Term_model->get(0,0,0,'category');
+		$data['lstHoiVien'] = $this->User_model->get(0,0,0,'hoivien');
 		$this->load->view('back_end/categories_view',$data);	
 	}
 	
@@ -68,7 +74,7 @@ class Categories extends CI_Controller {
 		$this->Term_model->delete($param);			
 	}		
 	
-	function edit($id=0,$row=0)
+	function edit($id=0,$gianhang=0,$row=0)
 	{	
 		//echo $id;			
 		$name = $this->input->post('txttitle');
@@ -81,8 +87,19 @@ class Categories extends CI_Controller {
 			$this-> session-> set_flashdata('message','Category updated');
 			redirect('admin/categories','refresh');
 		}else{
-			$config['base_url']= base_url()."/admin/categories/edit/".$id."/";
-			$config['total_rows']=$this->Term_model->getCount('category');
+			$data['lstHoiVien'] = $this->User_model->get(0,0,0,'hoivien');
+			$data['gianhang'] = $gianhang;
+			if($this->input->post('ddlGianHang'))
+			{
+				$data['gianhang'] = $this->input->post('ddlGianHang');
+			}
+			include('paging.php');
+			if($this->input->post('term_id'))
+			{
+				$id=$this->input->post('term_id');
+			}
+			$config['base_url']= base_url()."/admin/categories/edit/".$id."/".$data['gianhang'].'/';
+			$config['total_rows']=$this->Term_model->getCount('category',$data['gianhang']);
 			$config['per_page']='10';
 			$config['cur_page']= $row;
 			$config['num_links'] = 5;
@@ -106,10 +123,10 @@ class Categories extends CI_Controller {
 			$config['cur_tag_close'] = "</span>";
 			$this->pagination->initialize($config);
 			$data['list_link'] = $this->pagination->create_links();
-			$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'category');
+			$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'category',$data['gianhang']);
 			$data['category'] = $this->Term_model->get($id,0,0,'category');		
 			
-			$data['Categories'] = $this->Term_model->get(0,100,0,'category');
+			$data['Categories'] = $this->Term_model->get(0,0,0,'category',$data['gianhang']);
 			//$this->load->vars($data);
 			$this->load->view('back_end/categories_view',$data);	
 		}
