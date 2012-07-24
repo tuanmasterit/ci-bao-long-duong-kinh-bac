@@ -18,6 +18,27 @@
                     <div class="tableoptions">
                     	<form name="frmfilter" method="post" action="<?php echo base_url();?>admin/products/" >
 	                        <button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>admin/posts/delete">Delete Selected</button> &nbsp;
+	                        <select class="category" name="ddlGianHang">
+                                <option value="0">--- Gian hàng chính ---</option>
+                                <?php 
+                                	foreach ($lstHoiVien as $hoivien)
+                                	{
+                                		if($hoivien->id==$gianhang)
+                                		{
+                                ?>
+                                
+                                <option value="<?php echo $hoivien->id;?>" selected="selected">Gian hàng của <?php echo $hoivien->user_login;?></option>
+                                <?php 
+                                		}
+                                		else 
+                                		{
+                                ?>
+                                <option value="<?php echo $hoivien->id;?>">Gian hàng của <?php echo $hoivien->user_login;?></option>
+                                <?php 
+                                		}
+                                	}
+                                ?>
+                            </select> &nbsp;
 	                        <select class="category" name="slcategory">
                                 <option value="">--- Tất cả ---</option>
                                 <?php foreach($lstCategories as $l_category){?>                                 
@@ -84,7 +105,7 @@
                                     ?>
                                     </td>
                                     <td class="center">
-                                    	<a class="edit" href="<?php echo base_url();?>admin/products/edit/<?php echo $Post->id;?>">Sửa</a> &nbsp; 
+                                    	<a class="edit" href="<?php echo base_url();?>admin/products/edit/<?php echo $Post->id;?>/<?php echo $gianhang;?>">Sửa</a> &nbsp; 
                                         <a class="delete" name="delete_post" id="<?php echo $Post->id;?>" href="<?php echo base_url();?>admin/products/delete">Xóa</a></td>
                                 </tr>
                             <?php }?>
