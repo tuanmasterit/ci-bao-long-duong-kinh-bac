@@ -14,7 +14,7 @@
 	        	{
 	        	?>
 	        	<li id="menu565" class="menusub" style="width: 158px;">
-	        		<a title="<?php echo $catNav->name;?>" href="<?php echo base_url().'welcome/cat/'.$catNav->term_id;?>" class="parent">
+	        		<a title="<?php echo $catNav->name;?>" href="<?php echo base_url().'cat/'.$catNav->term_id;?>" class="parent">
         				<span class="on"><?php echo $catNav->name;?></span>
         			</a>
         			<ul style="display: block ! important; width: 158px; margin-left: 10px;">
@@ -23,7 +23,7 @@
         				{
         				?>
         					<li style="width: 148px;">
-        						<a href="<?php echo base_url().'welcome/cat/'.$subCat->term_id;?>"><?php echo $subCat->name;?></a>
+        						<a href="<?php echo base_url().'cat/'.$subCat->term_id;?>"><?php echo $subCat->name;?></a>
         					</li>
         				<?php 
         				}
