@@ -27,6 +27,8 @@
 			$data['list_link'] = $this->pagination->create_links();
 			$data['lstNews'] = $this->Post_model->get(0,'post',$config['per_page'],$row,'DESC','post_date','');
 			
+			$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+			$data['list_sp_noibat'] = $list_sp_noibat;
 						
 			//Giới thiệu
 			$gioithieu_id = $this->Term_model->getCategoryByName('Giới thiệu');
@@ -128,6 +130,9 @@
 				$bao_tuong_id = $this->Term_model->getCategoryByName('Báo tường');
 				$data['bao_tuong_id'] = $bao_tuong_id;
 				
+				$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+				$data['list_sp_noibat'] = $list_sp_noibat;
+				
 				$data['news_detail'] = $news_detail[0];
 				$data['cat'] = $cat;
 				$data['listRelation'] = $this->Post_model->getRelationProducts($id,3,'post','DESC','post_date');
@@ -207,6 +212,9 @@
 				$data['list_link'] = $this->pagination->create_links();
 				
 				$data['lstNews'] = $this->Post_model->get(0,'post',$config['per_page'],$row,'DESC','post_date',$id);				
+				
+				$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+				$data['list_sp_noibat'] = $list_sp_noibat;
 				
 				//Sản phẩm	
 				$data['cat'] = $cat;
