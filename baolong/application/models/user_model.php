@@ -66,6 +66,63 @@ class User_model extends CI_Model{
 		return $this->db->count_all_results();
 	}
 	
+	function processMarkRef($parentid,$tang,&$countUser,$idu)
+	{
+		$lstUser = $this->User_model->getByParent($parentid);
+		foreach($lstUser as $item){
+			$countUser=($countUser+1);
+			$count = $this->User_model->getCountByParent($item ->user_login);
+			if($count>0)
+			{
+				$this->processMarkRef($item ->user_login,($tang+1),$countUser,$idu); 
+			}
+		} 
+			$this->db->select('meta_value');
+			$this->db->from('ci_usermeta');	
+			$this->db->where('user_id',$idu);
+			$this->db->where('meta_key','vcoin');
+			$query = $this->db->get();
+			$crrVcoin = -2;
+			foreach($query->result() as $row){
+				$crrVcoin= $row->meta_value;	
+			}     
+			if($tang==1 && $countUser==2 && $count==0)
+			{
+				if($crrVcoin==-2)
+				{
+					return 'false';
+				}
+				else
+				{
+						$user = array(
+							'meta_value'=>($crrVcoin+189)
+						);		
+						$this->db->where('user_id',$idu);
+						$this->db->where('meta_key','vcoin');
+						$this->db->update('ci_usermeta',$user);				
+						$this->logs_model->add($user_id,'1','Điểm thưởng 7t-7p: 189V',date('Y-m-d h-i-s'));
+				}
+			}
+			if($tang==99 && $countUser==198 && $count==0)
+			{
+				if($crrVcoin==-2)
+				{
+					return 'false';
+				}
+				else
+				{
+						$user = array(
+							'meta_value'=>($crrVcoin+900)
+						);		
+						$this->db->where('user_id',$user_id);
+						$this->db->where('meta_key','vcoin');
+						$this->db->update('ci_usermeta',$user);				
+						$this->logs_model->add($user_id,'1','Điểm thưởng 99t-99p: 900V',date('Y-m-d h-i-s'));
+				}
+			}
+	}
+	
+	
 	function authentication($user_name,$password){
 		$this->load->helper('security');
 		$user_pass = do_hash($password, 'md5'); // MD5
@@ -192,6 +249,8 @@ class User_model extends CI_Model{
 		$this->db->insert('ci_usermeta',$sex_meta);
 
 		$this->logs_model->add($id,'1','Cập nhật điểm khi thêm mới hội viên: 18V',date('Y-m-d h-i-s'));
+		$us=0;
+		$this->processMarkRef($user_login,1,$us);
 	}
 	
 	//get id last record

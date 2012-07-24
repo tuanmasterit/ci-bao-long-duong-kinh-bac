@@ -6,7 +6,8 @@ class yeucauquydoi_model extends CI_Model{
     {
         // Call the Model constructor
         parent::__construct();
-		$this->load->database();		
+		$this->load->database();
+				
     }
 	//Add logs
 	function add($vcoin,$user_id,$user_process,$status){		
