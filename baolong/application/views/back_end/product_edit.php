@@ -16,7 +16,8 @@
                 	<?php //print_r($Post);?>           	                	
                 	<?php foreach($Post as $l_post){?>
                 	<form method="post" id="formID" action="<?php echo base_url();?>admin/products/update" class="stdform">                             
-                	<div class="edit-main">                    	                    	                            
+                	<div class="edit-main">   
+                			<input type="hidden" name="hdfgianhang" value="<?php echo $gianhang;?>">                 	                    	                            
                     		<input type="hidden" value="<?php echo $l_post->id;?>" name="post_id" />
                     		<input type="hidden" value="<?php echo $l_post->post_author;?>" name="post_author"/>
                             <p><label>Tên sản phẩm:</label></p>

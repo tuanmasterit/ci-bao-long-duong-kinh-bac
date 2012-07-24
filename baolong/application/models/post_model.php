@@ -101,21 +101,27 @@ class Post_model extends CI_Model{
 	}	
 	//List Posts	
 	function get($id, $post_type='post', $limit=10, $offset=0, $order='DESC', $order_by='post_date', $term_id=0,$post_author=0){
-		if($id == 0){		
-			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type,post_modified');			
+		if($id == 0){
 			$this->db->from('ci_posts');
-			$this->db->join('ci_users','post_author=ci_users.id');
+			if($post_author!=0)
+			{
+				$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type,post_modified');
+				$this->db->join('ci_users','post_author=ci_users.id');
+			}		
+			else 
+			{
+				$this->db->select('ci_posts.id,post_author,post_date,post_title,post_excerpt,post_content,post_type,post_modified');
+			}		
+			
 											 			
 			if($term_id !='' and $term_id >0 ){
 				$this->db->join('ci_term_relationships','ci_posts.id=object_id');
 				$this->db->join('ci_term_taxonomy','ci_term_relationships.term_taxonomy_id = ci_term_taxonomy.term_taxonomy_id');	
 				$this->db->where('ci_term_taxonomy.term_id',$term_id);
 				$this->db->or_where('ci_term_taxonomy.parent',$term_id);	
-			}
-			if($post_author!=0)
-			{
-				$this->db->where('post_author',$post_author);
-			}
+			}			
+			$this->db->where('post_author',$post_author);
+			
 			$this->db->where('post_type',$post_type);
 			$this->db->order_by($order_by, $order);
 			if($limit > 0){
@@ -125,9 +131,18 @@ class Post_model extends CI_Model{
 			$query = $this->db->get();
 			return $query->result();
 		}elseif($id > 0){
-			$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type,post_modified');
+			
 			$this->db->from('ci_posts');
-			$this->db->join('ci_users','post_author=ci_users.id');		
+			if($post_author!=0)
+			{
+				$this->db->select('ci_posts.id,post_author,user_nicename,post_date,post_title,post_excerpt,post_content,post_type,post_modified');
+				$this->db->join('ci_users','post_author=ci_users.id');
+			}		
+			else 
+			{
+				$this->db->select('ci_posts.id,post_author,post_date,post_title,post_excerpt,post_content,post_type,post_modified');
+			}	
+				
 			$this->db->where('post_type',$post_type);
 			$this->db->where('ci_posts.id',$id);
 			$query = $this->db->get();
