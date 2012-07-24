@@ -8,7 +8,7 @@ class Term_model extends CI_Model{
         parent::__construct();
 		$this->load->database();		
     }
-	
+	//Phạm Văn Hưng
 	//List Categories
 	function get($id=0,$limit=-1,$offset=10,$taxonomy='category',$term_group=0){		
 		if($id == 0){
