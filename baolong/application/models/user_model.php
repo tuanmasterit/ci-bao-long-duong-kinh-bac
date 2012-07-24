@@ -250,7 +250,7 @@ class User_model extends CI_Model{
 
 		$this->logs_model->add($id,'1','Cập nhật điểm khi thêm mới hội viên: 18V',date('Y-m-d h-i-s'));
 		$us=0;
-		$this->processMarkRef($user_login,1,$us);
+		$this->processMarkRef($user_login,1,$us,$user_login);
 	}
 	
 	//get id last record
