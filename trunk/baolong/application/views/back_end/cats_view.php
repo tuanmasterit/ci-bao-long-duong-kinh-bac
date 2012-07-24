@@ -7,8 +7,8 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả sản phẩm</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới sản phẩm</a></li>
+                	<li><a href="<?php echo base_url();?>admin/products">Tất cả sản phẩm</a></li>
+                    <li><a href="<?php echo base_url();?>admin/products/add">Thêm mới sản phẩm</a></li>
                     <li class="current"><a href="<?php echo base_url();?>admin/cats">Danh mục sản phẩm</a></li>
                 </ul>
                 <div class="content">                	
@@ -92,17 +92,34 @@
                 	?>
                     </div>
                     <div class="list-right">
+                    	<?php echo form_open('admin/cats/index');?>
                     	<div class="contenttitle radiusbottom0">
                             <h2 class="table"><span>Danh mục sản phẩm</span></h2>
                         </div><!--contenttitle-->
                         <div class="tableoptions">
                             <button class="deletebutton radius3" name="delete_term" value="<?php echo base_url();?>admin/categories/delete" title="table2">Delete Selected</button> &nbsp;
-                            <select class="radius3">
-                                <option value="">Show All</option>
-                                <option value="">Rendering Engine</option>
-                                <option value="">Platform</option>
+                            <select class="radius3" id="ddlGianHang" name="ddlGianHang">                                
+                                <option value="0">Gian hàng chính</option>
+                                <?php 
+                                	foreach ($lstHoiVien as $hoivien)
+                                	{
+                                		if($hoivien->id==$gianhang)
+                                		{
+                                ?>
+                                
+                                <option value="<?php echo $hoivien->id;?>" selected="selected">Gian hàng của <?php echo $hoivien->user_login;?></option>
+                                <?php 
+                                		}
+                                		else 
+                                		{
+                                ?>
+                                <option value="<?php echo $hoivien->id;?>">Gian hàng của <?php echo $hoivien->user_login;?></option>
+                                <?php 
+                                		}
+                                	}
+                                ?>
                             </select> &nbsp;
-                            <button class="radius3">Apply Filter</button>
+                            <button class="radius3">Tìm kiếm</button>
                         </div><!--tableoptions-->	
                         <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                             <colgroup>
@@ -143,6 +160,7 @@
                             </tbody>
                         </table>
                         <?php echo $list_link;?>
+                        <?php echo form_close();?>
                     </div>                                  
                 </div><!--content-->                
             </div><!--maincontentinner-->            
