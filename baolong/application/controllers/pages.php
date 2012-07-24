@@ -64,7 +64,10 @@
 			//Navigation
 			$data['listCatNav'] = $this->Term_model->getCatProNav();
 			$data['listNewsNav'] = $this->Term_model->getCatProNav('category');
-			 
+
+			$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+			$data['list_sp_noibat'] = $list_sp_noibat;
+			
 			$data['main'] = 'front_end/view_page';
 			$this->load->view('front_end/template_2',$data);
 		}

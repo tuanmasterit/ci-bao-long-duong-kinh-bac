@@ -156,7 +156,8 @@ class Shoppingcart extends CI_Controller {
 		
 		//Navigation
 		$data['listCatNav'] = $this->Term_model->getCatProNav();		
-		
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
  		$data['main'] = 'front_end/view_cart';
  		$this->load->view('front_end/template_2',$data);
 	}
@@ -356,6 +357,9 @@ class Shoppingcart extends CI_Controller {
 		//Navigation
 		$data['listCatNav'] = $this->Term_model->getCatProNav();		
 		
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
+		
  		$data['main'] = 'front_end/view_cart_checkout';
  		$this->load->view('front_end/template_2',$data);
 	}
@@ -370,6 +374,8 @@ class Shoppingcart extends CI_Controller {
 			$DiDong = $this->input->post('txtDiDong');
 			$diachi = $this->input->post('txtDiachi');
 			$comment = $this->input->post('txtComments');
+			
+			
 			
 			$this->email->from('muahang@baolongduong.com','Bảo Long Đường Kinh Bắc');
 			
@@ -525,6 +531,9 @@ class Shoppingcart extends CI_Controller {
 		
 		//Navigation
 		$data['listCatNav'] = $this->Term_model->getCatProNav();		
+		
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
 		
  		$data['main'] = 'front_end/view_cart_send';
  		$this->load->view('front_end/template_2',$data);
