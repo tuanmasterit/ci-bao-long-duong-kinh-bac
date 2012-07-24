@@ -212,7 +212,7 @@
 				$data['list_link'] = $this->pagination->create_links();
 				
 				$data['lstNews'] = $this->Post_model->get(0,'post',$config['per_page'],$row,'DESC','post_date',$id);				
-				
+				$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
 				$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
 				$data['list_sp_noibat'] = $list_sp_noibat;
 				
