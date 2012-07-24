@@ -118,8 +118,9 @@ class Welcome extends CI_Controller {
 	
 	public function cat($id,$row=0)
 	{
-		$id = $this->uri->segment(3);		
+		$id = $this->uri->segment(2);		
 		$cat = $this->Term_model->get($id,0,0,'catpro');
+		
 		if(!count($cat))
 		{
 			redirect('welcome/index','refresh');
