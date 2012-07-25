@@ -8,6 +8,7 @@
  		$this->load->model('Term_model');
  		$this->load->library('parser');
  		$this->load->model('Option_model');
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
  	}
  	
  	function register()

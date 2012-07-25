@@ -9,6 +9,7 @@ class Author extends CI_Controller {
 			redirect('admin/login');
 		}
 		$this->load->model('Author_model');
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
 	public function index()
 	{

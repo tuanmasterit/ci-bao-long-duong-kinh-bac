@@ -25,6 +25,7 @@ class Users extends CI_Controller {
 		}
 		$this->load->model('User_model');
 		$this->load->library('pagination');
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
     
 	public function index($row=0)

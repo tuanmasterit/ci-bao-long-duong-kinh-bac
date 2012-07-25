@@ -9,7 +9,8 @@
 			}
 			$this->load->model('Term_model');
 			$this->load->model('User_model');
-			$this->load->library('pagination');		
+			$this->load->library('pagination');	
+            date_default_timezone_set('Asia/Ho_Chi_Minh');	
 		}
 
 		public function index($row=0){

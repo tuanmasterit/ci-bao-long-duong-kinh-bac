@@ -8,6 +8,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('Post_model');
 		$this->load->model('Term_model');
 		$this->load->library('pagination');
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
     } 
 	public	function logout(){
 		$userdata = array(
