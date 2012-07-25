@@ -68,7 +68,20 @@ class User_model extends CI_Model{
 	
 	function checkThuongcanve($parentid)
 	{
-	$lstUser = $this->User_model->getByParent($parentid);
+		
+		$count = $this->User_model->getCountByParent($parentid);
+		if($count==2)
+		{
+			$countUser1=0;
+			$countUser2=0;
+			$lstUser = $this->User_model->getByParent($parentid);
+			processMarkRef($lstUser[0]->user_login,$countUser1);
+			processMarkRef($lstUser[1]->user_login,$countUser2);
+			if($countUser1>6 && $countUser2>6)
+			{
+				$this->logs_model->add($id,'1','Cập nhật điểm thưo: 18V',date('Y-m-d h-i-s'));
+			}
+		} 
 	}
 	
 	function processMarkRef($parentid,&$countUser)
@@ -210,10 +223,16 @@ class User_model extends CI_Model{
 			'meta_value'=>$sex
 		);
 		$this->db->insert('ci_usermeta',$sex_meta);
+		
+		$diemthuong_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'capdodiemthuong',
+			'meta_value'=>'0'
+		);
+		$this->db->insert('ci_usermeta',$diemthuong_meta);
 
 		$this->logs_model->add($id,'1','Cập nhật điểm khi thêm mới hội viên: 18V',date('Y-m-d h-i-s'));
-		$us=0;
-		$this->processMarkRef($meta_references,1,$us,$meta_references);
+		$this->checkThuongcanve($meta_references);
 	}
 	
 	//get id last record
