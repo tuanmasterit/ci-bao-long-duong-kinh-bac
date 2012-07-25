@@ -25,6 +25,7 @@ class genealogytree extends CI_Controller {
 		}
 		$this->load->model('User_model');
 		$this->load->library('pagination');
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
 	
 	

@@ -5,7 +5,8 @@
 		{
 			parent::__construct();
 			$this->load->model('Post_model');
-			$this->load->model('Term_model');			
+			$this->load->model('Term_model');	
+            date_default_timezone_set('Asia/Ho_Chi_Minh');		
 		}
 
 		function index($id)
