@@ -8,6 +8,7 @@
  		$this->load->model('Term_model');
  		$this->load->library('parser');
  		$this->load->model('Option_model');
+        $this->load->model('Post_model');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
  	}
  	
@@ -21,6 +22,14 @@
 			$dienthoai = $this->input->post('txtDienThoai');
 			$email = $this->input->post('txtEmail');
 			$nguoi_gioi_thieu = $this->input->post('txtHoiVien');
+            $nguoi_chi_dinh = $this->input->post('txtChiDinh');
+            $gioitinh = $this->input->post('slGioiTinh');
+            $gianhang = $this->input->post('txtGianHang');
+            $cmt = $this->input->post('txtCMT');
+            
+            $noi_o = $this->input->post('txtNoiO');
+            $tai_khoan = $this->input->post('txtTaiKhoan');
+            $nganhang = $this->input->post('txtNganHang');
 			$this->email->from('dangky@baolongduong.com','Bảo Long Đường Kinh Bắc');
 			
 			//Email
@@ -98,6 +107,44 @@
 			                ".$nguoi_gioi_thieu."</td>
 			            
 			        </tr>
+                    <tr>
+			            <td class='style1' style='border: 1px solid #999966'>
+			                &nbsp;Người chỉ định:</td>";
+	            $email_msg.="<td style='border: 1px solid #999966' class='style2'>
+			                ".$nguoi_chi_dinh."</td>
+			            
+			        </tr>
+                    <tr>
+			            <td class='style1' style='border: 1px solid #999966'>
+			                &nbsp;Giới tính:</td>";
+	            $email_msg.="<td style='border: 1px solid #999966' class='style2'>
+			                ".$gioitinh."</td>
+			            
+			        </tr>
+                    <tr>
+			            <td class='style1' style='border: 1px solid #999966'>
+			                &nbsp;Tên gian hàng:</td>";
+	            $email_msg.="<td style='border: 1px solid #999966' class='style2'>
+			                ".$gianhang."</td>
+			            
+			        </tr>
+                    <tr>
+			            <td class='style1' style='border: 1px solid #999966'>
+			                &nbsp;CMT:</td>";
+	            $email_msg.="<td style='border: 1px solid #999966' class='style2'>
+			                ".$cmt."</td>
+			            
+			        </tr>
+                    
+                    
+                    <tr>
+			            <td class='style1' style='border: 1px solid #999966'>
+			                &nbsp;Số tài khoản:</td>";
+	            $email_msg.="<td style='border: 1px solid #999966' class='style2'>
+			                ".$tai_khoan."</td>
+			            
+			        </tr>
+                    
 			    </table>
 			</body>
 			</html>	";
@@ -141,7 +188,7 @@
 		
 		//Navigation
 		$data['listCatNav'] = $this->Term_model->getCatProNav();
-
+        $sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
 		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
 		$data['list_sp_noibat'] = $list_sp_noibat;
 		

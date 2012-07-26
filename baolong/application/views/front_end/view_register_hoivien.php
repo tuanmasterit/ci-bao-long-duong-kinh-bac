@@ -12,38 +12,65 @@
 	        	<fieldset class="box_Contact">
 	        		<div class="row">
 						<label style="float: left"> Họ tên *</label>
-						<input id="txtName" type="text" name="txtName" class="validate[required]">
+						<input id="txtName" type="text" name="txtName" class="validate[required]"/>
 					</div>
 					<div class="row">
 						<label style="float: left"> Năm sinh *</label>
-						<input id="txtName" type="text" name="txtNamSinh" class="datepicker">
+						<input id="txtName" type="text" name="txtNamSinh" class="validate[required]"/>
 					</div>
 					<div class="row">
 						<label style="float: left"> Địa chỉ *</label>
-						<input id="txtName" type="text" name="txtDiaChi" class="validate[required]">
+						<input id="txtName" type="text" name="txtDiaChi" class="validate[required]"/>
 					</div>
 					<div class="row">
 						<label style="float: left"> Điện thoại *</label>
-						<input id="txtName" type="text" name="txtDienThoai" class="validate[required]">
+						<input id="txtName" type="text" name="txtDienThoai" class="validate[required]"/>
 					</div>
 					<div class="row">
 						<label style="float: left">Email *</label>
-						<input id="txtName" type="text" name="txtEmail" class="validate[required,custom[email]] ">
+						<input id="txtName" type="text" name="txtEmail" class="validate[required,custom[email]] "/>
 					</div>
 					<div class="row">
-						<label style="float: left">Người giới thiệu </label>
-						<input id="inputString" type="text" name="txtHoiVien" onkeyup="lookup(this.value);" onblur="fill();"/>						
+						<label style="float: left">Người giới thiệu *</label>
+						<input  type="text" name="txtHoiVien" class="validate[required]"/>						
 					</div>
-					<div class="suggestionsBox" id="suggestions" style="display: none;">
-						<img src="<?php echo base_url()?>application/content/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
-						<div class="suggestionList" id="autoSuggestionsList">
-							&nbsp;
-						</div>
+					<div class="row">
+						<label style="float: left">Người chỉ định *</label>
+						<input  type="text" name="txtChiDinh" class="validate[required]"/>						
 					</div>
-					<br>
+                    <div class="row">
+						<label style="float: left">Giới tính </label>
+						<select name="slGioiTinh">
+                            <option value="None">None</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>						
+					</div>
+                    <div class="row">
+						<label style="float: left">Tên gian hàng </label>
+						<input  type="text" name="txtGianHang"/>						
+					</div>
+                    <div class="row">
+						<label style="float: left">CMT </label>
+						<input  type="text" name="txtCMT"/>						
+					</div>
+                    
+                    <div class="row">
+						<label style="float: left">Nơi ở hiện tại </label>
+						<input  type="text" name="txtNoiO"/>						
+					</div>
+                    <div class="row">
+						<label style="float: left">Số tài khoản </label>
+						<input  type="text" name="txtTaiKhoan"/>						
+					</div>
+                    <div class="row">
+						<label style="float: left">Tên ngân hàng</label>
+						<input  type="text" name="txtNganHang"/>						
+					</div>
+					<br/>
 					<div class="row1">
-						<input id="btnSubmit" class="btnSubmit" type="submit"  value="Gửi đi" name="btnSubmit">
-						<input id="btnReset" class="btnSubmit" type="reset"  value="Làm lại" name="btnReset">
+						<input id="btnSubmit" class="btnSubmit" type="submit"  value="Gửi đi" name="btnSubmit"/>
+						<input id="btnReset" class="btnSubmit" type="reset"  value="Làm lại" name="btnReset"/>
 					</div>
 	        	</fieldset>
 	        	<?php echo form_close();?>
