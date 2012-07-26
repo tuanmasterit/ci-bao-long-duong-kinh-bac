@@ -498,3 +498,14 @@ input.TextBox, #contactBox .row input, #contactBox .row2 input {
 #contactform #info {
     margin: 0 0 0 10px;
 }
+.row select{
+    border: 1px solid #D1C7AC;
+    color: #333333;
+    font-family: tahoma,arial,sans-serif;
+    padding: 3px;
+    
+    float: right;
+    height: 30px;
+    margin-right: 10px;
+    width: 361px;
+}
