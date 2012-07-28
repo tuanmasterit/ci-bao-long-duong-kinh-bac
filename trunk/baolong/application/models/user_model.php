@@ -142,8 +142,8 @@ class User_model extends CI_Model{
                    'username'  => $user_name,
 				   'user_id'  =>$item->ID,
 				   'display_name'  => $item->display_name,
-                   'logged_in' => TRUE
-				   	
+                   'logged_in' => TRUE,
+				   'user_activation_key' => $item->user_activation_key				   	
                );
 			$this->session->set_userdata($userdata);
 		 	return true;

@@ -2,11 +2,11 @@ jQuery.noConflict();
 
 jQuery(document).ready(function(){
 	//Datetimepiker
-	jQuery(".datepicker").datetimepicker({
+	if(jQuery(".datepicker").length>0){jQuery(".datepicker").datetimepicker({
                 dateFormat: 'yy-mm-dd',
                 timeFormat: 'hh:mm',                    
                 separator: ' '
-    });
+    });}
 	//Brow server image upload		
 	jQuery('#imageUpload').popupWindow({ 
 			windowURL:'/baolong/application/elfinder/standalone-elfinder.php?mode=image', 
