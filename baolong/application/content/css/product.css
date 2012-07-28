@@ -1091,8 +1091,26 @@
 }
 #list-product-featured .jcarousel-skin-tango .jcarousel-container-horizontal{width:auto;background:none;border:none;}
 #list-product-featured .jcarousel-skin-tango .jcarousel-clip-horizontal{width:auto;height:auto;}
-#list-product-featured .jcarousel-skin-tango .jcarousel-item{width:130px;height:145px;margin:0px 28x;}
+#list-product-featured .jcarousel-skin-tango .jcarousel-item{width:130px;height:145px;margin:0px 28px;}
 #list-product-featured .jcarousel-skin-tango .jcarousel-item img{width:130px;height:120px;}
+#list-product-featured .jcarousel-skin-tango .jcarousel-prev-horizontal {
+    background: url("../images/prev.jpg") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 32px;
+    left: 5px;
+    position: absolute;
+    top: 73px;
+    width: 32px;
+}
+#list-product-featured .jcarousel-skin-tango .jcarousel-next-horizontal {
+    background: url("../images/next.jpg") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 32px;
+    position: absolute;
+    right: 5px;
+    top: 73px;
+    width: 32px;
+}
 #product-feature p{text-align: center;}
 #product-feature p a {    
     color: #FFFFFF;
