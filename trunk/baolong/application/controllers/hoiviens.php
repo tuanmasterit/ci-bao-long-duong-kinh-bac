@@ -43,7 +43,7 @@
 	            
 	            $this->User_model->add($user_login,$name,$email,$user_regitered,$user_login,$meta_value,$nguoi_gioi_thieu,$gianhang,$nguoi_chi_dinh,$gioitinh,$cmt,$diachi,$noi_o,$dienthoai,$tai_khoan,$nganhang,$namsinh,$user_pass);
 				$this-> session-> set_flashdata('message','Thêm hội viên thành công!');			
-				  
+				redirect('welcome/index');  
 			} 
 			
 			
