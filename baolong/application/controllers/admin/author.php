@@ -5,7 +5,7 @@ class Author extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('logged_in') != 1){
+		if($this->session->userdata('logged_in') != 1 || $this->session->userdata('user_activation_key') != 'administrator'){
 			redirect('admin/login');
 		}
 		$this->load->model('Author_model');

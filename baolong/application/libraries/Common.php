@@ -65,7 +65,5 @@ class Common{
 		if($name=="3"){return 'Trả lại';}
 		if($name=="4"){return 'Chưa nhận tiền';}
 		if($name=="5"){return 'Đã nhận tiền';}
-	}
-	
-	
+	}		
 }
