@@ -51,6 +51,13 @@ class Common{
 		if($name=="3"){return 'Điểm thưởng';}
 		if($name=="4"){return 'Thưởng cân vế';}
 	}
+	function getObjectKey($number)
+	{
+		if($number=="1"){return 'naptien';}
+		if($number=="2"){return 'quydoi';}
+		if($number=="3"){return 'diemthuong';}
+		if($number=="4"){return 'thuongcanve';}
+	}
 	function getStatusName($name)
 	{
 		if($name=="1"){return 'Chờ xử lý';}

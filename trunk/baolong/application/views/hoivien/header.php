@@ -22,6 +22,7 @@
 
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery.validationEngine-vi.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery.validationEngine.js"></script>
+
 <script>
 		jQuery(document).ready(function(){
 			// binds form submission and fields to the validation engine
@@ -53,11 +54,17 @@
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/custom/tables.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/custom/dashboard.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/custom/jquery.treeview.js"></script>
+<!-- load script datetimepicker -->
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/ui.datetimepicker.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/content-admin/js/jquery-ui-timepicker-addon.js"></script>
 
+<!-- load style datetimepicker -->
+<link rel="Stylesheet" href="<?php echo base_url();?>application/content-admin/css/datepicker-style.css" />
 <!--[if lt IE 9]>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
-<meta charset="UTF-8"></head>
+<meta charset="UTF-8">
+</head>
 
 <body class="loggedin">
 	
