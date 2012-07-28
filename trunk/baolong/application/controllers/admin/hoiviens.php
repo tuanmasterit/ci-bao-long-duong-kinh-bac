@@ -37,7 +37,6 @@ class Hoiviens extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['list_link'] = $this->pagination->create_links(); 		
 		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'hoivien');
-
 		$this->load->view('back_end/hoivien_view',$data);
 	}
 	

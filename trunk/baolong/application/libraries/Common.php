@@ -29,4 +29,36 @@ class Common{
 		}*/
 		return '1234567';
 	}
+	function getObject($name)
+	{
+		if($name=="naptien"){return '1';}
+		if($name=="quydoi"){return '2';}
+		if($name=="diemthuong"){return '3';}
+		if($name=="thuongcanve"){return '4';}
+	}
+	function getStatus($name)
+	{
+		if($name=="choxuly"){return '1';}
+		if($name=="duyet"){return '2';}
+		if($name=="tralai"){return '3';}
+		if($name=="chuanhantien"){return '4';}
+		if($name=="danhan"){return '5';}
+	}
+	function getObjectName($name)
+	{
+		if($name=="1"){return 'Nạp tiền';}
+		if($name=="2"){return 'Quy đổi';}
+		if($name=="3"){return 'Điểm thưởng';}
+		if($name=="4"){return 'Thưởng cân vế';}
+	}
+	function getStatusName($name)
+	{
+		if($name=="1"){return 'Chờ xử lý';}
+		if($name=="2"){return 'Duyệt';}
+		if($name=="3"){return 'Trả lại';}
+		if($name=="4"){return 'Chưa nhận tiền';}
+		if($name=="5"){return 'Đã nhận tiền';}
+	}
+	
+	
 }
