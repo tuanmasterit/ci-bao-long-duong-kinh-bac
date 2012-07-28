@@ -239,7 +239,7 @@ class Post_model extends CI_Model{
 		return $query->result();
 	}
 	
-	function updatePrice($id,$giathitruong,$giahoivien)
+	function updatePrice($id,$giathitruong)
 	{
 		//Update Giá Thị Trường
 		$query = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'giathitruong'));
@@ -261,41 +261,19 @@ class Post_model extends CI_Model{
 			$this->db->insert('ci_postmeta',$arrmeta);		
 		}
 
-		//Update Giá Hội Viên
-		$query2 = $this->db->get_where('ci_postmeta',array('post_id'=>$id,'meta_key'=>'giahoivien'));
-		$result2 = $query2->result();
-		if(count($result2) > 0){
-			$arrmeta2 = array(
-				'meta_value'=>$giahoivien
-			);
-			$this->db->where('post_id',$id);
-			$this->db->where('meta_key','giahoivien');
-			$this->db->update('ci_postmeta',$arrmeta2);
-		}else{
-			//Insert price
-			$arrmeta2 = array(
-				'post_id'=>$id,
-				'meta_key'=>'giahoivien',
-				'meta_value'=>$giahoivien
-			);
-			$this->db->insert('ci_postmeta',$arrmeta2);		
-		}
+		
 	}
 
-	function addProductPrice($id,$giathitruong,$giahoivien)
+	function addProductPrice($id,$giathitruong)
 	{
 		$arr_thitruong = array(
 				'post_id'=>$id,
 				'meta_key'=>'giathitruong',
 				'meta_value'=>$giathitruong
 			);
-		$arr_hoivien = array(
-				'post_id'=>$id,
-				'meta_key'=>'giahoivien',
-				'meta_value'=>$giahoivien
-			);
+		
 		$this->db->insert('ci_postmeta',$arr_thitruong);
-		$this->db->insert('ci_postmeta',$arr_hoivien);
+		
 	}
 	
 	function getProductByName($name)
