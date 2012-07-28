@@ -1,4 +1,4 @@
-<?php $this->load->view('back_end/header'); ?>
+<?php $this->load->view('hoivien/header'); ?>
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
@@ -20,12 +20,11 @@
 
                     
                 </div><!--content-->
-                
+                <!---->
             </div><!--maincontentinner-->                
         </div><!--maincontent-->        
              
      	</div><!--mainwrapperinner-->
     </div><!--mainwrapper-->
 	<!-- END OF MAIN CONTENT -->    
-</body>
-</html>
+<?php $this->load->view('back_end/footer');?>

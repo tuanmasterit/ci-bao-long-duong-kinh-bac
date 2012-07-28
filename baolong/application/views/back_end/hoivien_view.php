@@ -50,7 +50,7 @@
 							<br />
                             <p><label style="width:90px;display:inline-block;text-align:left">Tên đăng nhập:</label><input type="text" style="width:250px" class="longinput validate[required]" name="txtname" /></p>
                             <br />
-                            <p><label style="width:90px;display:inline-block;text-align:left">Tên hội viên:</label><input style="width:250px" type="text" class="longinput validate[required]" name="txtnicename" /></p>                            
+                            <p><label style="width:90px;display:inline-block;text-align:left">Họ tên hội viên mới:</label><input style="width:250px" type="text" class="longinput validate[required]" name="txtnicename" /></p>                            
                             <br />
                             <p><label style="width:90px;display:inline-block;text-align:left">Email:</label><input type="text" style="width:250px" class="longinput validate[required,custom[email]]" name="txtemail" /></p>                            
                             <br />
@@ -94,7 +94,7 @@
                             <p><label>Tên đăng nhập:</label></p>
                             <p><span class="field"><input type="text" value="<?php echo $user['user_login']?>" readonly="readonly" class="longinput validate[required]" name="txtname" /></span></p>
                             <br />
-                            <p><label>Tên hội viên:</label></p>                            
+                            <p><label>Họ tên hội viên mới:</label></p>                            
                             <p><span class="field"><input type="text" value="<?php echo $user['user_nicename'];?>" class="longinput validate[required]" name="txtnicename" /></span></p>
                             <br />
                             <p><label>Email:</label></p>                            

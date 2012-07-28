@@ -76,7 +76,7 @@
                     <div class="userdrop">
                         <ul>
                             <li><a href="<?php echo base_url();?>admin/users/profile">Profile</a></li>                            
-                            <li><a href="<?php echo base_url();?>admin/login/logout">Logout</a></li>
+                            <li><a href="<?php echo base_url();?>admin/login/logout/hoivien">Logout</a></li>
                         </ul>
                     </div><!--userdrop-->
                 </div><!--headercolumn-->

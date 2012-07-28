@@ -1,4 +1,4 @@
-<?php $this->load->view('back_end/header'); ?>
+<?php $this->load->view('hoivien/header');?>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckeditor/ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckfinder/ckfinder.js"></script>
 <!-- START OF MAIN CONTENT -->

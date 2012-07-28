@@ -5,7 +5,10 @@
                 <li class="current"><a href="<?php echo base_url();?>admin/index" class="dashboard"><span>Hội viên</span></a></li>                
                 <li><a href="<?php echo base_url();?>hoivien/customerstree" class="elements menudrop"><span>Cây khách hàng</span></a>
                 </li>
-				<li><a href="<?php echo base_url();?>hoivien/genealogytree" class="elements menudrop"><span>Cây phả hệ</span></a>
+				<li><a href="<?php echo base_url();?>hoivien/genealogytree" class="elements"><span>Cây phả hệ</span></a>
+                <li><a href="<?php echo base_url();?>hoivien/giaodich/log/quydoi" class="elements"><span>Giao dịch quy đổi</span></a>
+                <li><a href="<?php echo base_url();?>hoivien/giaodich/log/diemthuong" class="elements"><span>Giao dịch điểm thưởng</span></a>
+                <li><a href="<?php echo base_url();?>hoivien/giaodich/log/naptien" class="elements"><span>Giao dịch nạp điểm</span></a>
 				<li><a href="<?php echo base_url();?>hoivien/yeucauquydoi" class="elements menudrop"><span>Gửi yêu cầu quy đổi</span></a></li>
 				<li><a href="<?php echo base_url();?>hoivien/yeucaunaptien" class="elements menudrop"><span>Nạp tiền vào tài khoản</span></a>
                 </li>

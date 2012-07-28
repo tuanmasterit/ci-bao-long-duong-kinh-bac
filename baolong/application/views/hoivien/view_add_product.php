@@ -1,4 +1,4 @@
-<?php $this->load->view('back_end/header'); ?>
+<?php $this->load->view('hoivien/header');?>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckeditor/ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo base_url();?>application/ckfinder/ckfinder.js"></script>
 <!-- START OF MAIN CONTENT -->
@@ -83,9 +83,7 @@
                     </form>              
                 </div><!--content-->                
             </div><!--maincontentinner-->            
-            <div class="footer">
-            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
-            </div><!--footer-->
+<?php $this->load->view('back_end/footer');?>
                            
 <script type="text/javascript">
 	var editor = CKEDITOR.replace( 'editor_content',
@@ -102,4 +100,3 @@
 	});
 
 </script>
-<?php $this->load->view('back_end/footer');?>

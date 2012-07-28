@@ -24,14 +24,17 @@ class Login extends CI_Controller {
 			redirect('admin/login');	
 		}	
 	}
-	function logout(){
+	function logout($user_type=''){
 		$userdata = array(
                    'username'  => '',
                    'logged_in' => FALSE
                );
 		$this->session->set_userdata($userdata);
 		$this->session->sess_destroy();
-		redirect('admin/login');
+		if($user_type=='hoivien'){
+			redirect('welcome');	
+		}
+		redirect('admin/login');		
 	}	
 }
 

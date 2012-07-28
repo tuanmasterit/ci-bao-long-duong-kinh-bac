@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $this->load->view('hoivien/header');?>
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
