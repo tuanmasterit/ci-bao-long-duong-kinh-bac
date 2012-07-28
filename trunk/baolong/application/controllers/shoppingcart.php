@@ -116,6 +116,11 @@ class Shoppingcart extends CI_Controller {
 		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
 		$data['list_sp_noibat'] = $list_sp_noibat;
 		
+		//Sản phẩm tiêu biểu
+		$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
+		
 		//Giới thiệu
 		$gioithieu_id = $this->Term_model->getCategoryByName('Giới thiệu');
 		$data['gioithieu_id'] = $gioithieu_id;
@@ -272,7 +277,13 @@ class Shoppingcart extends CI_Controller {
 		
 		$cap = create_captcha($vals);
 		$data['image']=$cap['image'];
-		$data['word'] = $cap['word'];		
+		$data['word'] = $cap['word'];	
+
+		//Sản phẩm tiêu biểu
+		$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
+		
 		//Giới thiệu
 		$gioithieu_id = $this->Term_model->getCategoryByName('Giới thiệu');
 		$data['gioithieu_id'] = $gioithieu_id;
@@ -453,6 +464,12 @@ class Shoppingcart extends CI_Controller {
 			$this->email->message($email_msg);  
 			$this->email->send();   
 		}
+		
+		//Sản phẩm tiêu biểu
+		$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
+		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
+		$data['list_sp_noibat'] = $list_sp_noibat;
+		
 		//Giới thiệu
 		$gioithieu_id = $this->Term_model->getCategoryByName('Giới thiệu');
 		$data['gioithieu_id'] = $gioithieu_id;
