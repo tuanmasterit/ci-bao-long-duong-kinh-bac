@@ -9,20 +9,20 @@ class logs_model extends CI_Model{
 		$this->load->database();		
     }
 	//Add logs
-	function add($user_id,$log_type,$log_content,$created_date,$status,$userprocess){		
+	function add($user_id,$log_type,$log_content,$created_date,$amount,$userprocess){		
 		$arr=array(
 			'user_id'=>$user_id,
 			'log_type'=>$log_type,
 			'log_content'=>$log_content,
 			'created_date'=>$created_date,
-			'status'=>$status,
+			'amount'=>$amount,
 			'userprocess'=>$userprocess
 		);
 		$this->db->insert('ci_logs',$arr);
 	}
 	
 	function get($limit,$offset,$user_id,$stype){
-			$this->db->select('user_id,user_login,log_type,log_content,created_date,status');
+			$this->db->select('user_id,user_login,log_type,log_content,created_date,amount');
 			$this->db->from('ci_logs');
 			$this->db->join('ci_users', 'ci_users.id = user_id');
 			if($user_id!=0)
