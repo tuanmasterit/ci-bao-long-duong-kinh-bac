@@ -50,6 +50,8 @@
 							<br />
                             <p><label style="width:90px;display:inline-block;text-align:left">Tên đăng nhập:</label><input type="text" style="width:250px" class="longinput validate[required]" name="txtname" /></p>
                             <br />
+                            <p><label style="width:90px;display:inline-block;text-align:left">Mật khẩu:</label><input type="password" style="width:250px" class="longinput validate[required]" name="txtPass" /></p>
+                            <br />
                             <p><label style="width:90px;display:inline-block;text-align:left">Họ tên hội viên mới:</label><input style="width:250px" type="text" class="longinput validate[required]" name="txtnicename" /></p>                            
                             <br />
                             <p><label style="width:90px;display:inline-block;text-align:left">Email:</label><input type="text" style="width:250px" class="longinput validate[required,custom[email]]" name="txtemail" /></p>                            
