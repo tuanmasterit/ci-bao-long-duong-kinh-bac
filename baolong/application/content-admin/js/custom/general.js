@@ -1,9 +1,13 @@
 jQuery.noConflict();
 
 jQuery(document).ready(function(){
-	//Brow server image upload
-	
-	
+	//Datetimepiker
+	jQuery(".datepicker").datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: 'hh:mm',                    
+                separator: ' '
+    });
+	//Brow server image upload		
 	jQuery('#imageUpload').popupWindow({ 
 			windowURL:'/baolong/application/elfinder/standalone-elfinder.php?mode=image', 
 			windowName:'Filebrowser',

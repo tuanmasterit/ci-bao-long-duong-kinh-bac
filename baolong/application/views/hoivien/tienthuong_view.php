@@ -13,22 +13,14 @@
                     <div class="contenttitle radiusbottom0">
                         <h2 class="table"><span>Danh sách <?php echo $this->common->getObjectName($log_type);?></span></h2>
                     </div><!--contenttitle-->
-                    <div class="tableoptions" style="display:none">
-                    	<!-- <form name="frmfilter" method="post" action="<?php echo base_url();?>hoivien/products/" >
-	                        <button class="deletebutton radius3" title="table2" name="delete_post" value="<?php echo base_url();?>hoivien/posts/delete">Delete Selected</button> &nbsp;
-	                        <select class="category" name="slcategory">
-                                <option value="">--- Tất cả ---</option>
-                                <?php /* foreach($lstCategories as $l_category){?>                                 
-                                	<?php if($l_category->term_id == $category){?>
-                                    	<option selected="selected" value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
-                                    <?php }else{?>
-                                    	<option value="<?php echo $l_category->term_id;?>"><?php echo $l_category->name;?></option>
-                                    <?php }?>
-                                <?php }*/?>
-                            </select> &nbsp;
+                    <div class="tableoptions">   
+                    	<form method="post" action="<?php echo base_url();?>hoivien/giaodich/log/<?php echo $this->common->getObjectKey($log_type);?>">
+                            Từ ngày:&nbsp;
+                            <input type="text" class="txt datepicker" name="txtfromdate" value="<?php echo $from_date;?>"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Đến ngày:&nbsp;
+                            <input type="text" class="txt datepicker" name="txttodate" value="<?php echo $to_date;?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="submit" class="btn" value="Tìm kiếm"/>
                         </form>
-						-->
                     </div><!--tableoptions-->	
                     <table cellpadding="0" cellspacing="0" border="0" id="table2" class="stdtable stdtablecb">
                         <colgroup>
@@ -36,9 +28,6 @@
                             <col class="con1" />
                             <col class="con0" />
                             <col class="con1" />
-                            <col class="con0" />
-                            <col class="con1" />
-                            <col class="con0" />
                         </colgroup>
                         <thead>
                             <tr>                                

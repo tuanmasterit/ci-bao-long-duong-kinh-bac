@@ -22,18 +22,24 @@ class logs_model extends CI_Model{
 		$this->db->insert('ci_logs',$arr);
 	}
 	
-	function get($limit,$offset,$user_id,$stype){
+	function get($limit,$offset,$user_id,$stype,$from_date='',$to_date=''){
 			$this->db->select('user_id,user_login,log_type,log_content,created_date,amount,status');
 			$this->db->from('ci_logs');
 			$this->db->join('ci_users', 'ci_users.id = user_id');
+			if($from_date != ''){
+				$this->db->where('created_date >=',$from_date);
+			}
+			if($to_date != ''){
+				$this->db->where('created_date <=',$to_date);
+			}
 			if($user_id!=0)
 			{
-			$this->db->where('user_id',$user_id);
+				$this->db->where('user_id',$user_id);
 			}
 			if($stype!='')
 			{
 				$this->db->where('log_type',$stype);
-			}
+			}			
 			if($limit>0)
 			{
 				$this->db->limit($limit,$offset);
