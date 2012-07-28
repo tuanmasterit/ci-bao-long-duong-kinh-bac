@@ -27,8 +27,8 @@
 						<input id="txtName" type="text" name="txtDienThoai" class="validate[required]"/>
 					</div>
 					<div class="row">
-						<label style="float: left">Email *</label>
-						<input id="txtName" type="text" name="txtEmail" class="validate[required,custom[email]] "/>
+						<label style="float: left">Email</label>
+						<input id="txtName" type="text" name="txtEmail"/>
 					</div>
 					<div class="row">
 						<label style="float: left">Người giới thiệu *</label>
@@ -47,12 +47,12 @@
                         </select>						
 					</div>
                     <div class="row">
-						<label style="float: left">Tên gian hàng </label>
-						<input  type="text" name="txtGianHang"/>						
+						<label style="float: left">Tên gian hàng  *</label>
+						<input  type="text" name="txtGianHang" class="validate[required]"/>						
 					</div>
                     <div class="row">
-						<label style="float: left">CMT </label>
-						<input  type="text" name="txtCMT"/>						
+						<label style="float: left" >Chứng minh thư  *</label>
+						<input  type="text" name="txtCMT" class="validate[required]"/>						
 					</div>
                     
                     <div class="row">
