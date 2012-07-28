@@ -10,26 +10,44 @@
  		$this->load->model('Option_model');
         $this->load->model('Post_model');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
+       	$this->load->model('User_model');
  	}
  	
  	function register()
  	{
+ 		$data['check_exit'] = false;
  		if($this->input->post('txtName'))
 		{
-			$name = $this->input->post('txtName');
-			$namsinh = $this->input->post('txtNamSinh');
-			$diachi = $this->input->post('txtDiaChi');
-			$dienthoai = $this->input->post('txtDienThoai');
-			$email = $this->input->post('txtEmail');
-			$nguoi_gioi_thieu = $this->input->post('txtHoiVien');
-            $nguoi_chi_dinh = $this->input->post('txtChiDinh');
-            $gioitinh = $this->input->post('slGioiTinh');
-            $gianhang = $this->input->post('txtGianHang');
-            $cmt = $this->input->post('txtCMT');
-            
-            $noi_o = $this->input->post('txtNoiO');
-            $tai_khoan = $this->input->post('txtTaiKhoan');
-            $nganhang = $this->input->post('txtNganHang');
+			$user_login = $this->input->post('txtUserName');
+			if($this->User_model->getByUsername($user_login)>0)
+			{
+				$data['check_exit'] = true;
+			}else{
+				$user_pass = $this->input->post('txtPass');
+				$name = $this->input->post('txtName');
+				$namsinh = $this->input->post('txtNamSinh');
+				$diachi = $this->input->post('txtDiaChi');
+				$dienthoai = $this->input->post('txtDienThoai');
+				$email = $this->input->post('txtEmail');
+				$nguoi_gioi_thieu = $this->input->post('txtHoiVien');
+	            $nguoi_chi_dinh = $this->input->post('txtChiDinh');
+	            $gioitinh = $this->input->post('slGioiTinh');
+	            $gianhang = $this->input->post('txtGianHang');
+	            $cmt = $this->input->post('txtCMT');
+	            $meta_value = 'hoivien';
+	            $user_regitered = date('Y-m-d h-i-s');
+	            
+	            $noi_o = $this->input->post('txtNoiO');
+	            $tai_khoan = $this->input->post('txtTaiKhoan');
+	            $nganhang = $this->input->post('txtNganHang');
+	            
+	            $this->User_model->add($user_login,$name,$email,$user_regitered,$user_login,$meta_value,$nguoi_gioi_thieu,$gianhang,$nguoi_chi_dinh,$gioitinh,$cmt,$diachi,$noi_o,$dienthoai,$tai_khoan,$nganhang,$namsinh,$user_pass);
+				$this-> session-> set_flashdata('message','Thêm hội viên thành công!');			
+				  
+			} 
+			
+			
+            /*
 			$this->email->from('dangky@baolongduong.com','Bảo Long Đường Kinh Bắc');
 			
 			//Email
@@ -151,7 +169,10 @@
 			
 			$this->email->message($email_msg);  
 			$this->email->send();   
-			
+			*/
+            
+                     
+            
 		}
  		//Giới thiệu
 		$gioithieu_id = $this->Term_model->getCategoryByName('Giới thiệu');

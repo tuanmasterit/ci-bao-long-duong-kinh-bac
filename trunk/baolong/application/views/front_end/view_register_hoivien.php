@@ -11,12 +11,30 @@
 	        	
 	        	<fieldset class="box_Contact">
 	        		<div class="row">
+						<label style="float: left"> Tên đăng nhập *</label>
+						<input id="txtUserName" type="text" name="txtUserName" class="validate[required]"/>
+						<?php 
+							if($check_exit==true)
+							{
+						?>
+						<label style="float: right; color:red; margin-right:15px;"> Tên đăng nhập đã tồn tại.</label>
+						<?php }?>
+					</div>
+					<div class="row">
+						<label style="float: left"> Mật khẩu *</label>
+						<input id="txtPass" type="password" name="txtPass" class="validate[required]"/>
+					</div>
+					<div class="row">
+						<label style="float: left"> Nhập lại mật khẩu *</label>
+						<input id="txtPassRepeat" type="password" name="txtPassRepeat" class="validate[required,equals[txtPass]"/>
+					</div>
+	        		<div class="row">
 						<label style="float: left"> Họ tên *</label>
 						<input id="txtName" type="text" name="txtName" class="validate[required]"/>
 					</div>
 					<div class="row">
-						<label style="float: left"> Năm sinh *</label>
-						<input id="txtName" type="text" name="txtNamSinh" class="validate[required]"/>
+						<label style="float: left"> Ngày sinh </label>
+						<input id="txtName" type="text" name="txtNamSinh"/>
 					</div>
 					<div class="row">
 						<label style="float: left"> Địa chỉ *</label>
