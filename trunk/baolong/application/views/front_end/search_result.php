@@ -32,14 +32,9 @@ if($check_exit==true)
 			<div class="clear"></div>
 			<div class="tech-detail">
 				<div class="name">
-					<span class="td1">Giá thị trường: </span>
-					<span class="td2" style="color:red;"><?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?></span>
-				</div>
-				<div class="clear"></div>
-				<div class="name">
-					<span class="td1">Giá hội viên: </span>
-					<span class="td2" style="color:red;"><?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?></span>
-				</div>
+					<span class="td1">Giá: </span>
+					<span class="td2" style="color:red;"><?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?> VNĐ</span>
+				</div>				
 				
 				<div class="clear"></div>
 				<div class="status">
@@ -83,9 +78,10 @@ if($check_exit==true)
             		</div>
             		<div class="clear"></div>
             		<div class="price">
-            			<span>Thị trường: <?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?></span>
+            			<span>Giá: <?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?> VNĐ</span>
+            			<a class="imgBtnCss" id="<?php echo $product->id;?>" onclick="AddToCart(this.href,<?php echo $product->id;?>); return false;" href="<?php echo base_url();?>shoppingcart/addToCart">Đặt mua</a>
             			<br/>
-            			<span>Hội viên: <?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?></span>            			
+            			<p class="p-giamgia">Hội viên giảm 5-25%</p>            			
             		</div>
             	</div>
             	<?php 

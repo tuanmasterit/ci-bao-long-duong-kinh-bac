@@ -35,10 +35,11 @@ function AddToCart(url,id){
             		</div>
             		<div class="clear"></div>
             		<div class="price">
-            			<span>Thị trường: <?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?> VNĐ</span>
-            			<br/>
-            			<span>Hội viên: <?php echo $this->Post_model->get_meta_value($product->id,'giahoivien');?> VNĐ</span>
+            			<span>Giá: <?php echo $this->Post_model->get_meta_value($product->id,'giathitruong');?> VNĐ</span>
+            			
             			<a class="imgBtnCss" id="<?php echo $product->id;?>" onclick="AddToCart(this.href,<?php echo $product->id;?>); return false;" href="<?php echo base_url();?>shoppingcart/addToCart">Đặt mua</a>
+            			<br/>
+            			<p class="p-giamgia">Hội viên giảm 5-25%</p>
             		</div>
             	</div>
             <?php 
