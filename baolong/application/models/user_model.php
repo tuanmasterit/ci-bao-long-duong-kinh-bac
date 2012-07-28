@@ -54,11 +54,17 @@ class User_model extends CI_Model{
 			$this->db->where('meta_key','chooseuser');
 			$this->db->where('ci_users.id',$childid);
 			$query = $this->db->get();  
+			foreach ($query->result() as $row)
+			{
+				$newChild= $row->meta_value;
+			}
 			if($newChild!=-1 and $tang<11)
 			{ 
-			ThemDiemTK_Hethong($childid,0.5);
+				$this ->ThemDiemTK_Hethong($newChild,0.5);
+				$this->logs_model->add($newChild,$this->common->getObject('diemthuong'),'Thưởng gián tiếp',date('Y-m-d h-i-s'),"0.5 V",$childid,$this->common->getStatus('duyet'));
+				$tang=$tang+1;
+				$this -> CongdiemchocacBo($newChild,$tang);
 			}
-			return $query->result();
 	}
 	
 	//List User byParent
@@ -261,10 +267,11 @@ class User_model extends CI_Model{
 			'meta_value'=>'18'
 		);
 		$this->db->insert('ci_usermeta',$user_meta3);
+		$this ->CongdiemchocacBo($id,1);
 		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
-		$this -> addVcoin($id,1.8);
-		$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
-		$this->checkThuongcanve($meta_chooseuser);
+		//$this -> addVcoin($id,1.8);
+		//$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
+		//$this->checkThuongcanve($meta_chooseuser);
 	}
 	
 	//get id last record
@@ -417,6 +424,8 @@ class User_model extends CI_Model{
 				$this->db->where('user_id',$user_id);
 				$this->db->where('meta_key','TK_hethong');
 				$this->db->update('ci_usermeta',$user);
+				
+				
 		}
 	}		
 }
