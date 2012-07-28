@@ -1,11 +1,10 @@
-<?php $this->load->view('hoivien/header'); ?>
+<?php $this->load->view('hoivien/header');?>
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
-		<?php
-		 include('sidebar-left.php');?>        
-        <div class="maincontent" style="margin:0 45px 0 260px">
-        	<div class="maincontentinner">            	
+		<?php include('sidebar-left.php');?>        
+        <div class="maincontent noright">
+        	<div class="maincontentinner">         	
                 <ul class="maintabmenu">
                 	<li class="current"><a href="./dashboard.html">CÂY KHÁCH HÀNG</a></li>
                 </ul><!--maintabmenu-->                
@@ -19,12 +18,6 @@
                 <br /><br />
 
                     
-                </div><!--content-->
-                <!---->
-            </div><!--maincontentinner-->                
-        </div><!--maincontent-->        
-             
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->    
+                </div><!--content-->                
+            </div><!--maincontentinner-->            
 <?php $this->load->view('back_end/footer');?>
