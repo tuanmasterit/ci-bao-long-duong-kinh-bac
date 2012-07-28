@@ -49,6 +49,7 @@ class Hoiviens extends CI_Controller {
 			$at=$this->User_model->getByUsername($user_login);
 			if($at!=-10)
 			redirect('admin/hoiviens','refresh');
+			$user_pass = $this->input->post('txtPass');
 			$user_nicename = $this->input->post('txtnicename');
 			$user_email = $this->input->post('txtemail');
 			$user_regitered = date('Y-m-d h-i-s');
@@ -65,7 +66,7 @@ class Hoiviens extends CI_Controller {
 			$bank=$this->input->post('txtBank');
 			$birthdate=$this->input->post('txtBirthDate');
 			$meta_boothtitle=$this->input->post('txtboothtitle');
-			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate);
+			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate,$user_pass);
 			$this-> session-> set_flashdata('message','Thêm hội viên thành công!');			
 			redirect('admin/hoiviens','refresh');	
 		}
