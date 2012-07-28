@@ -85,7 +85,7 @@
             <li><a href="<?php echo base_url().'news/cat/58'?>" class="parent"><span>Tín ngưỡng tâm linh</span></a>
             	<ul>
             		<li><a href="<?php echo base_url().'news/cat/58'?>">Bài viết</a></li>
-            		<li><a href="http://phatgiaovnn.com/" target="_blank">Phật giáo Việt Nam</a></li>
+            		<li><a href="http://www.thichchanquang.com" target="_blank">Phật giáo Việt Nam</a></li>
             	</ul>
             </li>
             <li><a href="<?php echo base_url();?>pages/index/34" class="parent"><span>Tư vấn thiết kế website</span></a></li>

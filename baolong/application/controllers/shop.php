@@ -8,22 +8,26 @@ class Shop extends CI_Controller {
 		$this->load->model('Post_model');
 		$this->load->model('Term_model');
     }
-	public function index($shop_id,$module='',$object_id='')	
+	public function index($shop_id='',$module='',$object_id='')
 	{		
-		switch($module){
-			case '':
-				$this->home($shop_id);
-				break;
-			case 'page':
-				$this->page($shop_id,$object_id);
-				break;
-			case 'cat':
-			    //category($shop_id,$object_id);
-				break;
-			case 'product':
-				//product($shop_id,$object_id);
-				break;				
-		}		
+		if($shop_id != ''){
+			switch($module){
+				case '':
+					$this->home($shop_id);
+					break;
+				case 'page':
+					$this->page($shop_id,$object_id);
+					break;
+				case 'cat':
+					//category($shop_id,$object_id);
+					break;
+				case 'product':
+					//product($shop_id,$object_id);
+					break;				
+			}
+		}else{
+			redirect('welcome');	
+		}
 	}
 	function home($shop_id){
 		$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc';

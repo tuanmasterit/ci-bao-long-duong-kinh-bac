@@ -66,7 +66,7 @@ class Count_access extends CI_Model{
     
     function countOnline()
     {
-    	$query = $this->db->query("SELECT COUNT(session_id) As UserOnline FROM `ci_sessions` WHERE last_activity > UNIX_TIMESTAMP(now()-interval 20 minute)");
+    	$query = $this->db->query("SELECT COUNT(session_id) As UserOnline FROM `ci_sessions` WHERE last_activity > UNIX_TIMESTAMP(now()-interval 10 minute)");
 
 		if ($query->num_rows() > 0)
 		{

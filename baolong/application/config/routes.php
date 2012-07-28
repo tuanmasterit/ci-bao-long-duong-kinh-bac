@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+$route['admin'] = 'admin/login';
 $route['shop/(:any)'] = 'shop/index/$1';
 $route['product/(:num)'] = "welcome/product/$1";
 $route['cat/(:num)'] = "welcome/cat/$1";
