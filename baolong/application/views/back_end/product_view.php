@@ -58,19 +58,19 @@
                             <col class="con1" />
                             <col class="con0" />
                             <col class="con1" />
+                            
                             <col class="con0" />
                             <col class="con1" />
-                            <col class="con0" />
                         </colgroup>
                         <thead>
                             <tr>
                                 <th class="head0" width="10"><input type="checkbox" class="checkall" /></th>
                                 <th class="head1">Tên sản phẩm</th>                                
                                 <th class="head0">Mô tả</th>
-                                <th class="head1">Giá thị trường</th>
-                                <th class="head0">Giá hội viên</th>
-                                <th class="head1">Ngày cập nhật</th>
-                                <th class="head0" width="60">&nbsp;</th>
+                                <th class="head1">Giá</th>
+                                
+                                <th class="head0">Ngày cập nhật</th>
+                                <th class="head1" width="60">&nbsp;</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -78,10 +78,10 @@
                                 <th class="head0"><input type="checkbox" class="checkall" /></th>
                                 <th class="head1">Tiêu đề</th>                                
                                 <th class="head0">Mô tả</th>
-                                <th class="head1">Giá thị trường</th>
-                                <th class="head0">Giá hội viên</th>
-                                <th class="head1">Ngày cập nhật</th>
-                                <th class="head0" width="60">&nbsp;</th>
+                                <th class="head1">Giá</th>
+                               
+                                <th class="head0">Ngày cập nhật</th>
+                                <th class="head1" width="60">&nbsp;</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -91,7 +91,7 @@
                                     <td><?php echo $Post->post_title;?></td>                                    
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $this->Post_model->get_meta_value($Post->id,'giathitruong');?></td>
-                                    <td><?php echo $this->Post_model->get_meta_value($Post->id,'giahoivien');?></td>
+                                    
                                     <td>
                                     	<?php
                                     if($Post->post_modified=='0000-00-00 00:00:00')
