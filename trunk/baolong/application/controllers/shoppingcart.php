@@ -26,15 +26,10 @@ class Shoppingcart extends CI_Controller {
 			$name = $product[0]->post_title;
 		}
 		$giathitruong = $this->Post_model->get_meta_value($id,'giathitruong');
-		$giahoivien = $this->Post_model->get_meta_value($id,'giahoivien');
-		if($this->session->userdata('logged_in')!=1)
-		{
-			$gia= $giathitruong;			
-		}
-		else 
-		{
-			$gia= $giahoivien;
-		}
+		//$giahoivien = $this->Post_model->get_meta_value($id,'giahoivien');
+		
+		$gia= $giathitruong;			
+		
 		$flag = false;//Biến kiểm tra có mặt hàng chưa
 		foreach ($this->cart->contents() as $items):
 			if($items['id']==$id)
@@ -69,7 +64,7 @@ class Shoppingcart extends CI_Controller {
 		}
 		else 
 		{
-			if($this->session->userdata('logged_in')!=1)
+			/*if($this->session->userdata('logged_in')!=1)
 				{
 					foreach ($this->cart->contents() as $items):
 						$id = $items['id'];
@@ -112,7 +107,7 @@ class Shoppingcart extends CI_Controller {
                               );  
                         $this->cart->insert($data2);							
 					endforeach;
-				}
+				}*/
 			$data['check']=true;			
 		}
 		
@@ -253,48 +248,10 @@ class Shoppingcart extends CI_Controller {
 		{
 			if($this->session->userdata('logged_in')!=1)
 				{
-					foreach ($this->cart->contents() as $items):
-						$id = $items['id'];
-						$price = $this->Post_model->get_meta_value($items['id'],'giathitruong');
-						$qty = $items['qty'];
-						$name = $items['name'];
-						$data = array(
-                              'rowid'     => $items['rowid'], 
-                              'qty'       => 0,                              
-                              );  
-                        $this->cart->update($data);
-                        
-                        $data2 = array(
-                              'id'      => $id,
-                              'qty'       => $qty, 
-                              'price'   => $price, 
-                              'name'    => $name
-                              );  
-                        $this->cart->insert($data2);				
-					endforeach;					
+							
 				}
 				else 
 				{
-					foreach ($this->cart->contents() as $items):
-						$id = $items['id'];
-						$price = $this->Post_model->get_meta_value($items['id'],'giahoivien');
-						$qty = $items['qty'];
-						$name = $items['name'];
-						$data = array(
-                              'rowid'     => $items['rowid'], 
-                              'qty'       => 0,                              
-                              );  
-                        $this->cart->update($data);
-                        
-                        $data2 = array(
-                              'id'      => $id,
-                              'qty'       => $qty, 
-                              'price'   => $price, 
-                              'name'    => $name
-                              );  
-                        $this->cart->insert($data2);							
-					endforeach;
-					
 					$username =  $this->session->userdata('username');		
 					$user_id = $this->User_model->getByUsername($username);
 					$data['user'] = $this->User_model->get($user_id,0,0,'');
