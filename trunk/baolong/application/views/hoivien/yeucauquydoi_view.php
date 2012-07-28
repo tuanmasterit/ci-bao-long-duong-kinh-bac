@@ -31,13 +31,6 @@
                 <br /><br />
 
                     
-                </div><!--content-->
-                
-            </div><!--maincontentinner-->                
-        </div><!--maincontent-->        
-             
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->    
-</body>
-</html>
+                </div><!--content-->                
+            </div><!--maincontentinner-->            
+<?php $this->load->view('back_end/footer');?>
