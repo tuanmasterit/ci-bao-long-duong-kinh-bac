@@ -1,4 +1,4 @@
-<?php $this->load->view('back_end/header'); ?>
+<?php $this->load->view('hoivien/header');?>
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
@@ -12,6 +12,7 @@
                 <div class="content" style="width:100%">
                 	<ul class="">
                     	
+						
                     </ul>
                     <table width="500px" class="tblPhahe">
 						<tr>
@@ -132,5 +133,4 @@
      	</div><!--mainwrapperinner-->
     </div><!--mainwrapper-->
 	<!-- END OF MAIN CONTENT -->    
-</body>
-</html>
+<?php $this->load->view('back_end/footer');?>

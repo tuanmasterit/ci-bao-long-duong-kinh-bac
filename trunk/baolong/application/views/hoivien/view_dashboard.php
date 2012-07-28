@@ -1,4 +1,4 @@
-<?php $this->load->view('back_end/header'); ?>
+<?php $this->load->view('hoivien/header');?>
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
@@ -260,13 +260,4 @@
                 </div><!--content-->
                 
             </div><!--maincontentinner-->            
-            <div class="footer">
-            	<p>Starlight Admin Template &copy; 2012. All Rights Reserved. Designed by: <a href="">ThemePixels.com</a></p>
-            </div><!--footer-->            
-        </div><!--maincontent-->        
-        <?php include('sidebar-right.php');?>                
-     	</div><!--mainwrapperinner-->
-    </div><!--mainwrapper-->
-	<!-- END OF MAIN CONTENT -->    
-</body>
-</html>
+<?php $this->load->view('back_end/footer');?>

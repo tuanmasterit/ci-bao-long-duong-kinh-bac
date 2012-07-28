@@ -17,22 +17,16 @@ class tienthuong extends CI_Controller {
 	public function index($row=0)
 	{
 		
-		include('paging.php');	
-		$stype="";
-		if($this->input->post('stype'))
-		{
-			$stype=$this->input->post('stype');
-		}
+		include('paging.php');		
 		$user_id=$this->session->userdata('user_id');
-		//$user_id=26;
+		$user_id=26;
 		$config['base_url']= base_url()."/hoiviens/index/";
-		$config['total_rows']=$this->logs_model->getCount($user_id,$stype);		
+		$config['total_rows']=$this->logs_model->getCount($user_id);		
 		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
 		//echo $config['total_rows'];
 		$data['list_link'] = $this->pagination->create_links(); 		
-		$data['lstLog'] = $this->logs_model->get($config['per_page'],$row,$user_id,$stype);
-		$data['stype']=$stype;
+		$data['lstLog'] = $this->logs_model->get($config['per_page'],$row,$user_id);
 		$this->load->view('hoivien/tienthuong_view',$data);			
 	}	
 }
