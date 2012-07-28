@@ -45,6 +45,17 @@ class User_model extends CI_Model{
 		
 	}
 	
+	
+	function getByChild($childid){
+			$this->db->select('user_login,display_name,meta_value');
+			$this->db->from('ci_users');
+			$this->db->join('ci_usermeta', 'id = user_id');
+			$this->db->where('meta_key','chooseuser');
+			$this->db->where('meta_value',$parentid);
+			$query = $this->db->get();   
+			return $query->result();
+	}
+	
 	//List User byParent
 	function getByParent($parentid){
 			$this->db->select('user_login,display_name,meta_value');
@@ -76,10 +87,21 @@ class User_model extends CI_Model{
 			$lstUser = $this->User_model->getByParent($parentid);
 			processMarkRef($lstUser[0]->user_login,$countUser1);
 			processMarkRef($lstUser[1]->user_login,$countUser2);
-			if($countUser1>6 && $countUser2>6)
+			$capdo=$this ->getCapdothuong($this->getByUsername($parentid),"capdodiemthuong");
+			$lv='0';
+
+			if($countUser1>6 && $countUser2>6 && $capdo=0)
 			{
-				$this->logs_model->add($id,'1','Cập nhật điểm thưo: 18V',date('Y-m-d h-i-s'));
+				$this->logs_model->add($id,$this->common->getObject('thuongcanve'),'Tiền thưởng cân vế: ',date('Y-m-d h-i-s'),$this->common->getStatus('chuanhantien'),'');
+				$lv='1';
 			}
+			
+			$user = array(
+			'meta_value'=>$lv			
+			);
+			$this->db->where('meta_key','capdodiemthuong');		
+			$this->db->where('user_id',$parentid);
+			$this->db->update('ci_usermeta',$user);
 		} 
 	}
 	
@@ -107,6 +129,7 @@ class User_model extends CI_Model{
 			$item=$query -> first_row();
 			$userdata = array(
                    'username'  => $user_name,
+				   'user_id'  =>$item->ID,
 				   'display_name'  => $item->display_name,
                    'logged_in' => TRUE
 				   	
@@ -146,7 +169,7 @@ class User_model extends CI_Model{
 		$user_meta1 = array(
 			'user_id'=>$id,
 			'meta_key'=>'parent',
-			'meta_value'=>$meta_references
+			'meta_value'=>$this->getByUsername($meta_references)
 		);
 		$this->db->insert('ci_usermeta',$user_meta1);
 		$user_meta2 = array(
@@ -164,7 +187,7 @@ class User_model extends CI_Model{
 		$user_meta4 = array(
 			'user_id'=>$id,
 			'meta_key'=>'chooseuser',
-			'meta_value'=>$meta_chooseuser
+			'meta_value'=>$this->getByUsername($meta_chooseuser)
 		);
 		$this->db->insert('ci_usermeta',$user_meta4);
 		
@@ -229,9 +252,17 @@ class User_model extends CI_Model{
 			'meta_value'=>'0'
 		);
 		$this->db->insert('ci_usermeta',$diemthuong_meta);
+		$ongheo_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'ongheo',
+			'meta_value'=>'0'
+		);
+		$this->db->insert('ci_usermeta',$ongheo_meta);
 
-		$this->logs_model->add($id,'1','Cập nhật điểm khi thêm mới hội viên: 18V',date('Y-m-d h-i-s'));
-		$this->checkThuongcanve($meta_references);
+		$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
+		$this -> addVcoin($id,1.8);
+		$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
+		$this->checkThuongcanve($meta_chooseuser);
 	}
 	
 	//get id last record
@@ -268,6 +299,19 @@ class User_model extends CI_Model{
 		$this->db->where('meta_key','group');
 		$this->db->where('meta_value',$meta_value);		
 		return $this->db->count_all_results();
+	}
+	
+	function getCapdothuong($userid,$key)
+	{
+		$this->db->from('ci_usermeta');
+		$this->db->where('meta_key',$key);
+		$this->db->where('user_id',$userid);
+		$query = $this->db->get();
+		foreach ($query->result() as $row)
+		{
+			return $row->meta_value;
+		}
+		return -10;
 	}
 	
 	function getByUsername($username)
@@ -320,6 +364,32 @@ class User_model extends CI_Model{
         	$data = $query->row_array();        	
         }
         return $data;
-	}			
+	}	
+	
+	function addVcoin($user_id,$vcoin)
+	{
+		$this->db->select('meta_value');
+		$this->db->from('ci_usermeta');	
+		$this->db->where('user_id',$user_id);
+		$this->db->where('meta_key','vcoin');
+		$query = $this->db->get();
+		$crrVcoin = -2;
+		foreach($query->result() as $row){
+			$crrVcoin= $row->meta_value;	
+		}
+		if($crrVcoin==-2)
+		{
+			return 'false';
+		}
+		else
+		{
+				$user = array(
+					'meta_value'=>($crrVcoin+$vcoin)
+				);		
+				$this->db->where('user_id',$user_id);
+				$this->db->where('meta_key','vcoin');
+				$this->db->update('ci_usermeta',$user);
+		}
+	}		
 }
 ?>

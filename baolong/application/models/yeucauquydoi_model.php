@@ -44,17 +44,24 @@ class yeucauquydoi_model extends CI_Model{
 			}
 			else
 			{
-				$user = array(
+				/*$user = array(
 					'meta_value'=>($crrVcoin-$vcoin)
 				);		
 				$this->db->where('user_id',$user_id);
 				$this->db->where('meta_key','vcoin');
-				$this->db->update('ci_usermeta',$user);
+				$this->db->update('ci_usermeta',$user);*/
 				
-				$this->logs_model->add($user_id,'1','Cập nhật điểm quy đổi: '.$vcoin.'V',date('Y-m-d h-i-s'));
+				$this->logs_model->add($user_id,$this->common->getObject('quydoi'),'Yêu cầu quy đổi: '.$vcoin.'V',date('Y-m-d h-i-s'),$this->common->getStatus('choxuly'),'');
 				return 'true';
 			}
 		}
+	}
+	
+	function checkAddVcoin($user_id,$vcoin)
+	{
+				
+				$this->logs_model->add($user_id,$this->common->getObject('naptien'),'Yêu cầu nạp điểm: '.$vcoin.'V',date('Y-m-d h-i-s'),$this->common->getStatus('choxuly'),'');
+				return 'true';
 	}
 }
 ?>

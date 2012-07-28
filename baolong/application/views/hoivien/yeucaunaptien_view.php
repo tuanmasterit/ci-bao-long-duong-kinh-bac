@@ -7,18 +7,18 @@
         <div class="maincontent" style="margin:0 45px 0 260px">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu">
-                	<li class="current"><a href="#">YÊU CẦU QUY ĐỔI</a></li>
+                	<li class="current"><a href="#">YÊU CẦU NẠP TIỀN VÀO TÀI KHOẢN</a></li>
                 </ul><!--maintabmenu-->                
                 <div class="content" style="width:100%">
-                	<form action="<?php echo base_url()?>hoivien/yeucauquydoi" method="post"  id="index_login">
+                	<form action="<?php echo base_url()?>hoivien/yeucaunaptien" method="post"  id="index_login">
 					<?php if($result=='false')
 					{?>
-					<div class="loginerror" style="display:block"><p>Số điểm không hợp lệ</p></div>
+					<div class="loginerror" style="display:block"><p>Số tiền không hợp lệ</p></div>
 					<?php }else if($result=='true'){?>
-					<div class="loginerror" style="display:block"><p>Quy đổi thành công</p></div>
+					<div class="loginerror" style="display:block"><p>Yêu cầu nạp tiền thành công</p></div>
 					<?php }else{}?>
 					<div class="line">
-					<label> Điểm muốn quy đổi:</label>
+					<label> Số tiền muốn nạp:</label>
 					<input type="text" class="txt" name="txtVcoin" id="username" />
 					<input type="hidden" name="typeQD" value="2"/>
 					</div>
