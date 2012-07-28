@@ -50,7 +50,11 @@
 	<div class="clear"></div>
 </div>
 <div>
-	<iframe width="245" height="200" src="http://www.youtube.com/embed/3lShNj_FFDQ" frameborder="0" allowfullscreen></iframe>
+	<object width="245" height="200"><param value="http://www.youtube.com/v/IJlxxfFmjHA?version=3&amp;autoplay=1" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><embed width="245" height="200" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" src="http://www.youtube.com/v/IJlxxfFmjHA?version=3&amp;autoplay=1"></object>
+</div>
+<p>&nbsp;</p>
+<div>
+<embed width="245" height="200" flashvars="file=<?php echo base_url();?>application/content/playlist/playlist.xml&amp;displayheight=0&amp;height=200&amp;width=245&amp;thumbsinplaylist=false&amp;shuffle=false&amp;repeat=list&amp;showeq=true&amp;allowfullscreen=true&amp;backcolor=0xffffff&amp;frontcolor=0x666666&amp;lightcolor=999999" allowscriptaccess="always" quality="high" name="xml/playlist.xml" id="xml/playlist.xml" src="<?php echo base_url();?>application/content/playlist/flvplayer.swf" type="application/x-shockwave-flash">
 </div>
 <p>&nbsp;</p>
 <div id="menu_list">

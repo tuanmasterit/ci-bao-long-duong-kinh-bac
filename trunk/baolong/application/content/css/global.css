@@ -118,10 +118,9 @@ body
     width: 984px;
     position: absolute;
     z-index: 3;
-    margin: 0 auto;
-    background: url("../images/fotter.jpg") no-repeat scroll bottom left #FFF;
+    margin: 0 auto;    
 }
-
+.footer-info{background: url("../images/fotter.jpg") no-repeat scroll top left #FFF;overflow:hidden;padding-bottom:5px;}
 #search_box .txtSearch {
     background: url("../images/timkiem.png") no-repeat scroll left top transparent;
     border: 0 none;

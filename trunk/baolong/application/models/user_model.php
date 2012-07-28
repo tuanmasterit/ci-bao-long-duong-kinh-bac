@@ -1,5 +1,4 @@
 <?php 
-include('class.php');
 class User_model extends CI_Model{
 	//Properties
 	function __construct()
