@@ -353,7 +353,7 @@ class User_model extends CI_Model{
 	}
 	function searchByUsername($username)
 	{
-		$this->db->select('user_login');
+		$this->db->select('user_login,id');
 		$this->db->from('ci_users');
 		$this->db->like('user_login', $username);
 		$this->db->limit(5,0);
