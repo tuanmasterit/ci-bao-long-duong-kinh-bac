@@ -46,13 +46,18 @@ class User_model extends CI_Model{
 	}
 	
 	
-	function getByChild($childid){
-			$this->db->select('user_login,display_name,meta_value');
+	function CongdiemchocacBo($childid,$tang){
+			$newChild=-1;
+			$this->db->select('meta_value');
 			$this->db->from('ci_users');
 			$this->db->join('ci_usermeta', 'id = user_id');
 			$this->db->where('meta_key','chooseuser');
-			$this->db->where('meta_value',$parentid);
-			$query = $this->db->get();   
+			$this->db->where('ci_users.id',$childid);
+			$query = $this->db->get();  
+			if($newChild!=-1 and $tang<11)
+			{ 
+			ThemDiemTK_Hethong($childid,0.5);
+			}
 			return $query->result();
 	}
 	
@@ -178,20 +183,12 @@ class User_model extends CI_Model{
 			'meta_value'=>$meta_boothtitle
 		);
 		$this->db->insert('ci_usermeta',$user_meta2);
-		$user_meta3 = array(
-			'user_id'=>$id,
-			'meta_key'=>'vcoin',
-			'meta_value'=>'18'
-		);
-		$this->db->insert('ci_usermeta',$user_meta3);
 		$user_meta4 = array(
 			'user_id'=>$id,
 			'meta_key'=>'chooseuser',
 			'meta_value'=>$this->getByUsername($meta_chooseuser)
 		);
 		$this->db->insert('ci_usermeta',$user_meta4);
-		
-		
 		$birthdate_meta = array(
 			'user_id'=>$id,
 			'meta_key'=>'birthdate',
@@ -248,18 +245,23 @@ class User_model extends CI_Model{
 		
 		$diemthuong_meta = array(
 			'user_id'=>$id,
-			'meta_key'=>'capdodiemthuong',
+			'meta_key'=>'TK_gianhang',
 			'meta_value'=>'0'
 		);
 		$this->db->insert('ci_usermeta',$diemthuong_meta);
 		$ongheo_meta = array(
 			'user_id'=>$id,
-			'meta_key'=>'ongheo',
+			'meta_key'=>'TK_tichluyongheo',
 			'meta_value'=>'0'
 		);
 		$this->db->insert('ci_usermeta',$ongheo_meta);
-
-		$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
+		$user_meta3 = array(
+			'user_id'=>$id,
+			'meta_key'=>'TK_hethong',
+			'meta_value'=>'18'
+		);
+		$this->db->insert('ci_usermeta',$user_meta3);
+		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
 		$this -> addVcoin($id,1.8);
 		$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
 		$this->checkThuongcanve($meta_chooseuser);
@@ -388,6 +390,32 @@ class User_model extends CI_Model{
 				);		
 				$this->db->where('user_id',$user_id);
 				$this->db->where('meta_key','vcoin');
+				$this->db->update('ci_usermeta',$user);
+		}
+	}	
+	
+	function ThemDiemTK_Hethong($user_id,$diem)
+	{
+		$this->db->select('meta_value');
+		$this->db->from('ci_usermeta');	
+		$this->db->where('user_id',$user_id);
+		$this->db->where('meta_key','TK_hethong');
+		$query = $this->db->get();
+		$crrVcoin = -2;
+		foreach($query->result() as $row){
+			$crrVcoin= $row->meta_value;	
+		}
+		if($crrVcoin==-2)
+		{
+			return 'false';
+		}
+		else
+		{
+				$user = array(
+					'meta_value'=>($crrVcoin+$diem)
+				);		
+				$this->db->where('user_id',$user_id);
+				$this->db->where('meta_key','TK_hethong');
 				$this->db->update('ci_usermeta',$user);
 		}
 	}		
