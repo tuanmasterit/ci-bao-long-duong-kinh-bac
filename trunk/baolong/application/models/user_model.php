@@ -96,7 +96,7 @@ class User_model extends CI_Model{
 		{	
 			$countUser=1;		
 			$lstUser = $this->User_model->getByParent($user_id);
-			processMarkRef($lstUser[0]->user_login,$countUser);
+			$this->processMarkRef($lstUser[0]->user_login,$countUser);
 		}
 		return $countUser;
 	}
@@ -108,7 +108,7 @@ class User_model extends CI_Model{
 		{	
 			$countUser=1;
 			$lstUser = $this->User_model->getByParent($user_id);
-			processMarkRef($lstUser[1]->user_login,$countUser);
+			$this->processMarkRef($lstUser[1]->user_login,$countUser);
 		}
 		return $countUser;
 	}
