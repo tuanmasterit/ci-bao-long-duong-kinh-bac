@@ -69,7 +69,7 @@
                                 <input type="hidden" id="featured_image" name="hdffeatured_image" >
                                 <img src="" id="featured_image_src" width="100%" height="auto" style="margin-bottom:10px;" />
                                 <br/>
-                                <label id="lblBookUrl"></label>
+                                <p id="lblbookurl">cho ít dữ liệu vào đây</p>
                                 <button id="imageUpload" class="submit radius2" >Chọn Sách</button>
                             </div>
                         </div>
