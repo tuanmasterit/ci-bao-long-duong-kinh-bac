@@ -277,7 +277,7 @@ class Post_model extends CI_Model{
 		$this->db->insert('ci_postmeta',$arr_thitruong);
 		
 	}
-	
+	// update sau
 	function getProductByName($name)
 	{
 		$this->db->select('ID');
@@ -290,6 +290,6 @@ class Post_model extends CI_Model{
 			return $row->ID;
 		}
 		return 0;		
-	}
+	}	
 }
 ?>

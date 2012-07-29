@@ -472,7 +472,7 @@ button,input,select,textarea { font-size: 12px; font-family: Arial, Helvetica, s
 /*.stdform input[type=submit]:hover { background: #ffdd00; color: #333; }*/
 /*.stdform input[type=reset]:hover { background: #ddd; cursor: pointer; color: #333; }*/
 
-.stdform textarea { 
+.stdform textarea,textarea { 
 	border: 1px solid #ccc; background: #fcfcfc; padding: 8px 5px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; width:95%;
 	-moz-box-shadow: inset 1px 1px 2px #ddd; -webkit-box-shadow: inset 1px 1px 2px #ddd; box-shadow: inset 1px 1px 2px #ddd; color: #666;
 }
@@ -488,7 +488,7 @@ button,input,select,textarea { font-size: 12px; font-family: Arial, Helvetica, s
 	background: #fff; -moz-box-shadow: inset 1px 1px 2px #eee; -webkit-box-shadow: inset 1px 1px 2px #eee; box-shadow: inset 1px 1px 2px #eee; 
 }
 
-.stdform button { border: 1px solid #333; background: #333; color: #fff; cursor: pointer; padding: 7px 10px; font-weight: bold; }
+.stdform button,.button-brow{ border: 1px solid #333; background: #333; color: #fff; cursor: pointer; padding: 7px 10px; font-weight: bold; }
 .stdform button:hover { background: #111; border: 1px solid #000; color: #fff; }
 .stdform button.cancel { background: #eee; color: #666; border: 1px solid #ddd; }
 .stdform button.cancel:hover { background: #ddd; border: 1px solid #ccc; }
@@ -1294,4 +1294,5 @@ span.sb_down{
 		color:red;
 		font-weight:bold
 	}
-	
+.info{margin-bottom:20px;}
+.area-editor{width:500px;}

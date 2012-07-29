@@ -890,15 +890,8 @@
 }
 #products_v2 .content 
 {
-    -moz-border-bottom-colors: none;
-    -moz-border-image: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    border-color: -moz-use-text-color #E8E8E8 #E8E8E8;
-    border-right: 1px solid #E8E8E8;
-    border-style: none solid solid;
-    border-width: medium 1px 1px;
+    border:1px solid #E8E8E8;
+	border-top:none;
     font-size: 12px;
     line-height: 18px;
     padding: 6px;
@@ -1042,7 +1035,7 @@
     width: 99px;
 	float:left    
 }
-#list_promo .jcarousel-skin-tango .jcarousel-item{width:180px;height:150px;}
+#list_promo .jcarousel-skin-tango .jcarousel-item{width:180px;height:80px;}
 .slide_carousel .caroufredsel_wrapper
 {
     width: 881px !important;

@@ -21,4 +21,9 @@ CKEDITOR.editorConfig = function( config )
 		{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
 		{ name: 'tools', items : [ 'Maximize','-','About' ] }
 	];
+	config.toolbar_Basic =
+	[
+		{ name: 'document', items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
+		{ name: 'basicstyles', items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] }
+	];
 };
