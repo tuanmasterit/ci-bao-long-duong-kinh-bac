@@ -67,9 +67,9 @@
                             <div class="title"><h2 class="general"><span>Chọn Sách</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
                                 <input type="hidden" id="featured_image" name="hdffeatured_image" >
-                                <img src="" id="featured_image_src" width="100%" height="auto" style="margin-bottom:10px;" />
+                                
                                 <br/>
-                                <p id="lblbookurl">cho ít dữ liệu vào đây</p>
+                                <p id="lblbookurl" style="color:red;">Bạn chưa chọn sách</p>
                                 <button id="imageUpload" class="submit radius2" >Chọn Sách</button>
                             </div>
                         </div>
