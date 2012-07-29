@@ -28,7 +28,14 @@
                         <li><a href="<?php echo base_url();?>admin/products/add"><span>Thêm mới sản phẩm</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/cats"><span>Danh mục sản phẩm</span></a></li>
                     </ul>
-                </li>                         
+                </li>   
+                <li><a href="<?php echo base_url();?>admin/books" class="elements menudrop"><span>Sách</span></a>
+                    <ul>
+                    	<li><a href="<?php echo base_url();?>admin/books"><span>Danh sách sách</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/books/add"><span>Thêm mới sách</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/bookcats"><span>Danh mục sách</span></a></li>
+                    </ul>
+                </li>                        
             </ul>                
         </div><!--leftmenu-->
         <div id="togglemenuleft"><a></a></div>

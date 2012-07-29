@@ -27,9 +27,9 @@
 						var elf = $('#elfinder').elfinder({
 								url : 'php/connector.php?mode=' + mode,  // connector URL (REQUIRED)
 								getFileCallback : function(file) {
-										$( "#featured_image", window.opener.document ).val(file);
-										$( "#featured_image_src", window.opener.document ).attr('src',file);
-										if($("#lblBookUrl").length){$( "#lblBookUrl", window.opener.document ).text(file);}
+										if($("#featured_image", window.opener.document ).length>0){$("#featured_image", window.opener.document ).val(file);}
+										if($("#featured_image_src", window.opener.document ).length>0){$("#featured_image_src", window.opener.document ).attr('src',file);}
+										if($("#lblbookurl", window.opener.document ).length>0){$("#lblbookurl", window.opener.document ).html(file);}
 										window.close();
 								},
 								resizable: false
