@@ -307,7 +307,7 @@ class User_model extends CI_Model{
 		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
 		//$this -> addVcoin($id,1.8);
 		//$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
-		//$this->checkThuongcanve($meta_chooseuser);
+		$this->checkThuongcanve($meta_chooseuser);
 	}
 	
 	//get id last record
