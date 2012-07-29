@@ -31,7 +31,9 @@
                         <li><a href="<?php echo base_url();?>hoivien/products/add"><span>Thêm mới sản phẩm</span></a></li>
                         <li><a href="<?php echo base_url();?>hoivien/cats"><span>Danh mục sản phẩm</span></a></li>
                     </ul>
-                </li>                        
+                </li> 
+                <li><a href="<?php echo base_url();?>hoivien/info" class="elements menudrop"><span>Thông tin chung</span></a>
+                </li>                       
             </ul>                
         </div><!--leftmenu-->
         <div id="togglemenuleft"><a></a></div>
