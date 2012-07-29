@@ -27,18 +27,20 @@ class Post_model extends CI_Model{
 			'meta_value'=>$featured_image
 		);
 		$this->db->insert('ci_postmeta',$arrmeta);
-		//Insert category		
-		foreach($arr_category as $category){
-			$query = $this->db->get_where('ci_term_taxonomy',array('term_id'=>$category));
-			foreach ($query->result() as $row)
-			{
-				$term_taxonomy_id=$row->term_taxonomy_id;
+		//Insert category
+		if(isset($arr_category) && $arr_category != ''){		
+			foreach($arr_category as $category){
+				$query = $this->db->get_where('ci_term_taxonomy',array('term_id'=>$category));
+				foreach ($query->result() as $row)
+				{
+					$term_taxonomy_id=$row->term_taxonomy_id;
+				}
+				$arrcat = array(
+					'object_id'=>$last_id,
+					'term_taxonomy_id'=>$term_taxonomy_id
+				);
+				$this->db->insert('ci_term_relationships',$arrcat);	
 			}
-			$arrcat = array(
-				'object_id'=>$last_id,
-				'term_taxonomy_id'=>$term_taxonomy_id
-			);
-			$this->db->insert('ci_term_relationships',$arrcat);	
 		}
 		return $last_id;
 	}

@@ -25,14 +25,7 @@ class User_model extends CI_Model{
 		elseif ($id>0)
 		{
 			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
-			$this->db->from('ci_users');
-			$this->db->join('ci_usermeta', 'id = user_id');
-			
-			if($meta_value!='')
-			{
-				$this->db->where('meta_key','group');
-				$this->db->where('meta_value',$meta_value);
-			}
+			$this->db->from('ci_users');			
 			$this->db->where('id',$id);
 			$query = $this->db->get();
         	$data = array();
@@ -41,7 +34,18 @@ class User_model extends CI_Model{
 		}		
 		
 	}
-	
+	public function get_user_id_by_shop($shop_id){
+		$this->db->select('user_id');
+		$this->db->from('ci_usermeta');		
+		
+		$this->db->where('meta_key','boothtitle');
+		$this->db->where('meta_value',$shop_id);		
+		$query = $this->db->get();
+		foreach($query->result() as $row){
+			return $row->user_id;	
+		}
+		return 0;
+	}
 	
 	function CongdiemchocacBo($childid,$tang){
 			$newChild=-1;

@@ -30,11 +30,8 @@
                             <p><label>Tên sản phẩm:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txttitle"></span></p>
                             <br/>
-                            <p><label>Giá thị trường:</label></p>
+                            <p><label>Giá sản phẩm:</label></p>
                             <p><span class="field"><input type="text" class="longinput validate[required]" name="txtthitruong" onkeypress="return isNumberKey(event)"></span></p>
-                            <br/>
-                            <p><label>Giá hội viên:</label></p>
-                            <p><span class="field"><input type="text" class="longinput validate[required]" name="txthoivien" onkeypress="return isNumberKey(event)"></span></p> 
                             <br/>
                             <p><label>Mô tả:</label></p>                            
                             <p><span class="field"><textarea name="txtexcerpt"></textarea></span></p>

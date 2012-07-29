@@ -85,7 +85,7 @@ class Posts extends CI_Controller {
 			//Insert posts			
 			$last_id = $this->Post_model->add($l_butdanh,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_post_type,$l_featured_image,$l_arr_categories);
 			if($last_id > 0){
-				redirect('hoivien/posts/lists/post');							
+				redirect('hoivien/posts/lists/'.$l_post_type);							
 			}
 		}
 		redirect('hoivien/posts/add/'.$l_post_type);									

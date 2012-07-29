@@ -74,8 +74,9 @@
 				$config['base_url']= base_url()."/hoivien/cats/edit/".$id."/";
 				$config['total_rows']=$this->Term_model->getCount('catpro',$hoivien_id);				
 				$config['cur_page']= $row;				
-				$this->pagination->initialize($config);
+				$this->pagination->initialize($config);				
 				$data['list_link'] = $this->pagination->create_links();
+				
 				$data['lstCategories'] = $this->Term_model->get(0,$config['per_page'],$row,'catpro',$hoivien_id);
 				$data['Categories'] = $this->Term_model->get(0,0,0,'catpro',$hoivien_id);
 				
