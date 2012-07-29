@@ -250,7 +250,7 @@ class User_model extends CI_Model{
 		$diemthuong_meta = array(
 			'user_id'=>$id,
 			'meta_key'=>'TK_gianhang',
-			'meta_value'=>'0'
+			'meta_value'=>'18'
 		);
 		$this->db->insert('ci_usermeta',$diemthuong_meta);
 		$ongheo_meta = array(
@@ -262,7 +262,7 @@ class User_model extends CI_Model{
 		$user_meta3 = array(
 			'user_id'=>$id,
 			'meta_key'=>'TK_hethong',
-			'meta_value'=>'18'
+			'meta_value'=>''
 		);
 		$this->db->insert('ci_usermeta',$user_meta3);
 		$this ->CongdiemchocacBo($id,1);
