@@ -29,7 +29,15 @@
 								getFileCallback : function(file) {
 										if($("#featured_image", window.opener.document ).length>0){$("#featured_image", window.opener.document ).val(file);}
 										if($("#featured_image_src", window.opener.document ).length>0){$("#featured_image_src", window.opener.document ).attr('src',file);}
-										if($("#lblbookurl", window.opener.document ).length>0){$("#lblbookurl", window.opener.document ).html(file);}
+										var str = file.split('/');
+										var count = str.length;
+										var strKq = file;
+										if(count>0)
+										{
+											strKq = str[count-1];
+											}
+										
+										if($("#lblbookurl", window.opener.document ).length>0){$("#lblbookurl", window.opener.document ).html(strKq);}
 										window.close();
 								},
 								resizable: false
