@@ -63,7 +63,7 @@
                             </tr>
                             <tr>
                             	<td>Tổng điểm đã được thưởng</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo $diemthuong;?></td>
                             </tr>
                             <tr>
                             	<td>Tổng số hội viên cấp dưới</td>
