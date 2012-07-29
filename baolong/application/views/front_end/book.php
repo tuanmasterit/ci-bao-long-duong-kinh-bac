@@ -22,7 +22,7 @@
 			<li>
 			<div class="img">
 				<a title="<?php echo $news->post_title;?>" href="<?php echo base_url().'welcome/bookdetail/'.$news->id;?>">
-					<img alt="" src="<?php echo $this->Post_model->get_featured_image($news->id);?>">
+					<img alt="" src="<?php echo base_url().'application/content/images/book_stack.gif'?>">
 				</a>
 			</div>
 			<h2>
