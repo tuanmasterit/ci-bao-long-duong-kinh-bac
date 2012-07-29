@@ -424,6 +424,17 @@ class User_model extends CI_Model{
 		}
 	}
 	
+	function getChooseUser($hoivien_id)
+	{
+		$this->db->select('user_login,user_login,display_name,meta_value');
+		$this->db->from('ci_users');
+		$this->db->join('ci_usermeta', 'id = user_id');
+		$this->db->where('meta_key','chooseuser');
+		$this->db->where('user_id',$hoivien_id);
+		$query = $this->db->get();   
+		return $query->result();
+	}
+	
 	function ThemDiemTK_Gianhang($user_id,$diem)
 	{
 		$this->db->select('meta_value');
