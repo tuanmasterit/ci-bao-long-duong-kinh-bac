@@ -31,14 +31,17 @@ class yeucauquydoi extends CI_Controller {
 	public function index($row=0)
 	{
 		$result='';
+		$uid=-1;
+		$usn=$this->session->userdata('username');
+		$uid=$this->User_model->getByUsername($usn);
 		if($this->input->post('txtVcoin'))
 		{
-			$usn=$this->session->userdata('username');
-			$uid=$this->User_model->getByUsername($usn);
 			$vcoin=$this->input->post('txtVcoin');
 			$result = $this->yeucauquydoi_model->checkVcoin($uid,$vcoin);
 		}
+		//echo $uid;
 		$data['result'] = $result;
+		$data['crrVcoin']=$this->yeucauquydoi_model->getCrrVcoin($uid);
 		$this->load->view('hoivien/yeucauquydoi_view',$data);
 		//echo $html;
 	}
