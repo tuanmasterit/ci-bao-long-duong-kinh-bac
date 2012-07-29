@@ -15,7 +15,12 @@
 			$username =  $this->session->userdata('username');		
 			$hoivien_id = $this->User_model->getByUsername($username);
 			$hoivien = 	$this->User_model->get($hoivien_id,0,0,'');
-			$data['hoivien'] = $hoivien;
+			
+			$chooseUser = $this->User_model->getChooseUser($hoivien_id);
+			
+			$data['chooseUser'] = $chooseUser;
+			$data['hoivien'] = $hoivien;			
+			
 			$this->load->view('hoivien/view_info',$data);
 		}
 	}
