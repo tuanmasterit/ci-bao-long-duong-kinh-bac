@@ -190,7 +190,7 @@ class User_model extends CI_Model{
 			'user_registered'=>$user_regitered,
 			'display_name'=>$display_name,
 			'user_pass'=>$user_pass_dohash,
-			'user_activation_key' => $meta_value
+			'user_activation_key' => $user_activation_key
 		);
 
 		//Thêm thành viên
