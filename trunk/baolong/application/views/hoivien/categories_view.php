@@ -6,7 +6,7 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>hoivienposts/lists/post">Tất cả bài viết</a></li>
+                	<li><a href="<?php echo base_url();?>hoivien/posts/lists/post">Tất cả bài viết</a></li>
                     <li><a href="<?php echo base_url();?>hoivien/posts/add/post">Thêm mới bài viết</a></li>
                     <li class="current"><a href="<?php echo base_url();?>hoivien/categories">Danh mục bài viết</a></li>
                 </ul>

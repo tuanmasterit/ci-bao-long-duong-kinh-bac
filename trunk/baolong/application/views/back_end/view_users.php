@@ -8,6 +8,7 @@
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">                	
                     <li class="current"><a href="<?php echo base_url();?>admin/users">Quản trị Thành viên</a></li>
+                    <li><a href="<?php echo base_url();?>admin/hoiviens">Quản trị Thành viên</a></li>
                 </ul>
                 <div class="content">                	
                 	<div class="edit-left">                		

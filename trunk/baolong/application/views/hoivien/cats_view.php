@@ -7,9 +7,9 @@
         <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu multipletabmenu">
-                	<li><a href="<?php echo base_url();?>admin/posts/lists/post">Tất cả sản phẩm</a></li>
-                    <li><a href="<?php echo base_url();?>admin/posts/add/post">Thêm mới sản phẩm</a></li>
-                    <li class="current"><a href="<?php echo base_url();?>admin/cats">Danh mục sản phẩm</a></li>
+                	<li><a href="<?php echo base_url();?>hoivien/posts/lists/post">Tất cả sản phẩm</a></li>
+                    <li><a href="<?php echo base_url();?>hoivien/posts/add/post">Thêm mới sản phẩm</a></li>
+                    <li class="current"><a href="<?php echo base_url();?>hoivien/cats">Danh mục sản phẩm</a></li>
                 </ul>
                 <div class="content">                	
                 	<div class="edit-left">

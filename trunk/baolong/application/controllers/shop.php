@@ -15,45 +15,38 @@ class Shop extends CI_Controller {
 				case '':
 					$this->home($shop_id);
 					break;
-				case 'page':
-					$this->page($shop_id,$object_id);
+				case 'post':
+					$this->post($shop_id,$object_id);
 					break;
 				case 'cat':
-					//category($shop_id,$object_id);
+					category($shop_id,$object_id);
 					break;
 				case 'product':
-					//product($shop_id,$object_id);
+					product($shop_id,$object_id);
 					break;				
 			}
 		}else{
 			redirect('welcome');	
 		}
 	}
-	function home($shop_id){
-		$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc';
+	function home($shop_id){		
 		$data['shop_id'] = $shop_id;
+		$user_id = $this->User_model->get_user_id_by_shop($shop_id);
+		$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc';
 		//Tin tức nổi bật
 		$news = $this->Term_model->getCategoryByName('Tin tức nổi bật');
 		$list_news = $this->Post_model->get(0,'post',5,0,'DESC','post_date',$news);		
 		$data['list_news'] = $list_news;		
-				
-		//Sản phẩm tiêu biểu
-		$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
-		$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
-		$data['list_sp_noibat'] = $list_sp_noibat;
-				
-		//Navigation
-		$data['listCatNav'] = $this->Term_model->getCatProNav();
-		
+								
 		//Sản phẩm mặc định
-		$firstTopCat = $this->Term_model->getCatProTopFirst();
-		$data['listProduct'] = $this->Term_model->getListProduct($firstTopCat);
+		$data['listProduct'] = $this->Post_model->get(0, 'product',10,0,'DESC','post_date',0,$user_id);
 		
 		$this->load->view('shop/index',$data);		
 	}
-	function page($shop_id,$page_id){
-		$data['title'] = 'Công ty cổ phần Bảo Long Đường Kinh Bắc';
+	function post($shop_id,$page_id){
+		$data['lstpost'] = $this->Post_model->get($page_id);
+		$data['title'] = $data['lstpost'][0]->post_title;
 		$data['shop_id'] = $shop_id;
-		$this->load->view('shop/page',$data);	
+		$this->load->view('shop/post',$data);	
 	}
 }
