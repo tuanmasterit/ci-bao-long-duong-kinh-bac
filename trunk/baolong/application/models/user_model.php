@@ -88,6 +88,29 @@ class User_model extends CI_Model{
 		return $this->db->count_all_results();
 	}
 	
+	function getCountLeft($user_id)
+	{
+		$count = $this->User_model->getCountByParent($user_id);
+		$countUser=0;
+		if($count>0)
+		{			
+			$lstUser = $this->User_model->getByParent($user_id);
+			processMarkRef($lstUser[0]->user_login,$countUser);
+		}
+		return $countUser;
+	}
+	function getCountRight($user_id)
+	{
+		$count = $this->User_model->getCountByParent($user_id);
+		$countUser=0;
+		if($count==2)
+		{			
+			$lstUser = $this->User_model->getByParent($user_id);
+			processMarkRef($lstUser[1]->user_login,$countUser);
+		}
+		return $countUser;
+	}
+	
 	function checkThuongcanve($parentid)
 	{
 		
