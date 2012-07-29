@@ -20,41 +20,24 @@ class Users extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('logged_in') != 1){
-			redirect('admin/login');
-		}
-		$this->load->model('User_model');
-		$this->load->library('pagination');
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
+		if($this->session->userdata('logged_in') == 1 && $this->session->userdata('user_activation_key') == 'administrator'){
+			$this->load->model('User_model');
+			$this->load->library('pagination');
+			date_default_timezone_set('Asia/Ho_Chi_Minh');			
+		}else{redirect('admin/login');}		
     }
     
 	public function index($row=0)
 	{
+		//paging
+		include('paging.php');			
 		$config['base_url']= base_url()."/admin/users/index/";
-		$config['total_rows']=$this->User_model->getCount('thanhvien');
-		$config['per_page']='10';
-		$config['cur_page']= $row;
-		$config['num_links'] = 5;
-		$config['full_tag_open'] = "<div id='dyntable_paginate' class='dataTables_paginate paging_full_numbers'>";
-		$config['full_tag_close'] = "</div>";
-		$config['first_link'] = 'First';
-		$config['first_tag_open'] = "<span id='dyntable_first' class='first paginate_button paginate_button_disabled'>";
-		$config['first_tag_close'] = "</span>";
-		$config['last_link'] = 'Last';
-		$config['last_tag_open'] = "<span id='dyntable_last' class='last paginate_button'>";
-		$config['last_tag_close'] = "</span>";
-		$config['next_link'] = 'Next';
-		$config['next_tag_open'] = "<span id='dyntable_next' class='next paginate_button'>";
-		$config['next_tag_close'] = "</span>";
-		$config['prev_link'] = 'Previous';
-		$config['prev_tag_open'] = "<span id='dyntable_previous' class='previous paginate_button paginate_button_disabled'>";
-		$config['prev_tag_close'] = "</span>";
-		$config['num_tag_open'] = "<span class='paginate_button'>";
-		$config['num_tag_close'] = "</span>";
-		$config['cur_tag_open'] = "<span class='paginate_active'>";
-		$config['cur_tag_close'] = "</span>";
+		$lstPosts = $this->User_model->getCount('thanhvien');
+		$config['total_rows']= count($lstPosts);		
+		$config['cur_page']= $row;		
 		$this->pagination->initialize($config);
-		$data['list_link'] = $this->pagination->create_links(); 		
+		$data['list_link'] = $this->pagination->create_links();		
+		//transfer data
 		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'thanhvien');
 		$this->load->view('back_end/view_users',$data);
 	}
