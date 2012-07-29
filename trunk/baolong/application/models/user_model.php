@@ -273,6 +273,12 @@ class User_model extends CI_Model{
 			'meta_value'=>$sex
 		);
 		$this->db->insert('ci_usermeta',$sex_meta);
+		$capdo_meta = array(
+			'user_id'=>$id,
+			'meta_key'=>'capdodiemthuong',
+			'meta_value'=>'0'
+		);
+		$this->db->insert('ci_usermeta',$capdo_meta);
 		
 		$diemthuong_meta = array(
 			'user_id'=>$id,
