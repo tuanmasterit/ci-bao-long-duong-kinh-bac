@@ -93,7 +93,8 @@ class User_model extends CI_Model{
 		$count = $this->User_model->getCountByParent($user_id);
 		$countUser=0;
 		if($count>0)
-		{			
+		{	
+			$countUser=1;		
 			$lstUser = $this->User_model->getByParent($user_id);
 			processMarkRef($lstUser[0]->user_login,$countUser);
 		}
@@ -104,7 +105,8 @@ class User_model extends CI_Model{
 		$count = $this->User_model->getCountByParent($user_id);
 		$countUser=0;
 		if($count==2)
-		{			
+		{	
+			$countUser=1;
 			$lstUser = $this->User_model->getByParent($user_id);
 			processMarkRef($lstUser[1]->user_login,$countUser);
 		}
