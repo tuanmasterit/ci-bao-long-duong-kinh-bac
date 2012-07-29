@@ -496,6 +496,23 @@ class User_model extends CI_Model{
 				
 				
 		}
-	}		
+	}	
+
+	function get_usermeta($user_id,$meta_key)
+	{
+		$this->db->select('user_id,meta_key,meta_value');
+		$this->db->from('ci_usermeta');
+		$this->db->where('user_id',$user_id);
+		$this->db->where('meta_key',$meta_key);
+		
+		$query = $this->db->get();
+		$result = '';
+		foreach ($query->result() as $row)
+		{
+		    $result = $row->meta_value;
+		}
+		return $result;
+		
+	}
 }
 ?>

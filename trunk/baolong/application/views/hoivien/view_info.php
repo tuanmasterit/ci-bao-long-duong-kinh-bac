@@ -43,15 +43,15 @@
                             </tr>
                             <tr>
                             	<td>Tài khoản gian hàng</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo $tk_gian_hang;?></td>
                             </tr>
                             <tr>
                             	<td>Tài khoản hệ thống</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo $tk_he_thong;?></td>
                             </tr>
                             <tr>
                             	<td>Tài khoản ống heo</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo $tk_ong_heo;?></td>
                             </tr>
                             <tr>
                             	<td>Người giới thiệu</td>
@@ -75,11 +75,11 @@
                             </tr>
                             <tr>
                             	<td>Tổng hội viên nhánh trái</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo $count_nhanh_trai;?></td>
                             </tr>
                             <tr>
                             	<td>Tổng hội viên nhánh phải</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo $count_nhanh_phai;?></td>
                             </tr>
                             <tr>
                             	<td>Số điểm tích lũy nhánh trái còn</td>
