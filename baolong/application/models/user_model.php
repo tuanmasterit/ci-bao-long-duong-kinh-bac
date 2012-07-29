@@ -202,8 +202,8 @@ class User_model extends CI_Model{
 			'user_id'=>$id,
 			'meta_key'=>'group',
 			'meta_value'=>$meta_value
-		);*/
-		$this->db->insert('ci_usermeta',$user_meta);
+		);
+		$this->db->insert('ci_usermeta',$user_meta);*/
 		$user_meta1 = array(
 			'user_id'=>$id,
 			'meta_key'=>'parent',
