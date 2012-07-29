@@ -29,6 +29,7 @@
 								getFileCallback : function(file) {
 										$( "#featured_image", window.opener.document ).val(file);
 										$( "#featured_image_src", window.opener.document ).attr('src',file);
+										if($("#lblBookUrl").length){$( "#lblBookUrl", window.opener.document ).text(file);}
 										window.close();
 								},
 								resizable: false

@@ -2,10 +2,8 @@
 <div id="main_left" style="margin-top:0px;">
 	<div id="products_v2">
     	<div id="title">
-        	<h4>
-        		
-            	<span><a href="" class="parent">Đọc sách nhé cưng</a></span>
-            	
+        	<h4>        		
+            	<span><a href="" class="parent">Đọc sách</a></span>            	
         	</h4>    
         </div>
         <div class="content">
