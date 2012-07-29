@@ -79,11 +79,11 @@
                             </tr>
                             <tr>
                             	<td>Số điểm tích lũy nhánh trái còn</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo ($count_nhanh_trai%7)*18;?></td>
                             </tr>
                             <tr>
                             	<td>Số điểm tích lũy nhánh phải còn</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo ($count_nhanh_phai%7)*18;?></td>
                             </tr>
                         </tbody>
                     </table>    
