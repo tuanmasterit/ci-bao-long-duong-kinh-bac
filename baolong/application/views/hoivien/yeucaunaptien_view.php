@@ -7,15 +7,15 @@
         <div class="maincontent" style="margin:0 45px 0 260px">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu">
-                	<li class="current"><a href="#">YÊU CẦU NẠP TIỀN VÀO TÀI KHOẢN</a></li>
+                	<li class="current"><a href="#">YÊU CẦU NẠP ĐIỂM VÀO TÀI KHOẢN</a></li>
                 </ul><!--maintabmenu-->                
                 <div class="content" style="width:100%">
                 	<form action="<?php echo base_url()?>hoivien/yeucaunaptien" method="post"  id="index_login">
 					<?php if($result=='false')
 					{?>
-					<div class="loginerror" style="display:block"><p>Số tiền không hợp lệ</p></div>
+					<div class="loginerror" style="display:block"><p>Số điểm không hợp lệ</p></div>
 					<?php }else if($result=='true'){?>
-					<div class="loginerror" style="display:block"><p>Yêu cầu nạp tiền thành công</p></div>
+					<div class="loginerror" style="display:block"><p>Yêu cầu nạp điểm thành công</p></div>
 					<?php }else{}?>
 					<div class="line">
 					<label> Số tiền muốn nạp:</label>

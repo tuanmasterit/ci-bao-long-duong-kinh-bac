@@ -19,7 +19,7 @@
 					<?php }else{}?>
 					<div class="line">
 					<label> Điểm muốn quy đổi:</label>
-					<input type="text" class="txt" name="txtVcoin" id="username" />
+					<input type="text" class="txt" name="txtVcoin" id="username" />( số điểm có trong tài khoản: <?php echo $crrVcoin; ?>)
 					<input type="hidden" name="typeQD" value="2"/>
 					</div>
 					<div class="line" id="btn">

@@ -23,7 +23,7 @@ class yeucaunaptien extends CI_Controller {
 		if($this->session->userdata('logged_in') != 1){
 			redirect('admin/login');
 		}
-		$this->load->model('yeucauquydoi_model');
+		$this->load->model('yeucaunaptien_model');
 		$this->load->model('User_model');
 		$this->load->library('pagination');
     }
@@ -33,10 +33,23 @@ class yeucaunaptien extends CI_Controller {
 		$result='';
 		if($this->input->post('txtVcoin'))
 		{
+			$vcoin=$this->input->post('txtVcoin');
+			if($vcoin>0)
+			{
 			$usn=$this->session->userdata('username');
 			$uid=$this->User_model->getByUsername($usn);
 			$vcoin=$this->input->post('txtVcoin');
-			$result = $this->yeucauquydoi_model->checkAddVcoin($uid,$vcoin);
+			$result = $this->yeucaunaptien_model->add($vcoin,$uid,'',$this->common->getStatus('choxuly'));
+			$result='true';
+			}
+			else
+			{
+			$result='false';
+			}
+		}
+		else
+		{
+			$result='false';
 		}
 		$data['result'] = $result;
 		$this->load->view('hoivien/yeucaunaptien_view',$data);
