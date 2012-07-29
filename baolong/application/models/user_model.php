@@ -511,8 +511,18 @@ class User_model extends CI_Model{
 		{
 		    $result = $row->meta_value;
 		}
-		return $result;
+		return $result;		
+	}
+	
+	function get_sum_quydoi($user_id)
+	{
+		$this->db->select_sum('vcoin');
+		$this->db->from('ci_yeucauquydoi');
+		$this->db->where('user_id',$user_id);
+		$this->db->where('status',$this->common->getStatus('duyet'));
 		
+		$query = $this->db->get();
+		return $query->row()->vcoin;
 	}
 }
 ?>

@@ -54,16 +54,12 @@
                             	<td><?php echo $tk_ong_heo;?></td>
                             </tr>
                             <tr>
-                            	<td>Người giới thiệu</td>
-                            	<td>vanhung90_hd</td>
+                            	<td>Người chỉ định</td>
+                            	<td><?php echo $chooseUser;?></td>
                             </tr>                            
                             <tr>
-                            	<td>Cấp bậc</td>
-                            	<td>vanhung90_hd</td>
-                            </tr>
-                            <tr>
                             	<td>Tổng điểm quy đổi thành công</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo $sum_quydoi;?></td>
                             </tr>
                             <tr>
                             	<td>Tổng điểm đã được thưởng</td>
@@ -71,7 +67,7 @@
                             </tr>
                             <tr>
                             	<td>Tổng số hội viên cấp dưới</td>
-                            	<td>vanhung90_hd</td>
+                            	<td><?php echo ($count_nhanh_trai+$count_nhanh_phai);?></td>
                             </tr>
                             <tr>
                             	<td>Tổng hội viên nhánh trái</td>
