@@ -35,6 +35,12 @@
                         <li><a href="<?php echo base_url();?>admin/books/add"><span>Thêm mới sách</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/bookcats"><span>Danh mục sách</span></a></li>
                     </ul>
+                </li> 
+				 <li><a href="<?php echo base_url();?>admin/books" class="elements menudrop"><span>Giao dịch</span></a>
+                    <ul>
+                    	<li><a href="<?php echo base_url();?>admin/xulyquydoi"><span>Xử lý quy đổi</span></a></li>
+                        <li><a href="<?php echo base_url();?>admin/xulynaptien"><span>Xử lý nạp tiền</span></a></li>
+                    </ul>
                 </li>                        
             </ul>                
         </div><!--leftmenu-->
