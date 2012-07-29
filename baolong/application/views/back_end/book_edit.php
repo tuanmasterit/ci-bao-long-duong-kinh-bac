@@ -82,8 +82,18 @@
                             <div class="title"><h2 class="general"><span>Chọn sách</span></h2></div>
                             <div class="widgetcontent" style="display: block;">
                                 <input type="hidden" id="featured_image" name="hdffeatured_image" value="<?php echo $featured_image;?>" >
-                                <img src="<?php echo $featured_image;?>" id="featured_image_src" width="100%" height="auto" style="margin-bottom:10px;" />
-                                <label id="lblBookUrl"><?php echo $featured_image;?></label>
+                                
+                                <p id="lblbookurl" style="color:red;">
+                                <?php 
+                                	$str = explode('/', $featured_image);
+                                	$strKq= $featured_image;
+                                	if(count($str)>0)
+                                	{
+                                		$strKq = $str[count($str)-1];
+                                	}
+                                	echo $strKq;
+                                ?>
+                                </p>
                                 <button id="imageUpload" class="submit radius2" >Chọn sách</button>
                             </div>
                         </div>
