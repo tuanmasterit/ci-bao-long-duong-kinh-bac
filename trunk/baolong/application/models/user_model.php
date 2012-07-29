@@ -49,22 +49,25 @@ class User_model extends CI_Model{
 	
 	function CongdiemchocacBo($childid,$tang){
 			$newChild=-1;
-			$this->db->select('meta_value');
-			$this->db->from('ci_users');
-			$this->db->join('ci_usermeta', 'id = user_id');
-			$this->db->where('meta_key','chooseuser');
-			$this->db->where('ci_users.id',$childid);
-			$query = $this->db->get();  
-			foreach ($query->result() as $row)
+			$cid=$this->getByUsername($childid);
+			if($cid>0)
 			{
-				$newChild= $row->meta_value;
-			}
-			if($newChild!=-1 and $tang<11)
-			{ 
-				$this ->ThemDiemTK_Hethong($newChild,0.5);
-				$this->logs_model->add($newChild,$this->common->getObject('diemthuong'),'Thưởng gián tiếp',date('Y-m-d h-i-s'),"0.5 V",$childid,$this->common->getStatus('duyet'));
-				$tang=$tang+1;
-				$this -> CongdiemchocacBo($newChild,$tang);
+				$this->db->select('meta_value');
+				$this->db->from('ci_usermeta');
+				$this->db->where('meta_key','chooseuser');
+				$this->db->where('user_id',$cid);
+				$query = $this->db->get();  
+				foreach ($query->result() as $row)
+				{
+					$newChild= $row->meta_value;
+				}
+				if($newChild!=-1 and $tang<11)
+				{ 
+					$this ->ThemDiemTK_Hethong($this->getByUsername($newChild),0.5);
+					$this->logs_model->add($this->getByUsername($newChild),$this->common->getObject('diemthuong'),'Thưởng gián tiếp',date('Y-m-d h-i-s'),"0.5 V",$cid,$this->common->getStatus('duyet'));
+					$tang=$tang+1;
+					$this -> CongdiemchocacBo($newChild,$tang);
+				}
 			}
 	}
 	
@@ -207,7 +210,7 @@ class User_model extends CI_Model{
 		$user_meta1 = array(
 			'user_id'=>$id,
 			'meta_key'=>'parent',
-			'meta_value'=>$this->getByUsername($meta_references)
+			'meta_value'=>$meta_references
 		);
 		$this->db->insert('ci_usermeta',$user_meta1);
 		$user_meta2 = array(
@@ -219,7 +222,7 @@ class User_model extends CI_Model{
 		$user_meta4 = array(
 			'user_id'=>$id,
 			'meta_key'=>'chooseuser',
-			'meta_value'=>$this->getByUsername($meta_chooseuser)
+			'meta_value'=>$meta_chooseuser
 		);
 		$this->db->insert('ci_usermeta',$user_meta4);
 		$birthdate_meta = array(
@@ -300,7 +303,7 @@ class User_model extends CI_Model{
 			'meta_value'=>'0'
 		);
 		$this->db->insert('ci_usermeta',$user_meta3);
-		$this ->CongdiemchocacBo($id,1);
+		$this ->CongdiemchocacBo($user_login,1);
 		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
 		//$this -> addVcoin($id,1.8);
 		//$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
