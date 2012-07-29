@@ -119,26 +119,25 @@ class User_model extends CI_Model{
 		$count = $this->User_model->getCountByParent($parentid);
 		if($count==2)
 		{
-			$countUser1=0;
-			$countUser2=0;
+			$uid=$this->getByUsername($parentid);
+			$countUser1=1;
+			$countUser2=1;
 			$lstUser = $this->User_model->getByParent($parentid);
-			processMarkRef($lstUser[0]->user_login,$countUser1);
-			processMarkRef($lstUser[1]->user_login,$countUser2);
-			$capdo=$this ->getCapdothuong($this->getByUsername($parentid),"capdodiemthuong");
-			$lv='0';
-
-			if($countUser1>6 && $countUser2>6 && $capdo=0)
+			$this ->processMarkRef($lstUser[0]->user_login,$countUser1);
+			$this ->processMarkRef($lstUser[1]->user_login,$countUser2);
+			$capdo=$this ->getCapdothuong($uid,"capdodiemthuong");
+			if($countUser1 >= ($capdo+7) && $countUser2>=($capdo+7))
 			{
-				$this->logs_model->add($id,$this->common->getObject('thuongcanve'),'Tiền thưởng cân vế: ',date('Y-m-d h-i-s'),$this->common->getStatus('chuanhantien'),'');
-				$lv='1';
-			}
-			
-			$user = array(
-			'meta_value'=>$lv			
-			);
-			$this->db->where('meta_key','capdodiemthuong');		
-			$this->db->where('user_id',$parentid);
-			$this->db->update('ci_usermeta',$user);
+				$this->ThemDiemTK_Hethong($uid,18.9);
+				$this->logs_model->add($uid,$this->common->getObject('diemthuong'),'Tiền thưởng cân vế',date('Y-m-d h-i-s'),18.9,$this->session->userdata('user_id'),$this->common->getStatus('duyet'));
+				$user = array(
+				'meta_value'=>($capdo+7)			
+				);
+				$this->db->where('meta_key','capdodiemthuong');		
+				$this->db->where('user_id',$uid);
+				$this->db->update('ci_usermeta',$user);
+				}
+				
 		} 
 	}
 	
@@ -203,7 +202,8 @@ class User_model extends CI_Model{
 			'meta_key'=>'group',
 			'meta_value'=>$meta_value
 		);
-		$this->db->insert('ci_usermeta',$user_meta);*/
+		$this->db->insert('ci_usermeta',$user_meta);
+		*/
 		$user_meta1 = array(
 			'user_id'=>$id,
 			'meta_key'=>'parent',
@@ -297,7 +297,7 @@ class User_model extends CI_Model{
 		$user_meta3 = array(
 			'user_id'=>$id,
 			'meta_key'=>'TK_hethong',
-			'meta_value'=>''
+			'meta_value'=>'0'
 		);
 		$this->db->insert('ci_usermeta',$user_meta3);
 		$this ->CongdiemchocacBo($id,1);
