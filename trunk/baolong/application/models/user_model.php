@@ -9,25 +9,22 @@ class User_model extends CI_Model{
 		$this->load->model('logs_model');
     }		
 	//List User
-	function get($id,$limit,$offset,$meta_value){
+	function get($id,$limit,$offset,$user_activation_key){
 		if($id==0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name');
+			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
 			$this->db->from('ci_users');
-			$this->db->join('ci_usermeta', 'id = user_id');
-			$this->db->where('meta_key','group');
-			$this->db->where('meta_value',$meta_value);
+			$this->db->where('user_activation_key',$user_activation_key);
 			if($limit>0)
 			{
 				$this->db->limit($limit,$offset);
 			}
-			$query = $this->db->get();
-        
+			$query = $this->db->get();        
 			return $query->result();
 		}
 		elseif ($id>0)
 		{
-			$this->db->select('id,user_login,user_nicename,user_email,display_name');
+			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
 			$this->db->from('ci_users');
 			$this->db->join('ci_usermeta', 'id = user_id');
 			
@@ -151,7 +148,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate,$user_pass='1234567')
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate,$user_pass='1234567')
 	{	
 		//$user_pass_random = $this->common->generatePassword(7,0);
 		//$user_pass_random='1234567';
@@ -163,7 +160,8 @@ class User_model extends CI_Model{
 			'user_email'=>$user_email,
 			'user_registered'=>$user_regitered,
 			'display_name'=>$display_name,
-			'user_pass'=>$user_pass_dohash
+			'user_pass'=>$user_pass_dohash,
+			'user_activation_key' => $meta_value
 		);
 
 		//Thêm thành viên
@@ -171,11 +169,11 @@ class User_model extends CI_Model{
 		$id = $this->get_id_last_row();
 		
 		//Thêm user_meta
-		$user_meta = array(
+		/*$user_meta = array(
 			'user_id'=>$id,
 			'meta_key'=>'group',
 			'meta_value'=>$meta_value
-		);
+		);*/
 		$this->db->insert('ci_usermeta',$user_meta);
 		$user_meta1 = array(
 			'user_id'=>$id,
@@ -301,12 +299,10 @@ class User_model extends CI_Model{
 		$this->db->delete('ci_usermeta',array('user_id'=>$id));
 	}
 	
-	function getCount($meta_value)
+	function getCount($user_activation_key)
 	{
 		$this->db->from('ci_users');
-		$this->db->join('ci_usermeta', 'id = user_id');
-		$this->db->where('meta_key','group');
-		$this->db->where('meta_value',$meta_value);		
+		$this->db->where('user_activation_key',$user_activation_key);		
 		return $this->db->count_all_results();
 	}
 	
@@ -335,20 +331,19 @@ class User_model extends CI_Model{
 		return -10;
 	}
 	
-	function getAjax($username,$limit,$offset,$meta_value)
+	function getAjax($username,$limit,$offset,$user_activation_key)
 	{
-		$this->db->select('id,user_login,user_nicename,user_email,display_name');
+		$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
 		$this->db->from('ci_users');
-		$this->db->join('ci_usermeta', 'id = user_id');
-		$this->db->where('meta_key','group');
-		$this->db->where('meta_value',$meta_value);
-		$this->db->like('user_login',$username);
+		$this->db->where('user_activation_key',$user_activation_key);
+		if($username != ''){
+			$this->db->like('user_login',$username);
+		}
 		if($limit>0)
 		{
 			$this->db->limit($limit,$offset);
 		}
-		$query = $this->db->get();
-        
+		$query = $this->db->get();        
 		return $query->result();		
 	}
 	function searchByUsername($username)
@@ -363,7 +358,7 @@ class User_model extends CI_Model{
 	
 	function getById($id)
 	{
-		$this->db->select('id,user_login,user_pass,user_nicename,user_email,display_name');
+		$this->db->select('id,user_login,user_pass,user_nicename,user_email,display_name,user_activation_key');
 		$this->db->from('ci_users');		
 		$this->db->where('id',$id);
 		$query = $this->db->get();
