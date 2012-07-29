@@ -109,10 +109,12 @@ class Posts extends CI_Controller {
 		redirect('hoivien/posts/add/'.$l_post_type);
 	}
 	public function edit($post_type='post', $id){
+		$username =  $this->session->userdata('username');		
+		$l_butdanh = $this->User_model->getByUsername($username);
 		$post_type = $this->uri->segment(4);
 		$data['post_type'] = $post_type;
 		$data['lstbutdanh'] = $this->Author_model->get(0,100,0);
-		$data['lstCategories'] = $this->Term_model->getCatProNav('category');
+		$data['lstCategories'] = $this->Term_model->getCatProNav('category',$l_butdanh);
 		$data['Post'] = $this->Post_model->get($id,$post_type);
 		$data['featured_image'] = $this->Post_model->get_featured_image($id);
 		$data['categories_of_post'] = $this->Post_model->get_categories_of_post($id);
