@@ -527,5 +527,17 @@ class User_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->row()->vcoin;
 	}
+	
+	function getDiemThuong($user_id)
+	{
+		$this->db->select_sum('amount');
+		$this->db->from('ci_logs');
+		$this->db->where('user_id',$user_id);
+		$this->db->where('log_type',$this->common->getObject('diemthuong'));
+		$this->db->where('status',$this->common->getStatus('duyet'));
+		
+		$query = $this->db->get();
+		return $query->row()->amount;
+	}
 }
 ?>
