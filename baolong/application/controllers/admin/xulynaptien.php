@@ -48,10 +48,12 @@ class xulynaptien extends CI_Controller {
 		$id = $this->input->get('id');
 		$user_id = $this->input->get('user_id');
 		$user_pr=$this->session->userdata('user_id');
+		$v=$this->input->get('v');
 		if($id!='')
 		{
-			$this->yeucaunaptien_model->updateStatus($id,$this->common->getStatus('duyet'));
-			$this->logs_model->add($user_id,$this->common->getObject('naptien'),'Nạp tiền',date('Y-m-d h-i-s'),"0.5 V",$user_pr,$this->common->getStatus('duyet'));
+			$this->yeucaunaptien_model->updateStatus($id,$this->common->getStatus('duyet'),$v,$user_id);
+			$this->logs_model->add($user_id,$this->common->getObject('naptien'),'Nạp tiền',date('Y-m-d h-i-s'),$v." V",$user_pr,$this->common->getStatus('duyet'));
+			
 		}
 		redirect('admin/xulynaptien');
 	}
@@ -61,10 +63,11 @@ class xulynaptien extends CI_Controller {
 		$id = $this->input->get('id');
 		$user_id = $this->input->get('user_id');
 		$user_pr=$this->session->userdata('user_id');
+		$v=$this->input->get('v');
 		if($id!='')
 		{
-			$this->yeucaunaptien_model->updateStatus($id,$this->common->getStatus('tralai'));
-			$this->logs_model->add($user_id,$this->common->getObject('naptien'),'Nạp tiền',date('Y-m-d h-i-s'),"0.5 V",$user_pr,$this->common->getStatus('tralai'));
+			$this->yeucaunaptien_model->updateStatus($id,$this->common->getStatus('tralai'),'','');
+			$this->logs_model->add($user_id,$this->common->getObject('naptien'),'Nạp tiền',date('Y-m-d h-i-s'),$v." V",$user_pr,$this->common->getStatus('tralai'));
 		}
 		redirect('admin/xulynaptien');
 	}

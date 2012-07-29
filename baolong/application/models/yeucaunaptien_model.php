@@ -7,6 +7,8 @@ class yeucaunaptien_model extends CI_Model{
         // Call the Model constructor
         parent::__construct();
 		$this->load->database();
+		
+		$this->load->model('User_model');
 				
     }
 	//Add logs
@@ -95,7 +97,7 @@ class yeucaunaptien_model extends CI_Model{
 		return $this->db->count_all_results();
 	}
 	
-	function updateStatus($id,$status)
+	function updateStatus($id,$status,$v,$u)
 	{
 	$user_pr=$this->session->userdata('user_id');
 			$arrmeta = array(
@@ -105,6 +107,7 @@ class yeucaunaptien_model extends CI_Model{
 			);
 			$this->db->where('id',$id);
 			$this->db->update('ci_yeucaunaptien',$arrmeta);
+			$this->User_model->ThemDiemTK_Gianhang($u,$v);
 	}
 	
 }

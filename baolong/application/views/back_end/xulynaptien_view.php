@@ -61,7 +61,7 @@
 								 	if($item->status==$this->common->getStatus('choxuly'))
 									{
 									?>
-									<a href="<?php echo base_url();?>admin/xulynaptien/duyet?id=<?php echo $item->Id;?>&user_id=<?php echo $item->user_id;?>" >Duyệt</a>&nbsp;&nbsp;
+									<a href="<?php echo base_url();?>admin/xulynaptien/duyet?id=<?php echo $item->Id;?>&user_id=<?php echo $item->user_id;?>&v=<?php echo $item->vcoin;?>" >Duyệt</a>&nbsp;&nbsp;
 									<a href="<?php echo base_url();?>admin/xulynaptien/tralai?id=<?php echo $item->Id;?>&user_id=<?php echo $item->user_id;?>">Trả lại</a>
 									<?php
 									}
