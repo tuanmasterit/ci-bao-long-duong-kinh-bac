@@ -116,7 +116,7 @@ class Hoiviens extends CI_Controller {
 		$lstUser =$this->User_model->searchByUsername($param);
 		foreach($lstUser as $item){
 		$username=$item ->user_login;
-		$ct=$this->User_model->getCountByParent($username);
+		$ct=$this->User_model->getCountByParent($item ->id);
 		
 			if($type=='ref')
 			{
