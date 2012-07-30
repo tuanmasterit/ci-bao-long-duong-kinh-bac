@@ -149,6 +149,8 @@ class Hoiviens extends CI_Controller {
 		$data['row'] = $row;	
 		if($object_id > 0){	
 			$data['user'] = $this->User_model->get($object_id);	
+			$data['nguoigioithieu'] = $this->User_model->get_usermeta($object_id,'parent');
+			$data['nguoichidinh'] = $this->User_model->get_usermeta($object_id,'chooseuser');
 		}
 		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'choduyet');
 		$this->load->view('back_end/view_pheduyet',$data);
