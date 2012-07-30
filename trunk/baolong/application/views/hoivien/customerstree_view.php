@@ -8,7 +8,7 @@
                 <ul class="maintabmenu">
                 	<li class="current"><a href="./dashboard.html">CÂY KHÁCH HÀNG</a></li>
                 </ul><!--maintabmenu-->                
-                <div class="content" style="width:100%">
+                <div class="content">
                 	<ul class="">
                     	<?php echo $htmlTree;?>
                     </ul>

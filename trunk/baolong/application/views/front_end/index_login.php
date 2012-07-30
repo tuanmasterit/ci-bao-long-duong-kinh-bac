@@ -15,7 +15,7 @@
 					  <input type="password" class="txt" name="txtPassword" id="password" />
 					</div>
 					<div class="line" id="btn">
-					<input type="submit" value="Đăng nhập"  class="btn" />
+						<input type="submit" value="Đăng nhập"  class="btn" /> &nbsp; | &nbsp; <a href="<?php echo base_url();?>hoiviens/register">Đăng ký</a>
 					</div>
 					<div class="line" id="notiProcess">
 					Đang xử lý <img alt="" src="<?php echo base_url()?>application/content/images/ajax-loader.gif"/>

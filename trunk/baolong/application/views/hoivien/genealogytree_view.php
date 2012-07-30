@@ -3,12 +3,12 @@
 <div class="mainwrapper">
     <div class="mainwrapperinner">
 		<?php include('sidebar-left.php');?>       
-        <div class="maincontent noright" style="margin:0 45px 0 260px">
+        <div class="maincontent noright">
         	<div class="maincontentinner">            	
                 <ul class="maintabmenu">
                 	<li class="current"><a href="./dashboard.html">CÂY PHẢ HỆ</a></li>
                 </ul><!--maintabmenu-->                
-                <div class="content" style="width:100%">
+                <div class="content">
                 	<ul class="">
                     	
 						

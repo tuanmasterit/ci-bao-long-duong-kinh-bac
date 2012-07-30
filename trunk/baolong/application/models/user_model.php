@@ -9,7 +9,7 @@ class User_model extends CI_Model{
 		$this->load->model('logs_model');
     }		
 	//List User
-	function get($id,$limit,$offset,$user_activation_key){
+	function get($id,$limit=-1,$offset=0,$user_activation_key=''){
 		if($id==0)
 		{
 			$this->db->select('id,user_login,user_nicename,user_email,display_name,user_activation_key');
@@ -538,6 +538,13 @@ class User_model extends CI_Model{
 		
 		$query = $this->db->get();
 		return $query->row()->amount;
+	}
+	public function pheduyet($user_id){
+		$arr_update = array(
+			'user_activation_key'=>'hoivien'
+		);
+		$this->db->where('ID',$user_id);
+		$this->db->update('ci_users',$arr_update);	
 	}
 }
 ?>

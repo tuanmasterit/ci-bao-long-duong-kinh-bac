@@ -19,7 +19,8 @@
                 <li><a href="<?php echo base_url();?>admin/users" class="elements menudrop"><span>Thành viên</span></a>
                     <ul>
                     	<li><a href="<?php echo base_url();?>admin/users"><span>Quản trị thành viên</span></a></li>
-                    	 <li><a href="<?php echo base_url();?>admin/hoiviens"><span>Quản trị hội viên</span></a></li>                        
+                    	 <li><a href="<?php echo base_url();?>admin/hoiviens"><span>Quản trị hội viên</span></a></li>
+                         <li><a href="<?php echo base_url();?>admin/hoiviens/pheduyet"><span>Phê duyệt hội viên</span></a></li>
                     </ul>
                 </li>               
                 <li><a href="<?php echo base_url();?>admin/products" class="elements menudrop"><span>Sản phẩm</span></a>
