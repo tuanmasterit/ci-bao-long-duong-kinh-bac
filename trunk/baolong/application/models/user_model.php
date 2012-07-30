@@ -126,8 +126,8 @@ class User_model extends CI_Model{
 				if($count==2)
 				{
 					$lstUser = $this->User_model->getByParent($usn);
-					$countUser1=$this -> getMeta_value($lstUser[0]->user_login,'All_child');
-					$countUser2=$this -> getMeta_value($lstUser[1]->user_login,'All_child');
+					$countUser1=$this -> getMeta_value($this->getByUsername($lstUser[0]->user_login),'All_child')+1;
+					$countUser2=$this -> getMeta_value($this->getByUsername($lstUser[1]->user_login),'All_child')+1;
 					$capdo=$this -> getMeta_value($user_id,'capdodiemthuong');
 					//echo $countUser1 . '-'.$countUser2.'[]';
 					if($capdo>-1)
@@ -325,7 +325,7 @@ class User_model extends CI_Model{
 
 		//Thêm thành viên
 		$this->db->insert('ci_users',$user);
-		$id = $this->get_id_last_row();
+		$id = $this->getByUsername($user_login);
 		
 		//Thêm user_meta
 		/*$user_meta = array(
@@ -335,110 +335,113 @@ class User_model extends CI_Model{
 		);
 		$this->db->insert('ci_usermeta',$user_meta);
 		*/
-		$user_meta1 = array(
-			'user_id'=>$id,
-			'meta_key'=>'parent',
-			'meta_value'=>$meta_references
-		);
-		$this->db->insert('ci_usermeta',$user_meta1);
-		$user_meta2 = array(
-			'user_id'=>$id,
-			'meta_key'=>'boothtitle',
-			'meta_value'=>$meta_boothtitle
-		);
-		$this->db->insert('ci_usermeta',$user_meta2);
-		$user_meta4 = array(
-			'user_id'=>$id,
-			'meta_key'=>'chooseuser',
-			'meta_value'=>$meta_chooseuser
-		);
-		$this->db->insert('ci_usermeta',$user_meta4);
-		$birthdate_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'birthdate',
-			'meta_value'=>$birthdate
-		);
-		$this->db->insert('ci_usermeta',$birthdate_meta);
-		
-		$bank_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'bank',
-			'meta_value'=>$bank
-		);
-		$this->db->insert('ci_usermeta',$bank_meta);
-		
-		$atm_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'atm',
-			'meta_value'=>$atm
-		);
-		$this->db->insert('ci_usermeta',$atm_meta);
-		
-		$phone_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'phone',
-			'meta_value'=>$phone
-		);
-		$this->db->insert('ci_usermeta',$phone_meta);
-		$noio_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'noio',
-			'meta_value'=>$noio
-		);
-		$this->db->insert('ci_usermeta',$noio_meta);
-		
-		$dctt_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'dctt',
-			'meta_value'=>$dctt
-		);
-		$this->db->insert('ci_usermeta',$dctt_meta);
-		
-		$cmt_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'cmt',
-			'meta_value'=>$cmt
-		);
-		$this->db->insert('ci_usermeta',$cmt_meta);
-		$sex_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'sex',
-			'meta_value'=>$sex
-		);
-		$this->db->insert('ci_usermeta',$sex_meta);
-		$capdo_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'capdodiemthuong',
-			'meta_value'=>'0'
-		);
-		$this->db->insert('ci_usermeta',$capdo_meta);
-		
-		$diemthuong_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'TK_gianhang',
-			'meta_value'=>'18'
-		);
-		$this->db->insert('ci_usermeta',$diemthuong_meta);
-		$ongheo_meta = array(
-			'user_id'=>$id,
-			'meta_key'=>'TK_tichluyongheo',
-			'meta_value'=>'0'
-		);
-		$this->db->insert('ci_usermeta',$ongheo_meta);
-		$user_meta3 = array(
-			'user_id'=>$id,
-			'meta_key'=>'TK_hethong',
-			'meta_value'=>'0'
-		);
-		$this->db->insert('ci_usermeta',$user_meta3);
-		$user_meta3333 = array(
-			'user_id'=>$id,
-			'meta_key'=>'All_child',
-			'meta_value'=>'0'
-		);
-		$this->db->insert('ci_usermeta',$user_meta3333);
-		$this ->CongdiemchocacBo($user_login,1);
-		$this ->Capnhat_socon($user_login);
+		if($id>0)
+		{
+			$user_meta1 = array(
+				'user_id'=>$id,
+				'meta_key'=>'parent',
+				'meta_value'=>$meta_references
+			);
+			$this->db->insert('ci_usermeta',$user_meta1);
+			$user_meta2 = array(
+				'user_id'=>$id,
+				'meta_key'=>'boothtitle',
+				'meta_value'=>$meta_boothtitle
+			);
+			$this->db->insert('ci_usermeta',$user_meta2);
+			$user_meta4 = array(
+				'user_id'=>$id,
+				'meta_key'=>'chooseuser',
+				'meta_value'=>$meta_chooseuser
+			);
+			$this->db->insert('ci_usermeta',$user_meta4);
+			$birthdate_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'birthdate',
+				'meta_value'=>$birthdate
+			);
+			$this->db->insert('ci_usermeta',$birthdate_meta);
+			
+			$bank_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'bank',
+				'meta_value'=>$bank
+			);
+			$this->db->insert('ci_usermeta',$bank_meta);
+			
+			$atm_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'atm',
+				'meta_value'=>$atm
+			);
+			$this->db->insert('ci_usermeta',$atm_meta);
+			
+			$phone_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'phone',
+				'meta_value'=>$phone
+			);
+			$this->db->insert('ci_usermeta',$phone_meta);
+			$noio_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'noio',
+				'meta_value'=>$noio
+			);
+			$this->db->insert('ci_usermeta',$noio_meta);
+			
+			$dctt_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'dctt',
+				'meta_value'=>$dctt
+			);
+			$this->db->insert('ci_usermeta',$dctt_meta);
+			
+			$cmt_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'cmt',
+				'meta_value'=>$cmt
+			);
+			$this->db->insert('ci_usermeta',$cmt_meta);
+			$sex_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'sex',
+				'meta_value'=>$sex
+			);
+			$this->db->insert('ci_usermeta',$sex_meta);
+			$capdo_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'capdodiemthuong',
+				'meta_value'=>'0'
+			);
+			$this->db->insert('ci_usermeta',$capdo_meta);
+			
+			$diemthuong_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'TK_gianhang',
+				'meta_value'=>'18'
+			);
+			$this->db->insert('ci_usermeta',$diemthuong_meta);
+			$ongheo_meta = array(
+				'user_id'=>$id,
+				'meta_key'=>'TK_tichluyongheo',
+				'meta_value'=>'0'
+			);
+			$this->db->insert('ci_usermeta',$ongheo_meta);
+			$user_meta3 = array(
+				'user_id'=>$id,
+				'meta_key'=>'TK_hethong',
+				'meta_value'=>'0'
+			);
+			$this->db->insert('ci_usermeta',$user_meta3);
+			$user_meta3333 = array(
+				'user_id'=>$id,
+				'meta_key'=>'All_child',
+				'meta_value'=>'0'
+			);
+			$this->db->insert('ci_usermeta',$user_meta3333);
+			$this ->CongdiemchocacBo($user_login,1);
+			$this ->Capnhat_socon($user_login);
+		}
 		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
 		//$this -> addVcoin($id,1.8);
 		//$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
