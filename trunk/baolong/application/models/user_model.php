@@ -414,12 +414,23 @@ class User_model extends CI_Model{
 				'meta_value'=>'0'
 			);
 			$this->db->insert('ci_usermeta',$capdo_meta);
+			if($user_activation_key=='choduyet')
+			{
+				$diemthuong_meta = array(
+					'user_id'=>$id,
+					'meta_key'=>'TK_gianhang',
+					'meta_value'=>'0'
+				);
+			}
+			else
+			{
+				$diemthuong_meta = array(
+					'user_id'=>$id,
+					'meta_key'=>'TK_gianhang',
+					'meta_value'=>'18'
+				);
+			}
 			
-			$diemthuong_meta = array(
-				'user_id'=>$id,
-				'meta_key'=>'TK_gianhang',
-				'meta_value'=>'18'
-			);
 			$this->db->insert('ci_usermeta',$diemthuong_meta);
 			$ongheo_meta = array(
 				'user_id'=>$id,
@@ -439,8 +450,16 @@ class User_model extends CI_Model{
 				'meta_value'=>'0'
 			);
 			$this->db->insert('ci_usermeta',$user_meta3333);
-			$this ->CongdiemchocacBo($user_login,1);
-			$this ->Capnhat_socon($user_login);
+			if($user_activation_key=='choduyet')
+			{
+			}
+			else
+			{
+				$this ->CongdiemchocacBo($user_login,1);
+				$this ->Capnhat_socon($user_login);
+			}
+			
+			
 		}
 		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
 		//$this -> addVcoin($id,1.8);
