@@ -348,12 +348,8 @@ class Shoppingcart extends CI_Controller {
 			$this->email->from('muahang@baolongduong.com','Bảo Long Đường Kinh Bắc');
 			
 			//Email
-			$ad_email = $this->Option_model->getOption('admin_email');
-			$admin_email='';
-			foreach ($ad_email as $e)
-			{
-				$admin_email = $e->option_value;
-			}
+			$admin_email = $this->Option_model->getOption('admin_email');
+			
 			$this->email->to($admin_email);  
 			$this->email->subject('Đăng ký mua sản phẩm');
 			$email_msg='';
