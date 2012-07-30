@@ -36,7 +36,7 @@
 	        	{
 	        	?>
 	        		<li style="width: 158px;">
-        				<a title="<?php echo $catNav->name;?>" href="<?php echo base_url().'welcome/cat/'.$catNav->term_id;?>" class="parent"><span><?php echo $catNav->name;?></span></a>
+        				<a title="<?php echo $catNav->name;?>" href="<?php echo base_url().'cat/'.$catNav->term_id;?>" class="parent"><span><?php echo $catNav->name;?></span></a>
         			</li>
 	        	<?php 
 	        	}
