@@ -70,7 +70,6 @@
                                     <td><?php echo $Post->post_title;?></td>                                    
                                     <td><?php echo $Post->post_excerpt;?></td>
                                     <td><?php echo $this->Post_model->get_meta_value($Post->id,'giathitruong');?></td>
-                                    <td><?php echo $this->Post_model->get_meta_value($Post->id,'giahoivien');?></td>
                                     <td>
                                     	<?php
                                     if($Post->post_modified=='0000-00-00 00:00:00')

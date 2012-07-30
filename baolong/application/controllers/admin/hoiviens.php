@@ -138,6 +138,28 @@ class Hoiviens extends CI_Controller {
 		$html.='</ul>';
 		echo $html;
 	}
+	public function pheduyet($row=0,$object_id=0){
+		include('paging.php');		
+		$config['base_url']= base_url()."/admin/hoiviens/pheduyet/";
+		$config['total_rows']=$this->User_model->getCount('choduyet');		
+		$config['cur_page']= $row;		
+		$this->pagination->initialize($config);
+		$data['list_link'] = $this->pagination->create_links(); 	
+				
+		$data['row'] = $row;	
+		if($object_id > 0){	
+			$data['user'] = $this->User_model->get($object_id);	
+		}
+		$data['lstthanhvien'] = $this->User_model->get(0,$config['per_page'],$row,'choduyet');
+		$this->load->view('back_end/view_pheduyet',$data);
+	}
+	public function pheduyet_action(){
+		$user_id = $this->input->post('hdfuser_id');
+		if($user_id > 0){
+			$this->User_model->pheduyet($user_id);	
+			redirect('admin/hoiviens');
+		}else{redirect('back_end/pheduyet');}
+	}
 }
 
 /* End of file welcome.php */

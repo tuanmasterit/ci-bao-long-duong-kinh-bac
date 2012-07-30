@@ -34,7 +34,7 @@
 	            $gioitinh = $this->input->post('slGioiTinh');
 	            $gianhang = $this->input->post('txtGianHang');
 	            $cmt = $this->input->post('txtCMT');
-	            $meta_value = 'hoivien';
+	            $meta_value = 'choduyet';
 	            $user_regitered = date('Y-m-d h-i-s');
 	            
 	            $noi_o = $this->input->post('txtNoiO');
