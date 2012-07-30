@@ -307,7 +307,7 @@ class User_model extends CI_Model{
 		return false;	
 	}
 	
-	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate,$user_pass='1234567')
+	function add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$user_activation_key,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate,$user_pass='1234567',$loai_hoi_vien='')
 	{	
 		//$user_pass_random = $this->common->generatePassword(7,0);
 		//$user_pass_random='1234567';
@@ -408,12 +408,14 @@ class User_model extends CI_Model{
 				'meta_value'=>$sex
 			);
 			$this->db->insert('ci_usermeta',$sex_meta);
+			
 			$capdo_meta = array(
 				'user_id'=>$id,
 				'meta_key'=>'capdodiemthuong',
 				'meta_value'=>'0'
 			);
 			$this->db->insert('ci_usermeta',$capdo_meta);
+			
 			if($user_activation_key=='choduyet')
 			{
 				$diemthuong_meta = array(
@@ -429,9 +431,17 @@ class User_model extends CI_Model{
 					'meta_key'=>'TK_gianhang',
 					'meta_value'=>'18'
 				);
-			}
-			
+			}			
 			$this->db->insert('ci_usermeta',$diemthuong_meta);
+			
+			//add loại hội viên
+			$arr_loai_hoi_vien = array(
+				'user_id'=>$id,
+				'meta_key'=>'loai_hoi_vien',
+				'meta_value'=>$loai_hoi_vien
+			);
+			$this->db->insert('ci_usermeta',$arr_loai_hoi_vien);			
+			
 			$ongheo_meta = array(
 				'user_id'=>$id,
 				'meta_key'=>'TK_tichluyongheo',
