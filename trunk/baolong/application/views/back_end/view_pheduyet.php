@@ -1,5 +1,17 @@
 <?php include('header.php'); ?>
- 
+ <script type="text/javascript">
+ 	function Checksure()
+	{
+		var c = confirm('Bạn đã chắc chắn người phê duyệt và người chỉ định ?');
+		if(c){
+			return true;
+		}
+		else
+		{
+			return false;
+			}
+	}
+ </script>
 <!-- START OF MAIN CONTENT -->
 <div class="mainwrapper">
     <div class="mainwrapperinner">
@@ -31,8 +43,14 @@
                                 <p><label>Tên hiển thị:</label></p>                            
                                 <p><span class="field"><input type="text" value="<?php echo $user['display_name']?>" class="longinput" name="txtdisplay" /></span></p>
                                 <br />
+                                <p><label>Người giới thiệu:</label></p>                            
+                                <p><span class="field"><input type="text" value="<?php echo $nguoigioithieu;?>" class="longinput" name="txtdisplay" /></span></p>
+                                <br />
+                                <p><label>Người chỉ định:</label></p>                            
+                                <p><span class="field"><input type="text" value="<?php echo $nguoichidinh;?>" class="longinput" name="txtdisplay" /></span></p>
+                                <br />
                                 <p class="stdformbutton">
-                                    <button class="submit radius2">Phê duyệt</button>
+                                    <button class="submit radius2" onclick="return Checksure();">Phê duyệt</button>
                                     <input type="reset" value="Hủy" class="reset radius2">
                                 </p>                            
                                 <?php echo form_close();?>                           
