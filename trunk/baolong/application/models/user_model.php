@@ -128,7 +128,7 @@ class User_model extends CI_Model{
 					$lstUser = $this->User_model->getByParent($usn);
 					$countUser1=$this -> getMeta_value($lstUser[0]->user_login,'All_child');
 					$countUser2=$this -> getMeta_value($lstUser[1]->user_login,'All_child');
-					$capdo=$this -> getMeta_value($parentid,'capdodiemthuong');
+					$capdo=$this -> getMeta_value($user_id,'capdodiemthuong');
 					//echo $countUser1 . '-'.$countUser2.'[]';
 					if($capdo>-1)
 					{}
@@ -198,7 +198,7 @@ class User_model extends CI_Model{
 	function getCountByParent($parentid)
 	{
 		$this->db->from('ci_users');
-		$this->db->join('ci_usermeta', 'id = user_id');
+		$this->db->join('ci_usermeta', 'user_id=id','left');
 		$this->db->where('meta_key','chooseuser');
 		$this->db->where('meta_value',$parentid);	
 		return $this->db->count_all_results();
