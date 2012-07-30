@@ -28,6 +28,7 @@
 			$data['list_link'] = $this->pagination->create_links();
 			$data['lstNews'] = $this->Post_model->get(0,'post',$config['per_page'],$row,'DESC','post_date','');
 			
+			$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
 			$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
 			$data['list_sp_noibat'] = $list_sp_noibat;
 						
@@ -54,7 +55,7 @@
 			//Sách
 			$sach_id = $this->Term_model->getCategoryByName('Sách');
 			$data['sach_id'] = $sach_id;
-			$data['lst_sach'] = $this->Term_model->getSubCatProNav($sach_id,'category');
+			$data['lst_sach'] = $this->Term_model->get(0,0,0,'book_cat',0);
 			
 			//Truyện ngắn
 			$truyen_ngan_id = $this->Term_model->getCategoryByName('Truyện ngắn');
@@ -121,7 +122,7 @@
 				//Sách
 				$sach_id = $this->Term_model->getCategoryByName('Sách');
 				$data['sach_id'] = $sach_id;
-				$data['lst_sach'] = $this->Term_model->getSubCatProNav($sach_id,'category');
+				$data['lst_sach'] = $this->Term_model->get(0,0,0,'book_cat',0);
 				
 				//Truyện ngắn
 				$truyen_ngan_id = $this->Term_model->getCategoryByName('Truyện ngắn');
@@ -131,6 +132,7 @@
 				$bao_tuong_id = $this->Term_model->getCategoryByName('Báo tường');
 				$data['bao_tuong_id'] = $bao_tuong_id;
 				
+				$sp_noibat_id = $this->Term_model->getCategoryByName('Sản phẩm nổi bật');
 				$list_sp_noibat  = $this->Post_model->get(0,'product',5,0,'DESC','post_date',$sp_noibat_id);
 				$data['list_sp_noibat'] = $list_sp_noibat;
 				
@@ -193,7 +195,7 @@
 				//Sách
 				$sach_id = $this->Term_model->getCategoryByName('Sách');
 				$data['sach_id'] = $sach_id;
-				$data['lst_sach'] = $this->Term_model->getSubCatProNav($sach_id,'category');
+				$data['lst_sach'] = $this->Term_model->get(0,0,0,'book_cat',0);
 				
 				//Truyện ngắn
 				$truyen_ngan_id = $this->Term_model->getCategoryByName('Truyện ngắn');

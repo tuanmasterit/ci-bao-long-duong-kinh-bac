@@ -70,13 +70,13 @@
                     <?php }?>
                 </ul>
             </li>                        
-            <li><a href="<?php echo base_url().'news/cat/'.$sach_id?>" class="parent"><span>Sách</span></a>
+            <li><a href="#" class="parent"><span>Sách</span></a>
             	<ul class="">
                     <?php 
                    	foreach ($lst_sach as $sach)
                    	{
                     ?>
-                    <li><a href="<?php echo base_url().'news/cat/'.$sach->term_id;?>"><?php echo $sach->name;?></a></li>
+                    <li><a href="<?php echo base_url().'welcome/book/'.$sach->term_id;?>"><?php echo $sach->name;?></a></li>
                     <?php }?>
                     <li><a href="<?php echo base_url().'news/cat/'.$truyen_ngan_id;?>">Truyện Ngắn</a></li>
             		<li><a href="<?php echo base_url().'news/cat/'.$bao_tuong_id;?>">Báo tường</a></li>
