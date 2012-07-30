@@ -71,6 +71,115 @@ class User_model extends CI_Model{
 			}
 	}
 	
+	function Capnhat_socon($childid){
+			$newChild=-1;
+			$cid=$this->getByUsername($childid);
+			if($cid>0)
+			{
+				$this->db->select('meta_value');
+				$this->db->from('ci_usermeta');
+				$this->db->where('meta_key','chooseuser');
+				$this->db->where('user_id',$cid);
+				$query = $this->db->get();  
+				foreach ($query->result() as $row)
+				{
+					$newChild= $row->meta_value;
+				}
+				if($newChild!=-1)
+				{ 
+					$this ->Add_socon($this->getByUsername($newChild));
+					$this -> Capnhat_socon($newChild);
+				}
+			}
+	}
+	
+		function Add_socon($user_id)
+	{
+		$this->db->select('meta_value');
+		$this->db->from('ci_usermeta');	
+		$this->db->where('user_id',$user_id);
+		$this->db->where('meta_key','All_child');
+		$query = $this->db->get();
+		$crrChild = -2;
+		foreach($query->result() as $row){
+			$crrChild= $row->meta_value;	
+		}
+		if($crrChild==-2)
+		{
+			$user_meta3333 = array(
+			'user_id'=>$user_id,
+			'meta_key'=>'All_child',
+			'meta_value'=>'1'
+			);
+			$this->db->insert('ci_usermeta',$user_meta3333);
+		}
+		else
+		{
+				$user = array(
+					'meta_value'=>($crrChild+1)
+				);		
+				$this->db->where('user_id',$user_id);
+				$this->db->where('meta_key','All_child');
+				$this->db->update('ci_usermeta',$user);
+				$usn=$this->getById1($user_id)->user_login;				
+				$count = $this->User_model->getCountByParent($usn);
+				if($count==2)
+				{
+					$lstUser = $this->User_model->getByParent($usn);
+					$countUser1=$this -> getMeta_value($lstUser[0]->user_login,'All_child');
+					$countUser2=$this -> getMeta_value($lstUser[1]->user_login,'All_child');
+					$capdo=$this -> getMeta_value($parentid,'capdodiemthuong');
+					//echo $countUser1 . '-'.$countUser2.'[]';
+					if($capdo>-1)
+					{}
+					else
+					{
+						$user_meta33331 = array(
+						'user_id'=>$user_id,
+						'meta_key'=>'capdodiemthuong',
+						'meta_value'=>'0'
+						);
+						$this->db->insert('ci_usermeta',$user_meta33331);
+					}
+						if($countUser1 >= ($capdo+7) && $countUser2>=($capdo+7))
+						{
+							$this->ThemDiemTK_Hethong($user_id,18.9);
+							$this->logs_model->add($user_id,$this->common->getObject('diemthuong'),'Tiền thưởng cân vế',date('Y-m-d h-i-s'),18.9,$this->session->userdata('user_id'),$this->common->getStatus('duyet'));
+							$user = array(
+							'meta_value'=>($capdo+7)			
+							);
+							$this->db->where('meta_key','capdodiemthuong');		
+							$this->db->where('user_id',$user_id);
+							$this->db->update('ci_usermeta',$user);
+						}
+					
+				}
+		}
+	}
+	
+	function getMeta_value($user_id,$meta_key)
+	{
+				$this->db->select('meta_value');
+				$this->db->from('ci_usermeta');
+				$this->db->where('meta_key',$meta_key);
+				$this->db->where('user_id',$user_id);
+				$query = $this->db->get(); 
+				$value='[null]';
+				foreach ($query->result() as $row)
+				{
+					$value= $row->meta_value;
+				}
+				return $value;
+	}
+	
+	//
+	function getById1($user_id){
+			$this->db->select('user_login,display_name,meta_value');
+			$this->db->from('ci_users');
+			$this->db->where('user_id',$user_id);
+			$query = $this->db->get();   
+			return $query->result();
+	}
 	//List User byParent
 	function getByParent($parentid){
 			$this->db->select('user_login,display_name,meta_value');
@@ -116,6 +225,17 @@ class User_model extends CI_Model{
 		return $countUser;
 	}
 	
+	function TinhCanBangVe()
+	{
+		$this->db->select('user_login');
+		$this->db->from('ci_users');
+		$query = $this->db->get();
+		foreach ($query->result() as $row)
+		{
+			$this -> checkThuongcanve($row->user_login);
+		}
+	}
+	
 	function checkThuongcanve($parentid)
 	{
 		
@@ -129,17 +249,21 @@ class User_model extends CI_Model{
 			$this ->processMarkRef($lstUser[0]->user_login,$countUser1);
 			$this ->processMarkRef($lstUser[1]->user_login,$countUser2);
 			$capdo=$this ->getCapdothuong($uid,"capdodiemthuong");
-			if($countUser1 >= ($capdo+7) && $countUser2>=($capdo+7))
+			//echo $countUser1 . '-'.$countUser2.'[]';
+			if($capdo>-1)
 			{
-				$this->ThemDiemTK_Hethong($uid,18.9);
-				$this->logs_model->add($uid,$this->common->getObject('diemthuong'),'Tiền thưởng cân vế',date('Y-m-d h-i-s'),18.9,$this->session->userdata('user_id'),$this->common->getStatus('duyet'));
-				$user = array(
-				'meta_value'=>($capdo+7)			
-				);
-				$this->db->where('meta_key','capdodiemthuong');		
-				$this->db->where('user_id',$uid);
-				$this->db->update('ci_usermeta',$user);
+				if($countUser1 >= ($capdo+7) && $countUser2>=($capdo+7))
+				{
+					$this->ThemDiemTK_Hethong($uid,18.9);
+					$this->logs_model->add($uid,$this->common->getObject('diemthuong'),'Tiền thưởng cân vế',date('Y-m-d h-i-s'),18.9,$this->session->userdata('user_id'),$this->common->getStatus('duyet'));
+					$user = array(
+					'meta_value'=>($capdo+7)			
+					);
+					$this->db->where('meta_key','capdodiemthuong');		
+					$this->db->where('user_id',$uid);
+					$this->db->update('ci_usermeta',$user);
 				}
+			}
 				
 		} 
 	}
@@ -303,11 +427,18 @@ class User_model extends CI_Model{
 			'meta_value'=>'0'
 		);
 		$this->db->insert('ci_usermeta',$user_meta3);
+		$user_meta3333 = array(
+			'user_id'=>$id,
+			'meta_key'=>'All_child',
+			'meta_value'=>'0'
+		);
+		$this->db->insert('ci_usermeta',$user_meta3333);
 		$this ->CongdiemchocacBo($user_login,1);
+		$this ->Capnhat_socon($user_login);
 		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
 		//$this -> addVcoin($id,1.8);
 		//$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
-		$this->checkThuongcanve($meta_chooseuser);
+		//$this->checkThuongcanve($meta_chooseuser);
 	}
 	
 	//get id last record
@@ -461,6 +592,9 @@ class User_model extends CI_Model{
 				
 		}
 	}
+	
+
+	
 	
 	function getChooseUser($hoivien_id)
 	{
