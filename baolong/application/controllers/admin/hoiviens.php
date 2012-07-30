@@ -65,9 +65,10 @@ class Hoiviens extends CI_Controller {
 			$bank=$this->input->post('txtBank');
 			$birthdate=$this->input->post('txtBirthDate');
 			$meta_boothtitle=$this->input->post('txtboothtitle');
-			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate,$user_pass);
+			$loai_hoi_vien = $this->input->post('cbxloaihoivien');
+			$this->User_model->add($user_login,$user_nicename,$user_email,$user_regitered,$display_name,$meta_value,$meta_references,$meta_boothtitle,$meta_chooseuser,$sex,$cmt,$dctt,$noio,$phone,$atm,$bank,$birthdate,$user_pass,$loai_hoi_vien);
 			$this-> session-> set_flashdata('message','Thêm hội viên thành công!');		
-			redirect('admin/hoiviens','refresh');	
+			redirect('admin/hoiviens','refresh');
 		}
 		else 
 		{

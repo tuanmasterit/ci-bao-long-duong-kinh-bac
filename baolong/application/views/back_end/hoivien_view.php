@@ -47,8 +47,11 @@
 								</ul>
 								<input type="hidden" value=""  style="width:250px" name="txtchoose" id="txtchoose"  />
 							</p>
-
-							
+							<br />
+                            <p>
+                            	<label style="width:90px;display:inline-block;text-align:left">Tài khoản tặng:</label>
+                                <input type="checkbox" name="cbxloaihoivien" value="tặng" />
+                            </p>							
 							<br />
                             <p><label style="width:90px;display:inline-block;text-align:left">Tên đăng nhập:</label><input type="text" style="width:250px" class="longinput validate[required]" name="txtname" /></p>
                             <br />
