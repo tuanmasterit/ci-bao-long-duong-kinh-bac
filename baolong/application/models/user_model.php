@@ -457,12 +457,13 @@ class User_model extends CI_Model{
 			{
 				$this ->CongdiemchocacBo($user_login,1);
 				$this ->Capnhat_socon($user_login);
+				$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),1.8,'',$this->common->getStatus('duyet'));
+			$this ->ThemDiemTK_Hethong($this -> getByUsername($meta_references),1.8);
 			}
 			
 			
 		}
-		//$this->logs_model->add($id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),'');
-		//$this -> addVcoin($id,1.8);
+
 		//$this->logs_model->add($this->getByUsername($meta_references),$this->common->getObject('diemthuong'),'Thưởng điểm giới thiệu thành viên mới: 1.8V -- Bởi: '.$user_login,date('Y-m-d h-i-s'),$this->common->getStatus('duyet'),$id);
 		//$this->checkThuongcanve($meta_chooseuser);
 	}
@@ -705,6 +706,17 @@ class User_model extends CI_Model{
 		);
 		$this->db->where('ID',$user_id);
 		$this->db->update('ci_users',$arr_update);	
+		
+		$this ->CongdiemchocacBo($this->getuser_loginById($user_id),1);
+		$this ->Capnhat_socon($this->getuser_loginById($user_id));
+				$user = array(
+					'meta_value'=>'18'
+				);		
+				$this->db->where('user_id',$user_id);
+				$this->db->where('meta_key','TK_gianhang');
+				$this->db->update('ci_usermeta',$user);
+				$this->logs_model->add($user_id,$this->common->getObject('diemthuong'),'Cập nhật điểm khi thêm mới hội viên: 18V -- Bởi: Hệ thống',date('Y-m-d h-i-s'),1.8,'',$this->common->getStatus('duyet'));
+				$this ->ThemDiemTK_Hethong($this -> getByUsername($this->get_usermeta($user_id,'parent')),1.8);
 	}
 }
 ?>
