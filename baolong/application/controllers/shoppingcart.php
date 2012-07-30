@@ -144,7 +144,7 @@ class Shoppingcart extends CI_Controller {
 		//Sách
 		$sach_id = $this->Term_model->getCategoryByName('Sách');
 		$data['sach_id'] = $sach_id;
-		$data['lst_sach'] = $this->Term_model->getSubCatProNav($sach_id,'category');
+		$data['lst_sach'] = $this->Term_model->get(0,0,0,'book_cat',0);
 		
 		//Truyện ngắn
 		$truyen_ngan_id = $this->Term_model->getCategoryByName('Truyện ngắn');
@@ -307,7 +307,7 @@ class Shoppingcart extends CI_Controller {
 		//Sách
 		$sach_id = $this->Term_model->getCategoryByName('Sách');
 		$data['sach_id'] = $sach_id;
-		$data['lst_sach'] = $this->Term_model->getSubCatProNav($sach_id,'category');
+		$data['lst_sach'] = $this->Term_model->get(0,0,0,'book_cat',0);
 		
 		//Truyện ngắn
 		$truyen_ngan_id = $this->Term_model->getCategoryByName('Truyện ngắn');
@@ -493,7 +493,7 @@ class Shoppingcart extends CI_Controller {
 		//Sách
 		$sach_id = $this->Term_model->getCategoryByName('Sách');
 		$data['sach_id'] = $sach_id;
-		$data['lst_sach'] = $this->Term_model->getSubCatProNav($sach_id,'category');
+		$data['lst_sach'] = $this->Term_model->get(0,0,0,'book_cat',0);
 		
 		//Truyện ngắn
 		$truyen_ngan_id = $this->Term_model->getCategoryByName('Truyện ngắn');
