@@ -121,7 +121,7 @@ class User_model extends CI_Model{
 				$this->db->where('user_id',$user_id);
 				$this->db->where('meta_key','All_child');
 				$this->db->update('ci_usermeta',$user);
-				$usn=$this->getById1($user_id)->user_login;				
+				$usn=$this->getuser_loginById($user_id);				
 				$count = $this->User_model->getCountByParent($usn);
 				if($count==2)
 				{
@@ -173,12 +173,16 @@ class User_model extends CI_Model{
 	}
 	
 	//
-	function getById1($user_id){
-			$this->db->select('user_login,display_name,meta_value');
+	function getuser_loginById($user_id){
+			$this->db->select('user_login');
 			$this->db->from('ci_users');
-			$this->db->where('user_id',$user_id);
+			$this->db->where('id',$user_id);
 			$query = $this->db->get();   
-			return $query->result();
+			foreach ($query->result() as $row)
+			{
+				return $row->user_login;
+			}
+			return -10;
 	}
 	//List User byParent
 	function getByParent($parentid){
