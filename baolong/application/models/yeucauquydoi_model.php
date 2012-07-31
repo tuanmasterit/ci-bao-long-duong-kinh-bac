@@ -7,7 +7,7 @@ class yeucauquydoi_model extends CI_Model{
         // Call the Model constructor
         parent::__construct();
 		$this->load->database();
-				
+		$this->load->model('User_model');
     }
 	//Add logs
 	function add($vcoin,$user_id,$user_process,$status){		
@@ -26,7 +26,7 @@ class yeucauquydoi_model extends CI_Model{
 		$this->db->select('meta_value');
 		$this->db->from('ci_usermeta');	
 		$this->db->where('user_id',$user_id);
-		$this->db->where('meta_key','TK_gianhang');
+		$this->db->where('meta_key','TK_hethong');
 		$query = $this->db->get();
 		$crrVcoin = -2;
 		foreach($query->result() as $row){
@@ -40,7 +40,7 @@ class yeucauquydoi_model extends CI_Model{
 		$this->db->select('meta_value');
 		$this->db->from('ci_usermeta');	
 		$this->db->where('user_id',$user_id);
-		$this->db->where('meta_key','TK_gianhang');
+		$this->db->where('meta_key','TK_hethong');
 		$query = $this->db->get();
 		$crrVcoin = -2;
 		foreach($query->result() as $row){
@@ -77,6 +77,14 @@ class yeucauquydoi_model extends CI_Model{
 				return 'true';
 	}
 	
+	function getById($id){
+			$this->db->select('Id,vcoin');
+			$this->db->from('ci_yeucauquydoi');
+			$this->db->where('Id',$id);
+			$query = $this->db->get();
+			
+			return $query->result();
+	}
 	
 	function get($limit,$offset,$status,$from_date='',$to_date=''){
 			$this->db->select('ci_yeucauquydoi.Id,vcoin,user_id,user_process,status,process_date,created_date,user_login');

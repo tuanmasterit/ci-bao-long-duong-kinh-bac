@@ -35,14 +35,17 @@ class genealogytree extends CI_Controller {
 		$lstUserDB = $this->User_model->getByParent($parentid);
 		$cnt=1;		
 		foreach($lstUserDB as $item){
-			$txtArr1=$txtArr.'.'.$cnt;
-			$cnt=($cnt+1);
-			$lstUser[$txtArr1]='<a href="'.base_url().'hoivien/genealogytree?u='.$item ->user_login.'">'.$item ->user_login.'</a>';
-			//$lstUser[$txtArr1]=$item ->user_login;
-			$count = $this->User_model->getCountByParent($item ->user_login);
-			if($count>0 && $tang<3)
+			if($item->user_activation_key=='hoivien')
 			{
-				$this ->GenHtmlTree($item ->user_login,($tang+1),$lstUser,$txtArr1); 
+				$txtArr1=$txtArr.'.'.$cnt;
+				$cnt=($cnt+1);
+				$lstUser[$txtArr1]='<a href="'.base_url().'hoivien/genealogytree?u='.$item ->user_login.'">'.$item ->user_login.'</a>';
+				//$lstUser[$txtArr1]=$item ->user_login;
+				$count = $this->User_model->getCountByParent($item ->user_login);
+				if($count>0 && $tang<3)
+				{
+					$this ->GenHtmlTree($item ->user_login,($tang+1),$lstUser,$txtArr1); 
+				}
 			}
 		}
 	}

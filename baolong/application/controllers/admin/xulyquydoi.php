@@ -9,6 +9,7 @@ class xulyquydoi extends CI_Controller {
 		}
 		$this->load->model('yeucauquydoi_model');
 		$this->load->model('logs_model');
+		$this->load->model('User_model');
 		$this->load->library('pagination');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
@@ -48,10 +49,13 @@ class xulyquydoi extends CI_Controller {
 		$id = $this->input->get('id');
 		$user_id = $this->input->get('user_id');
 		$user_pr=$this->session->userdata('user_id');
+		
 		if($id!='')
 		{
+			$vcoin=$this->yeucauquydoi_model->getById($id)->vcoin;
+			$this->User_model->ThemDiemTK_Hethong($user_id,$vcoin);
 			$this->yeucauquydoi_model->updateStatus($id,$this->common->getStatus('duyet'));
-			$this->logs_model->add($user_id,$this->common->getObject('quydoi'),'Quy đổi',date('Y-m-d h-i-s'),"0.5 V",$user_pr,$this->common->getStatus('duyet'));
+			$this->logs_model->add($user_id,$this->common->getObject('quydoi'),'Quy đổi',date('Y-m-d h-i-s'),$vcoin,$user_pr,$this->common->getStatus('duyet'));
 		}
 		redirect('admin/xulyquydoi');
 	}
@@ -63,8 +67,9 @@ class xulyquydoi extends CI_Controller {
 		$user_pr=$this->session->userdata('user_id');
 		if($id!='')
 		{
+			$vcoin=$this->yeucauquydoi_model->getById($id)->vcoin;
 			$this->yeucauquydoi_model->updateStatus($id,$this->common->getStatus('tralai'));
-			$this->logs_model->add($user_id,$this->common->getObject('quydoi'),'Quy đổi',date('Y-m-d h-i-s'),"0.5 V",$user_pr,$this->common->getStatus('tralai'));
+			$this->logs_model->add($user_id,$this->common->getObject('quydoi'),'Quy đổi',date('Y-m-d h-i-s'),$vcoin,$user_pr,$this->common->getStatus('tralai'));
 		}
 		redirect('admin/xulyquydoi');
 	}

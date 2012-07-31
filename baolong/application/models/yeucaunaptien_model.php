@@ -28,7 +28,7 @@ class yeucaunaptien_model extends CI_Model{
 		$this->db->select('meta_value');
 		$this->db->from('ci_usermeta');	
 		$this->db->where('user_id',$user_id);
-		$this->db->where('meta_key','TK_gianhang');
+		$this->db->where('meta_key','TK_hethong');
 		$query = $this->db->get();
 		$crrVcoin = -2;
 		foreach($query->result() as $row){
