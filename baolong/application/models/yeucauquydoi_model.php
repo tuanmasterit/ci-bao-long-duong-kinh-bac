@@ -77,13 +77,17 @@ class yeucauquydoi_model extends CI_Model{
 				return 'true';
 	}
 	
-	function getById($id){
-			$this->db->select('Id,vcoin');
+	function getvcoinById($id){
+			$this->db->select('vcoin');
 			$this->db->from('ci_yeucauquydoi');
 			$this->db->where('Id',$id);
 			$query = $this->db->get();
-			
-			return $query->result();
+		foreach ($query->result() as $row)
+		{
+			return $row->vcoin;
+		}
+		return -10;
+
 	}
 	
 	function get($limit,$offset,$status,$from_date='',$to_date=''){
