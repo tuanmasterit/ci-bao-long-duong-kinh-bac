@@ -186,7 +186,7 @@ class User_model extends CI_Model{
 	}
 	//List User byParent
 	function getByParent($parentid){
-			$this->db->select('user_login,display_name,meta_value');
+			$this->db->select('ci_users.Id,user_login,display_name,meta_value,user_activation_key');
 			$this->db->from('ci_users');
 			$this->db->join('ci_usermeta', 'id = user_id');
 			$this->db->where('meta_key','chooseuser');
@@ -630,6 +630,34 @@ class User_model extends CI_Model{
 		}
 	}
 	
+	function ThemDiemTK_Ongheo($user_id,$diem)
+	{
+		$this->db->select('meta_value');
+		$this->db->from('ci_usermeta');	
+		$this->db->where('user_id',$user_id);
+		$this->db->where('meta_key','TK_tichluyongheo');
+		$query = $this->db->get();
+		$crrVcoin = -2;
+		foreach($query->result() as $row){
+			$crrVcoin= $row->meta_value;	
+		}
+		if($crrVcoin==-2)
+		{
+			return 'false';
+		}
+		else
+		{
+				$user = array(
+					'meta_value'=>($crrVcoin+$diem)
+				);		
+				$this->db->where('user_id',$user_id);
+				$this->db->where('meta_key','TK_tichluyongheo');
+				$this->db->update('ci_usermeta',$user);
+				
+				
+		}
+	}
+	
 
 	
 	
@@ -663,6 +691,34 @@ class User_model extends CI_Model{
 		{
 				$user = array(
 					'meta_value'=>($crrVcoin+$diem)
+				);		
+				$this->db->where('user_id',$user_id);
+				$this->db->where('meta_key','TK_gianhang');
+				$this->db->update('ci_usermeta',$user);
+				
+				
+		}
+	}	
+	
+	function TruDiemTK_Gianhang($user_id,$diem)
+	{
+		$this->db->select('meta_value');
+		$this->db->from('ci_usermeta');	
+		$this->db->where('user_id',$user_id);
+		$this->db->where('meta_key','TK_gianhang');
+		$query = $this->db->get();
+		$crrVcoin = -2;
+		foreach($query->result() as $row){
+			$crrVcoin= $row->meta_value;	
+		}
+		if($crrVcoin==-2)
+		{
+			return 'false';
+		}
+		else
+		{
+				$user = array(
+					'meta_value'=>($crrVcoin-$diem)
 				);		
 				$this->db->where('user_id',$user_id);
 				$this->db->where('meta_key','TK_gianhang');

@@ -41,6 +41,7 @@
                     <ul>
                     	<li><a href="<?php echo base_url();?>admin/xulyquydoi"><span>Xử lý quy đổi</span></a></li>
                         <li><a href="<?php echo base_url();?>admin/xulynaptien"><span>Xử lý nạp tiền</span></a></li>
+						<li><a href="<?php echo base_url();?>admin/capnhatongheo"><span>Nhập tiền khuyến mại</span></a></li>
                     </ul>
                 </li>                        
             </ul>                
