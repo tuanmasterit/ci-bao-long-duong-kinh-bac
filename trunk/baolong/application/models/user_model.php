@@ -602,6 +602,34 @@ class User_model extends CI_Model{
 		}
 	}	
 	
+	function TruDiemTK_Hethong($user_id,$diem)
+	{
+		$this->db->select('meta_value');
+		$this->db->from('ci_usermeta');	
+		$this->db->where('user_id',$user_id);
+		$this->db->where('meta_key','TK_hethong');
+		$query = $this->db->get();
+		$crrVcoin = -2;
+		foreach($query->result() as $row){
+			$crrVcoin= $row->meta_value;	
+		}
+		if($crrVcoin==-2)
+		{
+			return 'false';
+		}
+		else
+		{
+				$user = array(
+					'meta_value'=>($crrVcoin-$diem)
+				);		
+				$this->db->where('user_id',$user_id);
+				$this->db->where('meta_key','TK_hethong');
+				$this->db->update('ci_usermeta',$user);
+				
+				
+		}
+	}
+	
 	function ThemDiemTK_Hethong($user_id,$diem)
 	{
 		$this->db->select('meta_value');

@@ -52,10 +52,13 @@ class xulyquydoi extends CI_Controller {
 		
 		if($id!='')
 		{
-			$vcoin=$this->yeucauquydoi_model->getById($id)->vcoin;
-			$this->User_model->ThemDiemTK_Hethong($user_id,$vcoin);
+			$vcoin=$this->yeucauquydoi_model->getvcoinById($id);
+			if($vcoin>0)
+			{
+			$this->User_model->TruDiemTK_Hethong($user_id,$vcoin);
 			$this->yeucauquydoi_model->updateStatus($id,$this->common->getStatus('duyet'));
 			$this->logs_model->add($user_id,$this->common->getObject('quydoi'),'Quy đổi',date('Y-m-d h-i-s'),$vcoin,$user_pr,$this->common->getStatus('duyet'));
+			}
 		}
 		redirect('admin/xulyquydoi');
 	}
