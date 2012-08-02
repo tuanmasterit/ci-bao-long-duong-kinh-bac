@@ -416,7 +416,7 @@ class User_model extends CI_Model{
 			);
 			$this->db->insert('ci_usermeta',$capdo_meta);
 			
-			if($user_activation_key=='choduyet')
+			if($user_activation_key=='choduyet' or $loai_hoi_vien=='tặng')
 			{
 				$diemthuong_meta = array(
 					'user_id'=>$id,

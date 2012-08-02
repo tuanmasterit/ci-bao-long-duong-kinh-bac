@@ -39,7 +39,16 @@ class genealogytree extends CI_Controller {
 			{
 				$txtArr1=$txtArr.'.'.$cnt;
 				$cnt=($cnt+1);
-				$lstUser[$txtArr1]='<a href="'.base_url().'hoivien/genealogytree?u='.$item ->user_login.'">'.$item ->user_login.'</a>';
+				$tangt=$this->User_model->get_usermeta($item ->Id,'loai_hoi_vien');
+				if($tangt!='tặng')
+				{
+					$tangt='';
+				}
+				else
+				{
+					$tangt='( tặng )';
+				}
+				$lstUser[$txtArr1]='<a href="'.base_url().'hoivien/genealogytree?u='.$item ->user_login.'">'.$item ->user_login.'<br/><font style="color:violet"> '.$tangt.'</font></a>';
 				//$lstUser[$txtArr1]=$item ->user_login;
 				$count = $this->User_model->getCountByParent($item ->user_login);
 				if($count>0 && $tang<3)

@@ -56,6 +56,10 @@
                             <tr>
                             	<td>Người chỉ định</td>
                             	<td><?php echo $chooseUser;?></td>
+                            </tr> 
+							<tr>
+                            	<td>Người giới thiệu</td>
+                            	<td><?php echo $refUser;?></td>
                             </tr>                            
                             <tr>
                             	<td>Tổng điểm quy đổi thành công</td>
