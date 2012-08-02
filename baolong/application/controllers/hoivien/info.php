@@ -23,6 +23,7 @@
 			$data['tk_he_thong'] = $this->User_model->get_usermeta($hoivien_id,'TK_hethong');
 			$data['tk_gian_hang'] = $this->User_model->get_usermeta($hoivien_id,'TK_gianhang');
 			$data['chooseUser'] = $this->User_model->get_usermeta($hoivien_id,'chooseuser');
+			$data['refUser'] = $this->User_model->get_usermeta($hoivien_id,'parent');
 			$data['sum_quydoi'] = $this->User_model->get_sum_quydoi($hoivien_id);
 			$data['diemthuong'] = $this->User_model->getDiemThuong($hoivien_id);
 			$data['hoivien'] = $hoivien;			
