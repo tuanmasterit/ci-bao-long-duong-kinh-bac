@@ -65,5 +65,13 @@ class Common{
 		if($name=="3"){return 'Trả lại';}
 		if($name=="4"){return 'Chưa nhận tiền';}
 		if($name=="5"){return 'Đã nhận tiền';}
-	}		
+	}
+	/* configuration */		
+	function get_configuration($name){
+		$configuration = array(
+			'video' => 2,
+			'quangcao' => 31
+		);	
+		return $configuration[$name];
+	}
 }

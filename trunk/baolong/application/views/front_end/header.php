@@ -19,7 +19,7 @@
 			<li></li>
             <li class="home"><a href="<?php echo base_url();?>" title="Trang chủ"><img src="<?php echo base_url();?>application/content/images/home2.png" /></a></li>
             <li><a href="<?php if(isset($gioithieu_id)){ echo base_url().'news/cat/'.$gioithieu_id;}?>" class="parent"><span>Giới thiệu</span></a>
-            	<ul class="gioi_thieu_hover">
+            	<ul class="sub-menu">
 		            <?php 
 		            	foreach ($lst_gioi_thieu as $gioi_thieu)
 		            	{

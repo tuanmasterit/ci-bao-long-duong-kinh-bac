@@ -350,7 +350,6 @@
 {
      background: url("../images/menu_right.png") no-repeat scroll right bottom transparent;
     height: 27px;
-    color: #2760c1;
     line-height:27px;
     padding-right:10px;
     padding-left:5px;
@@ -370,11 +369,10 @@
 }
 #menu-top ul li:hover ul li a
 {
-    color:#00642E !important;
+    color:#F00 !important;
 }
 #menu-top ul li ul
 {
-    color: #00642E;
     display: none;
     height: 24px;
     line-height: 24px;
@@ -399,17 +397,17 @@
    background: none !important;
    font-weight:normal !important;
    font-size:12px;
-   font-family:Tahoma;
-   color:#00642E !important;
+   font-family:Tahoma;   
    padding-left:10px !important;
    text-transform:none !important;
    height:21px;
 }
+#menu-top ul li ul.sub-menu li a{color:#F00 !important;}
 
 #menu-top ul li ul li:hover a
 {
     background: none !important;
-    color: #00642E !important;
+    color: #F00 !important;
     text-decoration:underline;
 }
 .gioi_thieu_active

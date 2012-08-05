@@ -84,20 +84,22 @@ class Post_model extends CI_Model{
 				'meta_value'=>$featured_image
 			);
 			$this->db->insert('ci_postmeta',$arrmeta);		
-		}		
-		//Update category
-		if(!$this->db->query("DELETE FROM ci_term_relationships WHERE object_id=".$id." AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='".$taxonomy."')")){$flag=false;}		
-		foreach($arr_category as $category){
-			$query = $this->db->get_where('ci_term_taxonomy',array('term_id'=>$category));
-			foreach ($query->result() as $row)
-			{
-				$term_taxonomy_id=$row->term_taxonomy_id;
+		}	
+		//Update category			
+		if($arr_category != '' && count($arr_category)>0){
+			if(!$this->db->query("DELETE FROM ci_term_relationships WHERE object_id=".$id." AND term_taxonomy_id IN(SELECT term_taxonomy_id FROM ci_term_taxonomy WHERE taxonomy='".$taxonomy."')")){$flag=false;}
+			foreach($arr_category as $category){
+				$query = $this->db->get_where('ci_term_taxonomy',array('term_id'=>$category));
+				foreach ($query->result() as $row)
+				{
+					$term_taxonomy_id=$row->term_taxonomy_id;
+				}
+				$arrcat = array(
+					'object_id'=>$id,
+					'term_taxonomy_id'=>$term_taxonomy_id
+				);
+				$this->db->insert('ci_term_relationships',$arrcat);	
 			}
-			$arrcat = array(
-				'object_id'=>$id,
-				'term_taxonomy_id'=>$term_taxonomy_id
-			);
-			$this->db->insert('ci_term_relationships',$arrcat);	
 		}
 		return $flag;
 	}	

@@ -21,6 +21,14 @@
                             </div>
                         </div>                        
                         <div class="info area-editor">
+                            <p>Trang Giới thiệu:</p>
+                            <textarea id="editor_gioithieu" name="txtgioithieu"><?php echo $gioithieu;?></textarea>
+                        </div>
+                        <div class="info area-editor">
+                            <p>Trang Liên hệ:</p>
+                            <textarea id="editor_lienhe" name="txtlienhe"><?php echo $lienhe;?></textarea>
+                        </div>
+                        <div class="info area-editor">
                             <p>Thông tin hỗ trợ:</p>
                             <textarea id="editor_content_basic" name="txtsupport"><?php echo $support;?></textarea>
                         </div>
@@ -35,6 +43,14 @@
             </div><!--maincontentinner-->            
 <?php $this->load->view('back_end/footer');?>
 <script type="text/javascript">		
+	var editor = CKEDITOR.replace( 'editor_gioithieu',
+	{			
+		toolbar : 'MyToolbar'
+	});
+	var editor = CKEDITOR.replace( 'editor_lienhe',
+	{			
+		toolbar : 'MyToolbar'
+	});
 	var editor = CKEDITOR.replace( 'editor_content_basic',
 	{			
 		toolbar : 'Basic'

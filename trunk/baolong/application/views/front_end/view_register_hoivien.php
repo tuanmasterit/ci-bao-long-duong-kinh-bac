@@ -112,7 +112,7 @@
 						<input id="txtName" type="text" name="txtEmail"/>
 					</div>
 					<div class="row">
-						<label style="float: left">Người giới thiệu *</label>
+						<label style="float: left">Đại lý giới thiệu *</label>
 						<input id="inputString" onkeyup="lookup(this.value);" type="text" name="txtHoiVien" class="validate[required]"/>
 						<div class="suggestionsBox" id="suggestions" style="display: none;">
 							<img src="<?php echo base_url();?>application/content/images/upArrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
@@ -122,7 +122,7 @@
 						</div>						
 					</div>
 					<div class="row">
-						<label style="float: left">Người chỉ định *</label>
+						<label style="float: left">Đại lý chỉ định *</label>
 						<input  type="text" name="txtChiDinh" class="validate[required]"/>						
 					</div>
                     <div class="row">
