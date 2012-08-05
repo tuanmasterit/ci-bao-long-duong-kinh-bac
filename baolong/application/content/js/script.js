@@ -7,7 +7,6 @@ jQuery(document).ready(function(){
 		$(".fullcontent").hide();	
 		$(".excerpt").show();
 	});
-	jQuery('#coin-slider').nivoSlider();
 	
 	jQuery('#featured-product').jcarousel({    	
 		auto: 5,

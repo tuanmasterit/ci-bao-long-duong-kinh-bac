@@ -44,12 +44,13 @@ class Shop extends CI_Controller {
 		$this->load->view('shop/index',$data);		
 	}
 	function post($shop_id,$object_id){
+		$user_id = $this->User_model->get_user_id_by_shop($shop_id);
 		if($object_id == 'gioi-thieu'){
-			$data['lstpost'] = $this->Post_model->getProductByName('giới thiệu');
-			$data['title'] = $data['lstpost'][0]->post_title;		
+			$data['content'] = $this->Option_model->getOption('gioithieu',$user_id);						
+			$data['title'] = "Giới thiệu";		
 		}elseif($object_id == 'lien-he'){
-			$data['lstpost'] = $this->Post_model->getProductByName('liên hệ');
-			$data['title'] = $data['lstpost'][0]->post_title;
+			$data['content'] = $this->Option_model->getOption('lienhe',$user_id);
+			$data['title'] = "Liên hệ";
 		}else{
 			$data['lstpost'] = $this->Post_model->get($object_id);
 			$data['title'] = $data['lstpost'][0]->post_title;			

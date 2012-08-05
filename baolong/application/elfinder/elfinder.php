@@ -34,7 +34,7 @@
 							var mode = '<?php echo $_GET['mode']; ?>';
 
 							var elf = $('#elfinder').elfinder({
-									url : 'php/connector.php?mode='+mode,  // connector URL (REQUIRED)
+									url : 'php/connector.php',  // connector URL (REQUIRED)
 									getFileCallback : function(file) {
 											window.opener.CKEDITOR.tools.callFunction(funcNum, file);
 											window.close();

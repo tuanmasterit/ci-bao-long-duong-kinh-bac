@@ -42,8 +42,7 @@ class Hoiviens extends CI_Controller {
 	public function add()
 	{
 		if($this->input->post('txtname'))
-		{
-			
+		{			
 			$user_login = $this->input->post('txtname');
 			$at=$this->User_model->getByUsername($user_login);
 			if($at!=-10)

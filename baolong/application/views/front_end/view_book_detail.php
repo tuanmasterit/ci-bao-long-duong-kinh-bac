@@ -7,7 +7,7 @@
         	</h4>    
         </div>
         <div class="content">
-        	<iframe src="http://docs.google.com/gview?url=<?php echo base_url().$this->Post_model->get_featured_image($news_detail->id);?>application/content/pdf/abc.pdf&embedded=true" style="width:700px; height:700px;" frameborder="0"></iframe>
+        	<iframe src="http://docs.google.com/gview?url=<?php echo base_url().$this->Post_model->get_featured_image($news_detail->id);?>&embedded=true" style="width:700px; height:700px;" frameborder="0"></iframe>
         </div>
 	</div>
 </div>

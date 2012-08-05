@@ -43,10 +43,10 @@
                                 <p><label>Tên hiển thị:</label></p>                            
                                 <p><span class="field"><input type="text" value="<?php echo $user['display_name']?>" class="longinput" name="txtdisplay" /></span></p>
                                 <br />
-                                <p><label>Người giới thiệu:</label></p>                            
+                                <p><label>Đại lý giới thiệu:</label></p>                            
                                 <p><span class="field"><input type="text" value="<?php echo $nguoigioithieu;?>" class="longinput" name="txtdisplay" /></span></p>
                                 <br />
-                                <p><label>Người chỉ định:</label></p>                            
+                                <p><label>Đại lý chỉ định:</label></p>                            
                                 <p><span class="field"><input type="text" value="<?php echo $nguoichidinh;?>" class="longinput" name="txtdisplay" /></span></p>
                                 <br />
                                 <p class="stdformbutton">

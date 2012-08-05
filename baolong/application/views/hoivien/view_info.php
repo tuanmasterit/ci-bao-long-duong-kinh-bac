@@ -54,11 +54,11 @@
                             	<td><?php echo $tk_ong_heo;?></td>
                             </tr>
                             <tr>
-                            	<td>Người chỉ định</td>
+                            	<td>Đại lý chỉ định</td>
                             	<td><?php echo $chooseUser;?></td>
                             </tr> 
 							<tr>
-                            	<td>Người giới thiệu</td>
+                            	<td>Đại lý giới thiệu</td>
                             	<td><?php echo $refUser;?></td>
                             </tr>                            
                             <tr>

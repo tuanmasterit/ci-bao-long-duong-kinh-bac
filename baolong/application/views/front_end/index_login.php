@@ -3,7 +3,7 @@
     	<div class="content">
             <div class="top">Đăng nhập</div>
 			<div id="c_loginindex">
-				<?php if($this->session->userdata('logged_in') != 1){?>
+				<!--<?php if($this->session->userdata('logged_in') != 1){?>
 				<form action="<?php echo base_url()?>welcome/login" method="post"  id="index_login">
 					<div class="loginerror"><p>Thông tin đăng nhập không hợp lệ</p></div>
 					<div class="line">
@@ -35,7 +35,10 @@
 					<a href="<?php echo base_url()?>welcome/logout" class="link">Đăng xuất</a>
 					</div>
 				 <?php }
-				 ?>
+				 ?>-->
+                 <p style="text-align:left">Điện thoại liên hệ:&nbsp;<span style="color:#AC0000">0241.374.3870</span></p>
+                 <p style="text-align:left">Email:&nbsp;<span style="color:#AC0000">baolongduongkinhbac@gmail.com</span></p>
+                 <p>&nbsp;</p>
 			</div>         
             <div class="clear"></div>
         </div>

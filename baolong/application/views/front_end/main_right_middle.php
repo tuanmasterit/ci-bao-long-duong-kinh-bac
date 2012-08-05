@@ -49,55 +49,15 @@
 	</div>
 	<div class="clear"></div>
 </div>
-<div>
-	<object width="245" height="200"><param value="http://www.youtube.com/v/IJlxxfFmjHA?version=3&amp;autoplay=1" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><embed width="245" height="200" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" src="http://www.youtube.com/v/IJlxxfFmjHA?version=3&amp;autoplay=1"></object>
+<div>	
+    <?php $lstpost = $this->Post_model->get($this->common->get_configuration('video'),'page');?>    
+    <?php foreach($lstpost as $post){?>
+    	<?php echo $post->post_content;?>
+    <?php }?>
+	<!--<object width="245" height="200"><param value="http://www.youtube.com/v/IJlxxfFmjHA?version=3&amp;autoplay=1" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><embed width="245" height="200" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" src="http://www.youtube.com/v/IJlxxfFmjHA?version=3&amp;autoplay=1"></object>-->
 </div>
 <p>&nbsp;</p>
-<div>
-<embed width="245" height="200" flashvars="file=<?php echo base_url();?>application/content/playlist/playlist.xml&amp;displayheight=0&amp;height=200&amp;width=245&amp;thumbsinplaylist=false&amp;shuffle=false&amp;repeat=list&amp;showeq=true&amp;allowfullscreen=true&amp;backcolor=0xffffff&amp;frontcolor=0x666666&amp;lightcolor=999999" allowscriptaccess="always" quality="high" name="xml/playlist.xml" id="xml/playlist.xml" src="<?php echo base_url();?>application/content/playlist/flvplayer.swf" type="application/x-shockwave-flash">
-</div>
-<p>&nbsp;</p>
-<div id="menu_list">
-	<div class="menu">
-    	<a href="#">
-        	<img src="<?php echo base_url();?>application/content/images/tu-van-giai-dap-1.jpg"/>
-        </a>
-    </div>
-    <div class="clear"></div>
-    <div class="menu">
-    	<a href="#">
-        	<img src="<?php echo base_url();?>application/content/images/benhviendakhoabaolong.jpg"/>
-        </a>
-    </div>
-    <div class="clear"></div>
-    <div class="menu">
-        <a href="#">
-            <img src="<?php echo base_url();?>application/content/images/phac-do-dieu-tri.jpg"/>
-        </a>
-    </div>
-    <div class="clear"></div>
-    <div class="menu">
-    	<a href="#">
-        	<img src="<?php echo base_url();?>application/content/images/bien-chung-luan-tri.jpg"/>
-        </a>
-    </div>
-    <div class="clear"></div>
-    <div class="menu">
-    	<a href="#">
-        	<img src="<?php echo base_url();?>application/content/images/tu-chua-benh.jpg"/>
-        </a>
-    </div>
-    <div class="clear"></div>
-</div>
-<div class="clear"></div>
-<div>
-	<embed width="245" height="200" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1023166%26adm_aditem%3D137522%26adm_zoneid%3D256%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fwww.vinamazda.vn%2FTin-tuc-Su-kien%2FTin-tuc%2FVinaMazda%2FUu-dai-len-den-50-trieu-cho-khach-hang-mua-Mazda-trong-thang-6%26adm_random%3D0.6802513646725901&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/images/dan-tri-300x250_3.swf"/>
-</div>
-<p>&nbsp;</p>
-<div>
-	<embed width="245" height="200" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1020634%26adm_aditem%3D136693%26adm_zoneid%3D224%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fbs.serving-sys.com%2FBurstingPipe%2FadServer.bs%253Fcn%253Dtf%257Cc%253D20%257Cmc%253Dclick%257Cpli%253D4526557%257CPluID%253D0%257Cord%253D%255Btimestamp%255D%26adm_random%3D0.9439774947383233&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://admicro2.vcmedia.vn/images/300x250_shell_amazing_01-1.swf"/>
-</div>
-<p>&nbsp;</p>
-<div>
-	<embed width="245" height="200" align="middle" quality="high" wmode="transparent" allowscriptaccess="always" flashvars="alink1=http%3A%2F%2Flogging.admicro.vn%2F_adc.html%3Fadm_domain%3Dhttp%253A%2F%2Fdantri.com.vn%2F%26adm_campaign%3D1018243%26adm_aditem%3D111522%26adm_zoneid%3D227%26adm_channelid%3D-1%26adm_rehttp%3Dhttp%253A%2F%2Fsieuthidongho.com.vn%2F%26adm_random%3D0.8655418944778251&amp;atar1=_blank" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" alt="" src="http://st.polyad.net/AdImages/2012/07/02/Nestle_300x250_29062012.swf">
-</div>
+<?php $lstpost = $this->Post_model->get($this->common->get_configuration('quangcao'),'page');?>    
+<?php foreach($lstpost as $post){?>
+	<?php echo $post->post_content;?>
+<?php }?>

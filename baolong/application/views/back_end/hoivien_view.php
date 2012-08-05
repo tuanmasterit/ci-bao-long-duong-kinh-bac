@@ -19,7 +19,7 @@
                 		?>   
                 			<?php echo form_open('admin/hoiviens/add',array('id'=>'formID','class'=>'stdform'));?>
 							<input type="hidden" id="hdfUrlAjax" value="<?php echo base_url();?>admin/hoiviens/SearchUsername" />
-                    		 <p><label  style="width:90px;display:inline-block;text-align:left">Người giới thiệu:</label>
+                    		 <p><label  style="width:90px;display:inline-block;text-align:left">Đại lý giới thiệu:</label>
 							 
 							 <input type="text" AUTOCOMPLETE=OFF class="sb_input0 longinput"  style="width:250px" onkeyup="javascript:SearchUser();"/>
 								<span id="spUserReferences"  style="width:250px"></span>
@@ -34,7 +34,7 @@
 								<input type="hidden" value="" name="txtreference" id="txtreference" />
 							 </p>
 							<br />
-							<p><label  style="width:90px;display:inline-block;text-align:left">Người chỉ định:</label>
+							<p><label  style="width:90px;display:inline-block;text-align:left">Đại lý chỉ định:</label>
 							<input type="text" AUTOCOMPLETE=OFF class="sb_input1 longinput" style="width:250px"  onkeyup="javascript:SearchUser1();"/>
 							<span id="spUserChoose" style="width:250px;display:inline-block"></span>
 								<ul class="sb_dropdown sb_dropdown1" style="display:none">

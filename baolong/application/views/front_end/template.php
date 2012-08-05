@@ -15,15 +15,15 @@
     <link href="<?php echo base_url();?>application/content/css/contact.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url();?>application/content/css/common.css" rel="stylesheet" type="text/css"/>
     
-    <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/validation.js"></script>
    
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/default.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/nivo-slider.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/style.css" type="text/css" media="screen" />
-
-	
-    <script type="text/javascript" src="<?php echo base_url();?>application/content/css/nivo/jquery.nivo.slider.pack.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>application/content/css/nivo/style.css" type="text/css" media="screen" />	
+    
+    
+    
     <script type="text/javascript" src="<?php echo base_url();?>application/content/js/jquery.jcarousel.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/content/css/tango/skin.css" />
 	<link rel="stylesheet" href="<?php echo base_url();?>application/content/css/ShoppingCart.css" type="text/css" media="screen" />
@@ -73,3 +73,9 @@
    
 </body>
 </html>
+<script type="text/javascript" src="<?php echo base_url();?>application/content/css/nivo/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#coi-slider').nivoSlider();
+});
+</script>

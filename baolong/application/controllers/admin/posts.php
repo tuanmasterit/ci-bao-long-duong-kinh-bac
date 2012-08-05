@@ -104,10 +104,11 @@ class Posts extends CI_Controller {
 		$l_post_type = $this->input->post('hdfposttype');
 		$l_arr_categories = $this->input->post('cbcategory');
 		$l_featured_image = $this->input->post('hdffeatured_image');
-		//Insert posts			
+		//Insert posts	
+		//echo 'fasd'.$l_arr_categories;			
 		if($this->Post_model->update($l_id,$gianhang,date('Y-m-d h-i-s'),$l_content,$l_title,$l_exerpt,$l_featured_image,$l_arr_categories)){
 			redirect('admin/posts/lists/'.$l_post_type);							
-		}		
+		}
 		redirect('admin/posts/add/'.$l_post_type);
 	}
 	public function edit($post_type='post', $id,$gianhang=0){

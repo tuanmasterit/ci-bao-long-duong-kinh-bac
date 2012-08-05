@@ -61,6 +61,8 @@
     width: 100%;
 	margin-bottom:8px;
 	padding-bottom:3px;
+	overflow:hidden;
+	height:58px;
 }
 #hot_news .content
 {
